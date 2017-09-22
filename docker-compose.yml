@@ -16,6 +16,7 @@ services:
     ports:
       - 8080:8080
       - 9080:9080
+    command: dgraph --bindall=true --memory_mb 2048
 volumes:
   dgraph:
     external: false
