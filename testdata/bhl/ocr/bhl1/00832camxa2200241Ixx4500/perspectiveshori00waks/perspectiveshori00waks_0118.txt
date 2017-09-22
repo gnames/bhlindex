@@ -1,0 +1,41 @@
+104 Perspectives in Microbiology 
+
+sent an enormous advance in economy and efficiency of 
+ metabolic reactions. An acetyl group is derivable from a 
+ variety of sources; but once an acetyl, its origin is no 
+ longer apparent, and the acetyl on its carrier may be in 
+ equilibrium with a variety of substances — such as fatty 
+ acids, citrate, amino acids, and acetate; then when an 
+ acetyl group is needed, it must be much simpler for the 
+ organism to draw upon the common supply of acetyl than 
+ to synthesize it de novo for each separate requirement. It 
+ is therefore curious, and I believe significant, that the prin- 
+ ciple of group transfer occurs in even the smallest and 
+ presumably the simplest, in the sense of the most primi- 
+ tive, cells. 
+
+The second characteristic pattern of the metabolic path- 
+ ways as found in living cells is the organization into fixed 
+ order reaction sequences. A substance A is transformed to 
+ substance B, from here on it must go from B to C, from 
+ C to D, etc., until it emerges as substance X or Y or Z. 
+ But once it is started along the path, its subsequent fate 
+ is determined for the next five or ten or perhaps even 
+ twenty transformations. As an example, an acetyl group 
+ on coenzyme A has before it an array of pathways, but 
+ once it has condensed with oxalacetate to form citrate, its 
+ subsequent fate is to a considerable extent determined. 
+ What else can happen to citrate but conversion to cis- 
+ aconitate, then isocitrate, then oxalosuccinate, then a-keto- 
+ glutarate? Even at a-ketoglutarate there are only a few al- 
+ ternatives, and beyond, half of the acetyl is already lost. 
+
+Such fixed order reaction sequences abound in the living 
+ cell. Some are cyclic, some are not, but organization into 
+ cycles is not a necessary part of the characteristic sequence. 
+ Our present picture is that such paths are tubes or con- 
+ duits, rigidly confined. They are turnpikes or Autohahns, 
+ not byways or country lanes. In this respect, the word 
+ "pathway" is not exactly suitable, since "pathway" con- 
+ notes a somewhat wandering way, not set in steel or con- 
+

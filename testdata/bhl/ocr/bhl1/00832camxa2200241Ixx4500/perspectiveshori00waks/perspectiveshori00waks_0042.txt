@@ -1,0 +1,40 @@
+28 Perspecfives in Microbiology 
+
+tion of various bacterial genes. Not only a rise in tempera- 
+ ture, but also such metabolic variables as tryptophane 
+ deficiency or adenine excess accentuate the mutation rate 
+ (40). Perhaps the most provocative finding was that ribo- 
+ nucleosides would not merely reverse the effect of excess 
+ adenine but would reduce the "spontaneous" rate by half 
+ (39). Biophysicists once speculated, and then rejected, 
+ cosmic radiation; we now observe that the causation of 
+ spontaneous mutation is a problem incidental to inter- 
+ mediary metabolism. 
+
+This conclusion converges with the explicit study, 
+ largely with microorganisms, of mutations induced by ion- 
+ izing radiations and chemical reagents. "Induced" may be 
+ as misleading as "spontaneous"; it implies contrived in- 
+ crease of the over-all mutation rate, in a sense, an aug- 
+ mentation of "spontaneous" change. Between 1928 and 
+ 1940, the only accepted mutagen was radiant energy, many 
+ chemicals having been inconclusively or at least uncon- 
+ vincingly tested (3, 36). But starting with the war gases, 
+ and now including such domestic articles as hydrogen per- 
+ oxide, formaldehyde, soporific drugs, and caffeine, so ex- 
+ tensive a catalog has been shown potent (3, 10) that one 
+ wonders what, besides rigidity of concept, can have hin- 
+ dered the germination of chemical mutagenesis for so long. 
+ Now, from a free interchange of results concerning micro- 
+ organisms and macroorganisms, ionizing radiations also 
+ are inferred to work through chemical intermediaries: 
+ free radicals from oxygen and water (45). And, first with 
+ Streptomyces (22), then ^vith other organisms, the dysgenic 
+ effects of ultraviolet have been found reversible by visible 
+ light, suggesting an obscure photochemical intermediation. 
+
+Mutagens have, of course, helped to furnish variants, the 
+ raw material for other experiments. But, particularly in 
+ industrial applications, there has been exaggerated empha- 
+ sis on the technology of provoking genetic variation (which 
+

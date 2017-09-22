@@ -1,0 +1,41 @@
+78 Perspecfives in Microbiology 
+
+frequently postulated dicarboxylic acid cycle in which 
+ acetate is converted directly to succinate. Furthermore, 
+ most of the earlier results that appeared to disprove the 
+ operation of a TCA cycle can now be satisfactorily ex- 
+ plained on the basis of permeability barriers in the cell. It 
+ seems justifiable to conclude that the TCA cycle is a 
+ functional oxidative mechanism in some bacteria, although 
+ the existence of additional pathways of terminal respira- 
+ tion certainly cannot be excluded. This is essentially the 
+ same conclusion that could have been reached ten years 
+ ago, but it is now based upon a much larger body of factual 
+ information. 
+
+In addition to serving as an oxidative mechanism, the 
+ TCA cycle is useful as a device for providing a variety of 
+ reactive compounds containing four, five, and six carbon 
+ atoms that serve as starting points for the synthesis of 
+ essential cellular constituents, such as amino acids. For 
+ example, a-ketoglutarate is the immediate precursor of 
+ glutamic acid, which can in turn be converted by E. coli 
+ via glutamic semialdehyde to proline or via N-acetyl glu- 
+ tamic acid and N-acetyl ornithine to arginine, as has been 
+ shown by Vogel (27). 
+
+FERMENTATION PRODUCTS 
+
+The anaerobic transformations of pyruvate and acetate 
+ have been studied even more extensively than the aerobic 
+ reactions. The pathways of formation of most of the com- 
+ mon bacterial fermentation products, such as ethanol, 
+ acetate, propionate, butyrate, lactate, butanol, and acetone 
+ are fairly well understood, although a good deal remains 
+ to be done on the enzymatic level. It is also likely that 
+ different mechanisms are operative in the formation of 
+ some of these compounds in different bacterial species. 
+ This is known to be true for acetate, which is formed by 
+ several anaerobic bacteria from carbon dioxide by an 
+ entirely unknown mechanism. 
+

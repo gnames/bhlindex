@@ -1,0 +1,41 @@
+76 Perspectives in Microbiology 
+
+Glycolytic Pathway. After drawing your attention to 
+ these new types of sugar decomposition, I must not neglect 
+ to say that a few species of bacteria apparently still persist 
+ in using the old-fashioned glycolytic mechanism. I say 
+ "apparently" because with several of these bacteria the sup- 
+ porting evidence is not conclusive. The most extensive evi- 
+ dence for a glycolytic mechanism has been obtained with 
+ E. coli (3) and with Streptococcus faecalis (19). In particu- 
+ lar, the formation and decomposition of fructose- 1-6-diphos- 
+ phate, the characteristic compound of the glycolytic path- 
+ way, has been demonstrated with these organisms. The oc- 
+ currence of glycolysis in Clostridium perfringens is strongly 
+ indicated by the presence of aldolase, the enzyme convert- 
+ ing fructose diphosphate to triose phosphate, which was 
+ demonstrated by Bard and Gunsalus (1). With Clostridium 
+ thermoaceticum and Lactobacillus casei, the distribution 
+ patterns of C^^ in products obtained in the fermentation of 
+ C^Mabeled glucose are indicative of a predominantly gly- 
+ colytic pathway, but detailed enzymatic studies are lacking. 
+
+The available information on glucose decomposition by 
+ bacteria may be summarized by saying that at least four 
+ distinctly different mechanisms are known, and some of 
+ these have recognizable variations. These mechanisms are 
+ not mutually exclusive, since at least two of the systems have 
+ been found in P. fluorescens and E. coli. Probably com- 
+ binations of these systems will be found in many if not all 
+ bacteria. It is impossible at present to say whether these 
+ are the only pathways of sugar breakdown that exist in 
+ bacteria or to estimate which pathways are used more com- 
+ monly. Clearly this is an area of research where much has 
+ been accomplished but where much still remains to be 
+ done. 
+
+OXroATION OF PYRUVATE AND ACETATE ^ 
+
+A further step in the decomposition of carbohydrate is 
+ the oxidation of pyruvate to acetate. This process has been 
+

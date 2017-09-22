@@ -1,0 +1,44 @@
+THE ATTAINMENT OF VERY LOW TEMPERATURES II 
+
+published by Alessrs. Bradley and Rowe. The results of their experi- 
+ ments are tabulated above. 
+
+They observe that when these results are plotted (figure 50) the 
+ curve cuts the pressure axis at a point corresponding to a pressure 
+ between 700 and 800 atmospheres, below which no liquid would be 
+ formed. They remark that this may be in some measure due to the 
+ increase in the interchange temperature with fall of pressure, but make 
+ no attempt to connect the figures in the second and third columns. 
+
+Now if we take the heat of evaporation of liquid air to be 50 calories 
+ per gram, and its specific heat at constant pressure to be 0.237 calories 
+ per gram, we can assume that a fall of temperature of one degree in 
+ the escaping air is equivalent to the evaporation and warming up to 
+ the room temperature of ^ of its mass of liquid air, where 
+
+(50 + 0.237 X 200) A- = ( I — -v) 0.237, 
+ x = 0.25 per cent, per dyne. 
+
+If then the interchange temperature were zero over all ranges of 
+ pressure the quantity of liquid air produced in the machine would be : 
+
+In figure 5 the quantities of liquid air actually produced in the 
+ liquefier, and the quantities which would be produced if the difference 
+ between the temperature of the air as it enters and leaves the liquefier 
+ were zero, are plotted against the pressure. In neither case do 
+ the points lie on a straight line, but in the second case x they deviate 
+ from the straight line passing through the origin of the axis by amounts 
+ which are of the order of the errors of experiment. 
+
+I have not repeated these experiments myself, for I do not think 
+ that it would be possible without considerable elaboration to obtain 
+ more accurate results. Further, it appears to me that when the obser- 
+ vations are corrected in the way I have suggested, they point to the 
+ conclusion under normal conditions of working the quantity of liquid 
+ air produced in the machine is very nearly a linear function of the 
+ temperature fall of pressure in the machine. If this is the case the 
+ production of liquid may be entirely attributed to Joule-Thomson 
+ cooling. 
+
+I have observed, however, that when the apparatus is worked at a 
+

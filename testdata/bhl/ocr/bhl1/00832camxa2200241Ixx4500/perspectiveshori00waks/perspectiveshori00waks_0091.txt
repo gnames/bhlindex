@@ -1,0 +1,40 @@
+Bacfenal Metabolism 77 
+
+studied intensively with bacterial enzymes in several labora- 
+ tories (7) and has been found to be unexpectedly compli- 
+ cated. The reaction involves the participation of no less 
+ than five coenzymes; namely, thiamine pyrophosphate, 
+ lipoic acid, coenzyme A, diphosphopyridine nucleotide 
+ (DPN), and adenosine diphosphate (ADP), and possibly as 
+ many apoenzymes. The role of each of the coenzymes has 
+ been fairly well established, although some details remain 
+ to be worked out. For example, it is not yet certain whether 
+ thiamine pyrophosphate and lipoic acid act entirely in- 
+ dependently, or whether a compound of the two, lipoyl- 
+ thiamine pyrophosphate, is an essential component of the 
+ system. But it is probable that this and other controversial 
+ features of the mechanism of pyruvate oxidation can be re- 
+ solved in the near future. 
+
+The mechanism of acetate oxidation in aerobic bacteria 
+ has also been a subject of great interest recently. Until 1948 
+ it was generally assumed on the basis of very limited data 
+ that the well-known tricarboxylic acid (TCA) cycle is the 
+ main pathway of pyruvate and acetate oxidation. Then 
+ several observations strongly suggested that the cycle is not 
+ responsible for acetate oxidation (12). For example, cell sus- 
+ pensions of Azotobacter agilis were shown to oxidize 
+ acetate, whereas components of the TCA cycle, like citrate 
+ and a-ketoglutarate, were not oxidized under the same con- 
+ ditions. In addition, numerous tracer experiments demon- 
+ strated that the oxidation of C^Mabeled acetate by living 
+ bacteria does not always result in the labeling of TCA- 
+ cycle compounds that are added to the medium. Such ex- 
+ periments stimulated an extensive reinvestigation of the 
+ role of the TCA cycle by all available methods. As a result 
+ it has been definitely established that Azotobacter, E. coli, 
+ and several other bacteria possess the enzymatic machinery 
+ necessary to operate the TCA cycle. As far as I am aware, 
+ there is at present no clear-cut evidence for the existence of 
+ any alternative mechanism of acetate oxidation, such as the 
+

@@ -1,0 +1,9 @@
+ETag: "ee9f4544a6de2f47721ec12c243140fd"
+authorization: LOW Qd6g6736J6JP2ORi:REDACTED_BY_IA_S3
+connection: close
+content-length: 59132
+content-type: application/xml
+expect: 100-continue
+host: s3.us.archive.org
+x-archive-queue-derive: 0
+x-upload-date: 2013-02-11T07:39:30.000Z

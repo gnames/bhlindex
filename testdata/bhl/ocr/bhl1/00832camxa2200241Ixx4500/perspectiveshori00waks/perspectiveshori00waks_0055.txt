@@ -1,0 +1,55 @@
+Microbial Mutants 41 
+
+in turn, were based only on indirect, nutritional evidence. 
+ I should therefore like to describe the results of enzymatic 
+ studies that my colleagues and I have undertaken on ex- 
+ tracts of a variety of mutants. Furthermore, I should like 
+ to consider in some detail the biochemical significance of 
+ these findings, for they permit us to judge, much more 
+ rigorously than before, whether compounds revealed by 
+ nutritional and accumulation studies are true, normal 
+ metabolic intermediates.^ Finally, I shall point out how 
+
+1 1 should like to propose the following definitions: 
+
+An obligatory intermediate is a member of a path that is the only one 
+ by which an organism can synthesize a given product at an adequate rate 
+ from given source materials. Most of the known biosynthetic paths be- 
+ long to this category, since a block in almost any one of them gives rise 
+ to a growth requirement. 
+
+It should be emphasized that obligatory intermediates must be defined 
+ with respect to the beginning as well as the end of the metabolic path 
+ under consideration. Thus, in various organisms growing on glucose and 
+ ammonia alone, it is well known that cystathionine and homocysteine are 
+ obligatory precursors of methionine. Replacement of the glucose by other 
+ general carbon sources, such as other carbohydrates, acetate, or glycerol, 
+ would not be expected to change this path. Addition of the a-keto acid 
+ corresponding to methionine, however, could produce such a change; 
+ for though this compound is not on the path between carbohydrates and 
+ methionine, it can be nonspecifically transaminated by some organisms 
+ to form methionine. In consequence, cystathionine and homocysteine 
+ would no longer be obligatory intermediates when an organism that 
+ could transaminate this keto acid at a sufficient rate was grown in a 
+ medium containing an excess of the compound. In some analogous cases, 
+ it has been demonstrated by the method of isotopic competition that the 
+ presence of certain precursors of amino acids can completely eliminate 
+ the formation of those amino acids from general carbon sources and 
+ hence completely eliminate the participation of the earlier intermedi- 
+ ates (1). 
+
+We shall consider an essential intermediate to be one that is obligatory 
+ on a minimal medium (that is, a medium containing only general carbon 
+ sources, any growth factors required by the wild type, and inorganic 
+ salts). 
+
+If the term normal intermediate is to have any useful meaning, it seems 
+ necessary to restrict its application to the use of source materials that 
+ are defined as normal; otherwise all metabolites produced by an organism 
+ would be normal, and all those that could be incorporated into some 
+ metabolic product would be normal intermediates. I would suggest that 
+ a normal medium be considered synonymous with the minimal medium. 
+ Then on a biosynthetic path for which there is no alternative, a normal 
+ intermediate would be synonymous with an essential intermediate. Where 
+ there are minor alternative paths (as in the formation of valine by 
+

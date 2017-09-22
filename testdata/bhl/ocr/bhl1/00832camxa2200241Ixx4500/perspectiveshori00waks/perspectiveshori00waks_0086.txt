@@ -1,0 +1,41 @@
+72 Perspecfives m Microbiology 
+
+down has special advantages to the cell because it makes 
+ available a variety of carbon chains of differing lengths. 
+ In fact, compounds containing one to seven carbon atoms 
+ are formed from the hexose molecule by a most ingenious 
+ system of group transfer reactions. The advantage of such 
+ an assortment of compounds to a cell engaged in the syn- 
+ thesis of a great number of more or less complex com- 
+ pounds is obvious. For example, the pentose phosphate can 
+ be used immediately for making ribonucleic acids and a 
+ variety of ribose-containing coenzymes. Probably each of 
+ the other compounds also serves as the starting point for 
+ some synthetic process. 
+
+Although much of the experimental work that has estab- 
+ lished this oxidative mechanism was done ^^vith yeast, liver, 
+ and plant enzymes, there is abundant evidence that some 
+ bacteria including Escherichia coli (21) and Azotobacter 
+ vinelandii (17) also utilize this mechanism of glucose oxida- 
+ tion. 
+
+A perhaps similar nonglycolytic mechanism, which has 
+ long been suspected to exist but which has only recently 
+ been demonstrated in a convincing manner, is found in the 
+ fermentative bacterium Leuconostoc mesenteroides. Gayon 
+ and Dubovag showed in 1894 that the fermentation of one 
+ mole of glucose by Leuconostoc species yields one mole 
+ each of lactate, ethanol, and carbon dioxide. The remark- 
+ able feature of this fermentation, from the point of view of 
+ the mechanism of sugar decomposition, is the constancy in 
+ the yields of the three products. Other bacterial glucose 
+ fermentations result in formation of the same compounds, 
+ but the ratio of lactate to ethanol, for example, is highly 
+ variable with pH and other environmental factors. With 
+ Leuconostoc, half of the sugar is ahvays converted to lactate 
+ and half to ethanol and carbon dioxide. This result is in- 
+ consistent with the glycolytic mechanism, which requires 
+ both halves of the sflucose molecule to follow a common 
+ path between glyceraldehydephosphate and pyruvate. 
+

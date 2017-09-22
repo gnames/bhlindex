@@ -1,0 +1,46 @@
+Bacfenal Metabolism 75 
+
+lated as the crystalline sodium salt and identified as 2-keto, 
+ 3-desoxy, 6-phosphogluconate (Figure 5). This substance is 
+ then split enzymatically to pyruvate, which is derived from 
+ carbon atoms I to 3 of glucose, and 3-phosphoglyceralde- 
+ hyde, derived from carbon atoms 4 to 6. The same reactions 
+ occur in Pseudomonas fluorescens (14). 
+
+A closely related sugar decomposition mechanism has 
+ been detected in a fermentative bacterium, Pseudomonas 
+ lindneri, by the tracer method. This organism carries out 
+ a typical alcoholic fermentation in so far as the products 
+ are concerned. The experiments of Gibbs and DeMoss (5) 
+
+C'^GLUCOSE Ps. lindneri YEAST 
+
+'^CHO XO. 'CH3 
+
+•CHOH •CH2OH CH2OH 
+
+^CHOH ^%Wj, ^COa 
+
+4hoh V02 ^Cp2 
+
+CHOH CH2OH CH2OH 
+
+CHgOH °CH3 CH3 
+
+o 
+
+FIGURE 6. Alcoholic Fermentation by Pseudomonas lindneri, after Gibbs 
+
+and DeMoss (6) 
+
+show, however, that the carbon dioxide is derived from 
+ carbon atoms 1 and 4 of glucose; the carbinol group of 
+ ethanol comes from carbons 2 and 5, and the methyl group 
+ from carbons 3 and 6 of glucose (Figure 6). This carbon 
+ distribution pattern is completely different from that ob- 
+ tained with yeast and is sufficiently similar to that observed 
+ with Pseudomonas saccharophila to suggest that both organ- 
+ isms use the same mechanism for converting glucose to 
+ three carbon units. But further work with cell-free extracts 
+ will be necessary to establish this possibility. 
+

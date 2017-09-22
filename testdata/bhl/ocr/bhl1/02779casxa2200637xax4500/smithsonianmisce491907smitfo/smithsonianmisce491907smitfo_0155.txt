@@ -1,0 +1,53 @@
+THE ATTAINMENT OF VERY LOW TEMPERATURES 5 
+
+coil can not be subjected to a back-pressure of over one atmosphere. 
+ I have, however, found it to be mechanically impossible to wind 
+ the spirals too closely. 
+
+It is practically impossible to further increase the rate at which 
+ the compressed gas loses its heat, but by means of an arrangement 
+ which I shall next describe I have under certain circumstances suc- 
+
+nOPOOOC 
+
+a 
+
+^.QQoooo 
+
+0"-^"^- 
+
+Fig. I. — Eddies formed by 
+ passage of gas through 
+ orifice. 
+
+D' 
+
+Fig. 2. — Regenerator coils. 
+
+oxg 
+
+B 
+
+pooooo 
+
+ceeded in increasing the refrigerating efficiency of the expanded gas 
+ as it passes over the outside of the coils. 
+
+I have already referred to the fact that when a stream of gas passes 
+ across the edge of a plate at right angles to its path, or enters or leaves 
+ an orifice with square-cut edges, eddies are formed as in the figure i. 
+ It occurred to me that by placing sheets of perforated vulcanized fibre 
+ between the horizontal spirals, which make up the coil, such eddies 
+ would be set up in the gas, and that the jets of gas passing through 
+ the holes would themselves form eddies both by their mutual action, 
+ and by impinging on the copper coils. Such an arrangement would 
+ be much more effective in overcoming the tendency of the gas to flow 
+ in streams, parted rather than broken up by the curved surface of the 
+ pipes. Further, the fibre being a highly non-conducting material 
+ would insulate the adjacent sections of the regenerator coil, and thereby 
+ increase its efficiency. 
+
+In the early part of the year 1904 I constructed two similar regen- 
+ erator coils, each 20 cm. long and 7.2 cm. in diameter, wound about 
+ a tube I cm. in diameter, surrounding the valve rod. One of the coils, 
+

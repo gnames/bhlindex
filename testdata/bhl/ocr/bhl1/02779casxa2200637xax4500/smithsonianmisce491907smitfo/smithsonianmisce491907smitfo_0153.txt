@@ -1,0 +1,51 @@
+THE ATTAINMENT OF VERY LOW TEMPERATURES 3 
+
+and with the valve below. The doubling of the coil was intended to 
+ diminish any tendency on the part of the pipe to become blocked with 
+ impurity separated from the gas, and to reduce friction in the pipe, 
+ and so increase the pressure at the expansion valve. These precau- 
+ tions are, as a matter of fact, totally unnecessary. 
+
+The results obtained with this liquefier were far from satisfactory, 
+ and a careful study of its behaviour showed that the fault lay entirely 
+ in the regenerator coil. It was evident that the preliminary cooling 
+ of the compressed gas was as complete as in the case of my first ma- 
+ chine, probably even more so ; but that the heat-interchange between 
+ the compressed and expanded hydrogen in the regenerator coil was 
+ unsatisfactory. Careful consideration of the problem soon led to an 
+ explanation of the inefficiency of the second regenerator coil, and it is 
+ this point I shall next discuss. 
+
+The phenomena connected with the interchange of heat between 
+ fluids in motion has been studied chiefly with a view to applying the 
+ results to steam boiler problems. Osborne, Reynolds, Stanton, and 
+ others have shown that when currents of water are made to flow in 
+ opposite directions through concentric tubes, the change of tempera- 
+ ture is independent of the velocity of the streams, or that the heat- 
+ interchange is proportional to the relative velocities. The same re- 
+ marks apply to the change of temperature and loss of heat by furnace 
+ gases in passing through boiler tubes ; and to show how closely the 
+ phenomena of heat regeneration in gas liquefiers resembles those I 
+ have just referred to, it is sufficient to state that in the Hampson air 
+ liquefier the difiference between the temperatures of the air which enters 
+ and leaves the apparatus shows the same dift'erence of temperature 
+ even when the velocity of the stream of air passing through it is greatly 
+ increased. 
+
+It is also well known that the loss of heat that furnace gases un- 
+ dergo is considerably diminished if the absolute velocity of the gas be 
+ decreased. It can be shown, for instance, that by increasing the diam- 
+ eter of the tubes of an ordinary boiler, or by spacing the tubes of a 
+ water-tube boiler more widely the heat interchange between the gases 
+ and the water may be considerably reduced. 
+
+Were it possible to consider the phenomenon of heat interchange 
+ between two fluids moving in opposite directions on different sides of 
+ a conducting surface one of conduction of heat through the fluid, the 
+ study of it would be a comparatively simple matter. As a matter of 
+ fact, however, this is the case only when the fluids were travelling 
+ slowly, and on account of the low conductivity of gases the heat inter- 
+ change is, under such circumstances, very small. When, however, the 
+ velocity of the fluid bears a certain relationship to the dimensions of 
+ the space through which it is flowing, the longitudinal components into 
+

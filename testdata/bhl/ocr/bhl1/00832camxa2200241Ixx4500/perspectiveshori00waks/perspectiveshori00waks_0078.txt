@@ -1,0 +1,41 @@
+64 Perspectives in Microbiology 
+
+exploratory period a great variety of metabolic processes 
+ were discovered which on superficial examination appeared 
+ to be wholly unrelated. For example, most microbiologists 
+ of thirty years ago saw little connection between the utiliza- 
+ tion of oxygen by the acetic acid bacteria for the conversion 
+ of alcohol to acetic acid and the formation of hydrogen 
+ sulfide by the sulfate-reducing bacteria. Kluyver pointed 
+ out that both oxygen and sulfate are reducible compounds 
+ and that they serve essentially the same function, as oxidiz- 
+ ing agents, in the metabolism of these t^vo types of bacteria. 
+ Kluyver also perceived that the chemical reactions catalyzed 
+ by bacteria are generally oxidation-reduction processes in 
+ which some compounds are oxidized and others are reduced 
+ in a series of simple and chemically intelligible steps. His 
+ analysis of the available data on hexose decomposition by 
+ different bacteria led to the view that in most cases the 
+ process consists of a conversion of the sugar to two C3 com- 
+ pounds, which in turn are converted to C2 and C^ com- 
+ pounds. These various pieces of the hexose molecule are 
+ then transformed by oxidation, reduction, and conden- 
+ sation reactions to the observed products of catabolism. 
+ Our knowledge of bacterial carbohydrate metabolism has 
+ greatly expanded in recent years, and numerous changes 
+ have been required in this simple picture. Nevertheless, the 
+ concept of an underlying unity in biochemistry, first de- 
+ veloped in some detail by an analysis of the extensive in- 
+ formation on bacterial metabolism, has become a corner- 
+ stone of our science. 
+
+The severe limitations of the chemical balance experi- 
+ ment method for the study of intermediary metabolism in 
+ bacteria were soon recognized, and a search for better 
+ methods was stimulated. During the last fwenty years 
+ several new or improved methods have been developed 
+ which are largely responsible for the current rapid expan- 
+ sion of knowledge in this field. 
+
+One of these is the tracer method. Use of the stable and 
+

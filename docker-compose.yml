@@ -1,0 +1,26 @@
+version: '2'
+services:
+  app:
+    build:
+      context: .
+    container_name: gnidump
+    image: gnames/gnidump
+    depends_on:
+      - gnparser
+    env_file: .env
+    volumes:
+      - gni_mysql:/tmp/gni_mysql
+      - gnindex_pg:/tmp/gnindex_pg
+      - badger:/tmp/badger
+    # command: ["dump"]
+    # command: ["convert"]
+    command: ["create"]
+  gnparser:
+    image: gnames/gnparser
+volumes:
+  gni_mysql:
+    external: false
+  gnindex_pg:
+    external: false
+  badger:
+    external: false

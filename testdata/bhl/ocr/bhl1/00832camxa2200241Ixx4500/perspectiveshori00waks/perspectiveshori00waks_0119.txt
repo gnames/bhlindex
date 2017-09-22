@@ -1,0 +1,41 @@
+Metabolic Pafhways 105 
+
+Crete, capable of easy branching and alteration as circum- 
+ stances require. But so far as I am able to judge, the meta- 
+ bolic pathways of the living cell are rigid and enclosed. 
+ The plasticity characteristic of life, and the adaptive abili- 
+ ties, are more a matter of substituting pathways, and com- 
+ petition between them, than a matter of alteration in a 
+ fixed order reaction sequence. I admit that this too-rigid 
+ mechanistic view is not a very satisfying one, but I am 
+ afraid it is correct. In the long view, it is not surprising; 
+ after all, the mechanics of muscular movement in our 
+ bodies have not changed for at least 10,000 years. Why 
+ expect even more fundamental mechanisms, those of chem- 
+ ical transformations, or energy release, to be any more 
+ fluid? 
+
+These pathways are usually so constructed that they are 
+ self-limiting. I suppose the engineer would call these feed- 
+ back mechanisms. The word itself has no particular mean- 
+ ing to me, and I prefer the term "self-limiting." The 
+ Meyerhof-Embden system, for example, requires both 
+ adenosine triphosphate (ATP) (at its start) and adenylic 
+ acid (beyond the triose phosphate stage), and will stop if 
+ all the adenylic is converted into ATP. The same is true 
+ for inorganic phosphate. 
+
+In addition, there are ''cyclic" processes — as occur in the 
+ citric acid cycle, the urea cycle, the fatty acid cycle, or the 
+ choline cycle — and they are all constructed so that the rate 
+ at which the cycle proceeds is dependent not only upon 
+ substrate, but upon what one might call built-in controls. 
+ The element of control in such self-limiting systems is 
+ exerted by a second factor, also self-limiting, namely, series 
+ or product inhibition. The clearest example is the fact 
+ that oxalacetate is one of the most potent inhibitors of 
+ succinoxidase known. In the reaction series succinate to 
+ fumarate to malate to oxalacetate, the oxalacetate must be 
+ removed or the series will stop. In brief, there are, in the 
+ fixed series metabolic pathways, two factors of control: 
+

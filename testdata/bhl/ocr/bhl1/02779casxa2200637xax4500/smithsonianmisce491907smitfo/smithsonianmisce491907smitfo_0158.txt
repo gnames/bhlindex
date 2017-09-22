@@ -1,0 +1,44 @@
+O THE ATTAINMENT OF VERY LOW TEMPERATURES 
+
+wires from the thermo junctions, which are not shown in the figure, 
+ passed through a paraffined cork in the vertical opening of H, while 
+ a rubber tube connected with the horizontal opening led to a gas-meter, 
+ by means of which the volume of air was measured. 
+
+A brass reducing piece L and two rubber sleeves M and N con- 
+ nected the cylindrical vessel B with the vessel P in which the liquid 
+ air collected. The liquid ran directly from the nozzle of B into P, and 
+ to allow of the escape of the gaseous air which resulted in the evapora- 
+ tion of a little of the liquid, the pinchcock 6^ could, if necessary, be 
+ opened from time to time. 
+
+The temperature gradients in the two coils are shown on the curve 
+ in figure 4. The curve a represents the gradient in the coil A, in which 
+ the perforated vulcanized discs had been inserted, and the curve h the 
+ gradient in the simple coil B. 
+
+The result of this part of my experiments is interesting. It will 
+ be observed that in the case of both coils the temperature gradient is 
+ at first very steep, but curiously enough the effect of introducing the 
+ fibre discs is, so far as the lower section of the coil is concerned, the 
+ reverse of what was looked for, the temperature gradient is rendered 
+ less steep, not more so. Over the upper section of the coil the fibre 
+ discs produce the desired effect, with the result that as a whole the 
+ coil A produces a slightly more effective heat interchange than the 
+ coil B. 
+
+The explanation of these facts is, I believe, as follows : Over the 
+ lower section of the coil, where the rate of heat interchange is normally 
+ very high, though the fibre discs may increase the eddying effect, they 
+ also shield the coils from close contact with gas, and hence their total 
+ effect is negative. Over the upper two-thirds of the coil, where the 
+ rate of heat interchange is low, the shielding factor is insignificant com- 
+ pared with the action of the discs in producing eddy motion, and the 
+ efficiency of the coil is increased. 
+
+Table I. Results of Experiments with Coils A and B. 
+
+It is important to note that, as appears from Table I, the per- 
+ centage of air liquefied, for quantities passing through the liquefier 
+ which vary as 2 is to 3, shows but slight variation. As might be 
+

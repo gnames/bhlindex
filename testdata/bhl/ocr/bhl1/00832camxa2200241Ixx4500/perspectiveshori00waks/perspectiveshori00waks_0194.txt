@@ -1,0 +1,41 @@
+176 Perspectives in Microbiology 
+
+antibiotic. The sometimes striking antagonistic and syner- 
+ gistic effects when antibiotics are used in combination are 
+ of obvious central importance in relation to their thera- 
+ peutic use, but the factors underlying those effects are 
+ almost wholly obscure. 
+
+Many of the reported metabolic effects of antibiotics are 
+ observed with whole-cell suspensions, in which it is no- 
+ toriously difficult to distinguish between a primary locus 
+ of action of the antibiotic and metabolic effects resulting 
+ from that combination which may, however, be two, three, 
+ or more steps removed. Uncommon interest therefore at- 
+ taches to the recent demonstration by Saz that in a cell- 
+ free bacterial extract, chlortetracycline in minute concen- 
+ tration inhibits an aryl nitro-reductase of Escherichia coli. 
+ This inhibition apparently results from the fact that the 
+ antibiotic combines with Mn, which is an essential cofactor 
+ in one or more of the multiple enzyme systems involved in 
+ this complex reaction. Interesting also is the fact that oxy- 
+ tetracycline, although it also chelates with Mn, is far less 
+ inhibitory than is chlortetracycline. Whether or not this 
+ is the mechanism by which chlortetracycline exerts its 
+ growth-inhibitory effect on bacteria, it is the first clear 
+ demonstration of a direct effect of an antibiotic on an 
+ enzyme system in a cell-free bacterial extract and, as such, 
+ may prove a model for the actual mode of action of this 
+ and other antibiotics. 
+
+Our ignorance extends not only to the mode of action 
+ of antibiotics at the cellular level, but indeed to how they 
+ work in vivo, for some of the antibiotics, notably chlor- 
+ amphenicol and the three tetracyclines, are effective thera- 
+ peutically at concentrations in the body fluids which are 
+ only growth inhibitory in vitro. The therapeutic response 
+ clearly involves the participation of host mechanisms to 
+ an important degree; but whether we are here dealing 
+ with a humoral or a cellular effect has not yet been 
+ clarified. 
+

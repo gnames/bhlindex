@@ -1,0 +1,51 @@
+4 THE ATTAINMENT OF VERY LOW TEMPERATURES 
+
+which we may theoretically divide the stream no longer form straight 
+ lines, but break up into eddies. As the result of this the heat passes 
+ more rapidly from the gas to the surface in contact with it, or vice 
+ versa, than it does when the " stream line " flow is maintained. It has 
+ been stated that for the efficient working of a boiler both the furnace 
+ gases and the water must " scrub " the surface separating them. 
+
+The formation of eddies in a fluid depends upon its velocity, viscos- 
+ ity, density and on the form of the aperture through which it is flow- 
+ ing. The greater the velocity when once the " critical velocity " is 
+ passed, the greater the tendency to form eddies, which also increase 
+ as the space through which the gas is flowing diminishes. Further, 
+ it is well known that when a gas strikes against a sharp edge or angu- 
+ lar obstacle eddies are formed much more readily than when the stream 
+ of gas meets a curved surface. 
+
+The difference of the behaviour of the two regenerator coils re- 
+ ferred to on page 2 may now be explained. The first coil consisted 
+ of a single copper tube, so that the velocity of the compressed gas flow- 
+ ing through it was twice as great as that of the gas in the second coil, 
+ each component of which was half the length. Further, since it was 
+ impossible to wind the double coil as closely as the single coil, the 
+ velocity of the expanded gas passing over the outside of the pipes was 
+ greater in the case of the first coil than in that of the second. As the 
+ tendency to form eddies in the gas increases with the velocity, particu- 
+ larly when the stream passes through narrow openings, such as exist 
+ between the flat spirals of the coil, it is not surprising that the efficiency 
+ of the second coil was lower than that of the first. 
+
+I was fortunately able to test this theory by means of trials carried 
+ out on two air liquefiers of the Hampson type. In one of these two 
+ copper tubes were wound together to form the regenerator coil, and 
+ in the other four copper pipes of the same diameter were similarly 
+ wound. The difference in the behaviour of the two liquefiers, which 
+ were otherwise identical, under exactly similar conditions was suffi- 
+ ciently marked to prove my point. The two-coil liquefier gave from 
+ 2 to 3 per cent, more liquid air than the four-coil liquefier, and whereas 
+ in the first case the difference between the temperatures of the air as 
+ it entered and left the apparatus was 0.4°, it rose in the second case 
+ to 1.4°. 
+
+It appeared, therefore, that in constructing regenerator coils the 
+ pipe should have as small an internal diameter as is possible, and that 
+ the coil should be closely wound. It is practically impossible to use 
+ copper tube of a diameter less than 2 mm. inside and 3.5 mm. outside 
+ on account of the mechanical difficulties which arise in joining the 
+ sections, and in winding the coil. The spacing of the spirals is theoret- 
+ ically limited by the fact that the glass vacuum-vessel enclosing the 
+

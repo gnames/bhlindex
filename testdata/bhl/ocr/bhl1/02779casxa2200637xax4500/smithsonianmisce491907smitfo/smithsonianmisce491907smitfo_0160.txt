@@ -1,0 +1,43 @@
+lO THE ATTAINMENT OF VERY LOW TEMPERATURES 
+
+expected, the efificiency decreases slightly in proportion as the mass- 
+ flow of the air increases. The temperature measurements indicate, 
+ however, that the gradient in the lower part of the coil is practically 
+ independent of the quantity of air passing through it, though the tem- 
+ perature difference at the exit became slightly greater. Bradley and 
+ Rowe (he. cit.) arrive at a similar result. 
+
+IV. Application of These Results to the Construction of a 
+ New Air Liquefier. 
+
+The result of these experiments seemed to show that the introduc- 
+ tion of the vulcanized fibre discs increases the rate of heat interchange 
+ in the upper part of the coil, where the temperature difference between 
+ the two streams of gas is comparatively small, but is non-effective so 
+ far as the lower third at least is concerned. 
+
+The lower part of the liquefier which I constructed is arranged as 
+ in figure 3, but in place of the cap there is a metal cylinder filled with 
+ a coil constructed of two pipes coaxially. This part of the coil is 25 
+ centimetres long and 10 centimetres in diameter. The cylinder enclos- 
+ ing it is secured to the vacuum vessel by means of a rubber sleeve, and 
+ is enclosed in a wooden casing filled with animal wool. 
+
+The results obtained with it have been quite satisfactory. The 
+ temperature difference at the inlet and outlet is smaller than can be 
+ measured, and the yield of liquid air is, within the limits of experi- 
+ mental error, as high as has been obtained with any liquefier. 
+
+Table II. Result of Experiment with New Air Liquefier. 
+
+V. The Effect of Initial Pressure on the Efficiency of a 
+
+Liquefier. 
+ I had intended to carry out experiments with a view to investigat- 
+ ing the process from this point of view if results had not already been 
+
+Table III. Bradley and Rowe Eperiments. 
+
+^Bradley and Rowe {loc. cit.) find 0.047 per atmosphere for their liquefier. 
+ The difference is well within the limits of experimental error. 
+

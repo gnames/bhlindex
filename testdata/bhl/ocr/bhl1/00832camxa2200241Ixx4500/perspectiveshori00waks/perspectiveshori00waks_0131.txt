@@ -1,0 +1,42 @@
+Biological Nitrogen Fixation 117 
+
+conventional reactions, such as reductive assimilation and 
+ transamination. But direct evidence for NH3 eluded us 
+ until just a few years ago when we began the tracer studies 
+ on Clostridium pasteurianum. Traditionally, this organism 
+ is a sluggish fixer and was believed to be both inefficient 
+ and slow. But a study of its physiology and the employment 
+ of modern methods of culture (for example, shake flasks) 
+ demonstrated that fixation by this organism was almost as 
+ good as by Azotohacter (10). 
+
+When both the rate and the extent of fixation by the 
+ Clostridia had been thus increased, the organism excreted 
+ large quantities of ammonia into the medium — it seemed 
+ that a medium good enough for a sluggish fixer w^as defi- 
+ cient for this new intensive mode of life. The organism 
+ apparently was fixing nitrogen more rapidly than it could 
+ be assimilated and was discarding the excess into the 
+ medium (10). This was direct evidence for ammonia as the 
+ end product of fixation, provided that the excreted am- 
+ monia could be demonstrated to be "juvenile" nitrogen — 
+ recently fixed, and not merely breakdown products of the 
+ cells. Before the time of isotopic tracing, this would have 
+ been a difficult assignment, but now it was readily tested 
+ by employing labeled N2^^. Since the excreted ammonia-N 
+ was considerably higher in its level of tracer than any other 
+ compound found, and was followed by substances such as 
+ amides, known to be storage compounds for ammonia, it 
+ was concluded that this provided the long-sought-for isola- 
+ tion of the key intermediate in biological nitrogen fixation 
+
+(21). 
+
+Our satisfaction with this result was somewhat allayed by 
+ the fact that we could not repeat it with Azotobacter. This 
+ organism would not excrete nitrogenous compounds in 
+ spite of all our efforts; the growth of the cell apparently 
+ always keeps ahead of its rate of fixation. Somewhat in 
+ desperation, the isotopic dilution method was tried — a 
+ method in which we did not have much hope, since it re- 
+

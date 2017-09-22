@@ -1,0 +1,40 @@
+Antibiotic Research 173 
+
+apparent mass adaptation of large numbers of bacteria 
+ to low concentrations in a fluid medium in fact repre- 
+ sents the selective multiplication of a few resistant organ- 
+ isms, presumably mutants, introduced with the inoculum. 
+ Furthermore, repeated attempts to adapt small numbers 
+ of bacteria to penicillin by slowly increasing the concen- 
+ tration of the antibiotic in the medium over a period of 
+ days have in our hands been uniformly unsuccessful. On 
+ the other hand, with chloramphenicol, there are some ex- 
+ periments which apparently involve no important degree 
+ of multiplication or selection and in which an entire bac- 
+ terial population has apparently become resistant after 
+ exposure to threshold concentrations of the antibiotic for 
+ 10 to 25 days. Even in these experiments, however, the 
+ possibility of a minor degree of multiplication, sufficient 
+ to permit spontaneous mutation followed by selective mul- 
+ tiplication, has not been rigorously excluded; and there 
+ have as yet been no rigorous experiments that prove the 
+ adaptation of bacteria to antibiotics. 
+
+As to the mechanisms that determine the varying re- 
+ sistance of bacterial species and strains to antibiotics, at 
+ least four have now been demonstrated for penicillin 
+ alone, and there may well be more. Some bacteria are re- 
+ sistant because they are able to release into the medium an 
+ enzyme, penicillinase, which converts penicillin to an in- 
+ active form, penicilloic acid. Others that do not release 
+ penicillinase into the medium are able rapidly to destroy 
+ the antibiotic after it gets into the cell. For most bacteria 
+ as they occur in nature, however, the primary determinant 
+ of penicillin sensitivity appears to be the affinity of cer- 
+ tain penicillin-vulnerable components of the cell and the 
+ antibiotic. By using radioactive penicillin it has been 
+ possible to show that penicillin-sensitive bacteria have a 
+ high combining affinity for the antibiotic, and that rela- 
+ tively penicillin-resistant organisms have a correspond- 
+ ingly lower reactivity. We are not dealing here with a 
+

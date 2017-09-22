@@ -1,0 +1,41 @@
+46 Perspectives in Microbiology 
+
+of the mutant extract might be due to presence of an in- 
+ hibitor or to absence of an essential activator; for, in order 
+ to account for the results of the mixture experiments, 
+ either an inhibiting or an activating factor would have 
+ to be stoichiometrically attached to the enzyme, and such 
+ a difference between two extracts would not be operation- 
+ ally distinguishable from the presence of active enzyme 
+ molecules in one and their absence from the other. We can 
+ therefore conclude that the genetic block between DHQ 
+ and DHS is indeed associated with inability of the mutant 
+ cell to make the enzyme for that reaction, at least in active 
+ form. Furthermore, the loss is specific; mutants blocked 
+ in various earlier or later reactions of the aromatic se- 
+ quence have yielded normal or sometimes even increased 
+ amounts of dehydroquinase. 
+
+The enzyme that catalyzes the next reaction in this 
+ chain, the reduction of DHS to shikimic acid, has been 
+ similarly studied in extracts by Yaniv and Gilvarg (32). 
+ The enzyme is specific for triphosphopyridine nucleotide 
+ (TPN) as hydrogen carrier, and the reaction is reversible. 
+ There is strong evidence that this reaction also is catalyzed 
+ by a single enzyme, and this enzyme has no demonstrable 
+ cof actor or metal ion requirement other than TPN. As 
+ in the previous case, the wild type yields the enzyme in 
+ about the concentration expected from the growth rate; 
+ mutants blocked in this reaction yield no enzyme activity; 
+ and the addition of mutant extract has no effect on the 
+ activity of wild-type extract. 
+
+It might be noted at this point that both these enzymes 
+ have been found present in extracts of a variety of micro- 
+ organisms and plants that can synthesize their own aro- 
+ matic amino acids, and absent from an animal tissue which 
+ cannot synthesize these compounds. This path is therefore 
+ widely distributed in nature, and may well be the only 
+ path existing for the biosynthesis of this group of benze- 
+ noid compounds. 
+

@@ -1,0 +1,42 @@
+34 Perspectives in Microbiology 
+
+bacterial nucleus, the intercellular transport of the frag- 
+ ment, and its injection into the new host bacterium. 
+
+Insofar as we elect to regard hereditary viruses as part 
+ of the genotype, symbiotic infection is also a species of 
+ recombination. Lysogenization in particular can be analo- 
+ gized to transduction or even fertilization (15), especially 
+ since, at least in E. coli K-12, the prophage is incorporated 
+ as if it were a typical genetic factor (25). In addition, traits 
+ usually attributed to the "bacterium itself," whatever this 
+ means, may be dramatically converted by lysogenization 
+ per se, as in the toxigenic variation of diphtheria bacilli 
+ (5, 17) and the change in lysotype (1) or somatic antigen 
+ from group E-1 to E-2 (21, 47) in Salmonella. 
+
+It is less urgent to distinguish whether lysogeny is a 
+ transduction, which is mostly semantic manipulation, than 
+ to describe the role of the phage particle. This may be con- 
+ sidered as a miniature bacterium, with a skin and a "nu- 
+ cleus." The phage nucleus itself is the agent of genetic 
+ conversion in lysogeny; it behaves rather as if it were a 
+ special segment of a bacterial chromosome, but as with any 
+ virus we cannot say whether this evolved by gradual para- 
+ sitic degeneration or by abrupt mutation. 
+
+In addition to the phage nucleus, the skin may enclose 
+ other fragments, the residue of the lysed bacterium. The 
+ relationship of these fragments to the prophage in Sal- 
+ monella is obscure. The simplest picture is that they are 
+ adventitiously included, together with the phage nucleus, 
+ during the maturation of the phage particle. However, it 
+ has not yet been possible to study the localization of pro- 
+ phage in Salmonella by the methods employed for E. coli 
+ K-12, and it cannot, therefore, be excluded that the frag- 
+ ments transduced by any given phage particle .are related 
+ to a less rigidly predetermined reproductive site of the 
+ nucleus of that particle. In any event, every genetic factor 
+ so far tested in Salmonella is subject to transduction, al- 
+ though the quantitative efficiency may vary by as much as 
+

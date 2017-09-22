@@ -1,0 +1,41 @@
+106 Perspecfives in Microbiology 
+
+self-limiting reactions and series inhibition, which require 
+ that the cell operate its reaction pathways essentially one 
+ molecule at a time. This molecule-at-a-time requirement 
+ permits the free play of the third characteristic factor of 
+ the living process, that of competition. There are in every 
+ cell alternative pathways that may be followed by a given 
+ molecule. Whether a given molecule of glucose-6-phos- 
+ phate is converted to fructose-6-phosphate, to phospho- 
+ gluconic acid, to glucose- 1 -phosphate, or to glucose plus 
+ phosphate, which step determines its subsequent fate, 
+ depends on circumstances within the cell. 
+
+That such competition may be the controlling factor in 
+ cell growth and development was forcibly impressed upon 
+ us in studies on the mode of action of streptomycin. Here 
+ the resting cells possessed what appeared to be a typical 
+ citric acid cycle, and it was entrance into this cycle that 
+ was inhibited by streptomycin. Further study showed that 
+ the citric acid cycle was indeed present but that it was not 
+ sensitive to streptomycin. Rather, there existed side by 
+ side with the citric acid cycle a hitherto unknown reaction 
+ sequence, the first step of which was the formation of a 
+ seven-carbon phosphorylated intermediate. This alterna- 
+ tive sequence apparently started from the same materials, 
+ was in competition with the citric acid cycle for these sub- 
+ stances, and led eventually, but by different paths, to the 
+ same carbon dioxide and water. Along the alternative 
+ route, however, there must be something that the cell re- 
+ quired, since this alternative pathway was originally recog- 
+ nized only by its inhibition by streptomycin, and since, 
+ when it was inhibited, the cell could not grow. 
+
+It seems to me, therefore, that the studies of metabolic 
+ pathways have told us the following things about the living 
+ process in whatever cells we may find it: First, that the re- 
+ actions occur at and because of specific surfaces. Second, 
+ these reactions are characterized by: (a) predominance of 
+ group transfer; (b) organization into reaction sequences 
+
