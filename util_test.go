@@ -28,4 +28,11 @@ var _ = Describe("Util", func() {
 			util.Check(err)
 		})
 	})
+
+	Describe("EnvVars", func() {
+		env := util.EnvVars()
+		It("Returns envaronment variables", func() {
+			Expect(env["bhl_dir"]).To(Equal("./testdata/"))
+		})
+	})
 })

@@ -7,17 +7,12 @@ services:
       - .:/go/src/github.com/GlobalNamesArchitecture/bhlindex/
     container_name: bhlindex
     depends_on:
-      - dgraph
+      - pg
     env_file: .env
-    # command: bash -c "ginkgo watch"
-  dgraph:
-    image: dgraph/dgraph
+  pg:
+    image: postgres
     volumes:
-      - dgraph:/dgraph
-    ports:
-      - 8080:8080
-      - 9080:9080
-    command: dgraph --bindall=true --memory_mb 2048
+      - pg:/var/lib/postgresql/data
 volumes:
-  dgraph:
+  pg:
     external: false
