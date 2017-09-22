@@ -1,0 +1,4 @@
+package loader
+
+func Path() {
+}

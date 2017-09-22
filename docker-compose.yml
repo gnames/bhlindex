@@ -3,12 +3,13 @@ services:
   app:
     build:
       context: .
+    volumes:
+      - .:/go/src/github.com/GlobalNamesArchitecture/bhlindex/
     container_name: bhlindex
-    image: gnames/bhlindex
     depends_on:
       - dgraph
     env_file: .env
-    command: ["index"]
+    # command: bash -c "ginkgo watch"
   dgraph:
     image: dgraph/dgraph
     volumes:
