@@ -1,27 +1,3 @@
-MEMOIRS OF THE NATIONAL ACADEMY OF SCIENCES, VOL X 
-
-PLATE I. 
-
-
-Kit.'. :t. 
-
-
-Fig. 8. 
-
-Fig. 6. 
-
-Fig. 7. 
-
-Fig. i). 
-
-Fig. 10. 
-
-Pig - 
-
-Pig. 13. 
-
-1 
-
-
-PHORONIS ARCHITECTA 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:2267ad3c1896e87f241c7e4cb30b4a6e45e4540e51cbeba48cfe894d2a1856f0
+size 231

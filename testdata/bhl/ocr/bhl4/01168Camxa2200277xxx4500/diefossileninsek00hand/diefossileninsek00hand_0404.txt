@@ -1,4 +1,3 @@
-Handlirsch: F'ossile Insekten. 
-
-Carbon- Insekten: Palaeodictyoptera (1—30). 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:1a2188bddd2759f0207f5feacf2669145e03189bf901bd216b68e33ec4a84b79
+size 89

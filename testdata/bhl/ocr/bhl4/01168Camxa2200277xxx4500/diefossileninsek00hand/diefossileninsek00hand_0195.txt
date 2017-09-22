@@ -1,4 +1,3 @@
-Taf. IV. 
-
-ea (23—24). 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:73e5d6ab5e5c42ab453064cfb53e22a553b32940dfba63abbb7c46f4e3583c7a
+size 35

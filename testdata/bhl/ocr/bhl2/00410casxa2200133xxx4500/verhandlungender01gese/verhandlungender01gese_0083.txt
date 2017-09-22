@@ -1,20 +1,3 @@
-BeröejT^trunöen. 
-
-«VftAA/Vrv/vA/VATA 
-
-e. 4 3, 11 anftatt : bcr vorjua<id^ftc — bcnn^cr« 
-
-— 11 — 12 anffa«: ter prö^ir Unioafitöt — 
-
-^cr präget fJonfeifc^ • te<^nif(^<n Üeh» 
- anftalt. 
-
-— Iß — 16 anstatt: ^erfon — «Perfoon. 
-
-— 62 — 7 anütatt: ©ffd^it^tfpunftc — ©(• 
-
-fi(^t*pimfrc. 
-
-— 64 — 13 anstatt: mente — mento. 
-
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:d7d86564cb14030adc82c13de95022de9f5f7252cecdf9fef8345f85ea22cece
+size 411

@@ -1,4 +1,3 @@
-Ilandlirsi'h: Fossile Insekten. 
-
-Rezent<' liisi-ktcii: 'l"liysaiui]>tcra (1—2) — Conudmlia (3 71 I lymi-noiHcra »8 i /) - 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:fcb81b52ee269526f168dfc1c13ed52efc6c2fd97a75ee8cee5f0379b6b31e43
+size 138

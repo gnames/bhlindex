@@ -1,11 +1,3 @@
-A PI O C fCI MTH.y ROTl \ 1)15 
-
-/. 
- A 
-
-fl*. MX. 
-
-v 
-
-i/iiif^' "^cj^.. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:e44a4b0fa67a3cbe29e5f3b1e2edb7ad73c47d7d3bd60d2d520f34f632087f33
+size 98

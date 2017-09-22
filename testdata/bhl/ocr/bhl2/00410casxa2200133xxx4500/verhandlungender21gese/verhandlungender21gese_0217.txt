@@ -1,21 +1,3 @@
-ber 
-
-bed 
-
-^■S¥ 
-
-in bell 3iil;rcn 1840-1850. 
-
-^-^ iW 
-
->^; 
-
-^!^ 
-
-.^frouggcgebfii öoii ber ©efc^äf^öfcitung. 
-
-I 
-
-^Prag, 1851. 
- 3m ©elbj^ücrlafl be3 aKiifcum3. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:72ce6f8b74888358fa13e2501e942f96932fc54c02904083b705ad13094cab2b
+size 219

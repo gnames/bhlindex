@@ -1,30 +1,3 @@
-€8 Stiioat A. 
-
-Signum cereniSBimi Principis et Domini Domiin 
- Caroli Quwli Koiuanorum luiperatoris lnvi(ftis- 
- simi et Gloriosissiini Boeiniee Regia. Testest 
- hujus rei sunt : Reyerendisäimus in Christo Pa-' 
- t«r Wenceslaua Patriarcha : Venerabilis Joannes 
- Santftae Prägens. Ecclesiee Episcopus, apostolice? 
- tedis legatus : Joannes Oloinucensis , Sacrae Im- 
- perialis Aulse Cancellarius : Lambertus Spiren- 
- 818 : et Petras Luthomischlensis ecclesiaruiu 
- Episcopi : lUastres Albertus , Saxoniee ; Ruper- 
- ius, Lignicensisj Henricus, ßregensis, et Henricus, 
- liithuanies daces : Spedabiles Burghardus et Jo- 
- annes Burgravii Magdeburgenses et Comites in 
- Hardek : Henricus et Joannes de Schwarz- 
- burg : et Yalramus de Sponheim , Comites : 
- Nobiles de Wartemberg , Magister Curiae : Thi- 
- mo de Colditz, Magister Cameras : et Wanco 
- de Duba , Marescallus Imperialis Curiie : Be- 
- ntssius de Wartemberg : Albertus de Kolovrat : 
- et alii ^uam plures nostri et sacri Imperii, quam 
- etiam regni Boemiee nobiles et iideles, prsescntiuju 
- 8ub Imperialis Majestatis nostrae sigillo tcstimo- 
- nio literarum. Datum Fragse Anno Domini mil- 
- lesimo trecentesimo sexagesimo : Indidioue deci- 
- ma, aexto Kalendas Aprilis : regnorum nostrorum 
- anno Romanorum decimo quiuto, Boemiie decimo 
- ^ixarto, Imperii vero sexto. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:c05ce73b407b58caf4ffb188b9e38b8414a825852320310dc189cc6ed7a93cfd
+size 1401

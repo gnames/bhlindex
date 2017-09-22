@@ -1,15 +1,3 @@
-MEMO I US 
-
-OP THE 
-
-NATIONAL ACADEMY OF SCIENCES. 
-
-Volume X. 
-
-FOURTH MEMOIR. 
-
-WASHINGTON: 
-
-GOVERNMENT PRINTING OFFICE. 
- 1905. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:37215c88a9e50c52359a5cd3dda4c51d01aaad459f08507c761061381203281d
+size 164

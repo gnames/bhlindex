@@ -1,13 +1,3 @@
-PLATE XVII. 
-
-Fig. 84. Longitudinal section through the anal region. Showing the ganglion and its relation to the lateral nerve 
-
-cord. I Ob. X 4 Oc. Camera. X 450. 
- Fig. 8o. Transverse section through the region of the anal papilla. Showing the relation of the nerve ring to the 
-
-lateral nerve. }. -Ob. X 4 Oc. Camera. -'450. 
-
-lis 
-
-o 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:bca382feeb28f49da5ec9b271a07b2a52593e73728637498689760c1d16ba1f5
+size 367

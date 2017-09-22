@@ -1,4 +1,3 @@
-Taf. 11 
-
-— Strepsiptera (29) — Knibioidea 130 31) 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:19b583fb55cea5d939e6856754adcc4c65137428a61cb0d0d75862a994e02b45
+size 65

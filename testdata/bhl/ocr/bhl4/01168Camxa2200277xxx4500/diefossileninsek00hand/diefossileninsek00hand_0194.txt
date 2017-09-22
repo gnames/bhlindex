@@ -1,7 +1,3 @@
-1 landlirsch: Fossile Insekten. 
-
-J, c 
-
-ü.,'d., -^ 
- Rezente Insekten: Pnlaria (i 6) Odonnta (7 10) - Pleetoptcra (20 22) Mcgal 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:233d551b7c777fef6db9ae3843e995d58b753a3dd50d1b302db87214c190798e
+size 146

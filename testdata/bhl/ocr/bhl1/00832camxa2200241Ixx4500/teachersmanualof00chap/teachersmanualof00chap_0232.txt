@@ -1,10 +1,3 @@
-10 
-
-OBJECTIVE SEASONAL LESSONS. 
-
-present a month or more before beginning to nest, 
- but those tliat come in May may be found nest- 
- building Avithin a few da^^s after their arrival. 
-
-List of Summer Residents. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:fd962c31c8d8e6dcbe0fe23c115a615482ec6266a6a609f29ff85819d099effc
+size 236

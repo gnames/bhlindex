@@ -1,22 +1,3 @@
-Z P R Ä VA r 
-
-V . 
-
-ARCHIVÜ MUSEA 
-
-KRALüYSTVi CESKEHO. 
-
-P o d ä V ä 
-
-Vaclckv Krizek, 
-
-assistent musejnf. 
-
--'^^:^^?S::gg- 
-
-y 
-
-Tisk Vetterlovske knihtiskärny (Antonin Renn). 
-
-18 5 5. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:9c892ea00ab0dcaad1e95da9e88d40373af97b7b34dfcb8e9e206513ae97fc0e
+size 242

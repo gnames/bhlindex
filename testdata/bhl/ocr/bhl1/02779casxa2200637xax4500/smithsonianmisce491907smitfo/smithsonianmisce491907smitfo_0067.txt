@@ -1,7 +1,3 @@
-SMITHSONIAN EXPLORATION IN ALASKA 
-
-Photo, by Piindle. 
- View downstream on the Goodpaster River showing the annual flood-plain 
-
-deposit of ice. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:8a49d4cdc0efaf90f21e5e9b1e13ec22ee6456aaf92c26abc479eeaead143916
+size 162

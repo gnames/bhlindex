@@ -1,15 +1,3 @@
-© c f c n f cl> a f t 
-
-üaterldnbifd^en 9)cufeum§ 
-
-in ^öl^mcn 
-
-in hiv eilfteu aU^ttmimn SSctfammlung 
- am 10. 9lprir 1833, 
-
-^ r a 9, 
-
-aui bcr »Ott ©c^önfelb'fc^cn SBwc^fcvucfer«, 
-
-1833* 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:4b66e2e20fd3a55bc3553bd00ac1b37ba33867914b0d9097f42655b9ad394554
+size 231

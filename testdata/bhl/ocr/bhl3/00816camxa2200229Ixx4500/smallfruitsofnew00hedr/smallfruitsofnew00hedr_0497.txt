@@ -1,2 +1,3 @@
-WELLINGTON GLORY 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:9e04a0838defa2c59eb58588f934acac75a7baa38425c9ea7a4ae991be11c6db
+size 23

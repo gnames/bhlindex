@@ -1,31 +1,3 @@
-TEACHERS' MANUAL OF 
-
-BIRD-LIFE. 
-
-By frank M. chapman. 
-
-To accompany Portfolios of 
- COLORED PLATES. 
-
-Sold only with the Portfolios of the colored 
- ■plates, as follows : 
-
-Portfolio No. I. — Permanent Residents 
- and Winter Visitants. 32 plates. 
-
-Portfolio No. II. — March and April Mi- 
- grants. 34 plates. 
-
-Portfolio No. III. — May Migrants, Types 
- of Birds' Eggs, and Nine Half-tone Plates 
- showing Types of Birds' Nests from Pho- 
- tographs from Nature. 34 plates. 
-
-Price of Portfolios, each, $1.25 
-
-■With the Manual, $2.00 
-
-The three Portfolios with the Manual, $4.00 
-
-D. Appleton and Company, New York. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:066b7d5b903f3dfb66c968c91cee367fc1877f96a70c8191e51d7ef561e7dad6
+size 695

@@ -1,6 +1,3 @@
-PLATE XA 
-
-T 
-
-143 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:f60050a06548cb499eb783a8bf8e460ed721172379ab3951f435c75eec97d029
+size 33

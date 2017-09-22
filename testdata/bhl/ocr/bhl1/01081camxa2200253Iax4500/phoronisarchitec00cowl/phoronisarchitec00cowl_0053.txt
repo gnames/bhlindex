@@ -1,4 +1,3 @@
-PLATE I. 
-
-115 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:8e5ce9f27adfa25bef043171b8d2d9e0cc09c74e39e4edf032a535961cbd5b8d
+size 25

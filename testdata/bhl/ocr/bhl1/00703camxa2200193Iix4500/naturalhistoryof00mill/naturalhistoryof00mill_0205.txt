@@ -1,24 +1,3 @@
-PI. li.l 
-
-ACTrriM OCKITVJ TK-Sr T?ox.Yi»>V(rry3-u^. 
-
-y^ 
-
-/. 
-
-
-fcT 
-
-Of" 
-
-
-
-to ^ u ±^ 
-
--Pi: ~n. -S: 
-
-
-1-^ 
-
-z/^:.^ «^ 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:96361b1cdaf643fa2cdf79065795fe0a17f76d54191551cd7127a1a19d361c9c
+size 177

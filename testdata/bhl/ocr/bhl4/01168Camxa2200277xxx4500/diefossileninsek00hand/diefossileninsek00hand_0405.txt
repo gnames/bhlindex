@@ -1,2 +1,3 @@
-Taf. XII. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:4b77686be61757c6b3700c2930b62464a38d3d4e25a31aa6e6d5d2d763c5b4da
+size 16

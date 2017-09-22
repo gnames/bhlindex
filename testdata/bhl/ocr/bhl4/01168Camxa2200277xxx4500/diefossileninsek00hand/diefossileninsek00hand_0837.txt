@@ -1,6 +1,3 @@
-Taf. XXVIII. 
-
--A 
-
-11 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:86ab520c3e2d1b3a23425b365bd9c840d100ef2a1f5025f79cfce813105814aa
+size 37

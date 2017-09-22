@@ -1,2 +1,3 @@
-Tai. XXV. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:6155daa4dd45cf242bb2561693ffb4f1c64c5285c70e5d8fc63229a7343bdabc
+size 16

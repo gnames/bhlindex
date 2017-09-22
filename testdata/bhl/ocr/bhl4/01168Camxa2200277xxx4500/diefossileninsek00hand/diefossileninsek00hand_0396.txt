@@ -1,6 +1,3 @@
-Handlirsch: Fossile Insekten. 
-
-ji lt. 
-
-Carhnn-Insek teil : Palaeodictyoptera (1—26). 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:526cd6029596e87e1e82408d4249b8e03660f2a70e50ba4abca4ba2c71dfa3d2
+size 103

@@ -1,10 +1,3 @@
-BLUEBIRD. 1S7 
-
-hollow tree, and tlie bluish white eggs will probably be 
- laid before the middle of the month. 
-
-No bird's song is more associated with the return of 
- spring than the Bluebird's ; nor is there a bird's note 
- more expressive of the passing season than the Bluebird's 
- autunm call oi fdr-awai/, far-away. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:2173f69d16363120e211716c536ace9986e0d1d926799265904797e895c0aa4b
+size 345

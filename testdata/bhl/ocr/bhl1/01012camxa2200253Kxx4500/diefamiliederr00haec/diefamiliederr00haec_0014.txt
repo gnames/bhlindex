@@ -1,6 +1,3 @@
-Inhalt. 
-
-IX. 
-
-XI. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:28603660dea811b8f6537efd14236aec32fb2728820fd37d53975adc589208ba
+size 34

@@ -1,11 +1,3 @@
-INTRODUCTORY NOTE BY W. K. BROOKS. 
-
-As my name appears on the title-page of this Memoir as joint author, I take this opportunity to say that my 
- own share in the work has been that of instructor and director only. The investigations are the exclusive work of 
- Dr. K. P. Cowles, and while I have followed them in detail, and hold myself responsible for their soundness and 
- ace iracy, the credit for the research belongs to Doctor Cowles alone. 
-
-Dry Tortugas, Florida, July S, 1905. 
-
-72 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:15036d1050ce4f9adad236305c7e778dcfb1d5e091fa46612db6a5b51e60a512
+size 516

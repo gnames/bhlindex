@@ -1,14 +1,3 @@
-19 
-
-Serfammrung ju d^rcttmitgtiebcrtt bcr ®cfcttfdf)aft er* 
-
-§. 4. 3wt StcöijTon ber Siedjnuiig öom 5a^re 1839 
- würben wieber gen)ät)rt; ©c. @jrjeffenj S^ranj 2(ftgraf 
- JU <Batm * 9?eifferfcf)eibt ; Sodann ®raf »on X^un# 
- ^o^enfletn ; ber f. f. 2(ppcttajion6rot^ ^err Soljann 
- ©d)mibt, unb ber ^err 3!Kagiflratöratt) 3of)ann S3or, 
-
-@ö fofgett nun öier wiffcnfdioftltdie Seirageu ju ien 
- SSer^anbfungen tion ben i?erren Aufhoben: 2i. (5. (Sorba, 
- g. X. SK. Sippe unb bcm 83i6ftotf)efar ^rn. 2Ö. ipanfa. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:0238b83b467fba2cf6ced59f8a72c53dae27b06761da3f6a3f136b0a2584111c
+size 555

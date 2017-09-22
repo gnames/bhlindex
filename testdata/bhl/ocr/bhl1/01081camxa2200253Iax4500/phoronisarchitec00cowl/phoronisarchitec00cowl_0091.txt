@@ -1,8 +1,3 @@
-MEMOIRS OF THE NATIONAL ACADEMY OF SCIENCES, VOL. X 
-
-PLATE X 
-
-,2 a) 
-
-PHORONIS ARCHITECTA 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:a8a10022788da8092a89f11bc9cd87ed2946e74234819b9e942e0b8ca6026753
+size 110

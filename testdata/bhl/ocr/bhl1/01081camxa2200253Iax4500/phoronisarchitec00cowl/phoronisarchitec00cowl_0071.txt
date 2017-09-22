@@ -1,32 +1,3 @@
-MEMOIRS OF THE NATIONAL ACADEMY OF SCIENCES, VOL X. 
-
-PLATE V. 
-
-Fig. 20. 
-
-n.),. 
-
-Fig. 28. 
-
-Fig. 28 {d) 
-
-p.o.l. 
-
-Hi. 
-
-Fig. 29 16) 
-
-l.i: 
-
-Fig. 28 (e 
-
-t.r. 
-
-Fig. 80. 
-
-Fig. 81. 
-
-PHORONIS ARCHITECTA 
-
-:rs.Djx 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:a6cce59b5618e881a3315305f68f1f122a46b8a07ef964ded9aaefaac2836605
+size 283

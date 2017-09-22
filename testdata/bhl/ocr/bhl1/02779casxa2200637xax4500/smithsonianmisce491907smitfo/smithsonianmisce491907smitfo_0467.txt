@@ -1,9 +1,3 @@
-3ltt iH^mnrg 
-
-OF 
-
-SAMUEL PIERPONT LANGLEY 
-
-Born in Roxbury, Mass., August 22, 1834 
- Died in Aiken, S. C, February 2-], 1906 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:2f16bbf0ddbae91ef7c57e8ed63eabaede4f69ee89c45847da01148bc7e5fcd3
+size 148

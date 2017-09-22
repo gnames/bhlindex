@@ -1,4 +1,3 @@
-PLATE VIII. 
-
-L29 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:b058035bfdcf7b7e0fef17971766986735b52b6e52e80a193a57159be84102b0
+size 28

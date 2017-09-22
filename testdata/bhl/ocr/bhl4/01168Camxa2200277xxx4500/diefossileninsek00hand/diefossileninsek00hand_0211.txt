@@ -1,16 +1,3 @@
-Taf. VIII. 
-
-IS 
-
-1!) 
-
-iZj 
-
-L'l 
-
-=zi:z^Mm 
-
-^ du 
-
-rbon-Insekten: Palacodictyoptera (15—24). 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:7c2f131645fd8ee840f1b9b3c0325c0e5b41ee37b57574fc460b018999f02837
+size 132

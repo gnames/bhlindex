@@ -1,24 +1,3 @@
-Tl.A.Tl (SKI N I'l'^S T'VEKKeULATCr^ 
-
-J. 
- -Jr' 
-
-
-Fl^Tnr CRT Nl^I 'HiS 
-
-CT.TtANUlv\TXr^ 
-
-/ 
-
---r?^ 
-
-P LJ^I ' VC R 1 W^ I 'F ns aS* TRl/VT V-5 
-
-T* »^/\ T'^'C KT N rTES f H N TAWliU J ^ YJ.S 
-
-A. 
-
--fr 
-
-«4£. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:30236daa6b443903753646fde811a8d44a212b0fd0f2db0fd157c15cd144c84e
+size 266

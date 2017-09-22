@@ -1,4 +1,3 @@
-Hancllirsch: Fossile Insekten. 
-
-Carbon-Insekten: Trotodonata (1—5) — Protephemeroidea (6, 7» — Megasecoptera (f 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:9d0f416fc89b014ba64a892abd2ffb4704a9f9f70a0908f29dd7f23daa77c0fb
+size 130

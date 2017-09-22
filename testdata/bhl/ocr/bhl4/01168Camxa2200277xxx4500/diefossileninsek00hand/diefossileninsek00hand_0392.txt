@@ -1,4 +1,3 @@
-Mandlirsch: Fossile Insekten. 
-
-Carbon-In Sek ten: Pnlneudirtyüpteva (i— 22I. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:a8b2ac0a398b597d45aaf3849fb393c1bd8970827d9c155f5429e9c87cc867e2
+size 91

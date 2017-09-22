@@ -1,4 +1,3 @@
-Handlirsch: Fossile Insekten. 
-
-P erm-Inst'k tcn: Blattoidca (1—56) 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:6af168c997ed5557e37b63911f3ec689d0190c14899fa002ff75846e78fff71f
+size 80

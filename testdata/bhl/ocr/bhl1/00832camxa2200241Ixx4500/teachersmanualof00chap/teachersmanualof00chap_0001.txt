@@ -1,3 +1,3 @@
-TEACHERS' MANUAL 
- OF BIRD-LIFE 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:086d7360c6f7d09f71ecd518d28730b8e9770316a8c1746da2229b7ca9f8b56f
+size 40

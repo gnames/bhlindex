@@ -1,7 +1,3 @@
-30 
-
-(Jö crii6vii]t imö nod) 3(}itfn, f)ocftt»cvct)vte 33cvfamm(mu], Ü6ev 
- Me Gimia^nieii mib SlmSgabcn t>cö 9J?u[eiintö in bem iH-vfloffeneii 
- 3a^re 1855, [invie über ben ©taub uufcreö U^cvmöc]eng mit 
- <£c6fup bei? (jcnannten 3af}reö 33ericbt ju cvftatteu. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:f3b5ced99e04ee80d418f644ae49ceb6b4ecf24f1a60028b3078a7129f48f260
+size 289

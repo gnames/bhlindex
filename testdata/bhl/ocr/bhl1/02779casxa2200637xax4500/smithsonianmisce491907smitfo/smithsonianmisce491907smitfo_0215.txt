@@ -1,12 +1,3 @@
-SMITHSONIAN MISCELLANEOUS COLLECTIONS— STIMP30N 
-
-
-
-*^ 
-
-' '\ 
-
-
-
-CRABS OF THE NORTH PACIFIC EXPLORING EXPEDITION 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:436df9d9bb0caa3240f7d63f369bdb441afb93161f98bfb58ff77f261c62dd01
+size 142

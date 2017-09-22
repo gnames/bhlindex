@@ -1,4 +1,3 @@
-Ilandlirsch: Fossile Insekten. 
-
-Carlinn-lTisckten: Blattviilca (i — 31). 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:e2332ec88accf29877fc4171612acfd300da5a2adc565ad57ac6cf7c1978d24e
+size 86

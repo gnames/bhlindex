@@ -1,2 +1,3 @@
-(Taf. I. II.) 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:62edea1c25d608019a909197eded37f737de58cff3871aafeb31a12ac59d06ac
+size 20

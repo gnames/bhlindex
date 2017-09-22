@@ -1,26 +1,3 @@
-MEMOIRS OF THE NATIONAL ACADEMY OF SCIENCES, VOL X 
-
-PLATE VI 
-
-< 
-
-I- 
- O 
-
-I 
-
-o 
-
-< 
-
-w 
-
-z 
- o 
- cr 
- o 
-
-I 
-
-CL 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:dad8040a7d5009a307b76011700f590f60a6d47649d839c20e74657e5c7c6be2
+size 171

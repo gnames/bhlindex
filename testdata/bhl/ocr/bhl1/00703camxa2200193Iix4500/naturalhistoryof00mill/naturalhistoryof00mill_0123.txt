@@ -1,11 +1,3 @@
-65 
-
-P. Caput Medusas. The Column differs in its joints, being thinner, and their 
- having been covered all over with a more conspicuous muscular coat, v?hich 
- shoves itself in numerous minute tubercles, the result of its contraction. 
-
-I apprehend that the superior extremity figured in Whitehurst and Par- 
- kinson, as mentioned above, belonged to this species. I also conceive that a 
- specimen in the possession of Mr. G. Hawker, from the banks of the Severn, 
- but much disfigured by pyrites, appertains to it. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:276e1293ece5cfe42f87d9e3f302231be58789d94fad7bd0a4b74be312eeaf53
+size 541

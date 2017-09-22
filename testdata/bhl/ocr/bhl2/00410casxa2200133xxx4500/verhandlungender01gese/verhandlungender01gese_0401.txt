@@ -1,9 +1,3 @@
-ö c f e n f (|> a f t 
-
-i>atctUinbifc^cn 2)cufcumö 
-
-in Sö^men. 
-
-rtue bcv V. ^2(^ &uf<Ib'f(()«rn 33 iic^b vuf tf v<l. 
- 182 7. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:a49c54656737bfe0564e1fd9ac0ac27d91bfa2a2bec230dbfb9fdcdfe69c7a35
+size 152

@@ -1,6 +1,3 @@
-I 4? «^ : ■ 
-
-l 
-
-J 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:a997a2ebd4c9b879e1ae083d0ad4f7beab0ba97fc90e0050c563a080a62f0b6c
+size 37

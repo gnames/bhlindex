@@ -1,4 +1,3 @@
-Handlirsch: Fossile Insekten. 
-
-Carbon- Insekten; Blattoidca (i— 45)- 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:1caf5f280ab479fb4a0880f582700aeecdb62322bca6b12a6500f100b492d6e8
+size 82

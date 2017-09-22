@@ -1,22 +1,3 @@
-SMITHSONIAN MISCELLANEOUS COLLECTIONS 
- PART OF VOL. XLIX 
-
-catalo(;lie of earthouakhs 
-
-ON THE 
-
-PACIFIC COAST 
-
-181)7 to U)()(] 
-
-BY 
-
-ALEXANDER G. McADlE, M. A. 
-
-(No. 1721) 
-
-CITY OF WASHINGTON 
- I'lIBITSIIEI) BY THE SMITHSONIAN INSTITUTION 
-
-i;)07 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:856b401cb53e2f2cec314c67c1b6596e04f09d59fd52a8a4092f1f763da7d47a
+size 299

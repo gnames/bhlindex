@@ -1,4 +1,3 @@
-AMNH LIBRARY, 
-
-100058892 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:2e4f4ae2514088041d8238a0518f49c275eecebe5258eca483106206af8c045d
+size 36

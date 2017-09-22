@@ -1,12 +1,3 @@
-Stuöaug auä 
- JWebe beg <pr 
- Sie SKineral^ 
-
-beö fofftl 
- ©«fd^reitung 
-
-(Öiesu t 
- gamifienmün, 
-
-mcn; »o 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:988e29c7567cae5ba578f4ac682873b46f928b524d8c1619f44fd52a84d69468
+size 142

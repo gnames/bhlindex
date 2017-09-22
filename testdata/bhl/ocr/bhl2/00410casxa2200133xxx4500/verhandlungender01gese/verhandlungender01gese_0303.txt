@@ -1,12 +1,3 @@
-«t 
-
-100,00. 
-
-aSeraleid^t man btefen SÖJeteorffcin f)in\i^t\i(i) 
- feiner 93eftanbfr;et(e mit ben Oi6f;er unterfud^ten 9)?es 
- teorftcinen, fo ftnbet man, ba^ er im 2[Befentlicf)en 
- mit ben meiften berfelBen, ben ycn ® tonnern ttwa 
- aud^enommen, üOereinFömmr, unb baft ber llnter- 
-
-c» 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:b0a6b0c1eb08b6feb2eb5aaafc7ecd70de3dd25b0f1b2693cef4cf29976cd32a
+size 321

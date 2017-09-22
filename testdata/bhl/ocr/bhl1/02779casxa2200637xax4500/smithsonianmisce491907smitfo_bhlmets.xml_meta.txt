@@ -1,9 +1,3 @@
-ETag: "e2811825c99db80f555c239ef2457925"
-authorization: LOW Qd6g6736J6JP2ORi:REDACTED_BY_IA_S3
-connection: close
-content-length: 314926
-content-type: application/xml
-expect: 100-continue
-host: s3.us.archive.org
-x-archive-queue-derive: 0
-x-upload-date: 2013-04-30T07:18:21.000Z
+version https://git-lfs.github.com/spec/v1
+oid sha256:1be8918226adf779a33bfdba8b86a73709a483658e09803c38e977ab97d17590
+size 277

@@ -1,4 +1,3 @@
-Taf. IX. 
-
-^ • Cu 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:97028743bdf8866623e71198620a05876bdadc15971a2b88ae19484d1a364267
+size 30

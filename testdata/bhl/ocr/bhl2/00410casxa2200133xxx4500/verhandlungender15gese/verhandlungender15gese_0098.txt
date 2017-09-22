@@ -1,18 +1,3 @@
-Süortrag in 
-
-mctc beg «pi 
- ©ie SKineral, 
-
-beg fojTi 
-
-(|)ie5U i 
-
-gamtfienmün 
-
-ntcn; »o 
-
-
--/;■- 
-
-^V^. M' 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:58c36373109771552f807abb7862741d47c89a8bbdc0b823f0e939a9f307bc28
+size 156

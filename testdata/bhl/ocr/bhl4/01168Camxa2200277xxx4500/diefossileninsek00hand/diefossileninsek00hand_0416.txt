@@ -1,9 +1,3 @@
-Handlirsch: Fossile Insekten. 
-
-'5:. .. ^^^^^^- ^"^1^^ 
-
--'■'■ • -u '*r^'<i4Ji.„,w.T-.^.' '. .^ .• t^^^, ,^, — ^■— — -j- 
-
-
-Carbon-Insekten; Protoblattoidea fi— 23I 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:c9fcfe2a035dcc7162b1084081cc5ef17abbaa5c4f33ec973faeaf54f08da4ef
+size 205

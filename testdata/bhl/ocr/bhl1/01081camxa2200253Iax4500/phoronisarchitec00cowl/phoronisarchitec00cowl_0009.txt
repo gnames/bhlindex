@@ -1,17 +1,3 @@
-PHOBONIS AE( JHITECTA : 
-
-ITS LIFE HISTORY, ANATOMY, AND BREEDING HABITS. 
-
-WILLIAM KEITH BROOKS, LL. D., 
-
-Henry Walters Professor of Zoology in the Johns Hopkins University, 
-
-AND 
-
-RHEINART PARKER COWLES, Ph. D., 
- Adam T. Bruce Fellow in the Johns Hopkins University. 
-
-x\ 
-
-r 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:dc917601864cf682af802780e5cddc1ae383cb77838f70209661f485ac2722e0
+size 317

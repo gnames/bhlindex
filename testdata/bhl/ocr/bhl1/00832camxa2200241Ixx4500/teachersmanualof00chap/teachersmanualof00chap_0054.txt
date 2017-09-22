@@ -1,10 +1,3 @@
-3i FORM AND HABIT: THE BILL. 
-
-that of tlie female is long and curved. The birds feed 
- on larvre, which thej lind in dead wood. The male 
- hammers and chisels away the wood very much as Wood- 
- peckers do, while the female uses her bill as a probe. 
- We have, therefore, the singular case of two forms of 
- the bill arising in the same species as a result of or caus- 
- ing a corresponding difference in habit. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:da63974a2c19daf7ba1ae859f0ae177d7c00b9bb4768a6be2706ed236585b9ff
+size 434

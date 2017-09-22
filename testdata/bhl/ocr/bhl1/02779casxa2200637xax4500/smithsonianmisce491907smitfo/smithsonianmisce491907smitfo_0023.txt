@@ -1,10 +1,3 @@
-SMITHSONIAN EXPLORATION IN ALASKA 
-
-I'hi.t.i. by Collier. 
-
-I. Cut Bank in Yukon Flats. 
-
-Photo, by Collier. 
-
-2. Bluffs of Pleistocene Silts below Lake Lebarge, Yukon River. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:004002120544748b658ea3935f8a2e64954b5fd62cc9d28ad4cbb6a3fe3b7b00
+size 197

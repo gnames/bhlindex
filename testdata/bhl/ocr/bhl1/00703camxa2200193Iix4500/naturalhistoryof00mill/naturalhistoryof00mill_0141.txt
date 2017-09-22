@@ -1,6 +1,3 @@
-Pi-ATYC R£ N IT'E^" JL^ vj^ 
-
-T"^ 1 
-
-JictU c j^ 1 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:46639c664fa9c9d32c35d9cb4a8a1db4dfd67ba4c194974559046ab2486dc347
+size 66

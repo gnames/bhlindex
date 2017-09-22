@@ -1,6 +1,3 @@
-^''■JnTn- 
-
-nTn^o-'i'! 
-
-m.R. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:eaf25d482bcfb66c0a81f389b0da5d34128ddd5587f425673f77c9c18fae861b
+size 46

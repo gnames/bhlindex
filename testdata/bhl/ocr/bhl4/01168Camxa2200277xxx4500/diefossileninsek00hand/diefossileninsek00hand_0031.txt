@@ -1,7 +1,3 @@
-I. ABSCHNITT. 
-
-BESCHREIBUNG DER REZENTEN 
- INSEKTENGRUPPEN. 
-
-(HAUPTSÄCHLICH FÜR GEOLOGEN UND PALAEONTOLOGEN BERECHNET.) 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:2d0faef7bea518c7ef1ca5cfa0463ea79fd4cc55a230569bdc41cb13f32f09bf
+size 140

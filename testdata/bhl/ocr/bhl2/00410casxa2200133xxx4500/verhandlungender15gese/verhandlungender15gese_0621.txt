@@ -1,28 +1,3 @@
-1^9 
-
-^ n !) a n 0- 
-
-(St)f^em attfd)e Uiberfidjt 
-
-b e r 
-
-fSftinctalUn fSö^mcn^* 
-
-III. Drbnung. ©durcn. 
-
-1. SDttacbrifc^c 2(rfenif<@äure. (Slrfejiifbfüt^e.) 
-
-IV. Drbmmg. ©afje. 
-
-2. ^cmfpriömatifc^cö 9?atron*(Söfj. C®oba.) 
-
-3. ^riömati'fcficö ®rau6er;=@arj. C^fflu&erfafjO 
-
-4. ^emiprtömattf4)eö 5Bitnor # ©afj. (©fcnöitriof.) 
-
-5. Jpemtpnämatifrfieö (Jucf)for ? ©afj. (Sofjanm'tO 
-
-6. ^rtömatifdicö «ttter^Safj. (Sitterfafs. Steuffin.) 
-
-7. Dftaebrifcfceö SUauitsOafj. (5(mmonfafarawnO 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:476626909c7471750a8d5b18d3c1662e605aec83c5c790a00f4ca8aa48a004b5
+size 575

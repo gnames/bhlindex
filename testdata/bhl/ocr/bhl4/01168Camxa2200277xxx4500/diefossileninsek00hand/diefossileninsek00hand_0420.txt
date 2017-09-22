@@ -1,4 +1,3 @@
-Handlirsch: Fossile Insekten. 
-
-Carbnn-Insekten: Protoblattoidea I ; — 15I ^ Blat'oidea (Larven) (16—25). 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:eb2308dd9e5dfcb6a1594414b24273c51cc7628aef626504ab142c91a1329ae0
+size 120

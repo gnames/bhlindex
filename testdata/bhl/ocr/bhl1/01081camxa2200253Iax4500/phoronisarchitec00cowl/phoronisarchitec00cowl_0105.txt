@@ -1,4 +1,3 @@
-PLATE XIV. 
-
-141 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:dcbe62872fc14ecd3ae5b5a4be3607962be27b0969bd2f72d3079848d8cf0b44
+size 27

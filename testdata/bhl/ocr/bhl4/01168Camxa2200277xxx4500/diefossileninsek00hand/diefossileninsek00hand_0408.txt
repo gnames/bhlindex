@@ -1,4 +1,3 @@
-Handlirsch: Fossile Insekten 
-
-Cnrbnn-Tnspk ten : Protorthnptcia (t — 26 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:6dca5f1510e3fb4980b1b9a1a88f1f6f26fb57254271c57709243f122984baac
+size 85

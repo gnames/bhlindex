@@ -1,12 +1,3 @@
-109 
-
-the muscles of the pelvis swells the first intercostal plates, forming a very 
- strong elevated rib across the costals, branching laterally from the scapulie to 
- the arms, at the same time that an elevated ridge is formed over the intercos- 
- tals, connecting laterally with the ridge noticed before, extending to the orifice 
- in the integument or mouth and rendering it subpentangular, (fig. 4.) 
-
-Should the variety pointed out above in the columnar formation, at a fu- 
- ture time enable me to establish two species, I should propose for that from 
- Mitchel Dean, the name of Rhodocrinites quinquangularis. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:ba11cb10d69720b6630e6f0021e96e0dd73c8d586ba3ab9337b756d4a2de92f4
+size 644

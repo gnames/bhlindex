@@ -1,15 +1,3 @@
-D^rljanMutt^en 
-
-Datln*län^l0(rl)cn iHu^irum^ 
-
-In IS&^mcu 
-
-in fccr 
-
-fec^öjefjnten allgemeinen SSerfammfung 
- am i§. ^pvil l$3§- 
-
-/^ 
-
-Siuc! unfe 'Papier »on ©cttliet» ^aaff ©ö^e. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:1dd2cf5b62f18c2f822a176f788222ab18550d7cc6366f6d0c48c067ebfd81e7
+size 224

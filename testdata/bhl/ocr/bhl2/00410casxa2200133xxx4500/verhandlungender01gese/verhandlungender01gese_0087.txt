@@ -1,12 +1,3 @@
-t e r 
-
-©cfcUfc^af t 
- 1 1 « 
-
-in S5öt)men, 
-
-w c y t tf 6 ^^ t f t. 
-
-••^JraO/ fluS bor f. F. J^o fbud^fc rurf er et), 
- 18 2 4. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:cbeb0d8916532590d60170873538ba3ce66a35676217cd5c0f4dd218e02a2b51
+size 163

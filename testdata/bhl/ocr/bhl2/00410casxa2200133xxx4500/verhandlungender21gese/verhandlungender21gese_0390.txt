@@ -1,2 +1,3 @@
-©rutf bcr d. gSelkrl'Cc^cn S3u4)brucfem 1855. Cü, 9Jonn.) 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:02f21b7e37c61388b2119fad982e1981bedc24b52889e17bc35fec479775ee42
+size 66

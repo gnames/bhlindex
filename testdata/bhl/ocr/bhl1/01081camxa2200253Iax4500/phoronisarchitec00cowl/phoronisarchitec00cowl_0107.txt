@@ -1,32 +1,3 @@
-MEMOIRS OF THE NATIONAL ACADEMY OF SCIENCES, VOL X 
-
-PLATE XIV 
-
-ill. in. I; 
-
-,,/:,: 
-
-ll .11 I. 
-
-Fig. 71. 
-
-V Fig. 70. 
-
-~~ "/ 
-
-Fig. 72. 
-
-latji 
-
-lat.il . 
-
-Fig. 78. 
-
-hit. 1 1 
-
-Fig. 74. 
-
-lain. 
-
-PHORONIS ARCHITECTA 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:a88ea65f18f6daebb0e67cc92746784d095b4d1fee9f74a57324127627722a15
+size 289

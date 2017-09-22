@@ -1,2 +1,3 @@
-'Mn/i/mtdlaj (all. >säi. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:283e3140d7389f9d36619861431430f85eab42c6d94b5756f18a66015497f2b8
+size 32

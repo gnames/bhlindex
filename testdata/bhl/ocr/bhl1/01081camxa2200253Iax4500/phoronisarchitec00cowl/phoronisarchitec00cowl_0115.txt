@@ -1,13 +1,3 @@
-MEMOIRS OF THE NATIONAL ACADEMY Of SCIENCES, VOL X 
-
-PLATE XVI 
-
-Fie. 81. 
-
-1. 1. in. 
-
-Fig. 82. 
-
-PHORONIS ARCHITECTA 
-
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:55a92c15f6fa46c4a97520396cc8da58711ecffa5e2e73aa6d7a64968820168d
+size 148

@@ -1,16 +1,3 @@
-Hfrljflnblimgen titv ®efcüfd)aft 
-
-be^ 
-
-nr , 9 
-
-beö / 
-
-m &ett Saluten 1851— 1853* 
-
-^ttatttgtstbrn von bec ©«fdiäpsltitunfl. 
-
-Vm 1855. 
-
-3m @er6f"it)erra9 beö aJlufeumei. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:6280e240fa20a92de28ec031fa59d903dd219f1ee12d574dd871614db17d6e7b
+size 218

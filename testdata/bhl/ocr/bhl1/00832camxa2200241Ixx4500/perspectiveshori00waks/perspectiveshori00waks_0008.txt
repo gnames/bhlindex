@@ -1,21 +1,3 @@
-COPYRIGHT 1955 BY 
-
-THE TRUSTEES OF RUTGERS COLLEGE 
-
-IN NEW JERSEY 
-
-LIBRARY OF CONGRESS 
- CATALOG CARD NUMBER: 
-
-55-6104 
-
-The addresses of Lewis Webster Jones, Selman A. 
- Waksman, and Albert J. Kluyver, which appear in the 
- Appendix of this book, were first published in the De- 
- cember 1954 issue of The Scientific Monthly. They are 
- reprinted here by the kind permission of the pub- 
- lishers. 
-
-MANUFACTURED IN THE UNITED STATES OF AMERICA 
- BY BOYD PRINTING COMPANY, ALBANY, NEW YORK 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:4a52f60520c017f2cc934da897f06d9b57cfaee92a0fa762ed5fb1a4644e5982
+size 539

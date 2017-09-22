@@ -1,4 +1,3 @@
-Handlirsch: Fossile Insekten. 
-
-Carbon-Insf ktcn: Bl;ittoitlra (Larven) (1—49) (Imayiiiis) (50—55). 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:85fe8a14714b38325ffcbbea34189df11e9c5b684a83852a661dc5b1d40f218f
+size 114

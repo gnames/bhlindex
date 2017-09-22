@@ -1,30 +1,3 @@
-14 
-
-m 
-
-III. 
-
-^ ^ e 
-
-in bev aUgemeiiten SScrfammtimg ber ®e[cllfrf)aft beö 
- bö^mtfcl)en 5!Kufeumö am 18. 2ipr« 1838. 
-
-(SSoräckfcn com 0cfd)äftö(eiter.) 
-
-»X)a« 9Bcrf lobet bcn ?Kef)lcr<r, ifl cfn befaitntcS uitb 
- flet^ für waijV crfannteö ©)3ricf)tt)ort. — Uaö 3Berf ntufi 
- aber begriffen werben, wenn ber 5!Wcifler crtannt werben 
- foU. ^ieju t|l ein gewiffer ®rab »on Sntefftgenj unent# 
-
-äßie oicie ^orbcn, wie öiele »Üben SßoIfer|läninte 
- jic^cn nirf)t aßjä^rlid), ja täglici) burd) bie am mefflen 
- »on ber 5T?atur begün|ltgten Mimate mit jiunipf(innigcr 
- @letd)gültigfeit, genießen bie gruc^te, bie biefe ^eröor* 
- bringen, näl)ren jTd) öon ben Xijieten tei SBaloeö unö 
- ben §ifd)en ber ©ewäffer, ot)ne jTd) not)er um baö SQBerf 
- ju crfunbigen ober an einen SWciper ju benfen! 
-
-Sluf einer l)öt)ern SntelTigenj * ©tufe , wo ber ÜKenfd) 
- baöjfntge, waö um unb mit iijm Übt, ober in feinem 
- ®ef[cf)töfreifc an if)m öorübcrjiel)t, beobact)tct, üerfogft 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:95a569b77a75a10c46d2fc361ec6d92b1eda0623150e190aa4f72e79a6e1dac8
+size 1083

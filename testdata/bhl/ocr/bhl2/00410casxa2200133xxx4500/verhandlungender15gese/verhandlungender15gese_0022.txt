@@ -1,9 +1,3 @@
-14 
-
-§. 5. 3wt 9?e»ifTon tn 3tc(!)nuiig beö 5al)reö 1836 wur* 
- bcn wiebcr crtt)äf){et: (Se. SrccUenj ^rang 5l(tgraf 
- ju @alm * 9tetffcrfd)cit»; 5o^ann ®raf »on 
- Xf)un*,^ol)cnrtein; ber f. f. SlppeKattonöratf) ^r. 
- So^anit ©d)mibt; unb bcr ipcrr 5Wagiflratörat^ 
- 3of|onn S5orfrf)i§f9. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:c00bd68e6fe36eb8eedd91fb8ede42e29ea8b066cc3442ff4ba7c5db43754825
+size 321

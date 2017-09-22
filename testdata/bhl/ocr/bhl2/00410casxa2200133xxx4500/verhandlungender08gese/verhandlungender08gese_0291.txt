@@ -1,15 +1,3 @@
-d) Tiui fcer VtaSformation: 
-
-34. Lepidotub g:igMs , ron JBol in Sßiirteraberg. 
-
-c) 'Äu5 t)f t Äupferfdjieferformation. 
-
-35. Palaeoniscus Freieslebenii , oon ßiSleben. 
-
-f)2fuS bcr gotmotion beä rotbcn ©anbfleinS. 
-
-36. Palaeoniscus Wratislawiensis , in Äalfftein üon 
- diupperSborf bei ^raunau in Söot)mtn. 
-
-•^^^9B 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:74a5a73b17302426745bb7085d5a4bd3a45d7191d87e10f1e738692bd9d848ec
+size 362

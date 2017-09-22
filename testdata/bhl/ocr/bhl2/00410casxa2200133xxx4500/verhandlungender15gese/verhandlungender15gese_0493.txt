@@ -1,12 +1,3 @@
-ber ^efer(fd)aft be^ 
-
-in fSö^men 
-
-in ber 
-
-<tm 11 fSftai 1943. 
-
-3m ©eUfloerfag beä OÄufeum«. 
-
-t 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:a224896812480e59eea0d333850357d6c742eacabb0327d3174f34d8f1ea1851
+size 131

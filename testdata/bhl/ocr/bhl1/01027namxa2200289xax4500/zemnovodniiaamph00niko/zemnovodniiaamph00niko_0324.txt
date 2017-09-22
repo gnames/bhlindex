@@ -1,2 +1,3 @@
-Опечатки. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:2dfb2528ffa97be581b07daa07e938fcc0b1ea8dd6e46ca80a6608011dfc927d
+size 24

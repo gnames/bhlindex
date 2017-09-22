@@ -1,18 +1,3 @@
-viii CONTENTS. 
-
-PAGK 
-
-The Water Birds 84 
-
-Diving Birds — Long-winged Swimmers — Tube-nosed Swim- 
- mers — Lamcllirostral Swimmers — Herons, Storks, Ibises, etc. 
- — Cranes, Rails, etc. — Shore Birds. 
-
-The Land Birds 100 
-
-Gallinaceous Birds — Pigeons and Doves — Birds of Prey — 
- Cuckoos, Kingfishers, etc. — Woodpeckers — Goatsuckers, 
- Swifts, and Hummingbirds — Perching Birds. 
-
-Appendix. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:0f4c59d91c5c68f658b2882d3497b507f43d4f5b138b982f2f4737aa008d6889
+size 460

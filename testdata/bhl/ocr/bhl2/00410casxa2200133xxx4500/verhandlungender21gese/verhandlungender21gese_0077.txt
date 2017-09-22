@@ -1,13 +1,3 @@
-ber @efe((fd)aft ^ev3 
-
-tiatcrlan>tfi:l)en JHufVum^ 
-
-tu ^p]^mcn 
-
-. in bcr 
-
-^Vveiunt^^ivan^^i^flen General ^ ^crfammfmt^ 
- am IT. «U^idt 1844. 
-
-,s 111 3 c 1 b i> y c r l a ji b c ö 10? ii f c ii in ö. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:8fd1509188cba0eaf03af9e88571b7b1e1d1cafa5b5bb5d9ba0b251f13b0f95b
+size 235

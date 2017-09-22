@@ -1,8 +1,3 @@
-SMITHSONIAN INSTITUTION LIBRARIES 
-
-3 9088 01421 4407 
-
-BHL 
-
-liif 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:3d4331ac89e9b6ffbe8e3a94f748e22a5bbf2355692889b1609020c68a893ddf
+size 85

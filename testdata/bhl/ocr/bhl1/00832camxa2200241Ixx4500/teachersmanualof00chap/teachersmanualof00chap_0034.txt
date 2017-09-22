@@ -1,30 +1,3 @@
-CHAPTEE 11. 
-
-THE LIVING BIRD. 
-
-Factors of Evolution. — If while in the fields we ob- 
- serve birds ^dth an appreciative eje, Tve shall soon be 
- impressed with the great diversity shown in their struc- 
- ture and habits. The Fish Hawk plunges from the air 
- into the water and grasps its prey with merciless talons. 
- The Hummingbird daintily probes a flower. The AVood- 
- l^ecker climbs an upright trunk, props itself with its 
- stiff, pointed tail-feathers, while with its chisel-shaped 
- bill it excavates a grub and then impales it with its 
- spearlike tongue. These birds teU us a wonderful story 
-
-Fig. 2. — End of spearlike tongue of Pileated Woodpecker. (Much enlarged.) 
-
-of adaptation to the conditions of life, and, knowing that 
- they have descended from a common ancestor, we ask, 
- " Why do they now differ so widely from one another ? " 
- Biologists the world over are trying to satisfactorily 
- answer this question, and it is impossible for me to 
- even mention here all the theories which they have 
- advanced. However, some knowledge of the most im- 
- portant ones is essential if you would study the relation 
- between the bird and its haunts and habits. The Dar- 
- win-Wallace theory of Natural Selection, in more or less 
-
-14 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:b8394de8a4d6e7d647042f165c8be83e809a2f828c2496aa1a683fb8b97de509
+size 1316

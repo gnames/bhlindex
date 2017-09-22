@@ -1,4 +1,3 @@
-Handlirsch: Fossile Insekten, 
-
-Carbon-Insekten: Btattoidea (i — 45 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:99a60a80846b1d79dfa64a1758cfb0f5023dfdd72b4bbda18a1ce9b52b26c02b
+size 80

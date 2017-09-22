@@ -1,28 +1,3 @@
-43 
-
-Fig. 3. X)cr ^opft\)eU (Cephalothorax) vergrößert, 
- um bic S)an)ptf unb Siebenaugen jn jeigen. 
-
-Fig. 4. T)ai 2lugc aui ber finfen 2Jugent)6()Cc jlt. »er* 
- grcßert 
-
-Fig. 5. Safferbe fcitfidf) burdfjfitnitfen. 
-
-Fig. 6. wnb 7. !I^()ei(c ber beibcn ^axiUen jl. üergr. 
-
-Fig. 8. X)it (2rf)eerc beö S^afler (l. öergr. 
-
-Fig. 9. XJaö ÄfauengHeb bcö ?^ußeö jl. »ergr. 
-
-Fig. 10. S!)?uöfefpartf)teett jl. »ergr. 
-
-Fig. 11. Dberf)aut beö 5)?ürfenfd)irbc6. 
-
-Fig. 12. Xiie betbcn ?amettcn ber S^aut ft. »ergr. 
-
-Fig. 13. 2)ie innere ?amette berfe(6en ft. öergr. 
-
-Fig. 14. ^aarc im 5!J?utterge(leinc tiegenb, t)on ber 
- D6erfläct)e ber ^axiüe (Fig. 6.) in ber SZdlje ber 
- ?ei(lc ji. öergr. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:b9695361fa047720d8d44fd7887a9602adb393f1cb6e5540829f4dda6ee8b4b5
+size 770

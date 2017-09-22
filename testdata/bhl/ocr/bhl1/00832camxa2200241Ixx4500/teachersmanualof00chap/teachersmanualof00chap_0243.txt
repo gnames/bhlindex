@@ -1,29 +1,3 @@
-THE BIRD-LIFE OF A YEAR. 
-
-21 
-
-riate 
- Xo. 
-
-Black-poll Warbler.* 
- Wilson's Warhk'r.* 
- Canadian Warbler.* 
- Long-billed ^Marsli Wren. 
- Short-billed Marsh Wren. 
-
-riate 
-
-Olive-backed Thrush.* 
- (i ray-cheeked Thrush.'* 
- Traill's Flycatcher.* 
- Mourning Warbler.* 
- Bicknell's Thrush.* 
-
-Birds Nesting. 
-
-(In addition to the species which began to nest in May, all 
- of which will have eggs or young in June, the following may be 
- found nesting:) 
-
-* Transient Visitant passing further north. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:d14884f7d961c2073d7ba8a3e2bbe8dd9f7969b609156b9dc605b6dfefb44a1e
+size 558

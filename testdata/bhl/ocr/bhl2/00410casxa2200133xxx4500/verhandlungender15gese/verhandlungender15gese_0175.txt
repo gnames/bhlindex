@@ -1,4 +1,3 @@
-'G 
-
-oJcLrmdL ätk: f^Z^. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:b38276e1f168e37512bba9289eea5008aaf06317e6320c274005597b4059c977
+size 36

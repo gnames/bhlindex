@@ -1,11 +1,3 @@
-55 
-
-joints affected, is exhibited in one instance (Pl. ii. fig. I0.)precisely in the same 
- manner as was before noticed in the Apiocrinites rotundus. 
-
-Columnar Fragments, smaller and rather neater than those of the species 
- just described, occur in the oolite at Diindry, the forest marble at Chippenham, 
- and the chalk near Lyme. It remains to be ascertained by the acquisition of per- 
- fect specimens, whether these belong to a variety of P. Caput Medusae, or pos- 
- sess peculiar characters sufficient to distinguish them as. a new species. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:b1604ed3ce549ec341c248327dd83bc76003aed43290bbbfca033ebaf0dd0688
+size 574

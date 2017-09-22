@@ -1,10 +1,3 @@
-109 
-
-16. Carpolithes microspermus : Taf. II, Fig. 27. 
-
-<iin eiförmiger, jugefpil^ter @amc mit fantiger ütap^je, 
- unb einem fe^r bicfen, öerto^ften (Jpicarpium. 
-
-2Iuö bem Äof)tenfanbfleine toon 9iabni$. 
- 3lb6irbung in natiirrirf)er ®roßc. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:1567b86af3e4ce85bbd85f1e0043583798185d2b441e4da234ffa85549e6e993
+size 272

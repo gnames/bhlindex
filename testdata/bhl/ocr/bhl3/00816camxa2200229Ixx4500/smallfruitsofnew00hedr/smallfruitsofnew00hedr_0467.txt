@@ -1,2 +1,3 @@
-INDUSTRY 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:2bf17032a6e81ec7ab48e526fc3b0cf2fd07da6441b5909faf9c3fe829e01d77
+size 15

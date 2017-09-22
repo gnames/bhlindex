@@ -1,6 +1,3 @@
-Taf. XXXI. 
-
-a^. ■^' 
-
-, Protodonata (36-40). 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:02ed078dbc79cc16969f2dc57444ab10168676662c5229d7d3604ac29ab359f7
+size 62

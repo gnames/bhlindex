@@ -1,30 +1,3 @@
-Ill 
-
-IX. GENUS. EUGENIACRINITES? 
-
-CLOVE-LIKE, LILY-SHAPED ANIMAL ? 
-
-Generic Character. 
-
-Superior Columnar joint, subpentangular enlarging above, having the five 
- plates 'of the pelvis adhering to it by a solid anchylosis. 
-
-Base, Column, Joints resting on the pelvis, and fingers unknown. 
-
-L SPECIES. EUGENIACRINITES QUINQUANGULARIS? 
-
-CLOVE-LIKE, LILY-SHAPED ANIMAL,with FIVE-ROUNDED 
-
-ANGLES? 
-
-Specific Character. 
- As only one species is known, the character of the genus identifies it. 
-
-Rifcreiice and Synonymes. 
-
-Clove Eiicriiiite, Parkinson, Vol. II. t. xiii, fig. 70. 
-
-Caryophyllus Lapideus. 
-
-Caryophyllite, Knork, t. xxxvi. fig. 29. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:f1d92c6197d8cfca1b66194435e4178ed5c2d4c0957acc2c4721ecd5106fe6f2
+size 714

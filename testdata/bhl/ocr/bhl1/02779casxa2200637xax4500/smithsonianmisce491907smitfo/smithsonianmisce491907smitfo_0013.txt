@@ -1,22 +1,3 @@
-SMITHSONIAN MISCELLANEOUS COLLECTIONS 
-
-Part of Volume XLIX 
-
-Smithsonian Exploration in Alaska 
-
-in iQO'4, in search of Mammoth 
-
-and other fossil remains 
-
-BY 
-
-A. G. MADDREN 
-
-No. 1584. 
-
-CITY OF WASHINGTON 
-
-PUBLISHED BY THE SMITHSONIAN INSTITUTION 
-
-1905 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:308e13fb20041d927024d85c066fbc425b6f86bce8e5ff6303b9c334c0323094
+size 306

@@ -1,17 +1,3 @@
-tTNCKIN n^KS MON^TLHT-'ORMW 
-
-A. 
-
-rx T 
-
-X«7 
-
-IB 
-
-3. 
-
-
-<(f^9 
-
-Mi^i"vi . ^^C 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:fbcf90b2445d2f5f7fd06af81992d8407ffad1ec35cab3dc59eab63ddacc9c0c
+size 118

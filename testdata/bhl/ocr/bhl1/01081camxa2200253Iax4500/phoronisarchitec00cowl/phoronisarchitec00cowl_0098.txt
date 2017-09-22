@@ -1,7 +1,3 @@
-PLATE XII. 
-
-Fig. 62. Tentacular crown of Phoronis architecta. Showing lophophoral organs, epistome, and mouth. ,Drawn from 
- a living tentacular crown which had been constricted off from the animal. X 100. 
-
-138 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:a12c590757466d08cb40607db62291c66de1b1fc4e0a8043b3ede01ba458c482
+size 229

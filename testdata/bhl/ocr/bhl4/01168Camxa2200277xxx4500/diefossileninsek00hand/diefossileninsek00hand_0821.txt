@@ -1,20 +1,3 @@
-IV. Kapitel. 
-
-Kreide-Formation. 
-
-In der Kreidezeit breitete sich das Meer allmählich immer weiter aus 
- und überflutete endlich grosse Gebiete, welche seit langer Zeit trocken ge- 
- legen waren. Ihren Höhepunkt scheint die horizontale Verbreitung des 
- Meeres im Cenoman erreicht zu haben, denn später lässt sich wieder eine 
- rückschreitende Bewegung feststellen. 
-
-Klimazonen waren jedenfalls scharf ausgeprägt. 
-
-Nur in wenigen Horizonten der Kreideformation finden sich Süsswasser- 
- bildungen und demgemäss gehören auch Kreide -Insekten zu den seltensten 
- Funden. 
-
-Die Schichtenfolge mag aus beistehendem Schema entnommen werden, 
- in welches ich die bisher bekannt gewordenen Insektenfundorte einge- 
- fügt habe. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:d37d6d5685cc7075ed15f87e8fbe75f5469cf87348fab3900571f0cca8faf580
+size 776

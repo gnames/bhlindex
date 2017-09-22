@@ -1,12 +1,3 @@
-22 
-
-mcn§ oaterlonbif^rö SOiufmm ift, waS fcae vcrf(o|u'ne 
- t)cmfet6m gcwcfm : bann wirb, — i ft g I c i d^ n o ^ 
- 23iclc& ju leiftcn, ma^nurmit »crcintcn 
- Srrtften, unb f eI6ft bur* fie nur oUmöf;* 
- lid) gcletftet werben fann; — biefe 2(nftalt 
- ganj juoerftd^tltd^ ntd^t nur grünen unb 6lül^en; 
- fonbcrn aud^ für ©cgcnroart unb BuFunft %rüi[}tc ju 
- bringen, unb bcn erfc^nten ©egen ju verbreiten »er* 
- mögen. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:15b256f9b38de065aceffd57d59f3b26e26f1966b2cb54a1bf7dad6768510a7d
+size 460

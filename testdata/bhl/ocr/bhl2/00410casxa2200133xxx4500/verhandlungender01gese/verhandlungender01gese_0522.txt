@@ -1,8 +1,3 @@
-i: i 
-
-f:l X.^ 
-
-j: p. 
-
-Ki. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:f45dd66eaf5c7b41f34e0688af12c7c68663fcd6de9b38f04687689d6e058565
+size 47

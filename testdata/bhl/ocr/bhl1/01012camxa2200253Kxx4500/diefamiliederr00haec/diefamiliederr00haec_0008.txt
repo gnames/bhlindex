@@ -1,4 +1,3 @@
-Abdruck aus der Jenaischen Zeitschrift für Medicin und Naturwissenschaft 
-
-I. und II. Bd. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:9b8275117490157aa6974db76674d03c00472ff280138857d9e634ca96b6d85c
+size 101

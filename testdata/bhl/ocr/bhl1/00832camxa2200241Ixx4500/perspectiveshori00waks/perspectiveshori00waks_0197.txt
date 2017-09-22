@@ -1,33 +1,3 @@
-Chapt 
-
-er 
-
-13 
-
-Microorganisms and 
- Plant Life ' 
-
-By ROBERT L. STARKEY 
-
-Broadly viewed, the relationships between 
- microorganisms and plant life include much of the area 
- of soil microbiology, for nearly all activities of micro- 
- organisms in soil affect plant development directly or 
- indirectly. 
-
-Personal considerations may dictate our greater concern 
- with the relations of microorganisms to animal life than 
- to higher plants, for our environment supports a host of 
- microorganisms inhospitable to humankind. Nevertheless, 
- a strong case can be made for the view that plants are 
- so intimately associated with the welfare of the animal 
- that they are deserving of at least equal consideration. 
- Lest we become too absorbed in our own importance, let 
- it be recalled that among living things man is dependent 
-
-1 Journal Series Paper, New Jersey Agricultural Experiment Station, 
- Rutgers University, The State University of New Jersey, New Brunswick, 
- Department of Agricultural Microbiology. 
-
-179 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:51447da57ccba0fa19a1dbc7c59733bbb00bab013968762648f2e2d4f3076dc8
+size 1091

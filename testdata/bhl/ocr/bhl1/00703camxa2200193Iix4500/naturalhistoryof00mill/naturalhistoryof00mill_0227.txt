@@ -1,6 +1,3 @@
-VJVASCERT/VrAr^I? CRUVrOTDAH K.T:MATisr^ 
-
--2^ _^ /o. 
-
-^--^-^- 'I 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:c39cf362794a5cd842351166c1d1e019ffc581768fe22e5d0fdfb5c8661c7ecb
+size 81

@@ -1,20 +1,3 @@
-j:j. 
-
-^ 
-
-)3 
-
-^^T/ 
-
-^ 
-
-.^2. 
-
-ys 
-
-JT/.ö' 
-
-^^. ^ 
-
-\ .^^ 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:8131c44ef3ea56b9fe6716b1ed6aa9e2aacd5f83775058b5da422e320ad2b03e
+size 105

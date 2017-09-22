@@ -1,18 +1,3 @@
-r 
-
-bcr 
-
-®cfcllf*aft 
-
-t)afedänö{0d)en iHu^^um^ 
-
-in öer 
-
-ad)t3e^ntcn alfgemeinen ^[^erfainnitung 
- am »9. ^ptil 1940. 
-
-/>■ 
-
-Diucf iint «pavier oon ©ottlicl) Öo<«l'« ®ö()ne- 
- 19 40. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:de73f8ab9b2ea30b31d18587d35fea30a02fc19363cd48405a94d65096cf820c
+size 239

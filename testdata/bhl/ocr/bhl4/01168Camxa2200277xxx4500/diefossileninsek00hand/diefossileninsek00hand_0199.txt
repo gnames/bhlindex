@@ -1,4 +1,3 @@
-Taf. V. 
-
-e (16 — 18) — Phryganoidea (19—23) 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:244d128da5d7b5db1885a1d419e4992d1f1673372a47e7528cec36d8787ebe43
+size 61

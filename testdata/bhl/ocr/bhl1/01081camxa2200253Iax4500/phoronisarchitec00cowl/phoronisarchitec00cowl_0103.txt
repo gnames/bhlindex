@@ -1,35 +1,3 @@
-MEMOIRS OF THE NATIONAL ACADEMY OF SCIENCES, VOL X. 
-
-PLATE XIII. 
-
-& 
-
-op 
-
-Fig. 63. 
-
-
-d.ve 
-
-05. 
-
-i/.n . 
-
-^. Fijr. 87. 
-
-</.rr. 
-
-(/.' . 
-
-dan 
-
-sup,c. 
-
-Fig. 64. 
-
-d.ve. 
-
-iie/ili. 
-
-PHORONIS ARCHITECTA 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:caf54297ddaf64c781c70816344191828aef1a3cca534205e1ea0ebfae246b1b
+size 281

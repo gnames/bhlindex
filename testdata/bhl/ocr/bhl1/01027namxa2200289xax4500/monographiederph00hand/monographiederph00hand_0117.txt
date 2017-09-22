@@ -1,18 +1,3 @@
-A.Handlirsch : Monograpliic der Pliynmluli'n 
-
-' 2. 
-
-Tal'.V!. 
-
-it \> 
-
-r 'i 
-
-/ 
-
-,, . , ., ,, ., , ,. Lull iiliru.kvTh.Bonnwarth.We" 
-
-M-Fieiliv ScblereOi dpiin. 
-
-Auualen des k.k. naturhist. Ilot'iimscmns Band XU. 1897. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:907882dae705cc417ff3fd772181f6cddfc72fb1848ec7af2bd8a25d3fbe05d9
+size 262

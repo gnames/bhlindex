@@ -1,18 +1,3 @@
-jjQ Trias-Formation. 
-
-Sphaerapus larvalis Hitchcock. 
-
-Fundort : Turners Falls, Mass., N.Amerika. Trias. 
-
-Spliaerapus larValis, Hitchcock, lehn. N. Engl. 164. t. 28. f. 2. 185X. 
-
-Dürfte gleichfalls keine Insektenspur sein. 
-
-Sphaerapus magnus Hitchcock. 
-
-Fundort: Turners Falls, Mass., N.Amerika. Trias. 
-
-Sphaerapus magnus, Hitchcock, lehn. N. Engl. 164. t. 28. f. 3. 1858. 
-
-Keine Insektenspur. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:1541ea4ebcac36801bcff97e0f26b74e5bb91f65c44979fd31d62b9a80419a89
+size 440

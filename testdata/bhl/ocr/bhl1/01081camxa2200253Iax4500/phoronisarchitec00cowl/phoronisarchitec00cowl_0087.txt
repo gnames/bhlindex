@@ -1,17 +1,3 @@
-MEMOIRS OF THE NATIONAL ACADEMY OF SCIENCES, VOL X 
-
-PLATE IX. 
-
-
-ret. 
-
-p.o.c. 
-
-Flk'. 45 (6) 
-
-Klff. 40. 
-
-Fl(?. 50. 
-
-PH0R0N1S ARCHITECTA 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:59aef64cc33f84e10f5056aadd5a46a618ffc061c8309ed8e1d89b6990d7c61b
+size 177

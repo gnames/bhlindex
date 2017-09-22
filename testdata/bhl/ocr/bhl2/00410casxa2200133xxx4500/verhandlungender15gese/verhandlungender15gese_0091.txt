@@ -1,2 +1,3 @@
-■^■c/rAnudCa. Mi.iS:y! 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:360ac3bd2cc03004e7835314aadb87d496dee14d5c1e9513d0e556c60b948712
+size 33

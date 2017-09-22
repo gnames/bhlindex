@@ -1,12 +1,3 @@
-56o Jura-Formation. 
-
-(Anisorhynchus lapideus) Oppenheim. 
-
-Fundort: Solnhofen in Bayern. Lithogr. Kalk. Malm. 
-
-.'Viiisorliynclius lapideus, Oppenheim, Palaeont. XXXIV. 241. t. 31. f. 7. 1S88. 
-
-Ist nicht identisch mit der gleichnamigen Form Weyenberghs und, wie 
- ich mich durch Untersuchung der Type in München überzeugen konnte, kein 
- Insekt, sondern ein Stachelhäuter (Crinoide). 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:55c705a7c1e6e839bd6fed7303e9bcc470dd13c05a7011861a69f11b41748a76
+size 415

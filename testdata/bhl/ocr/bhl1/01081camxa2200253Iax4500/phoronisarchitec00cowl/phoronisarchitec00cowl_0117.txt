@@ -1,4 +1,3 @@
-PLATE XVII. 
-
-147 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:4e179a317a14107269f09ccb87da943870ea26a4b9c44e3ad1a7e543518b8df3
+size 28

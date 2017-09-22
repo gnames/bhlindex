@@ -1,13 +1,3 @@
-t er 
-
-® ef cl If d& af t 
-
-in 23Dl;men. 
-
-25 r i t t e 3 ^ e f t. 
-
-^ r 9, 
- öuä bcr V. ©(})önfclb'fc^cn 25ud^fcru(f erei. 
-
-18 2 5. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:57993d676387b2d053771f653fad14c7f64dfddebef944bdb38bdcb502ed842d
+size 167

@@ -1,4 +1,3 @@
-\ 
-
-fDrutf b« f. t. •öofbuc^bturferct »on ©ottlicb ^aafe ©ö^ne in $rag. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:e120be431f3e04692837c94cee1a229a53d5858007480c466d0c47d18a10b732
+size 90

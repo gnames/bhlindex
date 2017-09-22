@@ -1,11 +1,3 @@
-
-Das 
-
-in |> 1) m irn 
-
-%cifytt 1843» 
-
-'iiom SLscvJvaUmijjßaiiöfclnnfe bcr (SJcfettfdmfr. 
-
-3ni ©elbflccrlag bc3 SKufeumö. 
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:8b2540528fb38d5c2d6b0168891966b4fad8df73deffc669272b03ae37fd1c65
+size 153
