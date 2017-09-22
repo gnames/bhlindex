@@ -11,7 +11,7 @@ function! Layout()
     endif
 
     set colorcolumn=81
-    vsp term://bash
+    vsp term://docker-compose\ up
     sp term://bash
     resize 8
     wincmd l

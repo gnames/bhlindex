@@ -3,7 +3,10 @@ CREATE TABLE titles (
     path character varying(255) NOT NULL,
     internet_archive_id character varying(255) NOT NULL,
     gnrd_url character varying(255) NOT NULL,
-    status integer DEFAULT 0
+    status integer DEFAULT 0,
+    language character varying(100),
+    english_detected boolean,
+    updated_at timestamp without time zone
 );
 
 ALTER TABLE ONLY titles
@@ -14,3 +17,6 @@ CREATE UNIQUE INDEX internet_archive_id_index
 
 CREATE INDEX status_index
     ON titles USING btree (status);
+
+CREATE INDEX updated_at_index
+    ON titles USING btree (updated_at);

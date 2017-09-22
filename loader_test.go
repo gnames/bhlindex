@@ -7,6 +7,7 @@ import (
 )
 
 var _ = Describe("Loader", func() {
+
 	Describe("Path", func() {
 		It("returns ok", func() {
 			c := make(chan string)
@@ -22,4 +23,5 @@ var _ = Describe("Loader", func() {
 			Expect(count).To(Equal(6263))
 		})
 	})
+
 })
