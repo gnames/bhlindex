@@ -3,24 +3,19 @@ services:
   app:
     build:
       context: .
-    container_name: gnidump
-    image: gnames/gnidump
+    container_name: bhlindex
+    image: gnames/bhlindex
     depends_on:
-      - gnparser
+      - dgraph
     env_file: .env
+    command: ["index"]
+  dgraph:
+    image: dgraph/dgraph
     volumes:
-      - gni_mysql:/tmp/gni_mysql
-      - gnindex_pg:/tmp/gnindex_pg
-      - badger:/tmp/badger
-    # command: ["dump"]
-    # command: ["convert"]
-    command: ["create"]
-  gnparser:
-    image: gnames/gnparser
+      - dgraph:/dgraph
+    ports:
+      - 8080:8080
+      - 9080:9080
 volumes:
-  gni_mysql:
-    external: false
-  gnindex_pg:
-    external: false
-  badger:
+  dgraph:
     external: false
