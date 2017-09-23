@@ -32,7 +32,11 @@ var _ = Describe("Util", func() {
 	Describe("EnvVars", func() {
 		env := util.EnvVars()
 		It("Returns envaronment variables", func() {
-			Expect(env["bhl_dir"]).To(Equal("./testdata/"))
+			Expect(env.BHLDir).To(Equal("./testdata/"))
+			Expect(env.Db).To(Equal("bhlindex"))
+			Expect(env.DbUser).To(Equal("postgres"))
+			Expect(env.DbPass).To(Equal(""))
+			Expect(env.DbHost).To(Equal("pg"))
 		})
 	})
 })

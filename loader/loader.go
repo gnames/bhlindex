@@ -10,13 +10,10 @@ import (
 var env = util.EnvVars()
 
 func Path(c chan<- string) {
-	root := env["bhl_dir"]
+	root := env.BHLDir
 
 	err := filepath.Walk(root,
 		func(path string, info os.FileInfo, err error) error {
-			if info.IsDir() {
-				return nil
-			}
 			if filepath.Ext(path) == ".txt" {
 				c <- path
 			}

@@ -1,16 +1,14 @@
 CREATE TABLE titles (
-    id integer NOT NULL,
+    id serial NOT NULL,
     path character varying(255) NOT NULL,
     internet_archive_id character varying(255) NOT NULL,
-    gnrd_url character varying(255) NOT NULL,
-    status integer DEFAULT 0,
+    gnrd_url character varying(255),
+    status integer NOT NULL DEFAULT 0,
     language character varying(100),
-    english_detected boolean,
-    updated_at timestamp without time zone
+    english_detected boolean NOT NULL,
+    updated_at timestamp without time zone,
+    CONSTRAINT titles_pkey PRIMARY KEY (id)
 );
-
-ALTER TABLE ONLY titles
-    ADD CONSTRAINT titles_pkey PRIMARY KEY (id);
 
 CREATE UNIQUE INDEX internet_archive_id_index
     ON titles USING btree (internet_archive_id);
