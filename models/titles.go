@@ -18,10 +18,6 @@ type Title struct {
 	UpdatedAt         time.Time
 }
 
-func (t *Title) Defaults() {
-	t.Status = 0
-}
-
 func (t *Title) CreateOrSelect(db *sql.DB) {
 	var id, status int
 	var path, internetArchiveID, gnrdURL, language sql.NullString

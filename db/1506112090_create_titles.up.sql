@@ -5,7 +5,7 @@ CREATE TABLE titles (
     gnrd_url character varying(255),
     status integer NOT NULL DEFAULT 0,
     language character varying(100),
-    english_detected boolean NOT NULL,
+    english_detected boolean NOT NULL DEFAULT false,
     updated_at timestamp without time zone,
     CONSTRAINT titles_pkey PRIMARY KEY (id)
 );

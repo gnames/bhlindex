@@ -17,6 +17,7 @@ func Count(db *sql.DB, table string) int {
 	return count
 }
 
+// Truncate removes all the rows from a table
 func Truncate(db *sql.DB, table string) {
 	q := fmt.Sprintf("TRUNCATE TABLE %s", pq.QuoteIdentifier(table))
 	_, err := db.Query(q)

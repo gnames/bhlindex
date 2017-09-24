@@ -17,7 +17,6 @@ var _ = Describe("Models", func() {
 	Describe("Title", func() {
 		It("creates defaults", func() {
 			t := models.Title{InternetArchiveID: "test"}
-			t.Defaults()
 			Expect(t.InternetArchiveID).To(Equal("test"))
 			Expect(t.Status).To(Equal(0))
 		})
@@ -26,7 +25,6 @@ var _ = Describe("Models", func() {
 			It("Saves the title to the database", func() {
 				iaID := util.UUID4()
 				t := models.Title{InternetArchiveID: iaID}
-				t.Defaults()
 				t.CreateOrSelect(db)
 
 				Expect(t.ID).To(BeNumerically(">", 0))
