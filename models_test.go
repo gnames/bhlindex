@@ -1,10 +1,10 @@
-package main_test
+package bhlindex_test
 
 import (
 	"time"
 
+	"github.com/GlobalNamesArchitecture/bhlindex"
 	"github.com/GlobalNamesArchitecture/bhlindex/models"
-	"github.com/GlobalNamesArchitecture/bhlindex/util"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -23,7 +23,7 @@ var _ = Describe("Models", func() {
 
 		Describe("Title.CreateOrSelect()", func() {
 			It("Saves the title to the database", func() {
-				iaID := util.UUID4()
+				iaID := bhlindex.UUID4()
 				t := models.Title{InternetArchiveID: iaID}
 				t.CreateOrSelect(db)
 
@@ -41,7 +41,7 @@ var _ = Describe("Models", func() {
 		Describe("Title.Delete()", func() {
 			It("Deletes a record", func() {
 				c := models.Count(db, "titles")
-				t := models.Title{InternetArchiveID: util.UUID4()}
+				t := models.Title{InternetArchiveID: bhlindex.UUID4()}
 				t.CreateOrSelect(db)
 				Expect(models.Count(db, "titles")).To(Equal(c + 1))
 				t.Delete(db)

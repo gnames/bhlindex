@@ -1,4 +1,4 @@
-package util
+package bhlindex
 
 import (
 	"database/sql"

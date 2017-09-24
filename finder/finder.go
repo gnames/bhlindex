@@ -7,9 +7,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/GlobalNamesArchitecture/bhlindex"
 	"github.com/GlobalNamesArchitecture/bhlindex/loader"
 	"github.com/GlobalNamesArchitecture/bhlindex/models"
-	"github.com/GlobalNamesArchitecture/bhlindex/util"
 	"github.com/lib/pq"
 )
 
@@ -53,14 +53,14 @@ func titleBatchSave(db *sql.DB, batch []models.Title) {
 	now := time.Now()
 	columns := []string{"path", "internet_archive_id", "updated_at"}
 	txn, err := db.Begin()
-	util.Check(err)
+	bhlindex.Check(err)
 
 	stmt, err := txn.Prepare(pq.CopyIn("titles", columns...))
-	util.Check(err)
+	bhlindex.Check(err)
 
 	for _, t := range batch {
 		_, err = stmt.Exec(t.Path, t.InternetArchiveID, now)
-		util.Check(err)
+		bhlindex.Check(err)
 	}
 
 	_, err = stmt.Exec()
@@ -73,8 +73,8 @@ and start with empty database.
 	}
 
 	err = stmt.Close()
-	util.Check(err)
+	bhlindex.Check(err)
 
 	err = txn.Commit()
-	util.Check(err)
+	bhlindex.Check(err)
 }

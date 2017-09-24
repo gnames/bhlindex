@@ -1,9 +1,9 @@
-package main_test
+package bhlindex_test
 
 import (
 	"database/sql"
 
-	"github.com/GlobalNamesArchitecture/bhlindex/util"
+	"github.com/GlobalNamesArchitecture/bhlindex"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
@@ -21,7 +21,7 @@ var db *sql.DB
 
 var _ = BeforeSuite(func() {
 	var err error
-	db, err = util.DbInit()
+	db, err = bhlindex.DbInit()
 	Expect(err).NotTo(HaveOccurred())
 })
 

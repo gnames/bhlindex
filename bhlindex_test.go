@@ -1,19 +1,19 @@
-package main_test
+package bhlindex_test
 
 import (
 	"errors"
 
-	"github.com/GlobalNamesArchitecture/bhlindex/util"
+	"github.com/GlobalNamesArchitecture/bhlindex"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("Util", func() {
+var _ = Describe("bhlindex", func() {
 	Describe("Check()", func() {
 		It("ignores `nil` errors", func() {
 			err := error(nil)
 			a := "one"
-			util.Check(err)
+			bhlindex.Check(err)
 			Expect(a).To(Equal("one"))
 		})
 
@@ -25,12 +25,12 @@ var _ = Describe("Util", func() {
 				}
 			}()
 			err := errors.New("My error")
-			util.Check(err)
+			bhlindex.Check(err)
 		})
 	})
 
 	Describe("EnvVars", func() {
-		env := util.EnvVars()
+		env := bhlindex.EnvVars()
 		It("Returns envaronment variables", func() {
 			Expect(env.BHLDir).To(Equal("./testdata/"))
 			Expect(env.Db).To(Equal("bhlindex"))

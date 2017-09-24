@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/GlobalNamesArchitecture/bhlindex/util"
+	"github.com/GlobalNamesArchitecture/bhlindex"
 )
 
 type Title struct {
@@ -39,7 +39,7 @@ WITH new_row AS (
 		t.Language, t.EnglishDetected, time.Now()).Scan(&id, &path,
 		&internetArchiveID, &gnrdURL, &status, &language,
 		&englishDetected, &updatedAt)
-	util.Check(err)
+	bhlindex.Check(err)
 	t.ID = id
 	t.Path = path.String
 	t.InternetArchiveID = internetArchiveID.String
@@ -58,5 +58,5 @@ func (t *Title) Delete(db *sql.DB) {
 		_, err = db.Query(`DELETE FROM titles WHERE internet_archive_id = $1`,
 			t.InternetArchiveID)
 	}
-	util.Check(err)
+	bhlindex.Check(err)
 }

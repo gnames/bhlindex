@@ -4,10 +4,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/GlobalNamesArchitecture/bhlindex/util"
+	"github.com/GlobalNamesArchitecture/bhlindex"
 )
 
-var env = util.EnvVars()
+var env = bhlindex.EnvVars()
 
 func Path(c chan<- string) {
 	root := env.BHLDir
@@ -19,6 +19,6 @@ func Path(c chan<- string) {
 			}
 			return nil
 		})
-	util.Check(err)
+	bhlindex.Check(err)
 	close(c)
 }

@@ -15,4 +15,4 @@ RUN go-wrapper install    # "go install -v ./..."
 
 VOLUME "/tmp/gni_mysql"
 
-ENTRYPOINT docker/start.sh
+ENTRYPOINT scripts/development.sh

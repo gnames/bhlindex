@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/GlobalNamesArchitecture/bhlindex"
 	"github.com/GlobalNamesArchitecture/bhlindex/finder"
-	"github.com/GlobalNamesArchitecture/bhlindex/util"
 )
 
 var githash string = "n/a"
@@ -33,12 +33,12 @@ Usage:
 }
 
 func makeIndex() {
-	db, err := util.DbInit()
+	db, err := bhlindex.DbInit()
 	defer func() {
 		e := db.Close()
-		util.Check(e)
+		bhlindex.Check(e)
 	}()
-	util.Check(err)
+	bhlindex.Check(err)
 
 	fmt.Println("Collecting titles to the database...")
 	finder.FindNames(db)

@@ -1,4 +1,4 @@
-package main_test
+package bhlindex_test
 
 import (
 	"github.com/GlobalNamesArchitecture/bhlindex/finder"
