@@ -1,2 +1,3 @@
 .env
-bhlindex
+scripts/bhlindex
+scripts/migrate
