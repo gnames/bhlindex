@@ -2,7 +2,6 @@ package main_test
 
 import (
 	"database/sql"
-	"fmt"
 
 	"github.com/GlobalNamesArchitecture/bhlindex/util"
 	. "github.com/onsi/ginkgo"
@@ -21,11 +20,8 @@ func TestBhlindex(t *testing.T) {
 var db *sql.DB
 
 var _ = BeforeSuite(func() {
-	env := util.EnvVars()
-	params := fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=disable",
-		env.DbUser, env.DbPass, env.DbHost, env.Db)
 	var err error
-	db, err = sql.Open("postgres", params)
+	db, err = util.DbInit()
 	Expect(err).NotTo(HaveOccurred())
 })
 

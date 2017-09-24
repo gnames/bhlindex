@@ -2,6 +2,7 @@ package finder
 
 import (
 	"database/sql"
+	"log"
 	"path/filepath"
 	"sync"
 	"time"
@@ -12,7 +13,7 @@ import (
 	"github.com/lib/pq"
 )
 
-func FindNames(db *sql.DB) string {
+func FindNames(db *sql.DB) {
 	c := make(chan string)
 	var wg sync.WaitGroup
 
@@ -23,7 +24,6 @@ func FindNames(db *sql.DB) string {
 
 	loader.Path(c)
 	wg.Wait()
-	return "ok"
 }
 
 func findWorker(wg *sync.WaitGroup, c <-chan string, db *sql.DB) {
@@ -64,7 +64,13 @@ func titleBatchSave(db *sql.DB, batch []models.Title) {
 	}
 
 	_, err = stmt.Exec()
-	util.Check(err)
+	if err != nil {
+		log.Println(`
+Bulk import of titles data failed, probably you need to empty all data
+and start with empty database.
+`)
+		log.Fatal(err)
+	}
 
 	err = stmt.Close()
 	util.Check(err)

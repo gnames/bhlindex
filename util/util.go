@@ -1,7 +1,11 @@
 package util
 
 import (
+	"database/sql"
+	"errors"
+	"fmt"
 	"os"
+	"strings"
 
 	uuid "github.com/satori/go.uuid"
 )
@@ -24,17 +28,38 @@ func Check(err error) {
 
 // EnvVars imports all environment variables relevant for the data conversion.
 func EnvVars() Env {
-	env := Env{
-		DbHost: os.Getenv("POSTGRES_HOST"),
-		DbUser: os.Getenv("POSTGRES_USER"),
-		DbPass: os.Getenv("POSTGRES_PASSWORD"),
-		Db:     os.Getenv("POSTGRES_DB"),
-		BHLDir: os.Getenv("BHL_DIR"),
+	emptyEnvs := make([]string, 0, 5)
+	envVars := [5]string{"POSTGRES_HOST", "POSTGRES_USER", "POSTGRES_PASSWORD",
+		"POSTGRES_DB", "BHL_DIR"}
+	for i, v := range envVars {
+		val, ok := os.LookupEnv(v)
+		if ok {
+			envVars[i] = val
+		} else {
+			emptyEnvs = append(emptyEnvs, v)
+		}
 	}
-	return env
+	if len(emptyEnvs) > 0 {
+		envs := strings.Join(emptyEnvs, ", ")
+		panic(errors.New(fmt.Sprintf("Environment variables %s are not defined",
+			envs)))
+	}
+	return Env{DbHost: envVars[0], DbUser: envVars[1], DbPass: envVars[2],
+		Db: envVars[3], BHLDir: envVars[4]}
 }
 
 // UUID4 returns random (version 4) UUID as a string
 func UUID4() string {
 	return uuid.NewV4().String()
+}
+
+// DbInit returns a connection to bhlindex database
+func DbInit() (*sql.DB, error) {
+	var db *sql.DB
+	var err error
+	env := EnvVars()
+	params := fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=disable",
+		env.DbUser, env.DbPass, env.DbHost, env.Db)
+	db, err = sql.Open("postgres", params)
+	return db, err
 }
