@@ -6,11 +6,17 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	uuid "github.com/satori/go.uuid"
 )
 
-// Env is a collection of environment variables
+// NameFinder interface determines behavior of scientific name finders
+type NameFinder interface {
+	FindNames(text []byte) ([]DetectedName, error)
+}
+
+// Env is a collection of environment variables.
 type Env struct {
 	DbHost string
 	DbUser string
@@ -18,7 +24,19 @@ type Env struct {
 	BHLDir string
 }
 
-// Check handles error checking, and panicks if error is not nil
+// DetectedName helds information about a name-string returned by a
+// name-finder.
+type DetectedName struct {
+	PageID       string
+	NameString   string
+	NameID       int
+	OffsetStart  int
+	OffsetEnd    int
+	EndsNextPage bool
+	UpdatedAt    time.Time
+}
+
+// Check handles error checking, and panicks if error is not nil.
 func Check(err error) {
 	if err != nil {
 		panic(err)
@@ -46,12 +64,12 @@ func EnvVars() Env {
 		BHLDir: envVars[3]}
 }
 
-// UUID4 returns random (version 4) UUID as a string
+// UUID4 returns random (version 4) UUID as a string.
 func UUID4() string {
 	return uuid.NewV4().String()
 }
 
-// DbInit returns a connection to bhlindex database
+// DbInit returns a connection to bhlindex database.
 func DbInit() (*sql.DB, error) {
 	var db *sql.DB
 	var err error

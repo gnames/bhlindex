@@ -13,20 +13,21 @@ import (
 	"github.com/lib/pq"
 )
 
-func FindNames(db *sql.DB) {
+func FindNames(db *sql.DB, nf bhlindex.NameFinder) {
 	c := make(chan string)
 	var wg sync.WaitGroup
 
 	for i := 1; i <= 20; i++ {
 		wg.Add(1)
-		go findWorker(&wg, c, db)
+		go findWorker(&wg, c, db, nf)
 	}
 
 	loader.Path(c)
 	wg.Wait()
 }
 
-func findWorker(wg *sync.WaitGroup, c <-chan string, db *sql.DB) {
+func findWorker(wg *sync.WaitGroup, c <-chan string, db *sql.DB,
+	nf bhlindex.NameFinder) {
 	defer wg.Done()
 	batchSize := 1000
 	batch := make([]models.Title, batchSize)
