@@ -10,7 +10,7 @@ CREATE TABLE titles (
     CONSTRAINT titles_pkey PRIMARY KEY (id)
 );
 
-CREATE UNIQUE INDEX internet_archive_id_index
+CREATE INDEX internet_archive_id_index
     ON titles USING btree (internet_archive_id);
 
 CREATE INDEX status_index

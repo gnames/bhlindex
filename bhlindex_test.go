@@ -35,7 +35,6 @@ var _ = Describe("bhlindex", func() {
 			Expect(env.BHLDir).To(Equal("./testdata/"))
 			Expect(env.Db).To(Equal("bhlindex"))
 			Expect(env.DbUser).To(Equal("postgres"))
-			Expect(env.DbPass).To(Equal(""))
 			Expect(env.DbHost).To(Equal("pg"))
 		})
 	})

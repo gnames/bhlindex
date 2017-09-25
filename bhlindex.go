@@ -14,7 +14,6 @@ import (
 type Env struct {
 	DbHost string
 	DbUser string
-	DbPass string
 	Db     string
 	BHLDir string
 }
@@ -28,9 +27,8 @@ func Check(err error) {
 
 // EnvVars imports all environment variables relevant for the data conversion.
 func EnvVars() Env {
-	emptyEnvs := make([]string, 0, 5)
-	envVars := [5]string{"POSTGRES_HOST", "POSTGRES_USER", "POSTGRES_PASSWORD",
-		"POSTGRES_DB", "BHL_DIR"}
+	emptyEnvs := make([]string, 0, 4)
+	envVars := [4]string{"POSTGRES_HOST", "POSTGRES_USER", "POSTGRES_DB", "BHL_DIR"}
 	for i, v := range envVars {
 		val, ok := os.LookupEnv(v)
 		if ok {
@@ -44,8 +42,8 @@ func EnvVars() Env {
 		panic(errors.New(fmt.Sprintf("Environment variables %s are not defined",
 			envs)))
 	}
-	return Env{DbHost: envVars[0], DbUser: envVars[1], DbPass: envVars[2],
-		Db: envVars[3], BHLDir: envVars[4]}
+	return Env{DbHost: envVars[0], DbUser: envVars[1], Db: envVars[2],
+		BHLDir: envVars[3]}
 }
 
 // UUID4 returns random (version 4) UUID as a string
@@ -58,8 +56,8 @@ func DbInit() (*sql.DB, error) {
 	var db *sql.DB
 	var err error
 	env := EnvVars()
-	params := fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=disable",
-		env.DbUser, env.DbPass, env.DbHost, env.Db)
+	params := fmt.Sprintf("postgres://%s@%s/%s?sslmode=disable",
+		env.DbUser, env.DbHost, env.Db)
 	db, err = sql.Open("postgres", params)
 	return db, err
 }
