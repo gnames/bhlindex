@@ -1,2 +1,1 @@
-DROP TABLE IF EXISTS pages_tmp;
 DROP TABLE IF EXISTS pages;

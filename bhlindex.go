@@ -2,7 +2,6 @@ package bhlindex
 
 import (
 	"database/sql"
-	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -57,8 +56,7 @@ func EnvVars() Env {
 	}
 	if len(emptyEnvs) > 0 {
 		envs := strings.Join(emptyEnvs, ", ")
-		panic(errors.New(fmt.Sprintf("Environment variables %s are not defined",
-			envs)))
+		panic(fmt.Errorf("Environment variables %s are not defined", envs))
 	}
 	return Env{DbHost: envVars[0], DbUser: envVars[1], Db: envVars[2],
 		BHLDir: envVars[3]}

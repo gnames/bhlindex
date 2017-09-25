@@ -5,11 +5,11 @@ import (
 	"os"
 
 	"github.com/GlobalNamesArchitecture/bhlindex"
-	"github.com/GlobalNamesArchitecture/bhlindex/finder"
+	"github.com/GlobalNamesArchitecture/bhlindex/loader"
 )
 
-var githash string = "n/a"
-var buildstamp string = "n/a"
+var githash = "n/a"
+var buildstamp = "n/a"
 
 func main() {
 	var command string
@@ -40,6 +40,6 @@ func makeIndex() {
 	}()
 	bhlindex.Check(err)
 
-	fmt.Println("Collecting titles to the database...")
-	finder.FindNames(db)
+	fmt.Println("Importing titles into the database...")
+	loader.ImportTitles(db)
 }

@@ -1,15 +1,12 @@
 package bhlindex_test
 
 import (
-	"time"
-
-	"github.com/GlobalNamesArchitecture/bhlindex"
 	"github.com/GlobalNamesArchitecture/bhlindex/models"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
 
-var _ = AfterEach(func() {
+var _ = BeforeEach(func() {
 	models.Truncate(db, "titles")
 })
 
@@ -20,33 +17,21 @@ var _ = Describe("Models", func() {
 			Expect(t.InternetArchiveID).To(Equal("test"))
 			Expect(t.Status).To(Equal(0))
 		})
+	})
 
-		Describe("Title.CreateOrSelect()", func() {
-			It("Saves the title to the database", func() {
-				iaID := bhlindex.UUID4()
-				t := models.Title{InternetArchiveID: iaID}
-				t.CreateOrSelect(db)
-
-				Expect(t.ID).To(BeNumerically(">", 0))
-				Expect(t.UpdatedAt.Unix()).To(BeNumerically("~", time.Now().Unix(), 5))
-
-				t2 := models.Title{InternetArchiveID: iaID, EnglishDetected: true}
-				t2.CreateOrSelect(db)
-
-				Expect(t2.ID).To(Equal(t.ID))
-				Expect(t2.EnglishDetected).To(Equal(false))
-			})
+	Describe("title.Insert()", func() {
+		It("inserts title returns id", func() {
+			t := models.Title{InternetArchiveID: "test"}
+			Expect(t.Insert(db)).To(BeNumerically(">", 0))
 		})
 
-		Describe("Title.Delete()", func() {
-			It("Deletes a record", func() {
-				c := models.Count(db, "titles")
-				t := models.Title{InternetArchiveID: bhlindex.UUID4()}
-				t.CreateOrSelect(db)
-				Expect(models.Count(db, "titles")).To(Equal(c + 1))
-				t.Delete(db)
-				Expect(models.Count(db, "titles")).To(Equal(c))
-			})
+		It("ignores duplicates", func() {
+			t := models.Title{InternetArchiveID: "test"}
+			id := t.Insert(db)
+			Expect(id).To(BeNumerically(">", 0))
+			t2 := models.Title{InternetArchiveID: "test"}
+			id2 := t2.Insert(db)
+			Expect(id2).To(Equal(0))
 		})
 	})
 })
