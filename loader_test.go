@@ -26,9 +26,14 @@ var _ = Describe("Loader", func() {
 		})
 	})
 
-	Describe("PrepareTitles", func() {
+	Describe("ImportTitles", func() {
 		It("saves titles to database", func() {
-			loader.ImportTitles(db)
+			titlesChan := make(chan int)
+			go func() {
+				for _ = range titlesChan {
+				}
+			}()
+			loader.ImportTitles(db, titlesChan)
 			Expect(models.Count(db, "titles")).To(Equal(14))
 		})
 	})

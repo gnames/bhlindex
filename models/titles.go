@@ -21,6 +21,8 @@ type Title struct {
 	UpdatedAt         time.Time
 }
 
+// Insert add data from a title to bhlindex database and returns newly
+// a newly generated ID. If a title is duplicate instead of ID it returns 0.
 func (t *Title) Insert(db *sql.DB) int {
 	var id int
 	q := `
@@ -38,6 +40,22 @@ INSERT INTO titles
 		}
 	}
 	return id
+}
+
+func TitleFind(db *sql.DB, id int) Title {
+	var status int
+	var path, internetArchiveID string
+	var gnrdURL, language sql.NullString
+	var englishDetected bool
+	var updatedAt time.Time
+
+	err := db.QueryRow("SELECT * FROM titles WHERE id = $1", id).Scan(&id, &path,
+		&internetArchiveID, &gnrdURL, &status, &language, &englishDetected,
+		&updatedAt)
+	bhlindex.Check(err)
+	title := Title{id, path, internetArchiveID, gnrdURL.String,
+		status, language.String, englishDetected, updatedAt}
+	return title
 }
 
 // Disable these temporarily, we need something like this later
