@@ -42,6 +42,15 @@ var _ = Describe("Models", func() {
 		})
 	})
 
+	Describe("TitleFind()", func() {
+		It("finds a title in db", func() {
+			t := models.Title{InternetArchiveID: "test"}
+			id := t.Insert(db)
+			t2 := models.TitleFind(db, id)
+			Expect(t2.InternetArchiveID).To(Equal("test"))
+		})
+	})
+
 	Describe("IsPageFile()", func() {
 		It("determines if a file is a BHL page", func() {
 			tests := []PageTest{

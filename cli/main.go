@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/GlobalNamesArchitecture/bhlindex"
-	"github.com/GlobalNamesArchitecture/bhlindex/loader"
+	"github.com/GlobalNamesArchitecture/bhlindex/finder"
 )
 
 var githash = "n/a"
@@ -41,5 +41,5 @@ func makeIndex() {
 	bhlindex.Check(err)
 
 	fmt.Println("Importing titles into the database...")
-	loader.ImportTitles(db)
+	finder.ProcessTitles(db)
 }

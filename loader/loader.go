@@ -7,7 +7,6 @@ import (
 	"path/filepath"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/GlobalNamesArchitecture/bhlindex"
 	"github.com/GlobalNamesArchitecture/bhlindex/models"
@@ -80,8 +79,8 @@ func ImportPages(db *sql.DB, t *models.Title) {
 
 	names, err := d.Readdirnames(-1)
 	bhlindex.Check(err)
-	pages := make([]models.Page)
-	for i, name := range names {
+	var pages []models.Page
+	for _, name := range names {
 		if models.IsPageFile(name) {
 			id := models.PageID(name)
 			pages = append(pages, models.Page{ID: id, TitleID: t.ID})
@@ -90,17 +89,16 @@ func ImportPages(db *sql.DB, t *models.Title) {
 	savePages(db, pages)
 }
 
-func savePages(db *sql.DB, batch []models.Title) {
-	now := time.Now()
-	columns := []string{"path", "internet_archive_id", "updated_at"}
-	txn, err := db.Begin()
+func savePages(db *sql.DB, batch []models.Page) {
+	columns := []string{"id", "title_id"}
+	transaction, err := db.Begin()
 	bhlindex.Check(err)
 
-	stmt, err := txn.Prepare(pq.CopyIn("titles_tmp", columns...))
+	stmt, err := transaction.Prepare(pq.CopyIn("pages", columns...))
 	bhlindex.Check(err)
 
-	for _, t := range batch {
-		_, err = stmt.Exec(t.Path, t.InternetArchiveID, now)
+	for _, p := range batch {
+		_, err = stmt.Exec(p.ID, p.TitleID)
 		bhlindex.Check(err)
 	}
 
@@ -116,6 +114,6 @@ and start with empty database.
 	err = stmt.Close()
 	bhlindex.Check(err)
 
-	err = txn.Commit()
+	err = transaction.Commit()
 	bhlindex.Check(err)
 }
