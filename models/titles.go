@@ -33,8 +33,8 @@ func (c *Content) Concatenate(ps []Page, path string) {
 	c.Pages = ps
 	var text []byte
 	offset := 0
-	for _, p := range c.Pages {
-		p.Offset = offset
+	for i, p := range c.Pages {
+		c.Pages[i].Offset = offset
 		f := fmt.Sprintf("%s/%s.txt", path, p.ID)
 		pageText, err := ioutil.ReadFile(f)
 		bhlindex.Check(err)
