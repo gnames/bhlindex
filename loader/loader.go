@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"sync"
 
@@ -79,18 +80,30 @@ func ImportPages(db *sql.DB, t *models.Title) {
 
 	names, err := d.Readdirnames(-1)
 	bhlindex.Check(err)
-	var pages []models.Page
+	var pageIDs []string
 	for _, name := range names {
 		if models.IsPageFile(name) {
 			id := models.PageID(name)
-			pages = append(pages, models.Page{ID: id, TitleID: t.ID})
+			pageIDs = append(pageIDs, id)
 		}
 	}
-	savePages(db, pages)
+	pages := generatePages(pageIDs, t.ID)
+	t.Content.Concatenate(pages, t.Path)
+	savePages(db, t)
 }
 
-func savePages(db *sql.DB, batch []models.Page) {
-	columns := []string{"id", "title_id"}
+func generatePages(pageIDs []string, titleID int) []models.Page {
+	pages := make([]models.Page, len(pageIDs))
+	sort.Strings(pageIDs)
+	for i, v := range pageIDs {
+		pages[i] = models.Page{ID: v, TitleID: titleID}
+	}
+	return pages
+}
+
+func savePages(db *sql.DB, t *models.Title) {
+	batch := t.Content.Pages
+	columns := []string{"id", "title_id", "page_offset"}
 	transaction, err := db.Begin()
 	bhlindex.Check(err)
 
@@ -98,7 +111,7 @@ func savePages(db *sql.DB, batch []models.Page) {
 	bhlindex.Check(err)
 
 	for _, p := range batch {
-		_, err = stmt.Exec(p.ID, p.TitleID)
+		_, err = stmt.Exec(p.ID, p.TitleID, p.Offset)
 		bhlindex.Check(err)
 	}
 

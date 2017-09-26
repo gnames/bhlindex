@@ -3,10 +3,28 @@ package models
 import (
 	"database/sql"
 	"fmt"
+	"time"
 
 	"github.com/GlobalNamesArchitecture/bhlindex"
 	"github.com/lib/pq"
 )
+
+// NameFinder interface determines behavior of scientific name finders
+type NameFinder interface {
+	FindNames(title *Title) ([]DetectedName, error)
+}
+
+// DetectedName helds information about a name-string returned by a
+// name-finder.
+type DetectedName struct {
+	PageID       string
+	NameString   string
+	NameID       int
+	OffsetStart  int
+	OffsetEnd    int
+	EndsNextPage bool
+	UpdatedAt    time.Time
+}
 
 // Count returns number of rows in a table
 func Count(db *sql.DB, table string) int {

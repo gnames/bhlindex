@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/GlobalNamesArchitecture/bhlindex"
@@ -33,6 +34,7 @@ Usage:
 }
 
 func makeIndex() {
+	log.Println("Processing titles...")
 	db, err := bhlindex.DbInit()
 	defer func() {
 		e := db.Close()
@@ -40,6 +42,5 @@ func makeIndex() {
 	}()
 	bhlindex.Check(err)
 
-	fmt.Println("Importing titles into the database...")
 	finder.ProcessTitles(db)
 }

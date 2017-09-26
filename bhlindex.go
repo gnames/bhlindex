@@ -5,15 +5,9 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"time"
 
 	uuid "github.com/satori/go.uuid"
 )
-
-// NameFinder interface determines behavior of scientific name finders
-type NameFinder interface {
-	FindNames(text []byte) ([]DetectedName, error)
-}
 
 // Env is a collection of environment variables.
 type Env struct {
@@ -21,18 +15,6 @@ type Env struct {
 	DbUser string
 	Db     string
 	BHLDir string
-}
-
-// DetectedName helds information about a name-string returned by a
-// name-finder.
-type DetectedName struct {
-	PageID       string
-	NameString   string
-	NameID       int
-	OffsetStart  int
-	OffsetEnd    int
-	EndsNextPage bool
-	UpdatedAt    time.Time
 }
 
 // Check handles error checking, and panicks if error is not nil.

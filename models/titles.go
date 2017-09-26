@@ -2,6 +2,8 @@ package models
 
 import (
 	"database/sql"
+	"fmt"
+	"io/ioutil"
 	"time"
 
 	"github.com/GlobalNamesArchitecture/bhlindex"
@@ -19,6 +21,28 @@ type Title struct {
 	Language          string
 	EnglishDetected   bool
 	UpdatedAt         time.Time
+	Content           Content
+}
+
+type Content struct {
+	Pages []Page
+	Text  []byte
+}
+
+func (c *Content) Concatenate(ps []Page, path string) {
+	c.Pages = ps
+	var text []byte
+	offset := 0
+	for _, p := range c.Pages {
+		p.Offset = offset
+		f := fmt.Sprintf("%s/%s.txt", path, p.ID)
+		pageText, err := ioutil.ReadFile(f)
+		bhlindex.Check(err)
+		text = append(text, pageText...)
+		pageUTF := []rune(string(pageText))
+		offset += len(pageUTF)
+	}
+	c.Text = text
 }
 
 // Insert add data from a title to bhlindex database and returns newly
@@ -54,7 +78,7 @@ func TitleFind(db *sql.DB, id int) Title {
 		&updatedAt)
 	bhlindex.Check(err)
 	title := Title{id, path, internetArchiveID, gnrdURL.String,
-		status, language.String, englishDetected, updatedAt}
+		status, language.String, englishDetected, updatedAt, Content{}}
 	return title
 }
 
