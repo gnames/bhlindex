@@ -7,6 +7,7 @@ import (
 
 	"github.com/GlobalNamesArchitecture/bhlindex"
 	"github.com/GlobalNamesArchitecture/bhlindex/finder"
+	"github.com/GlobalNamesArchitecture/gnfinder"
 )
 
 var githash = "n/a"
@@ -36,11 +37,12 @@ Usage:
 func makeIndex() {
 	log.Println("Processing titles...")
 	db, err := bhlindex.DbInit()
+	dict := gnfinder.LoadDictionary()
 	defer func() {
 		e := db.Close()
 		bhlindex.Check(e)
 	}()
 	bhlindex.Check(err)
 
-	finder.ProcessTitles(db)
+	finder.ProcessTitles(db, &dict)
 }

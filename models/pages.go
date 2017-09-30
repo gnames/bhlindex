@@ -6,9 +6,10 @@ import "path/filepath"
 // is id of the parent title, Offset, number of runes the page is away from
 // the start of the text.
 type Page struct {
-	ID      string
-	TitleID int
-	Offset  int
+	ID         string
+	TitleID    int
+	Offset     int
+	OffsetNext int
 }
 
 func IsPageFile(f string) bool {

@@ -15,6 +15,7 @@ type PageTest struct {
 
 var _ = BeforeEach(func() {
 	models.Truncate(db, "titles")
+	models.Truncate(db, "pages")
 })
 
 var _ = Describe("Models", func() {

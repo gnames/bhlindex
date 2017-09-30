@@ -2,7 +2,6 @@ CREATE TABLE titles (
     id serial NOT NULL,
     path character varying(255) NOT NULL,
     internet_archive_id character varying(255) NOT NULL,
-    gnrd_url character varying(255),
     status integer NOT NULL DEFAULT 0,
     language character varying(100),
     english_detected boolean NOT NULL DEFAULT false,

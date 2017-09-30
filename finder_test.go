@@ -15,7 +15,7 @@ var _ = BeforeEach(func() {
 var _ = Describe("Finder", func() {
 	Describe("ProcessTitles()", func() {
 		It("imports pages to db", func() {
-			finder.ProcessTitles(db)
+			finder.ProcessTitles(db, dict)
 			Expect(models.Count(db, "pages")).To(Equal(6234))
 		})
 	})

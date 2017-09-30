@@ -9,6 +9,7 @@ import (
 
 var _ = BeforeEach(func() {
 	models.Truncate(db, "titles")
+	models.Truncate(db, "pages")
 })
 
 var _ = Describe("Loader", func() {

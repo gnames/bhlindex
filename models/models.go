@@ -6,13 +6,9 @@ import (
 	"time"
 
 	"github.com/GlobalNamesArchitecture/bhlindex"
+	"github.com/GlobalNamesArchitecture/gnfinder"
 	"github.com/lib/pq"
 )
-
-// NameFinder interface determines behavior of scientific name finders
-type NameFinder interface {
-	FindNames(title *Title) ([]DetectedName, error)
-}
 
 // DetectedName helds information about a name-string returned by a
 // name-finder.
@@ -24,6 +20,27 @@ type DetectedName struct {
 	OffsetEnd    int
 	EndsNextPage bool
 	UpdatedAt    time.Time
+}
+
+func NewDetectedName(p Page, n gnfinder.Name) DetectedName {
+	var endsNextPage bool
+	var end int
+	start := n.OffsetStart - p.Offset
+	if n.OffsetEnd < p.OffsetNext {
+		end = n.OffsetEnd - p.Offset
+	} else {
+		end = n.OffsetEnd - p.OffsetNext
+		endsNextPage = true
+	}
+	dn := DetectedName{
+		PageID:       p.ID,
+		NameString:   n.ScientificName,
+		OffsetStart:  start,
+		OffsetEnd:    end,
+		EndsNextPage: endsNextPage,
+		UpdatedAt:    time.Now(),
+	}
+	return dn
 }
 
 // Count returns number of rows in a table

@@ -4,6 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/GlobalNamesArchitecture/bhlindex"
+	"github.com/GlobalNamesArchitecture/gnfinder"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
@@ -18,11 +19,14 @@ func TestBhlindex(t *testing.T) {
 }
 
 var db *sql.DB
+var dict *gnfinder.Dictionary
 
 var _ = BeforeSuite(func() {
 	var err error
 	db, err = bhlindex.DbInit()
 	Expect(err).NotTo(HaveOccurred())
+	d := gnfinder.LoadDictionary()
+	dict = &d
 })
 
 var _ = AfterSuite(func() {
