@@ -5,16 +5,18 @@ in Biodiversity Heritage Library
 
 ## Usage
 
+*NOTE*: This is not a Dev release.
+
 ### Mac OSX
 
 * Download [bhlindex release for mac][bhlindex-mac].
-* Untar the file go to `script` directory and read README.md file.
+* Untar the file go to `script` directory and [read instructions][readme].
 * Use [bhl testdata][bhl-test] for testing.
 
 ### Linux
 
 * Download [bhlindex release for linux][bhlindex-linux]
-* Untar the file go to `script` directory and read README.md file
+* Untar the file go to `script` directory and [read instructions][readme].
 * Use [bhl testdata][bhl-test] for testing.
 
 ## Database Migrations
@@ -59,3 +61,4 @@ drop
 [bhlindex-mac]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-mac.tar.gz
 [bhlindex-linux]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-linux.tar.gz
 [bhl-test]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhl-testdata.tar.gz
+[readme]: https://github.com/gnames/bhlindex/tree/master/scripts
