@@ -5,7 +5,7 @@ in Biodiversity Heritage Library
 
 ## Usage
 
-*NOTE*: This is not a Dev release.
+*NOTE*: This is a Dev release.
 
 ### Mac OSX
 
