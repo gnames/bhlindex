@@ -4,7 +4,7 @@ services:
     build:
       context: .
     volumes:
-      - .:/go/src/github.com/GlobalNamesArchitecture/bhlindex/
+      - .:/go/src/github.com/gnames/bhlindex/
     container_name: bhlindex
     depends_on:
       - pg

@@ -3,7 +3,7 @@ package bhlindex_test
 import (
 	"errors"
 
-	"github.com/GlobalNamesArchitecture/bhlindex"
+	"github.com/gnames/bhlindex"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

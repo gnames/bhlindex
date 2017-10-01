@@ -3,8 +3,8 @@ package bhlindex_test
 import (
 	"database/sql"
 
-	"github.com/GlobalNamesArchitecture/bhlindex"
-	"github.com/GlobalNamesArchitecture/gnfinder"
+	"github.com/gnames/bhlindex"
+	"github.com/gnames/gnfinder"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 

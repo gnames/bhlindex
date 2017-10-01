@@ -9,8 +9,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/GlobalNamesArchitecture/bhlindex"
-	"github.com/GlobalNamesArchitecture/bhlindex/models"
+	"github.com/gnames/bhlindex"
+	"github.com/gnames/bhlindex/models"
 	"github.com/lib/pq"
 )
 

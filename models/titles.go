@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"time"
 
-	"github.com/GlobalNamesArchitecture/bhlindex"
-	"github.com/GlobalNamesArchitecture/gnfinder"
+	"github.com/gnames/bhlindex"
+	"github.com/gnames/gnfinder"
 )
 
 // Title respresents BHL title data. Title in BHL can be a book, a journal etc.

@@ -6,10 +6,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/GlobalNamesArchitecture/bhlindex"
-	"github.com/GlobalNamesArchitecture/bhlindex/loader"
-	"github.com/GlobalNamesArchitecture/bhlindex/models"
-	"github.com/GlobalNamesArchitecture/gnfinder"
+	"github.com/gnames/bhlindex"
+	"github.com/gnames/bhlindex/loader"
+	"github.com/gnames/bhlindex/models"
+	"github.com/gnames/gnfinder"
 	"github.com/lib/pq"
 )
 

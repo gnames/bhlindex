@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/GlobalNamesArchitecture/bhlindex"
-	"github.com/GlobalNamesArchitecture/gnfinder"
+	"github.com/gnames/bhlindex"
+	"github.com/gnames/gnfinder"
 	"github.com/lib/pq"
 )
 

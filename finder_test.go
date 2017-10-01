@@ -1,8 +1,8 @@
 package bhlindex_test
 
 import (
-	"github.com/GlobalNamesArchitecture/bhlindex/finder"
-	"github.com/GlobalNamesArchitecture/bhlindex/models"
+	"github.com/gnames/bhlindex/finder"
+	"github.com/gnames/bhlindex/models"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

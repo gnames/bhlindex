@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/GlobalNamesArchitecture/bhlindex"
-	"github.com/GlobalNamesArchitecture/bhlindex/finder"
-	"github.com/GlobalNamesArchitecture/gnfinder"
+	"github.com/gnames/bhlindex"
+	"github.com/gnames/bhlindex/finder"
+	"github.com/gnames/gnfinder"
 )
 
 var githash = "n/a"
