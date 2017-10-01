@@ -1,15 +1,15 @@
 # Biodiversity Heritage Library Indexing Tool binary release.
 
 Files in this directory contain binary a release of bhlindex tool to
-run reindexing of scientific names that occure on >50 million pages collected
+run reindexing of scientific names that occur on >50 million pages collected
 by Biodiversity Heritage Library (http://bhl.org)
 
 ## Requirements
 
-1. Laptop or server with >= 8GB of sytem memory and 500GB of free disk space.
+1. Laptop or server with >= 8GB of system memory and 500GB of free disk space.
    SSD storage is recommended.
 
-2. Empty postgresql with a user that is able to creaate new databases.
+2. Empty postgresql with a user that is able to create new databases.
 
 3. Biodiversity Heritage Library textual files. For testing purposes use files
    located at [testdata directory of this project][testdata]
