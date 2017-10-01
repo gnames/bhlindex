@@ -1,4 +1,4 @@
-#BHL Index
+# Biodiversity Heritage Library Scientific Names Index
 
 Creates an index of scientific names occuring in the collection of literature
 in Biodiversity Heritage Library
@@ -55,4 +55,4 @@ drop
 : nuke database
 
 [bhlindex-mac]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-mac.tar.gz
-[bhlindex-mac]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-linux.tar.gz
+[bhlindex-linux]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-linux.tar.gz
