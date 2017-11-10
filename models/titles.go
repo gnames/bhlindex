@@ -69,7 +69,7 @@ INSERT INTO titles
 
 func (t *Title) FindNames(d *gnfinder.Dictionary) []DetectedName {
 	text := []rune(string(t.Content.Text))
-	names := gnfinder.FindNames(text, d)
+	names, _ := gnfinder.FindNames(text, d)
 	detectedNames := namesToDetectedNames(t, names)
 	return detectedNames
 }
