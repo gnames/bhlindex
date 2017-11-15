@@ -69,8 +69,8 @@ INSERT INTO titles
 
 func (t *Title) FindNames(d *gnfinder.Dictionary) []DetectedName {
 	text := []rune(string(t.Content.Text))
-	names, _ := gnfinder.FindNames(text, d)
-	detectedNames := namesToDetectedNames(t, names)
+	output := gnfinder.FindNames(text, d)
+	detectedNames := namesToDetectedNames(t, output.Names)
 	return detectedNames
 }
 
@@ -90,7 +90,7 @@ func TitleFind(db *sql.DB, id int) Title {
 	return title
 }
 
-func namesToDetectedNames(t *Title, names []gnfinder.Name) []DetectedName {
+func namesToDetectedNames(t *Title, names []gnfinder.NameJSON) []DetectedName {
 	ns := make([]DetectedName, len(names))
 	j := 0
 	if j >= len(names) {
