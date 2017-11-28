@@ -90,7 +90,7 @@ func TitleFind(db *sql.DB, id int) Title {
 	return title
 }
 
-func namesToDetectedNames(t *Title, names []gnfinder.NameJSON) []DetectedName {
+func namesToDetectedNames(t *Title, names []gnfinder.Name) []DetectedName {
 	ns := make([]DetectedName, len(names))
 	j := 0
 	if j >= len(names) {

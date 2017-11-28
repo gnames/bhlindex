@@ -22,7 +22,7 @@ type DetectedName struct {
 	UpdatedAt    time.Time
 }
 
-func NewDetectedName(p Page, n gnfinder.NameJSON) DetectedName {
+func NewDetectedName(p Page, n gnfinder.Name) DetectedName {
 	var endsNextPage bool
 	var end int
 	start := n.OffsetStart - p.Offset
