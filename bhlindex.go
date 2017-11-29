@@ -11,11 +11,10 @@ import (
 
 // Env is a collection of environment variables.
 type Env struct {
-	DbHost  string
-	DbUser  string
-	Db      string
-	BHLDir  string
-	DictDir string
+	DbHost string
+	DbUser string
+	Db     string
+	BHLDir string
 }
 
 // Check handles error checking, and panicks if error is not nil.
@@ -28,8 +27,8 @@ func Check(err error) {
 // EnvVars imports all environment variables relevant for the data conversion.
 func EnvVars() Env {
 	emptyEnvs := make([]string, 0, 4)
-	envVars := [5]string{"POSTGRES_HOST", "POSTGRES_USER", "POSTGRES_DB",
-		"BHL_DIR", "DICTIONARY_DIR"}
+	envVars := [4]string{"POSTGRES_HOST", "POSTGRES_USER", "POSTGRES_DB",
+		"BHL_DIR"}
 	for i, v := range envVars {
 		val, ok := os.LookupEnv(v)
 		if ok {
@@ -43,7 +42,7 @@ func EnvVars() Env {
 		panic(fmt.Errorf("Environment variables %s are not defined", envs))
 	}
 	return Env{DbHost: envVars[0], DbUser: envVars[1], Db: envVars[2],
-		BHLDir: envVars[3], DictDir: envVars[4]}
+		BHLDir: envVars[3]}
 }
 
 // UUID4 returns random (version 4) UUID as a string.

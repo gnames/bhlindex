@@ -10,14 +10,14 @@ function drop_data {
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     echo "Removing old data from the database"
-    migrate -database postgres://${POSTGRES_USER}@${POSTGRES_HOST}:5432/${POSTGRES_DB}?sslmode=disable -path ${dir}/db drop
+    ${dir}/migrate -database postgres://${POSTGRES_USER}@${POSTGRES_HOST}:5432/${POSTGRES_DB}?sslmode=disable -path ${dir}/db drop
   fi
 
 }
 
 function production {
   drop_data
-  migrate -database postgres://${POSTGRES_USER}@${POSTGRES_HOST}:5432/${POSTGRES_DB}?sslmode=disable -path ${dir}/db up
+  ${dir}/migrate -database postgres://${POSTGRES_USER}@${POSTGRES_HOST}:5432/${POSTGRES_DB}?sslmode=disable -path ${dir}/db up
   echo "You updated the schema for ${POSTGRES_DB}"
   time ${dir}/bhlindex index
 }

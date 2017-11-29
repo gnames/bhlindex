@@ -1,8 +1,8 @@
 # Biodiversity Heritage Library Indexing Tool binary release.
 
-Files in this directory contain binary a release of bhlindex tool to
-run reindexing of scientific names that occur on >50 million pages collected
-by Biodiversity Heritage Library (http://bhl.org)
+Files in this directory contain binary release of bhlindex tool. The bhlindex
+tool finds and records scientific names occuring on >50 million pages
+collected by Biodiversity Heritage Library (http://bhl.org)
 
 ## Requirements
 
@@ -15,9 +15,31 @@ by Biodiversity Heritage Library (http://bhl.org)
    located at [testdata directory of this project][testdata]
 
 4. You have to setup environment variables that configure access to BHL files
-   and the database server. The variable with the values for development
-   environment can be found at [.env.dev file][env]. Password for the Postgres
-   user should either be empty, or setup using [`.pgpass` file][pgpass].
+   and the database server.
+
+`POSTGRES_DB`
+: Database created for bhlindex
+
+`POSTGRES_HOST`
+: IP address or hostname where Potgresql database is installed
+
+`POSTGRES_USER`
+: user that has an access to the POSTGRES_DB
+
+`BHL_DIR`
+: root of BHL directory that contains `$BHL_DIR`/ocr/bhl1, `$BHL_DIR`/ocr/bhl2 etc.
+
+
+   The variable with the values for development
+   environment can be found at [.env.dev file][env]. To export the variables
+   into bash or zsh:
+
+   ```
+   source .env.dev
+   ```
+
+5. Password for the Postgres user should either be empty, or set via
+   [`.pgpass` file][pgpass].
 
 ## Usage
 
