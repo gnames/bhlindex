@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b1b0e27663dad275233aed270ea12f54759a8979c7cc85cfd3ab7e396e9ec682
-size 17
+Taf. XVIII 
+

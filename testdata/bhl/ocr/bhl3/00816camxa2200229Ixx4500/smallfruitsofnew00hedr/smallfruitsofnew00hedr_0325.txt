@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:10015258e08e7955600401a7bcb26eae8c33a6e718a65e61ce7e7d9e51e12fdf
-size 14
+LUCRETU 
+

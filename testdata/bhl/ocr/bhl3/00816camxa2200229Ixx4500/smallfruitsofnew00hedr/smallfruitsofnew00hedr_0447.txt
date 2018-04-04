@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1aa02449e52d8adaac0934221dcb78969a465d735019d5a529ef6e53db8ed666
-size 13
+CARRIE 
+

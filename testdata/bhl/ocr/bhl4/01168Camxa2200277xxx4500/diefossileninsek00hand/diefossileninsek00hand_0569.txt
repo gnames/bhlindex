@@ -1,3 +1,57 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e5f3e564edda0f3787bb7409a8cd5fdb0a234cec4788dc0c0e986af7d8880dbf
-size 1420
+Lias-Formation. 46 1 
+
+(Coleopteron) sp. Phillips. 
+
+Fundort: England. Lias. 
+
+(Chrysomelidae), Phillips, Geol. Oxfonl. 123. 1871. 
+
+(Coleopteron) sp. Phillips. 
+ Fundort: England. Lias. 
+
+(Buprestidae), Philüps, Geol. Oxford. 123. 1871. 
+
+(Coleopteron) sp. Phillips. 
+
+Fundort: England. Lias. 
+
+(Ciyiinus), Phillips, Geol. Oxford. 123. 1871. 
+
+(Coleopteron) sp. Phillips. 
+
+Fundort: England. Lias. 
+
+(Carabidae), Phillips, Geol. Oxford. 123. 1871. 
+
+(Coleopteron) sp. Brodie. 
+ Fundort: Browns Wood, Stoppers Wood, Arden; England. Unterer Lias. 
+
+(Coleopteron), Brodie, Lower Lias Eatington. 10. 1S75. 
+
+(Coleopteron) sp. Brodie. 
+ Fundort: Copt Heath near Knovvle, England. Unterer Lias. 
+
+(Coleopteron), Brodie, Lower Lias Eatington. 10. 1875. 
+
+(Coleopteron) sp. Brodie. 
+ Fundort: Henley in Arden, England. Unterer Lias. 
+
+Elateridae or Lampyridae, Brodie, Lower Lias Eatington. 10. 1875. 
+
+(Coleopteron) sp. Brodie. 
+
+Fundort: Westbury, England. Unterer Lias. 
+
+(Coleoptera), Brodie, Distr, corr. foss. ins. 16. 1873. 
+
+(Coleopteron) sp. Brodie. 
+
+Fundort: Dumbleton, Aldertnn. England. Oberer Lias. 
+
+(Coleoptera), Brodie, Distr. corr. foss. ins. 16. 1873. 
+
+(Coleopteron) sp. Brodie. 
+ Fundort: Wainlnde, England. Unterer Lias. 
+
+(aquatic Coleopteron), Brodie, Distr. corr. foss. ins. 16. 1873. 
+

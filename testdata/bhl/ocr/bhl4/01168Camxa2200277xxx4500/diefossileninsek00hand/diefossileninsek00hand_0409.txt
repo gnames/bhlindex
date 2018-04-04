@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d5106abb67ba1db83032d50dbb4b8f7002c7b69316b475275c7edd0ab93eb5bc
-size 16
+Tat. XIV. 
+

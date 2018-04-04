@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a3e9d9c98ff650cd9ba4aa9b1feb9a49fafb0f043d90bcddf669a503c3b50e13
-size 17
+Tat. XXXY. 
+

@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:12a2c867ce2d7092b78eda17985e50a809ee0c86ee319ba5e4f43b7315e22ec1
-size 131
+Handlirsch: Fossile Insekten. 
+
+Rezente Insekten: Schema des Kliigelgeäders (i) — Locustoidca (2— u) — Grylloiden 
+

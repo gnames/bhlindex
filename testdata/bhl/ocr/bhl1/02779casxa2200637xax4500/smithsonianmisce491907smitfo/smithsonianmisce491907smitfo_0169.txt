@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:da96b352d603e11ef40b954e26daaf7f29d03b677b18ff6bb85232a32ba57ffa
-size 335
+Smithsonian Miscellaneous Collections 
+
+PART OF VOLUME XLIX 
+
+Report on the Crustacea (Brachyura and 
+
+Anomura) Collected by the North 
+
+Pacific Exploring Expedition, 
+
+1853-1856 
+
+BY 
+
+WILLIAM STIMPSON 
+
+Xu. 17i; 
+
+CITY OF WASHINGTON 
+
+PUBLISHED BY THE SMITHSONIAN INSTITUTION 
+
+1907 
+

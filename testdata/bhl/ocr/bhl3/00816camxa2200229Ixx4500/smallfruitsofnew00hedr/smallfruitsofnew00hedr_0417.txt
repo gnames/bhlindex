@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fadb876073de95c6999e3d7651a1ad41e53ae979ed6848862c312917e748803d
-size 21
+WHITE IMPERIAL 
+

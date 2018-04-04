@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ac1c966f81382543660464849c614b9e957733d7564b7d40c5e1b3075a898cde
-size 14
+DIPLOMA 
+

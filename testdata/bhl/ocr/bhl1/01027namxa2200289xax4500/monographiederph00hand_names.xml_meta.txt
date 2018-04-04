@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bae73ecc869a9d8e144dd2f5b6295c9e524bfd01b088fbb794a0e0abca87f8f6
-size 277
+ETag: "21a084fddce3b5d4a662751186dad958"
+authorization: LOW Qd6g6736J6JP2ORi:REDACTED_BY_IA_S3
+connection: close
+content-length: 391426
+content-type: application/xml
+expect: 100-continue
+host: s3.us.archive.org
+x-archive-queue-derive: 0
+x-upload-date: 2013-05-24T08:54:35.000Z

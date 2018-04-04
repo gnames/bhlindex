@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c524c8a45ce9f6e41dbd39200d10e43e55b7b8a627cd196a3b41f35be66edb77
-size 19
+PARKER EARLE 
+

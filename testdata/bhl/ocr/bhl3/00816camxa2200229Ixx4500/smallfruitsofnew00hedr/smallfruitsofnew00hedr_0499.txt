@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:de64deb43e5bdf50f22d54593f7f4918c53aacfa0488e028f75e8150eaf656cd
-size 18
+WHITE EAGLE 
+

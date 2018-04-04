@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:df5c144c69ed61f7697e13525e64a628634907d39a4c901bfb32647071384f8f
-size 148
+A. Handlirsch. Monographie der Phymatiden. 
+
+Taf. VIII. 
+
+Autor delin. 
+
+Annalen des k. k. naturbist, liofmuseums, Band XII, 1897 
+

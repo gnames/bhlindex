@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:10b78e1b4f8884c3ff69b0062dfd96a5d29ae17ccadfd6877c478a0d0bdce3b0
-size 95
+Handlirsch: Fossile Insekten. 
+ ^ 1 
+
+Carbon-Insekten: Palaeodictyoptera (1—30). 
+

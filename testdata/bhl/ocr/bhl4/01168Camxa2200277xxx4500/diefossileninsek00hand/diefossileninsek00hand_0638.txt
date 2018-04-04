@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:89079d733d21ea40722f1eb9ab598586a7a5ed5c6fdf834805c6fa62562411af
-size 82
+Handlirsch: Fossile Insekten. 
+
+Carbon-Insekten: Blattoidea (i — 33). 
+

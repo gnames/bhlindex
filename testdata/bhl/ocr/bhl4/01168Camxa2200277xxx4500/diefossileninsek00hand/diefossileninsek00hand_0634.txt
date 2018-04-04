@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a0048919886061f5c536773047ec951403df65e566beff2cd7769bace1c27a6e
-size 81
+llandlirsch: Fossile Insekten. 
+
+Carbon-Insekten: Blattoidea ([—39). 
+

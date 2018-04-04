@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bc3898716caa995c8228810b4c96b341c9277ab828beafd119e59c60c9478bcd
-size 13
+CAYUGA 
+

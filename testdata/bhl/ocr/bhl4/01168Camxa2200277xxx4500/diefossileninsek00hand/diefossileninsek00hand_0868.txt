@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6d4cbd03dfed6a0f438e3512d0ad925f03133ef05ebd867b8e06e3dcd7e3fb9d
-size 78
+Handlirsch: Fossile Insekten. 
+
+Perm-Insekten: Blattoidea (1—58). 
+

@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:93920e146ca5e2be31fa8a81d413b430eda653bdda740a3cab1803689999fc84
-size 17
+CHAUTAUQUA 
+

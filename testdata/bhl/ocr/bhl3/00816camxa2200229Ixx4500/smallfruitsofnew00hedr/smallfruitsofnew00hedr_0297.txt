@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:21fc6b331faf7cb7e0fb724531c61c93f2114d2c5fe4577c20213055197a17ae
-size 17
+KITTATINNY 
+

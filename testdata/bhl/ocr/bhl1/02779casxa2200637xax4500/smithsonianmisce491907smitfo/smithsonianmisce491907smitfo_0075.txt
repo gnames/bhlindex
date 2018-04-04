@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:aee664f6efbe222f44812c33c97750898fd92a1c4319ff9c388f2d9800eb3bc3
-size 259
+SMITHSONIAN EXPLORATION IN ALASKA 
+
+From plate in Beechey's Narrative. 
+
+I. Cape Smyth, Arctic Coast of Alaska, showing a deposit of snowdrift ice. 
+
+2. Reproduction of Kotzebue's Plate illustrating the Ice Formation on 
+ Eschscholtz Bay. 
+

@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f0c7a6f7556614fa5edd8404f0ff83d36e40c8593fc7c16e413d8a756aabe632
-size 13
+SNYDER 
+
