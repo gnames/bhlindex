@@ -1,6 +1,6 @@
-FROM golang:1.9
+FROM golang:1.10
 
-ENV LAST_FULL_REBUILD 2017-10-01
+ENV LAST_FULL_REBUILD 2018-06-14
 
 RUN go get github.com/onsi/ginkgo/ginkgo
 RUN go get github.com/onsi/gomega
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get -yq install postgresql-client
 WORKDIR /go/src/github.com/gnames/bhlindex
 COPY . .
 
-RUN go-wrapper download   # "go get -d -v ./..."
-RUN go-wrapper install    # "go install -v ./..."
+# RUN go-wrapper download   # "go get -d -v ./..."
+# RUN go-wrapper install    # "go install -v ./..."
 
 ENTRYPOINT scripts/development.sh

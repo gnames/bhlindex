@@ -1,6 +1,7 @@
 version: '2'
 services:
   app:
+    env_file: ./.env
     build:
       context: .
     volumes:
@@ -8,7 +9,6 @@ services:
     container_name: bhlindex
     depends_on:
       - pg
-    env_file: ./.env
   pg:
     image: postgres
     volumes:

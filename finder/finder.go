@@ -9,11 +9,11 @@ import (
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/bhlindex/loader"
 	"github.com/gnames/bhlindex/models"
-	"github.com/gnames/gnfinder"
+	"github.com/gnames/gnfinder/dict"
 	"github.com/lib/pq"
 )
 
-func ProcessTitles(db *sql.DB, d *gnfinder.Dictionary) {
+func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 	titleIDs := make(chan int)
 	findQueue := make(chan *models.Title)
 	counter := make(chan int)
@@ -88,7 +88,7 @@ and start with empty database.
 }
 
 func finderWorker(wg *sync.WaitGroup, findQueue <-chan *models.Title,
-	results chan<- []models.DetectedName, d *gnfinder.Dictionary) {
+	results chan<- []models.DetectedName, d *dict.Dictionary) {
 	defer wg.Done()
 	for t := range findQueue {
 		results <- t.FindNames(d)

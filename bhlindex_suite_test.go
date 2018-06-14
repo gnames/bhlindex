@@ -4,7 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/gnames/bhlindex"
-	"github.com/gnames/gnfinder"
+	dictionary "github.com/gnames/gnfinder/dict"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
@@ -19,13 +19,13 @@ func TestBhlindex(t *testing.T) {
 }
 
 var db *sql.DB
-var dict *gnfinder.Dictionary
+var dict *dictionary.Dictionary
 
 var _ = BeforeSuite(func() {
 	var err error
 	db, err = bhlindex.DbInit()
 	Expect(err).NotTo(HaveOccurred())
-	d := gnfinder.LoadDictionary()
+	d := dictionary.LoadDictionary()
 	dict = &d
 })
 

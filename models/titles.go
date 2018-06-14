@@ -8,6 +8,7 @@ import (
 
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/gnfinder"
+	"github.com/gnames/gnfinder/dict"
 )
 
 // Title respresents BHL title data. Title in BHL can be a book, a journal etc.
@@ -67,7 +68,7 @@ INSERT INTO titles
 	return id
 }
 
-func (t *Title) FindNames(d *gnfinder.Dictionary) []DetectedName {
+func (t *Title) FindNames(d *dict.Dictionary) []DetectedName {
 	text := []rune(string(t.Content.Text))
 	output := gnfinder.FindNames(text, d)
 	detectedNames := namesToDetectedNames(t, output.Names)
