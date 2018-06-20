@@ -58,6 +58,17 @@ down [N]
 drop
 : nuke database
 
+### Testing
+
+```
+docker-compose build
+docker-compose up
+```
+
+To update all dependencies change LAST_FULL_REBUILD line in Docker file and
+return `docker-compose build`
+
+
 [bhlindex-mac]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-mac.tar.gz
 [bhlindex-linux]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-linux.tar.gz
 [bhl-test]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhl-testdata.tar.gz
