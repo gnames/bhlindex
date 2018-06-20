@@ -19,6 +19,8 @@ type DetectedName struct {
 	OffsetStart  int
 	OffsetEnd    int
 	EndsNextPage bool
+	Odds         float64
+	Kind         string
 	UpdatedAt    time.Time
 }
 
@@ -38,6 +40,8 @@ func NewDetectedName(p Page, n gnfinder.Name) DetectedName {
 		OffsetStart:  start,
 		OffsetEnd:    end,
 		EndsNextPage: endsNextPage,
+		Odds:         n.Odds,
+		Kind:         n.Type,
 		UpdatedAt:    time.Now(),
 	}
 	return dn

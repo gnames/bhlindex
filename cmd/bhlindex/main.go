@@ -7,7 +7,7 @@ import (
 
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/bhlindex/finder"
-	"github.com/gnames/gnfinder"
+	dictionary "github.com/gnames/gnfinder/dict"
 )
 
 var githash = "n/a"
@@ -37,7 +37,7 @@ Usage:
 func makeIndex() {
 	log.Println("Processing titles...")
 	db, err := bhlindex.DbInit()
-	dict := gnfinder.LoadDictionary()
+	dict := dictionary.LoadDictionary()
 	defer func() {
 		e := db.Close()
 		bhlindex.Check(e)

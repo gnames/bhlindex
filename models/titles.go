@@ -9,6 +9,7 @@ import (
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/gnfinder"
 	"github.com/gnames/gnfinder/dict"
+	gfutil "github.com/gnames/gnfinder/util"
 )
 
 // Title respresents BHL title data. Title in BHL can be a book, a journal etc.
@@ -70,7 +71,7 @@ INSERT INTO titles
 
 func (t *Title) FindNames(d *dict.Dictionary) []DetectedName {
 	text := []rune(string(t.Content.Text))
-	output := gnfinder.FindNames(text, d)
+	output := gnfinder.FindNames(text, d, gfutil.WithBayes(true))
 	detectedNames := namesToDetectedNames(t, output.Names)
 	return detectedNames
 }

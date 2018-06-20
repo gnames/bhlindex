@@ -22,8 +22,8 @@ var _ = Describe("Loader", func() {
 			for _ = range c {
 				count += 1
 			}
-			// There are 14 titles total.
-			Expect(count).To(Equal(14))
+			// There are 20 titles total.
+			Expect(count).To(Equal(20))
 		})
 	})
 
@@ -35,7 +35,7 @@ var _ = Describe("Loader", func() {
 				}
 			}()
 			loader.ImportTitles(db, titlesChan)
-			Expect(models.Count(db, "titles")).To(Equal(14))
+			Expect(models.Count(db, "titles")).To(Equal(20))
 		})
 	})
 })
