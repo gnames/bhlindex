@@ -8,7 +8,7 @@
 - Add: gnfinder support for Bayes searches
 - Update: tests to pass again
 - Update: to changes in dependencies
-- Remove: `*.txt` files from lfs
+- Remove: `*.txt` files from `git lfs`
 
 ## [v0.2.0]
 

@@ -1,6 +1,6 @@
 FROM golang:1.10
 
-ENV LAST_FULL_REBUILD 2018-06-20
+ENV LAST_FULL_REBUILD 2018-06-26
 
 RUN go get github.com/onsi/ginkgo/ginkgo
 RUN go get github.com/onsi/gomega

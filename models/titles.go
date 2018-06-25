@@ -71,7 +71,8 @@ INSERT INTO titles
 
 func (t *Title) FindNames(d *dict.Dictionary) []DetectedName {
 	text := []rune(string(t.Content.Text))
-	output := gnfinder.FindNames(text, d, gfutil.WithBayes(true))
+	m := gfutil.NewModel(gfutil.WithBayes(true))
+	output := gnfinder.FindNames(text, d, m)
 	detectedNames := namesToDetectedNames(t, output.Names)
 	return detectedNames
 }

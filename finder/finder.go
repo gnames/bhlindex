@@ -3,6 +3,7 @@ package finder
 import (
 	"database/sql"
 	"log"
+	"runtime"
 	"sync"
 	"time"
 
@@ -18,6 +19,8 @@ func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 	findQueue := make(chan *models.Title)
 	counter := make(chan int)
 	results := make(chan []models.DetectedName)
+	verify := make(chan []models.DetectedName)
+	workersNum := runtime.NumCPU()
 	var wgLoad sync.WaitGroup
 	var wgFind sync.WaitGroup
 	var wgFinish sync.WaitGroup
@@ -29,13 +32,14 @@ func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 		go titleWorker(db, &wgLoad, titleIDs, findQueue, counter)
 	}
 
-	for i := 1; i <= 30; i++ {
+	for i := 1; i <= workersNum; i++ {
 		wgFind.Add(1)
 		go finderWorker(&wgFind, findQueue, results, d)
 	}
 
-	wgFinish.Add(1)
-	go saveFoundNames(db, &wgFinish, results)
+	wgFinish.Add(2)
+	go saveFoundNames(db, &wgFinish, results, verify)
+	go Verify(db, verify, &wgFinish)
 
 	loader.ImportTitles(db, titleIDs)
 
@@ -48,11 +52,13 @@ func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 }
 
 func saveFoundNames(db *sql.DB, wg *sync.WaitGroup,
-	results <-chan []models.DetectedName) {
+	results <-chan []models.DetectedName, verify chan<- []models.DetectedName) {
 	defer wg.Done()
 	for v := range results {
+		verify <- v
 		savePageNameStrings(db, v)
 	}
+	close(verify)
 }
 
 func savePageNameStrings(db *sql.DB, names []models.DetectedName) {
@@ -75,8 +81,7 @@ func savePageNameStrings(db *sql.DB, names []models.DetectedName) {
 	if err != nil {
 		log.Println(`
 Bulk import of titles data failed, probably you need to empty all data
-and start with empty database.
-`)
+and start with empty database.`)
 		log.Fatal(err)
 	}
 
@@ -120,14 +125,14 @@ func CreateOrSelectName(db *sql.DB, name string) int {
 	var id int
 	q := `
 WITH new_row AS (
-	INSERT INTO name_strings (name)
-		SELECT CAST($1 AS VARCHAR)
-			WHERE NOT EXISTS (SELECT * FROM name_strings WHERE name = $1)
-				RETURNING id
-	)
-	SELECT id FROM new_row
-	 	UNION
-	SELECT id FROM name_strings WHERE name = $1
+  INSERT INTO name_strings (name)
+    SELECT CAST($1 AS VARCHAR)
+      WHERE NOT EXISTS (SELECT * FROM name_strings WHERE name = $1)
+        RETURNING id
+  )
+  SELECT id FROM new_row
+     UNION
+  SELECT id FROM name_strings WHERE name = $1
 `
 	err := db.QueryRow(q, &name).Scan(&id)
 	bhlindex.Check(err)
