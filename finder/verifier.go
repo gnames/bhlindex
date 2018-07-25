@@ -22,7 +22,6 @@ var (
 func Verify(db *sql.DB, foundNames <-chan []models.DetectedName,
 	wg *sync.WaitGroup) {
 	m := gfutil.NewModel()
-	m.Workers = 15
 	resChan := make(chan []string)
 	defer wg.Done()
 
