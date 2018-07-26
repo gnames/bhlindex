@@ -14,8 +14,7 @@ type PageTest struct {
 }
 
 var _ = BeforeEach(func() {
-	models.Truncate(db, "titles")
-	models.Truncate(db, "pages")
+	truncateAll()
 })
 
 var _ = Describe("Models", func() {

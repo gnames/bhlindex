@@ -22,7 +22,7 @@ function development {
   touch_bhlindex_db
   migrate -database postgres://${POSTGRES_USER}@${POSTGRES_HOST}:5432/${POSTGRES_DB}?sslmode=disable -path ${dir}/db drop
   migrate -database postgres://${POSTGRES_USER}@${POSTGRES_HOST}:5432/${POSTGRES_DB}?sslmode=disable -path ${dir}/db up
-  ginkgo watch
+  ginkgo watch -v
 }
 
 

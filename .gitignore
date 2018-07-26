@@ -1,6 +1,4 @@
 .env
-scripts/bhlindex
-scripts/migrate
-scripts/data
-bhlindex
+bhlindex/bhlindex
+bhlindex/migrate
 *tar.gz

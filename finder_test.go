@@ -8,10 +8,7 @@ import (
 )
 
 var _ = BeforeEach(func() {
-	models.Truncate(db, "titles")
-	models.Truncate(db, "pages")
-	models.Truncate(db, "name_strings")
-	models.Truncate(db, "page_name_strings")
+	truncateAll()
 })
 
 var _ = Describe("Finder", func() {
@@ -20,6 +17,7 @@ var _ = Describe("Finder", func() {
 			finder.ProcessTitles(db, dict)
 			Expect(models.Count(db, "pages")).To(Equal(8354))
 			Expect(models.Count(db, "page_name_strings")).To(Equal(16899))
+			Expect(models.Count(db, "name_strings")).To(Equal(7215))
 		})
 	})
 })

@@ -24,8 +24,8 @@ in Biodiversity Heritage Library
 ### Install migrate
 
 ```bash
-go get -u -d github.com/mattes/migrate/cli github.com/lib/pq
-go build -tags 'postgres' -o $GOPATH/bin/migrate github.com/mattes/migrate/cli
+go get -u -d github.com/golang-migrate/migrate/cli github.com/lib/pq
+go build -tags 'postgres' -o $GOPATH/bin/migrate github.com/golang-migrate/migrate/cli
 ```
 
 ### Create migration
@@ -72,4 +72,4 @@ return `docker-compose build`
 [bhlindex-mac]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-mac.tar.gz
 [bhlindex-linux]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-linux.tar.gz
 [bhl-test]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhl-testdata.tar.gz
-[readme]: https://github.com/gnames/bhlindex/tree/master/scripts
+[readme]: https://github.com/gnames/bhlindex/tree/master/bhlindex

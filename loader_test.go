@@ -8,8 +8,7 @@ import (
 )
 
 var _ = BeforeEach(func() {
-	models.Truncate(db, "titles")
-	models.Truncate(db, "pages")
+	truncateAll()
 })
 
 var _ = Describe("Loader", func() {
@@ -19,7 +18,7 @@ var _ = Describe("Loader", func() {
 			c := make(chan string)
 			count := 0
 			go loader.FindTitles(c)
-			for _ = range c {
+			for range c {
 				count += 1
 			}
 			// There are 20 titles total.
@@ -30,10 +29,11 @@ var _ = Describe("Loader", func() {
 	Describe("ImportTitles", func() {
 		It("saves titles to database", func() {
 			titlesChan := make(chan int)
-			go func() {
-				for _ = range titlesChan {
+			// save chan from blocking
+			go func(titesChan <-chan int) {
+				for range titlesChan {
 				}
-			}()
+			}(titlesChan)
 			loader.ImportTitles(db, titlesChan)
 			Expect(models.Count(db, "titles")).To(Equal(20))
 		})

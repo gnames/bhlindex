@@ -2,6 +2,7 @@ package bhlindex_test
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/gnames/bhlindex"
 	. "github.com/onsi/ginkgo"
@@ -32,6 +33,7 @@ var _ = Describe("bhlindex", func() {
 	Describe("EnvVars", func() {
 		env := bhlindex.EnvVars()
 		It("Returns envaronment variables", func() {
+			fmt.Println(env)
 			Expect(env.BHLDir).To(Equal("./testdata/"))
 			Expect(env.Db).To(Equal("bhlindex"))
 			Expect(env.DbUser).To(Equal("postgres"))

@@ -45,7 +45,6 @@ func ImportTitles(db *sql.DB, titleIDs chan<- int) {
 
 	wg.Add(1)
 	go titlesWorker(&wg, c, titleIDs, db)
-
 	FindTitles(c)
 	wg.Wait()
 }
@@ -119,8 +118,7 @@ func savePages(db *sql.DB, t *models.Title) {
 	if err != nil {
 		log.Println(`
 Bulk import of titles data failed, probably you need to empty all data
-and start with empty database.
-`)
+and start with empty database.`)
 		log.Fatal(err)
 	}
 

@@ -19,7 +19,7 @@ func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 	findQueue := make(chan *models.Title)
 	counter := make(chan int)
 	results := make(chan []models.DetectedName)
-	verify := make(chan []models.DetectedName)
+	foundNames := make(chan []models.DetectedName)
 	workersNum := runtime.NumCPU()
 	var wgLoad sync.WaitGroup
 	var wgFind sync.WaitGroup
@@ -38,8 +38,8 @@ func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 	}
 
 	wgFinish.Add(2)
-	go saveFoundNames(db, &wgFinish, results, verify)
-	go Verify(db, verify, &wgFinish)
+	go saveFoundNames(db, &wgFinish, results, foundNames)
+	go Verify(db, foundNames, &wgFinish)
 
 	loader.ImportTitles(db, titleIDs)
 
@@ -52,13 +52,14 @@ func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 }
 
 func saveFoundNames(db *sql.DB, wg *sync.WaitGroup,
-	results <-chan []models.DetectedName, verify chan<- []models.DetectedName) {
+	results <-chan []models.DetectedName,
+	foundNames chan<- []models.DetectedName) {
 	defer wg.Done()
 	for v := range results {
-		verify <- v
+		foundNames <- v
 		savePageNameStrings(db, v)
 	}
-	close(verify)
+	close(foundNames)
 }
 
 func savePageNameStrings(db *sql.DB, names []models.DetectedName) {
@@ -67,6 +68,7 @@ func savePageNameStrings(db *sql.DB, names []models.DetectedName) {
 		"name_offset_end", "ends_next_page", "odds", "kind", "updated_at"}
 	transaction, err := db.Begin()
 	bhlindex.Check(err)
+	defer transaction.Rollback()
 
 	stmt, err := transaction.Prepare(pq.CopyIn("page_name_strings", columns...))
 	bhlindex.Check(err)
@@ -119,22 +121,4 @@ func titleWorker(db *sql.DB, wg *sync.WaitGroup, titleIDs <-chan int,
 		resQueue <- &title
 		counter <- 1
 	}
-}
-
-func CreateOrSelectName(db *sql.DB, name string) int {
-	var id int
-	q := `
-WITH new_row AS (
-  INSERT INTO name_strings (name)
-    SELECT CAST($1 AS VARCHAR)
-      WHERE NOT EXISTS (SELECT * FROM name_strings WHERE name = $1)
-        RETURNING id
-  )
-  SELECT id FROM new_row
-     UNION
-  SELECT id FROM name_strings WHERE name = $1
-`
-	err := db.QueryRow(q, &name).Scan(&id)
-	bhlindex.Check(err)
-	return id
 }

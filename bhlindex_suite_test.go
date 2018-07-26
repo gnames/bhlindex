@@ -4,6 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/gnames/bhlindex"
+	"github.com/gnames/bhlindex/models"
 	dictionary "github.com/gnames/gnfinder/dict"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -33,3 +34,12 @@ var _ = AfterSuite(func() {
 	err := db.Close()
 	Expect(err).NotTo(HaveOccurred())
 })
+
+func truncateAll() {
+	models.Truncate(db, "titles")
+	models.Truncate(db, "pages")
+	models.Truncate(db, "name_strings")
+	models.Truncate(db, "page_name_strings")
+	models.Truncate(db, "name_statuses")
+	models.Truncate(db, "metadata")
+}

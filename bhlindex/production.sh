@@ -19,7 +19,7 @@ function production {
   drop_data
   ${dir}/migrate -database postgres://${POSTGRES_USER}@${POSTGRES_HOST}:5432/${POSTGRES_DB}?sslmode=disable -path ${dir}/db up
   echo "You updated the schema for ${POSTGRES_DB}"
-  time WORKERS_NUMBER=15 ${dir}/bhlindex index
+  time ${dir}/bhlindex index
 }
 
 
