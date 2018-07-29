@@ -3,5 +3,5 @@ CREATE TABLE name_statuses (
   processed boolean DEFAULT false
 );
 
--- CREATE INDEX processed_index ON name_statuses
---   USING btree (processed);
+CREATE INDEX processed_index ON name_statuses
+  USING btree (processed);

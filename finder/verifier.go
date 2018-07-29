@@ -4,12 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"strings"
-	"sync"
 	"time"
 
 	"github.com/gnames/bhlindex"
-	"github.com/gnames/bhlindex/models"
 	"github.com/gnames/gnfinder/resolver"
 	gfutil "github.com/gnames/gnfinder/util"
 	"github.com/lib/pq"
@@ -17,17 +14,11 @@ import (
 
 const BATCH_SIZE = 50000
 
-var empty struct{}
-
-func Verify(db *sql.DB, foundNames <-chan []models.DetectedName,
-	wgFinish *sync.WaitGroup) {
-
-	defer wgFinish.Done()
-
+func Verify(db *sql.DB) {
 	namesVerified := make(chan bool)
 	counter := make(chan int)
 
-	go populateUniqueNames(db, foundNames)
+	populateUniqueNames(db)
 	go verifyLog(counter)
 	go verifyNames(db, counter, namesVerified)
 
@@ -37,7 +28,6 @@ func Verify(db *sql.DB, foundNames <-chan []models.DetectedName,
 }
 
 func verifyNames(db *sql.DB, counter chan<- int, namesVerified chan<- bool) {
-	time.Sleep(20 * time.Second)
 	for {
 		time.Sleep(200 * time.Microsecond)
 		verifyNamesQuery(db, counter)
@@ -53,13 +43,13 @@ func verifyNamesQuery(db *sql.DB, counter chan<- int) int {
 	m := gfutil.NewModel()
 	m.Workers = 15
 	q := `
-		WITH temp AS (
-			SELECT name FROM name_statuses
-				WHERE processed=false LIMIT $1)
-		UPDATE name_statuses ns SET processed=true
-		FROM temp
-			WHERE ns.name = temp.name
-		RETURNING temp.name`
+    WITH temp AS (
+      SELECT name FROM name_statuses
+        WHERE processed=false LIMIT $1)
+    UPDATE name_statuses ns SET processed=true
+    FROM temp
+      WHERE ns.name = temp.name
+    RETURNING temp.name`
 
 	rows, err := db.Query(q, BATCH_SIZE)
 	gfutil.Check(err)
@@ -153,40 +143,13 @@ and start with empty database.`)
 	bhlindex.Check(err)
 }
 
-func populateUniqueNames(db *sql.DB, foundNames <-chan []models.DetectedName) {
-	batch := 50000
-	names := make([]string, 0, batch)
-	uniqueNames := make(map[string]struct{})
-	count := -1
-	for fNames := range foundNames {
-		for _, n := range fNames {
-			name := n.NameString
-			if _, ok := uniqueNames[name]; ok {
-				continue
-			}
+func populateUniqueNames(db *sql.DB) {
 
-			uniqueNames[name] = empty
-			count++
-			if count < batch {
-				names = append(names, name)
-			} else {
-				count = -1
-				uniqueNames = make(map[string]struct{})
-				insertToUnique(db, names)
-			}
-		}
-	}
-	insertToUnique(db, names)
-	updateStatus(db, &metaData{Status: AllNamesHarvested})
-}
-
-func insertToUnique(db *sql.DB, names []string) {
-	namesJoined := strings.Join(names, "'),\n('")
-
-	q := fmt.Sprintf(
-		`INSERT INTO name_statuses (name)
-				VALUES ('%s')
-				ON CONFLICT (name) DO NOTHING`, namesJoined)
+	log.Println("\033[40;32;1mExtract unique name-strings to verify.\033[0m")
+	q := `INSERT INTO name_statuses
+          SELECT DISTINCT name_string, false
+            FROM page_name_strings
+            ORDER BY name_string`
 
 	stmt, err := db.Prepare(q)
 	bhlindex.Check(err)
@@ -196,4 +159,6 @@ func insertToUnique(db *sql.DB, names []string) {
 
 	err = stmt.Close()
 	bhlindex.Check(err)
+	updateStatus(db, &metaData{Status: AllNamesHarvested})
+	log.Println("\033[40;32;1mVerification started.\033[0m")
 }

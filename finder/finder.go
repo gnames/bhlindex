@@ -19,11 +19,10 @@ func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 	findQueue := make(chan *models.Title)
 	counter := make(chan int)
 	results := make(chan []models.DetectedName)
-	foundNames := make(chan []models.DetectedName)
 	workersNum := runtime.NumCPU()
 	var wgLoad sync.WaitGroup
 	var wgFind sync.WaitGroup
-	var wgFinish sync.WaitGroup
+	var wgSave sync.WaitGroup
 
 	go counterLog(counter)
 
@@ -37,9 +36,8 @@ func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 		go finderWorker(&wgFind, findQueue, results, d)
 	}
 
-	wgFinish.Add(2)
-	go saveFoundNames(db, &wgFinish, results, foundNames)
-	go Verify(db, foundNames, &wgFinish)
+	wgSave.Add(1)
+	go saveFoundNames(db, &wgSave, results)
 
 	loader.ImportTitles(db, titleIDs)
 
@@ -48,18 +46,16 @@ func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 	close(findQueue)
 	wgFind.Wait()
 	close(results)
-	wgFinish.Wait()
+	wgSave.Wait()
+	Verify(db)
 }
 
-func saveFoundNames(db *sql.DB, wg *sync.WaitGroup,
-	results <-chan []models.DetectedName,
-	foundNames chan<- []models.DetectedName) {
-	defer wg.Done()
+func saveFoundNames(db *sql.DB, wgSave *sync.WaitGroup,
+	results <-chan []models.DetectedName) {
+	defer wgSave.Done()
 	for v := range results {
-		foundNames <- v
 		savePageNameStrings(db, v)
 	}
-	close(foundNames)
 }
 
 func savePageNameStrings(db *sql.DB, names []models.DetectedName) {
