@@ -18,51 +18,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-package main
+package cmd
 
 import (
 	"fmt"
-	"log"
-	"os"
 
-	"github.com/gnames/bhlindex"
-	"github.com/gnames/bhlindex/finder"
-	dictionary "github.com/gnames/gnfinder/dict"
+	"github.com/spf13/cobra"
 )
 
-var githash = "n/a"
-var buildstamp = "n/a"
+// findCmd represents the find command
+var findCmd = &cobra.Command{
+	Use:   "find",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
 
-func main() {
-	var command string
-	if len(os.Args) > 1 {
-		command = os.Args[1]
-	}
-	switch command {
-	case "version":
-		fmt.Printf(" Git commit hash: %s\n UTC Build Time: %s\n\n",
-			githash, buildstamp)
-	case "index":
-		makeIndex()
-	default:
-		help := `
-Usage:
-  bhlindex version
-  bhlindex index
-`
-		fmt.Println(help)
-	}
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("find called")
+	},
 }
 
-func makeIndex() {
-	log.Println("Processing titles...")
-	db, err := bhlindex.DbInit()
-	dict := dictionary.LoadDictionary()
-	defer func() {
-		e := db.Close()
-		bhlindex.Check(e)
-	}()
-	bhlindex.Check(err)
+func init() {
+	rootCmd.AddCommand(findCmd)
 
-	finder.ProcessTitles(db, &dict)
+	// Here you will define your flags and configuration settings.
+
+	// Cobra supports Persistent Flags which will work for this command
+	// and all subcommands, e.g.:
+	// findCmd.PersistentFlags().String("foo", "", "A help for foo")
+
+	// Cobra supports local flags which will only run when this command
+	// is called directly, e.g.:
+	// findCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

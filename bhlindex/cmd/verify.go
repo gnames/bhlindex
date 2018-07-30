@@ -18,51 +18,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-package main
+package cmd
 
 import (
 	"fmt"
-	"log"
-	"os"
 
-	"github.com/gnames/bhlindex"
-	"github.com/gnames/bhlindex/finder"
-	dictionary "github.com/gnames/gnfinder/dict"
+	"github.com/spf13/cobra"
 )
 
-var githash = "n/a"
-var buildstamp = "n/a"
-
-func main() {
-	var command string
-	if len(os.Args) > 1 {
-		command = os.Args[1]
-	}
-	switch command {
-	case "version":
-		fmt.Printf(" Git commit hash: %s\n UTC Build Time: %s\n\n",
-			githash, buildstamp)
-	case "index":
-		makeIndex()
-	default:
-		help := `
-Usage:
-  bhlindex version
-  bhlindex index
-`
-		fmt.Println(help)
-	}
+// verifyCmd represents the verify command
+var verifyCmd = &cobra.Command{
+	Use:   "verify",
+	Short: "Checks found name-strings against gnindex database",
+	Long: `Verifies scientific name-strings found in BHL against
+	https://index.globalnames.org service. Results indicate if
+	the name-strings are found in a variety of biodiversity databases as
+	exact or fuzzy matches.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("verify called")
+	},
 }
 
-func makeIndex() {
-	log.Println("Processing titles...")
-	db, err := bhlindex.DbInit()
-	dict := dictionary.LoadDictionary()
-	defer func() {
-		e := db.Close()
-		bhlindex.Check(e)
-	}()
-	bhlindex.Check(err)
+func init() {
+	rootCmd.AddCommand(verifyCmd)
 
-	finder.ProcessTitles(db, &dict)
+	// Here you will define your flags and configuration settings.
+
+	// Cobra supports Persistent Flags which will work for this command
+	// and all subcommands, e.g.:
+	// verifyCmd.PersistentFlags().String("foo", "", "A help for foo")
+
+	// Cobra supports local flags which will only run when this command
+	// is called directly, e.g.:
+	// verifyCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
