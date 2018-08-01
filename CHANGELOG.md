@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Add [#12],[#13] options to set workers in command line app
+- Add [#9],[#10],[#11] improve command line interface
+- Add [#8]: decouple name-finding and name-verification.
+
 ## [v0.3.0]
 
 - Add [#4]: set a Makefile to simplify compilation and packaging.
@@ -37,6 +41,12 @@ This document follows [changelog guidelines]
 [v0.2.0]: https://github.com/gnames/bhlindex/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/gnames/bhlindex/tree/v0.1.0
 
+[#13]: https://github.com/gnames/bhlindex/issues/13
+[#12]: https://github.com/gnames/bhlindex/issues/12
+[#11]: https://github.com/gnames/bhlindex/issues/11
+[#10]: https://github.com/gnames/bhlindex/issues/10
+[#9]: https://github.com/gnames/bhlindex/issues/9
+[#8]: https://github.com/gnames/bhlindex/issues/8
 [#4]: https://github.com/gnames/bhlindex/issues/4
 [#3]: https://github.com/gnames/bhlindex/issues/3
 [#2]: https://github.com/gnames/bhlindex/issues/2
