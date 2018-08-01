@@ -21,4 +21,4 @@ install:
 	$(GOINSTALL) ${LDFLAGS};
 
 release: build
-	tar --exclude='bhlindex/development.sh' --exclude='bhlindex/cmd' -zcvf /tmp/bhlindex-${VERSION}-linux.tar.gz bhlindex
+	tar --exclude='bhlindex/development.sh' --exclude='bhlindex/cmd' --exclude='main.go' -zcvf /tmp/bhlindex-${VERSION}-linux.tar.gz bhlindex

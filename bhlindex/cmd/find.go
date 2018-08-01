@@ -21,23 +21,39 @@
 package cmd
 
 import (
-	"fmt"
+	"log"
+	"os"
 
+	"github.com/gnames/bhlindex"
+	"github.com/gnames/bhlindex/finder"
+	dictionary "github.com/gnames/gnfinder/dict"
 	"github.com/spf13/cobra"
 )
 
 // findCmd represents the find command
 var findCmd = &cobra.Command{
 	Use:   "find",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Finds name-strings in Biodiversity Heritage Library",
+	Long: `Populates an empty database with metadata about pages and volumes
+	from Biodiversity Heritage Library. Then it goes volume by volume and
+	detects scientific names in them. It uses heuristic and natural language
+	processing (Bayes) approaches.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("find called")
+		workers, err := cmd.Flags().GetInt("workers")
+		if err != nil {
+			log.Println(err)
+			os.Exit(1)
+		}
+		log.Printf("Processing titles with %d workers...", workers)
+		db, err := bhlindex.DbInit()
+		dict := dictionary.LoadDictionary()
+		defer func() {
+			e := db.Close()
+			bhlindex.Check(e)
+		}()
+		bhlindex.Check(err)
+
+		finder.ProcessTitles(db, &dict, workers)
 	},
 }
 
@@ -53,4 +69,5 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// findCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	findCmd.Flags().IntP("workers", "w", 10, "number of name-finding workers")
 }

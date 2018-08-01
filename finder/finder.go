@@ -3,7 +3,6 @@ package finder
 import (
 	"database/sql"
 	"log"
-	"runtime"
 	"sync"
 	"time"
 
@@ -14,12 +13,12 @@ import (
 	"github.com/lib/pq"
 )
 
-func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
+func ProcessTitles(db *sql.DB, d *dict.Dictionary, w int) {
 	titleIDs := make(chan int)
 	findQueue := make(chan *models.Title)
 	counter := make(chan int)
 	results := make(chan []models.DetectedName)
-	workersNum := runtime.NumCPU()
+	workersNum := w
 	var wgLoad sync.WaitGroup
 	var wgFind sync.WaitGroup
 	var wgSave sync.WaitGroup
@@ -47,7 +46,6 @@ func ProcessTitles(db *sql.DB, d *dict.Dictionary) {
 	wgFind.Wait()
 	close(results)
 	wgSave.Wait()
-	Verify(db)
 }
 
 func saveFoundNames(db *sql.DB, wgSave *sync.WaitGroup,

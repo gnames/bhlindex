@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/gnames/bhlindex"
+	"github.com/gnames/bhlindex/models"
 	"github.com/gnames/gnfinder/resolver"
 	gfutil "github.com/gnames/gnfinder/util"
 	"github.com/lib/pq"
@@ -14,23 +15,26 @@ import (
 
 const BATCH_SIZE = 50000
 
-func Verify(db *sql.DB) {
+func Verify(db *sql.DB, workers int) {
 	namesVerified := make(chan bool)
 	counter := make(chan int)
 
+	models.Truncate(db, "name_strings")
+	models.Truncate(db, "name_statuses")
 	populateUniqueNames(db)
 	go verifyLog(counter)
-	go verifyNames(db, counter, namesVerified)
+	go verifyNames(db, counter, namesVerified, workers)
 
 	// wait till all names are imported
 	<-namesVerified
 	close(counter)
 }
 
-func verifyNames(db *sql.DB, counter chan<- int, namesVerified chan<- bool) {
+func verifyNames(db *sql.DB, counter chan<- int,
+	namesVerified chan<- bool, workers int) {
 	for {
 		time.Sleep(200 * time.Microsecond)
-		verifyNamesQuery(db, counter)
+		verifyNamesQuery(db, counter, workers)
 		status := readStatus(db)
 		if status.Status == AllNamesVerified {
 			break
@@ -39,9 +43,9 @@ func verifyNames(db *sql.DB, counter chan<- int, namesVerified chan<- bool) {
 	namesVerified <- true
 }
 
-func verifyNamesQuery(db *sql.DB, counter chan<- int) int {
+func verifyNamesQuery(db *sql.DB, counter chan<- int, workers int) int {
 	m := gfutil.NewModel()
-	m.Workers = 15
+	m.Workers = workers
 	q := `
     WITH temp AS (
       SELECT name FROM name_statuses
@@ -52,7 +56,7 @@ func verifyNamesQuery(db *sql.DB, counter chan<- int) int {
     RETURNING temp.name`
 
 	rows, err := db.Query(q, BATCH_SIZE)
-	gfutil.Check(err)
+	bhlindex.Check(err)
 	defer rows.Close()
 
 	var name string

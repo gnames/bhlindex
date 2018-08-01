@@ -10,7 +10,7 @@ import (
 	"github.com/lib/pq"
 )
 
-// DetectedName helds information about a name-string returned by a
+// DetectedName holds information about a name-string returned by a
 // name-finder.
 type DetectedName struct {
 	PageID       string

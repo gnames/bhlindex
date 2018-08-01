@@ -21,8 +21,11 @@
 package cmd
 
 import (
-	"fmt"
+	"log"
+	"os"
 
+	"github.com/gnames/bhlindex"
+	"github.com/gnames/bhlindex/finder"
 	"github.com/spf13/cobra"
 )
 
@@ -35,7 +38,20 @@ var verifyCmd = &cobra.Command{
 	the name-strings are found in a variety of biodiversity databases as
 	exact or fuzzy matches.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("verify called")
+		workers, err := cmd.Flags().GetInt("workers")
+		if err != nil {
+			log.Println(err)
+			os.Exit(1)
+		}
+		log.Printf("Verifying name-strings with %d workers...", workers)
+		db, err := bhlindex.DbInit()
+		defer func() {
+			e := db.Close()
+			bhlindex.Check(e)
+		}()
+		bhlindex.Check(err)
+
+		finder.Verify(db, workers)
 	},
 }
 
@@ -51,4 +67,5 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// verifyCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	verifyCmd.Flags().IntP("workers", "w", 10, "number of name-finding workers")
 }
