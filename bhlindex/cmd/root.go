@@ -22,6 +22,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	homedir "github.com/mitchellh/go-homedir"
@@ -29,7 +30,11 @@ import (
 	"github.com/spf13/viper"
 )
 
-var cfgFile string
+var (
+	buildVersion string
+	buildDate    string
+	cfgFile      string
+)
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -38,11 +43,25 @@ var rootCmd = &cobra.Command{
 	Long: `bhlindex is a tool for finding and verifying scientific names in
 Biodiversity Heritage Library. A directory organized according to BHL
 practices is required for the program to work.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		version, err := cmd.Flags().GetBool("version")
+		if err != nil {
+			log.Println(err)
+			os.Exit(1)
+		}
+		if version {
+			versionCmd.Run(cmd, args)
+		} else {
+			cmd.Help()
+		}
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
-func Execute() {
+func Execute(ver string, date string) {
+	buildVersion = ver
+	buildDate = date
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -59,7 +78,7 @@ func init() {
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.Flags().BoolP("version", "v", false, "show version")
 }
 
 // initConfig reads in config file and ENV variables if set.
