@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add [#14] curation information for verified names
 - Add [#12],[#13] options to set workers in command line app
 - Add [#9],[#10],[#11] improve command line interface
 - Add [#8]: decouple name-finding and name-verification.

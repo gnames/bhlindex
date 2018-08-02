@@ -113,7 +113,7 @@ func saveVerifiedNameStrings(db *sql.DB, verified resolver.VerifyOutput) {
 	now := time.Now()
 	columns := []string{"name", "match_type", "edit_distance",
 		"matched_name", "current_name", "classification", "datasource_id",
-		"datasources_number", "retries", "error", "updated_at"}
+		"datasources_number", "curation", "retries", "error", "updated_at"}
 	transaction, err := db.Begin()
 	bhlindex.Check(err)
 
@@ -128,7 +128,7 @@ func saveVerifiedNameStrings(db *sql.DB, verified resolver.VerifyOutput) {
 		}
 		_, err = stmt.Exec(name, v.MatchType, v.EditDistance, v.MatchedName,
 			v.CurrentName, v.ClassificationPath, v.DataSourceID, v.DatabasesNum,
-			v.Retries, errStr, now)
+			v.DataSourceQuality, v.Retries, errStr, now)
 		bhlindex.Check(err)
 	}
 
