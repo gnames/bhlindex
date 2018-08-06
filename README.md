@@ -1,6 +1,6 @@
 # Biodiversity Heritage Library Scientific Names Index
 
-Creates an index of scientific names occuring in the collection of literature
+Creates an index of scientific names occurring in the collection of literature
 in Biodiversity Heritage Library
 
 ## Usage
@@ -15,7 +15,7 @@ in Biodiversity Heritage Library
 
 ### Linux
 
-* Download [bhlindex release for linux][bhlindex-linux]
+* Download [bhlindex release for Linux][bhlindex-linux]
 * Untar the file go to `script` directory and [read instructions][readme].
 * Use [bhl testdata][bhl-test] for testing.
 
@@ -30,13 +30,13 @@ go build -tags 'postgres' -o $GOPATH/bin/migrate github.com/golang-migrate/migra
 
 ### Create migration
 
-```
+```bash
 migrate -ext sql -D db NAME
 ```
 
 ### Run commands
 
-```
+```bash
 migrate -database postgres://localhost:5432/database up 2
 ```
 
@@ -60,14 +60,13 @@ drop
 
 ### Testing
 
-```
+```bash
 docker-compose build
 docker-compose up
 ```
 
 To update all dependencies change LAST_FULL_REBUILD line in Docker file and
 return `docker-compose build`
-
 
 [bhlindex-mac]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-mac.tar.gz
 [bhlindex-linux]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-linux.tar.gz
