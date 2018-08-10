@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/protob_pb'
+require_relative '../lib/protob_services_pb'
+
+def main
+  stub = Protob::BHLIndex::Stub.new('172.22.247.23:8888', :this_channel_is_insecure)
+  stub.titles(Protob::Void.new).each_with_index do |t, i|
+    if (i % 1000).zero?
+      puts Time.now
+      puts i
+      puts t.path
+      puts t.pages.count
+    end
+  end
+end
+
+main

@@ -8,3 +8,6 @@ CREATE TABLE page_name_strings (
   kind varchar(255),
   updated_at timestamp without time zone
 );
+
+CREATE INDEX page_name_strings_page_id_index
+ON page_name_strings USING btree (page_id);
