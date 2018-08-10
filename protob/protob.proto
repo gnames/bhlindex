@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package protob;
+
+message Version {
+    string value = 1;
+}
+
+message Void {}
+
+service BHLIndex {
+    rpc Ver(Void) returns(Version) {}
+}

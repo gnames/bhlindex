@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#15] simple gRPC server and an example how to use it
+
 ## [v0.4.0]
 
 - Add [#14] curation information for verified names
@@ -45,6 +47,8 @@ This document follows [changelog guidelines]
 [v0.2.0]: https://github.com/gnames/bhlindex/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/gnames/bhlindex/tree/v0.1.0
 
+[#15]: https://github.com/gnames/bhlindex/issues/15
+[#14]: https://github.com/gnames/bhlindex/issues/14
 [#13]: https://github.com/gnames/bhlindex/issues/13
 [#12]: https://github.com/gnames/bhlindex/issues/12
 [#11]: https://github.com/gnames/bhlindex/issues/11
