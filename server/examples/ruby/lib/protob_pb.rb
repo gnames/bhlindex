@@ -16,7 +16,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
   add_message "protob.Page" do
     optional :id, :string, 1
-    repeated :names, :message, 2, "protob.NameString"
+    optional :offset, :int32, 2
+    repeated :names, :message, 3, "protob.NameString"
   end
   add_message "protob.NameString" do
     optional :value, :string, 1

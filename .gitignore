@@ -1,5 +1,6 @@
 .env
 bhlindex/bhlindex
 bhlindex/migrate
+.byebug_history
 *tar.gz
 .vscode
