@@ -44,7 +44,7 @@ func (bhlServer) Titles(void *protob.Void, stream protob.BHLIndex_TitlesServer) 
 
 func titlePages(db *sql.DB, titleID int) []*protob.Page {
 	var pages []*protob.Page
-	q := `SELECT p.id, p.page_offset, pn.name_string, pn.odds, n.classification,
+	q := `SELECT p.id, p.page_offset, pn.name_string, n.classification, pn.odds,
           n.match_type, n.curation, n.edit_distance, n.stem_edit_distance
 					FROM pages p
 						LEFT OUTER JOIN page_name_strings pn
@@ -76,25 +76,26 @@ func processPages(rows *sql.Rows) []*protob.Page {
 		bhlindex.Check(err)
 
 		if nameString.Valid {
-			curated := false
-			if curation.String == "HasCuratedSources" {
-				curated = true
-			}
+			// curated := false
+			// if curation.String == "HasCuratedSources" {
+			// 	curated = true
+			// }
 
+			// name = protob.NameString{
+			// 	Value:            nameString.String,
+			// 	Curated:          curated,
+			// 	Match:            getMatchType(matchType.String),
+			// 	Odds:             float32(odds.Float64),
+			// 	Path:             path.String,
+			// 	EditDistance:     int32(editDistance.Int64),
+			// 	EditDistanceStem: int32(editDistanceStem.Int64),
+			// }
 			name = protob.NameString{
-				Value:            nameString.String,
-				Curated:          curated,
-				Match:            getMatchType(matchType.String),
-				Odds:             float32(odds.Float64),
-				Path:             path.String,
-				EditDistance:     int32(editDistance.Int64),
-				EditDistanceStem: int32(editDistanceStem.Int64),
+				Value: nameString.String,
+				Odds:  float32(odds.Float64),
 			}
 		}
 
-		name = protob.NameString{
-			Value: nameString.String,
-		}
 		if page, ok := pagesMap[pageID]; ok {
 			if nameString.Valid {
 				page.Names = append(page.Names, &name)
