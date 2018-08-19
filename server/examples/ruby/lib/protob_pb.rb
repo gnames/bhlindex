@@ -9,15 +9,16 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
   add_message "protob.Void" do
   end
-  add_message "protob.Title" do
-    optional :id, :string, 1
-    optional :path, :string, 2
-    repeated :pages, :message, 3, "protob.Page"
+  add_message "protob.WithText" do
+    optional :value, :bool, 1
   end
   add_message "protob.Page" do
     optional :id, :string, 1
     optional :offset, :int32, 2
-    repeated :names, :message, 3, "protob.NameString"
+    optional :text, :string, 3
+    optional :title_id, :string, 4
+    optional :title_path, :string, 5
+    repeated :names, :message, 6, "protob.NameString"
   end
   add_message "protob.NameString" do
     optional :value, :string, 1
@@ -41,7 +42,7 @@ end
 module Protob
   Version = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.Version").msgclass
   Void = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.Void").msgclass
-  Title = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.Title").msgclass
+  WithText = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.WithText").msgclass
   Page = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.Page").msgclass
   NameString = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.NameString").msgclass
   MatchType = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.MatchType").enummodule

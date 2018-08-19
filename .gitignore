@@ -4,3 +4,4 @@ bhlindex/migrate
 .byebug_history
 *tar.gz
 .vscode
+output.csv

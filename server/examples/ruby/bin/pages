@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/protob_pb'
+require_relative '../lib/protob_services_pb'
+require 'csv'
+
+def main
+  output = CSV.open('output.csv', 'w:utf-8')
+  output << ['TitleId', 'PagesNum', 'NamesNum', 'Names/Page', 'Score']
+  stub = Protob::BHLIndex::Stub.new('localhost:8888', :this_channel_is_insecure)
+  with_text = Protob::WithText.new
+  with_text.value = true
+  title_id = nil
+  names_num = 0
+  pages_num = 0
+  stub.pages(with_text).each_with_index do |p, i|
+    if title_id.nil?
+      title_id = p.title_id
+    elsif p.title_id != title_id
+      output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
+                 names_num * pages_num]
+      names_num = 0
+      pages_num = 0
+      title_id = p.title_id
+    end
+
+    pages_num += 1
+    p.names.each do |n|
+      names_num += 1 if n.odds > 100
+    end
+    next unless (i % 50000).zero?
+    puts Time.now
+    puts i
+    puts title_id
+    output.flush
+  end
+  output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
+             names_num * pages_num]
+  output.close
+end
+
+main

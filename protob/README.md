@@ -18,8 +18,17 @@ sudo mv protoc3/bin/* /usr/local/bin/
 sudo mv protoc3/include/* /usr/local/include/
 
 # Optional: change owner
-sudo chwon [user] /usr/local/bin/protoc
-sudo chwon -R [user] /usr/local/include/google
+sudo chown [user] /usr/local/bin/protoc
+sudo chown -R [user] /usr/local/include/google
+```
+
+## Install Go protobuf etc
+
+From bhlindex root install all dependencies:
+
+```bash
+go get -u github.com/golang/protobuf/protoc-gen-go
+go get -u ./...
 ```
 
 ## How to create/update

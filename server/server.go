@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net"
 
@@ -21,25 +22,38 @@ func (bhlServer) Ver(ctx context.Context, void *protob.Void) (*protob.Version, e
 	return &ver, nil
 }
 
-func (bhlServer) Titles(void *protob.Void, stream protob.BHLIndex_TitlesServer) error {
+func (bhlServer) Pages(withText *protob.WithText, stream protob.BHLIndex_PagesServer) error {
 	q := "SELECT id, internet_archive_id, path from titles"
-	var id, path string
+	var titleID, path string
 	var dbID int
 	db, err := bhlindex.DbInit()
 	bhlindex.Check(err)
 	rows, err := db.Query(q)
 	bhlindex.Check(err)
 	for rows.Next() {
-		err := rows.Scan(&dbID, &id, &path)
+		err := rows.Scan(&dbID, &titleID, &path)
 		bhlindex.Check(err)
 		pages := titlePages(db, dbID)
-		if err := stream.Send(&protob.Title{Id: id, Path: path, Pages: pages}); err != nil {
-			return err
+		for _, page := range pages {
+			page.TitleId = titleID
+			page.TitlePath = path
+			if withText.Value {
+				path := fmt.Sprintf("%s/%s.txt", page.TitlePath, page.Id)
+				page.Text = pageText(path)
+			}
+			if err := stream.Send(page); err != nil {
+				return err
+			}
 		}
 	}
 	err = rows.Close()
+	return err
+}
+
+func pageText(path string) []byte {
+	b, err := ioutil.ReadFile(path)
 	bhlindex.Check(err)
-	return nil
+	return b
 }
 
 func titlePages(db *sql.DB, titleID int) []*protob.Page {
@@ -76,23 +90,19 @@ func processPages(rows *sql.Rows) []*protob.Page {
 		bhlindex.Check(err)
 
 		if nameString.Valid {
-			// curated := false
-			// if curation.String == "HasCuratedSources" {
-			// 	curated = true
-			// }
+			curated := false
+			if curation.String == "HasCuratedSources" {
+				curated = true
+			}
 
-			// name = protob.NameString{
-			// 	Value:            nameString.String,
-			// 	Curated:          curated,
-			// 	Match:            getMatchType(matchType.String),
-			// 	Odds:             float32(odds.Float64),
-			// 	Path:             path.String,
-			// 	EditDistance:     int32(editDistance.Int64),
-			// 	EditDistanceStem: int32(editDistanceStem.Int64),
-			// }
 			name = protob.NameString{
-				Value: nameString.String,
-				Odds:  float32(odds.Float64),
+				Value:            nameString.String,
+				Curated:          curated,
+				Match:            getMatchType(matchType.String),
+				Odds:             float32(odds.Float64),
+				Path:             path.String,
+				EditDistance:     int32(editDistance.Int64),
+				EditDistanceStem: int32(editDistanceStem.Int64),
 			}
 		}
 
