@@ -1,0 +1,84 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/protob_pb'
+require_relative '../lib/protob_services_pb'
+require 'csv'
+require 'logger'
+
+SERVER = 'localhost'.freeze
+
+def context_taxa(data)
+  threshold = 0.6
+  context = nil
+  data.each do |_, v|
+    sum = v.transpose[1].sum
+    max = v.max_by { |d| d[1] }
+    break if (max[1].to_f / sum.to_f) < threshold
+    context = max[0]
+  end
+  context
+end
+
+def update_data(data, taxon, index)
+  if !data[index]
+    data[index] = { taxon => 1 }
+  elsif !data[index][taxon]
+    data[index][taxon] = 1
+  else
+    data[index][taxon] += 1
+  end
+end
+
+def calculate_context(paths)
+  return nil, 0 if paths.empty?
+  paths = paths.uniq
+  data = {}
+  paths.each do |p|
+    p.split('|').each_with_index do |t, i|
+      update_data(data, t, i)
+    end
+  end
+  [context_taxa(data), paths.size]
+end
+
+def main
+  logger = Logger.new($stdout)
+  output = CSV.open('output.csv', 'w:utf-8')
+  output << %w[TitleId PagesNum NamesNum NamesPerPage Score Context ContextNum]
+  stub = Protob::BHLIndex::Stub.new("#{SERVER}:8888", :this_channel_is_insecure)
+  with_text = Protob::WithText.new
+  title_id = nil
+  names_num = 0
+  pages_num = 0
+  paths = []
+  stub.pages(with_text).each_with_index do |p, i|
+    if title_id.nil?
+      title_id = p.title_id
+    elsif p.title_id != title_id
+      context, context_size = calculate_context(paths)
+      output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
+                 names_num * pages_num, context, context_size]
+      names_num = 0
+      pages_num = 0
+      paths = []
+      title_id = p.title_id
+    end
+
+    pages_num += 1
+    p.names.each do |n|
+      names_num += 1 if n.odds > 100
+      if n.source_id == 1 &&
+         %i[EXACT CANONICAL_EXACT PARTIAL_EXACT].include?(n.match)
+        paths << n.path
+      end
+    end
+    next unless (i % 100_000).zero?
+    logger.info("Process #{i} rows")
+  end
+  context, context_size = calculate_context(paths)
+  output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
+             names_num * pages_num, context, context_size]
+  output.close
+end
+
+main

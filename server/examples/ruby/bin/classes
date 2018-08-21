@@ -1,0 +1,119 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/protob_pb'
+require_relative '../lib/protob_services_pb'
+require 'csv'
+require 'logger'
+
+SERVER = 'localhost'.freeze
+
+# class Volume collects and transforms data for a BHL volume.
+class Volume
+  attr_accessor :title_id, :name_strings_num, :unique_name_strings_num,
+                :pages_num, :paths
+
+  def initialize(title_id)
+    @title_id = title_id
+    @pages_num = 0
+    @paths = []
+    @name_strings = []
+  end
+
+  def append_output(output)
+    classes_data, sum = calculate_classes
+    classes, classes_freq = process(classes_data)
+    names_num = @name_strings.size
+
+    output << [@title_id, @pages_num, names_num,
+               @name_strings.uniq.size, names_num.to_f / @pages_num,
+               names_num * @pages_num, classes, classes_freq,
+               classes_data.size, sum]
+  end
+
+  def process_page(page)
+    @pages_num += 1
+    page.names.each do |n|
+      @name_strings << n.value if n.odds > 100
+      if n.source_id == 1 &&
+         %i[EXACT CANONICAL_EXACT PARTIAL_EXACT].include?(n.match)
+        @paths << n.path
+      end
+    end
+  end
+
+  private
+
+  def process(classes_data)
+    if !classes_data.empty? && classes_data[0][1] > 0.5
+      classes_data[0] # return class with the highest percentage
+    else
+      [nil, nil]
+    end
+  end
+
+  def calculate_classes
+    return [[], 0] if @paths.empty?
+    data = {}
+
+    @paths.each do |p|
+      class_path = p.split('|')[0...3]
+      update_data(data, class_path.join('|')) if class_path.size == 3
+    end
+    [context_taxa(data), data.values.sum]
+  end
+
+  def context_taxa(data)
+    res = []
+    sum = data.values.sum
+    data.each do |k, v|
+      res << [k, v.to_f / sum]
+    end
+    res.sort_by { |d| d[1] }.reverse
+  end
+
+  def update_data(data, path)
+    if !data[path]
+      data[path] = 1
+    else
+      data[path] += 1
+    end
+  end
+end
+
+def update_volume(page, vol, output)
+  if vol.nil?
+    Volume.new(page.title_id)
+  elsif page.title_id != vol.title_id
+    vol.append_output(output)
+    Volume.new(page.title_id)
+  else
+    vol
+  end
+end
+
+# Processor class establishes contact with gRPC server, collects data and
+# saves stats to a csv file
+class Processor
+  def initialize
+    @logger = Logger.new($stdout)
+    @output = CSV.open('output.csv', 'w:utf-8')
+    @output << %w[TitleId PagesNum NamesNum UniqNamesNum NamesPerPage
+                  Score Class ClassFreq ClassesNum Sum]
+    @stub = Protob::BHLIndex::Stub.new("#{SERVER}:8888",
+                                       :this_channel_is_insecure)
+    @with_text = Protob::WithText.new
+    @vol = nil
+  end
+
+  def run
+    @stub.pages(@with_text).each_with_index do |p, i|
+      @vol = update_volume(p, @vol, @output)
+      @vol.process_page(p)
+      @logger.info("Process #{i} rows") if (i % 100_000).zero?
+    end
+    @vol.append_output(output)
+    @output.close
+  end
+end
+
+Processor.new.run

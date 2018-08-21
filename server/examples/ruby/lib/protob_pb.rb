@@ -15,7 +15,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_message "protob.Page" do
     optional :id, :string, 1
     optional :offset, :int32, 2
-    optional :text, :string, 3
+    optional :text, :bytes, 3
     optional :title_id, :string, 4
     optional :title_path, :string, 5
     repeated :names, :message, 6, "protob.NameString"
@@ -27,7 +27,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     optional :curated, :bool, 4
     optional :edit_distance, :int32, 5
     optional :edit_distance_stem, :int32, 6
-    optional :match, :enum, 7, "protob.MatchType"
+    optional :source_id, :int32, 7
+    optional :match, :enum, 8, "protob.MatchType"
   end
   add_enum "protob.MatchType" do
     value :NONE, 0

@@ -59,7 +59,8 @@ func pageText(path string) []byte {
 func titlePages(db *sql.DB, titleID int) []*protob.Page {
 	var pages []*protob.Page
 	q := `SELECT p.id, p.page_offset, pn.name_string, n.classification, pn.odds,
-          n.match_type, n.curation, n.edit_distance, n.stem_edit_distance
+					n.match_type, n.curation, n.edit_distance, n.stem_edit_distance,
+					n.datasource_id
 					FROM pages p
 						LEFT OUTER JOIN page_name_strings pn
 							ON p.id = pn.page_id
@@ -79,14 +80,15 @@ func processPages(rows *sql.Rows) []*protob.Page {
 	pagesMap := make(map[string]*protob.Page)
 
 	var pageID string
-	var offset, editDistance, editDistanceStem sql.NullInt64
+	var offset, editDistance, editDistanceStem, sourceID sql.NullInt64
 	var nameString, matchType, curation, path sql.NullString
 	var odds sql.NullFloat64
 
 	for rows.Next() {
 		var name protob.NameString
 		err := rows.Scan(&pageID, &offset, &nameString, &path,
-			&odds, &matchType, &curation, &editDistance, &editDistanceStem)
+			&odds, &matchType, &curation, &editDistance, &editDistanceStem,
+			&sourceID)
 		bhlindex.Check(err)
 
 		if nameString.Valid {
@@ -103,6 +105,7 @@ func processPages(rows *sql.Rows) []*protob.Page {
 				Path:             path.String,
 				EditDistance:     int32(editDistance.Int64),
 				EditDistanceStem: int32(editDistanceStem.Int64),
+				SourceId:         int32(sourceID.Int64),
 			}
 		}
 

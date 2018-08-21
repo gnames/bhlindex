@@ -3,13 +3,14 @@
 require_relative '../lib/protob_pb'
 require_relative '../lib/protob_services_pb'
 require 'csv'
+require 'logger'
 
 def main
+  logger = Logger.new($stdout)
   output = CSV.open('output.csv', 'w:utf-8')
   output << ['TitleId', 'PagesNum', 'NamesNum', 'Names/Page', 'Score']
   stub = Protob::BHLIndex::Stub.new('localhost:8888', :this_channel_is_insecure)
   with_text = Protob::WithText.new
-  with_text.value = true
   title_id = nil
   names_num = 0
   pages_num = 0
@@ -28,11 +29,8 @@ def main
     p.names.each do |n|
       names_num += 1 if n.odds > 100
     end
-    next unless (i % 50000).zero?
-    puts Time.now
-    puts i
-    puts title_id
-    output.flush
+    next unless (i % 100_000).zero?
+    logger.info("Process #{i} rows")
   end
   output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
              names_num * pages_num]
