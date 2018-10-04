@@ -10,15 +10,20 @@ LDFLAGS=-ldflags "-X main.buildDate=${DATE} -X main.buildVersion=${VERSION}"
 
 all: install
 
-build:
+build: grpc
 	cp ${GOPATH}/bin/migrate bhlindex
 	cd bhlindex && \
 	$(GOCLEAN) && \
 	GOOS=linux GOARCH=amd64 $(GOBUILD) ${LDFLAGS}
 
-install:
+install: grpc
 	cd bhlindex && \
 	$(GOINSTALL) ${LDFLAGS};
 
 release: build
-	tar --exclude='bhlindex/development.sh' --exclude='bhlindex/cmd' --exclude='main.go' -zcvf /tmp/bhlindex-${VERSION}-linux.tar.gz bhlindex
+	tar --exclude='bhlindex/development.sh' --exclude='bhlindex/cmd' \
+	--exclude='main.go' -zcvf /tmp/bhlindex-${VERSION}-linux.tar.gz bhlindex
+
+grpc:
+	cd protob && \
+	protoc -I . ./protob.proto --go_out=plugins=grpc:.

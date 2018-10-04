@@ -12,6 +12,15 @@ message WithText {
     bool value = 1;
 }
 
+message Title {
+    int32 id = 1;
+    string archive_id = 2;
+    string path = 3;
+    string lang = 4;
+}
+
+message TitleOpt {}
+
 message Page {
     string id = 1;
     int32 offset = 2;
@@ -45,4 +54,5 @@ enum MatchType {
 service BHLIndex {
     rpc Ver(Void) returns(Version) {}
     rpc Pages(WithText) returns(stream Page) {}
+    rpc Titles(TitleOpt) returns(stream Title) {}
 }

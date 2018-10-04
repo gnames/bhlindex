@@ -14,6 +14,7 @@ import (
 )
 
 var version string
+var db *sql.DB
 
 type bhlServer struct{}
 
@@ -22,7 +23,35 @@ func (bhlServer) Ver(ctx context.Context, void *protob.Void) (*protob.Version, e
 	return &ver, nil
 }
 
-func (bhlServer) Pages(withText *protob.WithText, stream protob.BHLIndex_PagesServer) error {
+func (bhlServer) Titles(opt *protob.TitleOpt,
+	stream protob.BHLIndex_TitlesServer) error {
+	var titleID, path string
+	var dbID int
+
+	q := "SELECT id, internet_archive_id, path from titles"
+	db, err := bhlindex.DbInit()
+	bhlindex.Check(err)
+	rows, err := db.Query(q)
+	bhlindex.Check(err)
+
+	for rows.Next() {
+		err := rows.Scan(&dbID, &titleID, &path)
+		bhlindex.Check(err)
+		title := &protob.Title{
+
+			Id:        int32(dbID),
+			ArchiveId: titleID,
+			Path:      path,
+		}
+		if err := stream.Send(title); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (bhlServer) Pages(withText *protob.WithText,
+	stream protob.BHLIndex_PagesServer) error {
 	q := "SELECT id, internet_archive_id, path from titles"
 	var titleID, path string
 	var dbID int
