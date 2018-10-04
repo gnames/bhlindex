@@ -6,35 +6,35 @@ require 'csv'
 require 'logger'
 
 def main
-  logger = Logger.new($stdout)
-  output = CSV.open('output.csv', 'w:utf-8')
-  output << ['TitleId', 'PagesNum', 'NamesNum', 'Names/Page', 'Score']
-  stub = Protob::BHLIndex::Stub.new('localhost:8888', :this_channel_is_insecure)
-  with_text = Protob::WithText.new
-  title_id = nil
-  names_num = 0
-  pages_num = 0
-  stub.pages(with_text).each_with_index do |p, i|
-    if title_id.nil?
-      title_id = p.title_id
-    elsif p.title_id != title_id
-      output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
-                 names_num * pages_num]
-      names_num = 0
-      pages_num = 0
-      title_id = p.title_id
-    end
+	logger = Logger.new($stdout)
+	output = CSV.open('output.csv', 'w:utf-8')
+	output << ['TitleId', 'PagesNum', 'NamesNum', 'Names/Page', 'Score']
+	stub = Protob::BHLIndex::Stub.new('172.22.247.23:8888', :this_channel_is_insecure)
+	opts = Protob::PagesOpt.new(with_text: false, title_ids: (1..100).to_a)
+	title_id = nil
+	names_num = 0
+	pages_num = 0
+	stub.pages(opts).each_with_index do |p, i|
+		if title_id.nil?
+			title_id = p.title_id
+		elsif p.title_id != title_id
+			output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
+								 names_num * pages_num]
+			names_num = 0
+			pages_num = 0
+			title_id = p.title_id
+		end
 
-    pages_num += 1
-    p.names.each do |n|
-      names_num += 1 if n.odds > 100
-    end
-    next unless (i % 100_000).zero?
-    logger.info("Process #{i} rows")
-  end
-  output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
-             names_num * pages_num]
-  output.close
+		pages_num += 1
+		p.names.each do |n|
+			names_num += 1 if n.odds > 100
+		end
+		next unless (i % 100_000).zero?
+		logger.info("Process #{i} rows")
+	end
+	output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
+						 names_num * pages_num]
+	output.close
 end
 
 main

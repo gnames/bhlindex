@@ -15,8 +15,8 @@ module Protob
       self.service_name = 'protob.BHLIndex'
 
       rpc :Ver, Void, Version
-      rpc :Pages, WithText, stream(Page)
-      rpc :Titles, TitleOpt, stream(Title)
+      rpc :Pages, PagesOpt, stream(Page)
+      rpc :Titles, TitlesOpt, stream(Title)
     end
 
     Stub = Service.rpc_stub_class

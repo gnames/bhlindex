@@ -5,7 +5,7 @@ require_relative '../lib/protob_services_pb'
 require 'csv'
 require 'logger'
 
-SERVER = 'localhost'.freeze
+SERVER = '172.22.247.23'.freeze
 
 # class Volume collects and transforms data for a BHL volume.
 class Volume
@@ -101,17 +101,17 @@ class Processor
                   Score Class ClassFreq ClassesNum Sum]
     @stub = Protob::BHLIndex::Stub.new("#{SERVER}:8888",
                                        :this_channel_is_insecure)
-    @with_text = Protob::WithText.new
+    @opts = Protob::PagesOpt.new(with_text: false, title_ids: (1..100).to_a)
     @vol = nil
   end
 
   def run
-    @stub.pages(@with_text).each_with_index do |p, i|
+    @stub.pages(@opts).each_with_index do |p, i|
       @vol = update_volume(p, @vol, @output)
       @vol.process_page(p)
       @logger.info("Process #{i} rows") if (i % 100_000).zero?
     end
-    @vol.append_output(output)
+    @vol.append_output(@output)
     @output.close
   end
 end

@@ -10,7 +10,7 @@ def main
   output = CSV.open('output.csv', 'w:utf-8')
   output << ['Id']
   stub = Protob::BHLIndex::Stub.new('172.22.247.23:8888', :this_channel_is_insecure)
-  stub.titles(Protob::TitleOpt.new).each_with_index do |t, i|
+  stub.titles(Protob::TitlesOpt.new).each_with_index do |t, i|
     output << [t.id]
     next unless (i % 50_000).zero?
 

@@ -5,15 +5,17 @@ require_relative '../lib/protob_services_pb'
 require 'csv'
 require 'logger'
 
-SERVER = 'localhost'.freeze
+SERVER = '172.22.247.23'.freeze
 
 def context_taxa(data)
   threshold = 0.6
   context = nil
   data.each do |_, v|
+    v = v.to_a
     sum = v.transpose[1].sum
     max = v.max_by { |d| d[1] }
     break if (max[1].to_f / sum.to_f) < threshold
+
     context = max[0]
   end
   context
@@ -46,12 +48,12 @@ def main
   output = CSV.open('output.csv', 'w:utf-8')
   output << %w[TitleId PagesNum NamesNum NamesPerPage Score Context ContextNum]
   stub = Protob::BHLIndex::Stub.new("#{SERVER}:8888", :this_channel_is_insecure)
-  with_text = Protob::WithText.new
+  opts = Protob::PagesOpt.new
   title_id = nil
   names_num = 0
   pages_num = 0
   paths = []
-  stub.pages(with_text).each_with_index do |p, i|
+  stub.pages(opts).each_with_index do |p, i|
     if title_id.nil?
       title_id = p.title_id
     elsif p.title_id != title_id
@@ -73,7 +75,7 @@ def main
       end
     end
     next unless (i % 100_000).zero?
-    logger.info("Process #{i} rows")
+    logger.info("Process #{i} pages")
   end
   context, context_size = calculate_context(paths)
   output << [title_id, pages_num, names_num, names_num.to_f / pages_num,

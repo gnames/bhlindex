@@ -7,6 +7,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net"
+	"strconv"
+	"strings"
 
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/bhlindex/protob"
@@ -23,16 +25,13 @@ func (bhlServer) Ver(ctx context.Context, void *protob.Void) (*protob.Version, e
 	return &ver, nil
 }
 
-func (bhlServer) Titles(opt *protob.TitleOpt,
+func (bhlServer) Titles(opt *protob.TitlesOpt,
 	stream protob.BHLIndex_TitlesServer) error {
 	var titleID, path string
 	var dbID int
 
-	q := "SELECT id, internet_archive_id, path from titles"
-	db, err := bhlindex.DbInit()
-	bhlindex.Check(err)
-	rows, err := db.Query(q)
-	bhlindex.Check(err)
+	var ints []int
+	rows := titles(ints)
 
 	for rows.Next() {
 		err := rows.Scan(&dbID, &titleID, &path)
@@ -47,18 +46,19 @@ func (bhlServer) Titles(opt *protob.TitleOpt,
 			return err
 		}
 	}
-	return nil
+	err := rows.Close()
+	return err
 }
 
-func (bhlServer) Pages(withText *protob.WithText,
+func (bhlServer) Pages(opt *protob.PagesOpt,
 	stream protob.BHLIndex_PagesServer) error {
-	q := "SELECT id, internet_archive_id, path from titles"
 	var titleID, path string
 	var dbID int
-	db, err := bhlindex.DbInit()
-	bhlindex.Check(err)
-	rows, err := db.Query(q)
-	bhlindex.Check(err)
+	ids := make([]int, len(opt.TitleIds))
+	for i, v := range opt.TitleIds {
+		ids[i] = int(v)
+	}
+	rows := titles(ids)
 	for rows.Next() {
 		err := rows.Scan(&dbID, &titleID, &path)
 		bhlindex.Check(err)
@@ -66,7 +66,7 @@ func (bhlServer) Pages(withText *protob.WithText,
 		for _, page := range pages {
 			page.TitleId = titleID
 			page.TitlePath = path
-			if withText.Value {
+			if opt.WithText {
 				path := fmt.Sprintf("%s/%s.txt", page.TitlePath, page.Id)
 				page.Text = pageText(path)
 			}
@@ -75,10 +75,24 @@ func (bhlServer) Pages(withText *protob.WithText,
 			}
 		}
 	}
-	err = rows.Close()
+	err := rows.Close()
 	return err
 }
 
+func titles(ids []int) *sql.Rows {
+	q := "SELECT id, internet_archive_id, path from titles"
+	if len(ids) > 0 {
+		strIDs := make([]string, len(ids))
+		for i, v := range ids {
+			strIDs[i] = strconv.Itoa(v)
+		}
+
+		q = fmt.Sprintf("%s where id in (%s)", q, strings.Join(strIDs, ","))
+	}
+	rows, err := db.Query(q)
+	bhlindex.Check(err)
+	return rows
+}
 func pageText(path string) []byte {
 	b, err := ioutil.ReadFile(path)
 	bhlindex.Check(err)
@@ -181,9 +195,16 @@ func getMatchType(match string) protob.MatchType {
 	return protob.MatchType_NONE
 }
 
+func initDB() *sql.DB {
+	db, err := bhlindex.DbInit()
+	bhlindex.Check(err)
+	return db
+}
+
 func Serve(port int, ver string) {
 	version = ver
 	srv := grpc.NewServer()
+	db = initDB()
 	var bhl bhlServer
 	protob.RegisterBHLIndexServer(srv, bhl)
 	portVal := fmt.Sprintf(":%d", port)
