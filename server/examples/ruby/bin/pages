@@ -10,7 +10,7 @@ def main
 	output = CSV.open('output.csv', 'w:utf-8')
 	output << ['TitleId', 'PagesNum', 'NamesNum', 'Names/Page', 'Score']
 	stub = Protob::BHLIndex::Stub.new('172.22.247.23:8888', :this_channel_is_insecure)
-	opts = Protob::PagesOpt.new(with_text: false, title_ids: (1..100).to_a)
+	opts = Protob::PagesOpt.new(with_text: true, title_ids: [])
 	title_id = nil
 	names_num = 0
 	pages_num = 0

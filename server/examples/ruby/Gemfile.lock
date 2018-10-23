@@ -4,10 +4,11 @@ GEM
     google-protobuf (3.6.1)
     googleapis-common-protos-types (1.0.2)
       google-protobuf (~> 3.0)
-    grpc (1.14.1)
+    grpc (1.15.0)
       google-protobuf (~> 3.1)
       googleapis-common-protos-types (~> 1.0.0)
-    grpc-tools (1.14.1)
+    grpc-tools (1.15.0)
+    rake (12.3.1)
 
 PLATFORMS
   ruby
@@ -15,6 +16,7 @@ PLATFORMS
 DEPENDENCIES
   grpc (~> 1.14)
   grpc-tools (~> 1.14)
+  rake (~> 12.3)
 
 BUNDLED WITH
-   1.16.3
+   1.16.5

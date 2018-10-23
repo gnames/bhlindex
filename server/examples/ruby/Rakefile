@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+require 'rake'
+
+task :grpc do
+  cmd = 'grpc_tools_ruby_protoc ' \
+        '-I $GOPATH/src/github.com/gnames/bhlindex/protob ' \
+        '--ruby_out=lib --grpc_out=lib ' \
+        '$GOPATH/src/github.com/gnames/bhlindex/protob/protob.proto'
+  puts cmd
+  `#{cmd}`
+end
+
+task default: %i[grpc]

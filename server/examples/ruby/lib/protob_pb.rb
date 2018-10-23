@@ -38,6 +38,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     optional :edit_distance_stem, :int32, 6
     optional :source_id, :int32, 7
     optional :match, :enum, 8, "protob.MatchType"
+    optional :offset_start, :int32, 9
+    optional :offset_end, :int32, 10
   end
   add_enum "protob.MatchType" do
     value :NONE, 0
