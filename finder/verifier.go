@@ -8,8 +8,8 @@ import (
 
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/bhlindex/models"
-	"github.com/gnames/gnfinder/resolver"
 	gfutil "github.com/gnames/gnfinder/util"
+	"github.com/gnames/gnfinder/verifier"
 	"github.com/lib/pq"
 )
 
@@ -80,7 +80,7 @@ func verifyNamesQuery(db *sql.DB, counter chan<- int, workers int) int {
 
 	counter <- namesSize
 	time1 := time.Now().UnixNano()
-	verified := resolver.Verify(names, m)
+	verified := verifier.Verify(names, m)
 	if namesSize > 0 {
 		timeSpent := float64(time.Now().UnixNano()-time1) / 1000000000
 		speed := int(float64(namesSize) / timeSpent)
@@ -108,7 +108,7 @@ func verifyLog(counter <-chan int) {
 	}
 }
 
-func saveVerifiedNameStrings(db *sql.DB, verified resolver.VerifyOutput) {
+func saveVerifiedNameStrings(db *sql.DB, verified verifier.VerifyOutput) {
 	var errStr sql.NullString
 	now := time.Now()
 	columns := []string{"name", "match_type", "edit_distance",
@@ -121,10 +121,10 @@ func saveVerifiedNameStrings(db *sql.DB, verified resolver.VerifyOutput) {
 	bhlindex.Check(err)
 
 	for name, v := range verified {
-		if v.Error == nil {
+		if v.Error == "" {
 			errStr = sql.NullString{}
 		} else {
-			errStr.Scan(v.Error.Error())
+			errStr.Scan(v.Error)
 		}
 		_, err = stmt.Exec(name, v.MatchType, v.EditDistance, v.MatchedName,
 			v.CurrentName, v.ClassificationPath, v.DataSourceID, v.DatabasesNum,
