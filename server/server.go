@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -119,7 +120,6 @@ func titlePages(db *sql.DB, titleID int) []*protob.Page {
 }
 
 func processPages(rows *sql.Rows) []*protob.Page {
-	var pages []*protob.Page
 	pagesMap := make(map[string]*protob.Page)
 
 	var pageID string
@@ -175,13 +175,28 @@ func processPages(rows *sql.Rows) []*protob.Page {
 	}
 	err := rows.Close()
 	bhlindex.Check(err)
-
-	for _, page := range pagesMap {
-		pages = append(pages, page)
-	}
-	return pages
+	return sortedPages(pagesMap)
 }
 
+func sortedPages(pagesMap map[string]*protob.Page) []*protob.Page {
+	l := len(pagesMap)
+	pages := make([]*protob.Page, l)
+	sortedIds := make([]string, l)
+
+	i := 0
+	for k := range pagesMap {
+		sortedIds[i] = k
+		i++
+	}
+
+	sort.Strings(sortedIds)
+
+	for i, v := range sortedIds {
+		pages[i] = pagesMap[v]
+	}
+
+	return pages
+}
 func getMatchType(match string) protob.MatchType {
 	switch match {
 	case "ExactMatch":

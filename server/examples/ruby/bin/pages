@@ -9,9 +9,8 @@ def main
 	logger = Logger.new($stdout)
 	output = CSV.open('output.csv', 'w:utf-8')
 	output << ['TitleId', 'PagesNum', 'NamesNum', 'Names/Page', 'Score']
-  output2 = File.open('texts', 'w')
 	stub = Protob::BHLIndex::Stub.new('172.22.247.23:8888', :this_channel_is_insecure)
-	opts = Protob::PagesOpt.new(with_text: true, title_ids: (0..2000).to_a)
+	opts = Protob::PagesOpt.new(with_text: false, title_ids: (0..2000).to_a)
 	title_id = nil
 	names_num = 0
 	pages_num = 0
@@ -27,7 +26,6 @@ def main
 		end
 
 		pages_num += 1
-    output2.write(p.text)
 		p.names.each do |n|
 			names_num += 1 if n.odds > 100
 		end

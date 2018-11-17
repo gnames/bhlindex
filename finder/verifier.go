@@ -127,7 +127,7 @@ func saveVerifiedNameStrings(db *sql.DB, verified verifier.VerifyOutput) {
 			errStr.Scan(v.Error)
 		}
 		_, err = stmt.Exec(name, v.MatchType, v.EditDistance, v.MatchedName,
-			v.CurrentName, v.ClassificationPath, v.DataSourceID, v.DatabasesNum,
+			v.CurrentName, v.ClassificationPath, v.DataSourceID, v.DataSourcesNum,
 			v.DataSourceQuality, v.Retries, errStr, now)
 		bhlindex.Check(err)
 	}
