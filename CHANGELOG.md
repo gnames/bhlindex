@@ -2,13 +2,23 @@
 
 ## Unreleased
 
-- Add [#15] simple gRPC server and an example how to use it
+## [v0.5.0]
+
+- Add [#26]: add Go modules to make builds more stable.
+- Add [#24]: updates in verification interface.
+- Add [#23]: gRPC has an option to limit stream of pages to specific volumes.
+- Add [#22]: gRPC has a stream of volumes metainfo.
+- Add [#18]: gRPC example groups names by class clade.
+- Add [#17]: gRPC does not stream volumes, streams pages and names and text.
+- Add [#16]: gRPC streams volumes, pages, and names.
+- Add [#15]: simple gRPC server and an example how to use it.
+- Fix [#25]: gRPC serves pages in ascending order instead of random order.
 
 ## [v0.4.0]
 
-- Add [#14] curation information for verified names
-- Add [#12],[#13] options to set workers in command line app, better CLI
-- Add [#9],[#10],[#11] improve command line interface
+- Add [#14] curation information for verified names.
+- Add [#12],[#13] options to set workers in command line app, better CLI.
+- Add [#9],[#10],[#11] improve command line interface.
 - Add [#8]: decouple name-finding and name-verification.
 
 ## [v0.3.0]
@@ -42,6 +52,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.5.0]: https://github.com/gnames/bhlindex/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/gnames/bhlindex/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/gnames/bhlindex/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/gnames/bhlindex/compare/v0.1.0...v0.2.0

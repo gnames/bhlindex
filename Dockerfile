@@ -1,6 +1,6 @@
-FROM golang:1.10
+FROM golang:1.11
 
-ENV LAST_FULL_REBUILD 2018-08-03
+ENV LAST_FULL_REBUILD 2018-11-17
 
 RUN go get github.com/onsi/ginkgo/ginkgo
 RUN go get github.com/onsi/gomega
@@ -10,7 +10,7 @@ RUN go build -tags 'postgres' -o /go/bin/migrate github.com/golang-migrate/migra
 
 RUN apt-get update && apt-get -yq install postgresql-client
 
-WORKDIR /go/src/github.com/gnames/bhlindex
+WORKDIR /bhlindex
 COPY . .
 
 # RUN go-wrapper download   # "go get -d -v ./..."

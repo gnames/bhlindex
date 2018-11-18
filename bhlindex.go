@@ -47,7 +47,7 @@ func EnvVars() Env {
 
 // UUID4 returns random (version 4) UUID as a string.
 func UUID4() string {
-	return uuid.Must(uuid.NewV4()).String()
+	return uuid.NewV4().String()
 }
 
 // DbInit returns a connection to bhlindex database.
