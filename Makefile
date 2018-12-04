@@ -13,11 +13,11 @@ build: grpc
 	cp ${GOPATH}/bin/migrate bhlindex
 	cd bhlindex && \
 	$(GOCLEAN) && \
-	GOOS=linux GOARCH=amd64 $(GOBUILD) ${LDFLAGS}
+	GO111MODULE=on GOOS=linux GOARCH=amd64 $(GOBUILD) ${LDFLAGS}
 
 install: grpc
 	cd bhlindex && \
-	$(GOINSTALL) ${LDFLAGS};
+	GO111MODULE=on $(GOINSTALL) ${LDFLAGS};
 
 release: build
 	tar --exclude='bhlindex/development.sh' --exclude='bhlindex/cmd' \
