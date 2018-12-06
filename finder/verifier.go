@@ -15,7 +15,7 @@ import (
 
 const BATCH_SIZE = 50000
 
-func Verify(db *sql.DB, workers int) {
+func Verify(db *sql.DB, workersNum int) {
 	namesVerified := make(chan bool)
 	counter := make(chan int)
 
@@ -23,7 +23,7 @@ func Verify(db *sql.DB, workers int) {
 	models.Truncate(db, "name_statuses")
 	populateUniqueNames(db)
 	go verifyLog(counter)
-	go verifyNames(db, counter, namesVerified, workers)
+	go verifyNames(db, counter, namesVerified, workersNum)
 
 	// wait till all names are imported
 	<-namesVerified
@@ -31,10 +31,10 @@ func Verify(db *sql.DB, workers int) {
 }
 
 func verifyNames(db *sql.DB, counter chan<- int,
-	namesVerified chan<- bool, workers int) {
+	namesVerified chan<- bool, workersNum int) {
 	for {
 		time.Sleep(200 * time.Microsecond)
-		verifyNamesQuery(db, counter, workers)
+		verifyNamesQuery(db, counter, workersNum)
 		status := readStatus(db)
 		if status.Status == AllNamesVerified {
 			break
@@ -43,9 +43,9 @@ func verifyNames(db *sql.DB, counter chan<- int,
 	namesVerified <- true
 }
 
-func verifyNamesQuery(db *sql.DB, counter chan<- int, workers int) int {
+func verifyNamesQuery(db *sql.DB, counter chan<- int, workersNum int) int {
 	m := gfutil.NewModel()
-	m.Workers = workers
+	m.Workers = workersNum
 	q := `
     WITH temp AS (
       SELECT name FROM name_statuses
@@ -111,9 +111,12 @@ func verifyLog(counter <-chan int) {
 func saveVerifiedNameStrings(db *sql.DB, verified verifier.VerifyOutput) {
 	var errStr sql.NullString
 	now := time.Now()
-	columns := []string{"name", "match_type", "edit_distance",
-		"matched_name", "current_name", "classification", "datasource_id",
-		"datasources_number", "curation", "retries", "error", "updated_at"}
+	columns := []string{
+		"name", "match_type", "edit_distance",
+		"stem_edit_distance", "matched_name", "current_name",
+		"classification", "datasource_id", "datasources_number",
+		"curation", "retries", "error",
+		"updated_at"}
 	transaction, err := db.Begin()
 	bhlindex.Check(err)
 
@@ -126,9 +129,11 @@ func saveVerifiedNameStrings(db *sql.DB, verified verifier.VerifyOutput) {
 		} else {
 			errStr.Scan(v.Error)
 		}
-		_, err = stmt.Exec(name, v.MatchType, v.EditDistance, v.MatchedName,
-			v.CurrentName, v.ClassificationPath, v.DataSourceID, v.DataSourcesNum,
-			v.DataSourceQuality, v.Retries, errStr, now)
+		_, err = stmt.Exec(name, v.MatchType, v.EditDistance,
+			v.StemEditDistance, v.MatchedName, v.CurrentName,
+			v.ClassificationPath, v.DataSourceID, v.DataSourcesNum,
+			v.DataSourceQuality, v.Retries, errStr,
+			now)
 		bhlindex.Check(err)
 	}
 

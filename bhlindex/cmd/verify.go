@@ -38,12 +38,12 @@ var verifyCmd = &cobra.Command{
 	the name-strings are found in a variety of biodiversity databases as
 	exact or fuzzy matches.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		workers, err := cmd.Flags().GetInt("workers")
+		workersNum, err := cmd.Flags().GetInt("workers")
 		if err != nil {
 			log.Println(err)
 			os.Exit(1)
 		}
-		log.Printf("Verifying name-strings with %d workers...", workers)
+		log.Printf("Verifying name-strings with %d workers...", workersNum)
 		db, err := bhlindex.DbInit()
 		defer func() {
 			e := db.Close()
@@ -51,7 +51,7 @@ var verifyCmd = &cobra.Command{
 		}()
 		bhlindex.Check(err)
 
-		finder.Verify(db, workers)
+		finder.Verify(db, workersNum)
 	},
 }
 

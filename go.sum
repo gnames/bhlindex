@@ -19,6 +19,8 @@ github.com/gnames/gnfinder v0.7.0 h1:AgvHt4hsCxIcI1NQt9hNwM3urJs6SeTWDixcmRMSUQY
 github.com/gnames/gnfinder v0.7.0/go.mod h1:jWFp79q8e+C1nDKqUMj4T607svV9/koTQO9PxXGaBqA=
 github.com/gnames/gnfinder v0.8.0 h1:FgLRBT+lCLll360bLIoKe+IM6jV0zjcuQCjMim5gexY=
 github.com/gnames/gnfinder v0.8.0/go.mod h1:liy7EEsb4CVveANdhjEA6xrH/gl9JyyziK3/xrFdHi4=
+github.com/gnames/gnfinder v0.8.2 h1:H/eqX40gLPWAls2+F7X8sh++gmohc8gamP+rkruBemo=
+github.com/gnames/gnfinder v0.8.2/go.mod h1:liy7EEsb4CVveANdhjEA6xrH/gl9JyyziK3/xrFdHi4=
 github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b/go.mod h1:SBH7ygxi8pfUlaOkMMuAQtPIUF8ecWP5IEl/CR7VP2Q=
 github.com/golang/lint v0.0.0-20180702182130-06c8688daad7/go.mod h1:tluoj9z5200jBnyusfRPU2LqT6J+DAorxEvtC7LHB+E=
 github.com/golang/mock v1.1.1/go.mod h1:oTYuIxOrZwtPieC+H1uAHpcLFnEyAGVDL/k47Jfbm0A=
