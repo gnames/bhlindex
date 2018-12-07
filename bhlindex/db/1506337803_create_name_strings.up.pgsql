@@ -5,6 +5,7 @@ CREATE TABLE name_strings (
   edit_distance INTEGER DEFAULT 0,
   stem_edit_distance INTEGER DEFAULT 0,
   matched_name CHARACTER VARYING(255) COLLATE "C.UTF-8",
+  matched_canonical CHARACTER VARYING(255) COLLATE "C.UTF-8",
   current_name CHARACTER VARYING(255) COLLATE "C.UTF-8",
   classification CHARACTER VARYING COLLATE "C.UTF-8",
   datasource_id INTEGER,
