@@ -19,6 +19,3 @@ CREATE TABLE name_strings (
 
 CREATE UNIQUE INDEX name_strings_name_index
 ON name_strings USING btree (name);
-
--- CREATE INDEX name_strings_status_index
---     ON name_strings USING btree (status);

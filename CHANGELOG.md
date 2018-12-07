@@ -4,6 +4,7 @@
 
 ## [v0.6.0]
 
+- Add [#31]: save preferred data-sources results to db
 - Add [#30]: average odds and occurrence number for name_strings
 - Add [#29]: matched canonical form from verification
 - Fix [#28]: sporadic non-zero edit distance for ExactMatch

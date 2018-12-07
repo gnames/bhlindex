@@ -34,6 +34,12 @@ go get -u ./...
 ## How to create/update
 
 ```bash
+make grpc
+```
+
+or
+
+```bash
 cd protob
 protoc -I . ./protob.proto --go_out=plugins=grpc:.
 ```

@@ -29,6 +29,11 @@ collected by [Biodiversity Heritage Library](http://bhl.org).
     `BHL_DIR`
     : root of BHL directory that contains `$BHL_DIR`/ocr/bhl1, `$BHL_DIR`/ocr/bhl2 etc.
 
+    `PREF_SOURCES`
+    : IDs of data sources from http://resolver.globalnames.org/data_sources.
+      They have to be a list of integers separated by comma, for example
+      ``PREF_SOURCES=1,2,3``
+
       The variable with the values for development
       environment can be found at [.env.dev file][env]. To export the variables
       into bash or zsh:

@@ -20,6 +20,7 @@ var _ = Describe("Finder", func() {
 			Expect(models.Count(db, "name_strings")).To(Equal(0))
 			finder.Verify(db, 4)
 			Expect(models.Count(db, "name_strings")).To(Equal(7215))
+			Expect(models.Count(db, "preferred_sources")).To(BeNumerically(">", 0))
 		})
 	})
 })

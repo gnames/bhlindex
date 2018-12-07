@@ -44,8 +44,10 @@ func verifyNames(db *sql.DB, counter chan<- int,
 }
 
 func verifyNamesQuery(db *sql.DB, counter chan<- int, workersNum int) int {
+	env := bhlindex.EnvVars()
 	m := gfutil.NewModel()
 	m.Workers = workersNum
+	m.Sources = env.PrefSources
 	q := `
     WITH temp AS (
       SELECT name FROM name_statuses
@@ -86,6 +88,7 @@ func verifyNamesQuery(db *sql.DB, counter chan<- int, workersNum int) int {
 		speed := int(float64(namesSize) / timeSpent)
 		log.Printf("\033[40;32;1mVerification speed %d names/sec\033[0m\n", speed)
 		saveVerifiedNameStrings(db, verified)
+		savePreferredSources(db, verified)
 	}
 	return namesSize
 }
@@ -137,6 +140,41 @@ func saveVerifiedNameStrings(db *sql.DB, verified verifier.VerifyOutput) {
 		bhlindex.Check(err)
 	}
 
+	_, err = stmt.Exec()
+	if err != nil {
+		log.Println(`
+Bulk import of titles data failed, probably you need to empty all data
+and start with empty database.`)
+		log.Fatal(err)
+	}
+
+	err = stmt.Close()
+	bhlindex.Check(err)
+
+	err = transaction.Commit()
+	bhlindex.Check(err)
+}
+
+func savePreferredSources(db *sql.DB, verified verifier.VerifyOutput) {
+	columns := []string{"name", "datasource_id", "datasource_title",
+		"matched_name", "taxon_id"}
+
+	transaction, err := db.Begin()
+	bhlindex.Check(err)
+	stmt, err := transaction.Prepare(pq.CopyIn("preferred_sources",
+		columns...))
+	bhlindex.Check(err)
+
+	for name, v := range verified {
+		if v.MatchType == "NoMatch" {
+			continue
+		}
+		for _, vv := range v.PreferredResults {
+			_, err = stmt.Exec(name, vv.DataSourceID, vv.DataSourceTitle,
+				vv.Name, vv.TaxonID)
+			bhlindex.Check(err)
+		}
+	}
 	_, err = stmt.Exec()
 	if err != nil {
 		log.Println(`

@@ -5,18 +5,10 @@ in Biodiversity Heritage Library
 
 ## Usage
 
-*NOTE*: This is a Dev release.
-
-### Mac OSX
-
-* Download [bhlindex release for mac][bhlindex-mac].
-* Untar the file go to `script` directory and [read instructions][readme].
-* Use [bhl testdata][bhl-test] for testing.
-
 ### Linux
 
 * Download [bhlindex release for Linux][bhlindex-linux]
-* Untar the file go to `script` directory and [read instructions][readme].
+* Untar the file, go to `script` directory and [read instructions][readme].
 * Use [bhl testdata][bhl-test] for testing.
 
 ## Database Migrations
@@ -31,7 +23,7 @@ go build -tags 'postgres' -o $GOPATH/bin/migrate github.com/golang-migrate/migra
 ### Create migration
 
 ```bash
-migrate -ext sql -D db NAME
+migrate create -ext pgsql -D db NAME
 ```
 
 ### Run commands
