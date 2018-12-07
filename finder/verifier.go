@@ -156,8 +156,8 @@ func populateUniqueNames(db *sql.DB) {
 
 	log.Println("\033[40;32;1mExtract unique name-strings to verify.\033[0m")
 	q := `INSERT INTO name_statuses
-          SELECT DISTINCT name_string, false
-            FROM page_name_strings
+          SELECT name_string, AVG(odds), count(*), false
+            FROM page_name_strings GROUP BY name_string
             ORDER BY name_string`
 
 	stmt, err := db.Prepare(q)

@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## [v0.6.0]
+
+- Add [#30]: average odds and occurrence number for name_strings
+- Add [#29]: matched canonical form from verification
+- Fix [#28]: sporadic non-zero edit distance for ExactMatch
+- Fix [#27]: no verification for abbreviated names
+
 ## [v0.5.0]
 
 - Add [#26]: add Go modules to make builds more stable.
@@ -52,12 +59,24 @@
 
 This document follows [changelog guidelines]
 
+[v0.6.0]: https://github.com/gnames/bhlindex/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/gnames/bhlindex/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/gnames/bhlindex/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/gnames/bhlindex/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/gnames/bhlindex/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/gnames/bhlindex/tree/v0.1.0
 
+[#30]: https://github.com/gnames/bhlindex/issues/30
+[#29]: https://github.com/gnames/bhlindex/issues/29
+[#28]: https://github.com/gnames/bhlindex/issues/28
+[#27]: https://github.com/gnames/bhlindex/issues/27
+[#26]: https://github.com/gnames/bhlindex/issues/26
+[#24]: https://github.com/gnames/bhlindex/issues/24
+[#23]: https://github.com/gnames/bhlindex/issues/23
+[#22]: https://github.com/gnames/bhlindex/issues/22
+[#18]: https://github.com/gnames/bhlindex/issues/18
+[#17]: https://github.com/gnames/bhlindex/issues/17
+[#16]: https://github.com/gnames/bhlindex/issues/16
 [#15]: https://github.com/gnames/bhlindex/issues/15
 [#14]: https://github.com/gnames/bhlindex/issues/14
 [#13]: https://github.com/gnames/bhlindex/issues/13
