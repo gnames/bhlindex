@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/gnames/bhlindex"
-	"github.com/gnames/gnfinder"
+	"github.com/gnames/gnfinder/output"
 	"github.com/lib/pq"
 )
 
@@ -24,7 +24,7 @@ type DetectedName struct {
 	UpdatedAt    time.Time
 }
 
-func NewDetectedName(p Page, n gnfinder.Name) DetectedName {
+func NewDetectedName(p Page, n output.Name) DetectedName {
 	var endsNextPage bool
 	var end int
 	start := n.OffsetStart - p.Offset

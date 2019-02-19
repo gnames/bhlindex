@@ -53,7 +53,7 @@ var findCmd = &cobra.Command{
 		}()
 		bhlindex.Check(err)
 
-		finder.ProcessTitles(db, &dict, workers)
+		finder.ProcessTitles(db, dict, workers)
 	},
 }
 

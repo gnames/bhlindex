@@ -8,7 +8,6 @@ import (
 
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/bhlindex/models"
-	gfutil "github.com/gnames/gnfinder/util"
 	"github.com/gnames/gnfinder/verifier"
 	"github.com/lib/pq"
 )
@@ -45,9 +44,8 @@ func verifyNames(db *sql.DB, counter chan<- int,
 
 func verifyNamesQuery(db *sql.DB, counter chan<- int, workersNum int) int {
 	env := bhlindex.EnvVars()
-	m := gfutil.NewModel()
-	m.Workers = workersNum
-	m.Sources = env.PrefSources
+	verif := verifier.NewVerifier(verifier.OptWorkers(workersNum),
+		verifier.OptSources(env.PrefSources))
 	q := `
     WITH temp AS (
       SELECT name FROM name_statuses
@@ -82,7 +80,7 @@ func verifyNamesQuery(db *sql.DB, counter chan<- int, workersNum int) int {
 
 	counter <- namesSize
 	time1 := time.Now().UnixNano()
-	verified := verifier.Verify(names, m)
+	verified := verif.Run(names)
 	if namesSize > 0 {
 		timeSpent := float64(time.Now().UnixNano()-time1) / 1000000000
 		speed := int(float64(namesSize) / timeSpent)
@@ -111,7 +109,7 @@ func verifyLog(counter <-chan int) {
 	}
 }
 
-func saveVerifiedNameStrings(db *sql.DB, verified verifier.VerifyOutput) {
+func saveVerifiedNameStrings(db *sql.DB, verified verifier.Output) {
 	var errStr sql.NullString
 	now := time.Now()
 	columns := []string{
@@ -155,7 +153,7 @@ and start with empty database.`)
 	bhlindex.Check(err)
 }
 
-func savePreferredSources(db *sql.DB, verified verifier.VerifyOutput) {
+func savePreferredSources(db *sql.DB, verified verifier.Output) {
 	columns := []string{"name", "datasource_id", "datasource_title",
 		"matched_name", "taxon_id"}
 

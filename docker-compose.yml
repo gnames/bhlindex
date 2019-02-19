@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    env_file: ./.env
+    env_file: ./.env.dev
     build:
       context: .
     volumes:

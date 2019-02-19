@@ -9,7 +9,7 @@ import (
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/gnfinder"
 	"github.com/gnames/gnfinder/dict"
-	gfutil "github.com/gnames/gnfinder/util"
+	"github.com/gnames/gnfinder/output"
 )
 
 // Title respresents BHL title data. Title in BHL can be a book, a journal etc.
@@ -70,9 +70,9 @@ INSERT INTO titles
 }
 
 func (t *Title) FindNames(d *dict.Dictionary) []DetectedName {
-	text := []rune(string(t.Content.Text))
-	m := gfutil.NewModel(gfutil.WithBayes(true))
-	output := gnfinder.FindNames(text, d, m)
+	text := t.Content.Text
+	gnf := gnfinder.NewGNfinder(gnfinder.OptDict(d), gnfinder.OptBayes(true))
+	output := gnf.FindNames(text)
 	detectedNames := namesToDetectedNames(t, output.Names)
 	return detectedNames
 }
@@ -93,7 +93,7 @@ func TitleFind(db *sql.DB, id int) Title {
 	return title
 }
 
-func namesToDetectedNames(t *Title, names []gnfinder.Name) []DetectedName {
+func namesToDetectedNames(t *Title, names []output.Name) []DetectedName {
 	ns := make([]DetectedName, len(names))
 	j := 0
 	if j >= len(names) {

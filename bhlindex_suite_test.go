@@ -27,7 +27,7 @@ var _ = BeforeSuite(func() {
 	db, err = bhlindex.DbInit()
 	Expect(err).NotTo(HaveOccurred())
 	d := dictionary.LoadDictionary()
-	dict = &d
+	dict = d
 })
 
 var _ = AfterSuite(func() {
