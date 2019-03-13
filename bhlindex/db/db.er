@@ -64,7 +64,7 @@ taxon_id {label: "varchar COLLATE 'C.UTF-8' NOT NULL"}
 
 pages *--1 titles
 page_name_strings *--1 pages {label: "pages"}
-page_name_strings *--1 name_statuses {label: "     name_strings:name"}
-page_name_strings *--1 name_strings {label: "name_strings:name"}
+page_name_strings *--1 name_statuses {label: "     name_string:name"}
+page_name_strings *--1 name_strings {label: "name_string:name"}
 name_statuses 1--1 name_strings {label: "name:name"}
 preferred_sources *--1 name_strings {label: "name:name"}
