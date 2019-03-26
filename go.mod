@@ -1,7 +1,7 @@
 module github.com/gnames/bhlindex
 
 require (
-	github.com/gnames/gnfinder v0.8.4
+	github.com/gnames/gnfinder v0.8.5
 	github.com/golang/protobuf v1.2.1-0.20190109072247-347cf4a86c1c
 	github.com/lib/pq v1.0.0
 	github.com/mitchellh/go-homedir v1.1.0

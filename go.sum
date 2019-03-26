@@ -58,6 +58,8 @@ github.com/gnames/gnfinder v0.8.3 h1:HptEVVGa8OIuHVvj0v7Fg9weEOuVKoo3LoLUHs86F/o
 github.com/gnames/gnfinder v0.8.3/go.mod h1:liy7EEsb4CVveANdhjEA6xrH/gl9JyyziK3/xrFdHi4=
 github.com/gnames/gnfinder v0.8.4 h1:RBq097ZvZ8dFL/b6RA3Ohu//z4T/wOx4cyit/tWkooU=
 github.com/gnames/gnfinder v0.8.4/go.mod h1:ZDVNQEKgfqfQ35M4e3In/wGLpaUfrMHRUEQyfGmve3I=
+github.com/gnames/gnfinder v0.8.5 h1:2m9NW2LvM9lxtMYsLvCIqsPVBRRqQyAwKx257FftrTw=
+github.com/gnames/gnfinder v0.8.5/go.mod h1:ZDVNQEKgfqfQ35M4e3In/wGLpaUfrMHRUEQyfGmve3I=
 github.com/go-kit/kit v0.8.0/go.mod h1:xBxKIO96dXMWWy0MnWVtmwkA9/13aqxPnvrjFYMA2as=
 github.com/go-logfmt/logfmt v0.3.0/go.mod h1:Qt1PoO58o5twSAckw1HlFXLmHsOX5/0LbT9GBnD5lWE=
 github.com/go-logfmt/logfmt v0.4.0/go.mod h1:3RMwSq7FuexP4Kalkev3ejPJsZTpXXBr9+V4qmtdjCk=
