@@ -103,7 +103,7 @@ func namesToDetectedNames(t *Title, names []output.Name) []DetectedName {
 	for _, page := range t.Content.Pages {
 		for {
 			if name.OffsetStart <= page.OffsetNext {
-				ns[j] = NewDetectedName(page, name)
+				ns[j] = NewDetectedName(t.ID, page, name)
 				j++
 				if j >= len(names) {
 					return ns

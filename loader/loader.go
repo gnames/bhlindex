@@ -102,7 +102,7 @@ func generatePages(pageIDs []string, titleID int) []models.Page {
 
 func savePages(db *sql.DB, t *models.Title) {
 	batch := t.Content.Pages
-	columns := []string{"id", "title_id", "page_offset"}
+	columns := []string{"page_id", "title_id", "page_offset"}
 	transaction, err := db.Begin()
 	bhlindex.Check(err)
 

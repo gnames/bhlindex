@@ -1,8 +1,8 @@
 CREATE TABLE pages (
-  id character varying(255) NOT NULL,
+  page_id character varying(255) NOT NULL,
   title_id integer NOT NULL,
   page_offset integer NOT NULL DEFAULT 0,
-  CONSTRAINT pages_pkey PRIMARY KEY (id)
+  CONSTRAINT pages_pkey PRIMARY KEY (page_id, title_id)
 );
 
 CREATE INDEX title_id_index
