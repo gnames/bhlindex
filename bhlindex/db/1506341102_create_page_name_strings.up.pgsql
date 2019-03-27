@@ -11,4 +11,7 @@ CREATE TABLE page_name_strings (
 );
 
 CREATE INDEX page_name_strings_page_title_index
-ON page_name_strings USING btree (page_id, title_id);
+ON page_name_strings USING btree (title_id, page_id);
+
+CREATE INDEX page_name_strings_name_index
+ON page_name_strings USING btree (name_string);

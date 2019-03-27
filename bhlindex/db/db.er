@@ -1,5 +1,6 @@
-title {label: "bhlindex v0.6.0 Entity-Relationship diagram", size: "20"}
-
+title {label: "bhlindex v0.7.0 Entity-Relationship diagram", size: "20"}
+# usage
+# cat db.er | erd-go | dot -Tpng -o db.png
 # red #fcecec
 # blue #ececfc
 # green #d0e0d0
@@ -18,12 +19,13 @@ english_detected {label: "bool NOT NULL (false)"}
 updated_at {label: "timestamp"}
 
 [pages] {bgcolor: "#d0e0d0"}
-*id {label: "varchar NOT NULL"}
-title_id {label: "int NOT NULL"}
+*page_id {label: "varchar NOT NULL"}
+*title_id {label: "int NOT NULL"}
 page_offset {label: "int NOT NULL (0)"}
 
 [page_name_strings] {bgcolor: "#ececfc"}
 page_id {label: "varchar NOT NULL"}
+title_id {label: "integer NOT NULL"}
 name_string {label: "varchar NOT NULL"}
 name_offset_start {label: "int NOT NULL"}
 name_offset_end {label: "int NOT NULL"}
@@ -63,7 +65,7 @@ matched_name {label: "varchar COLLATE 'C.UTF-8' NOT NULL"}
 taxon_id {label: "varchar COLLATE 'C.UTF-8' NOT NULL"}
 
 pages *--1 titles
-page_name_strings *--1 pages {label: "pages"}
+page_name_strings *--1 pages {label: "pages|title"}
 page_name_strings *--1 name_statuses {label: "     name_string:name"}
 page_name_strings *--1 name_strings {label: "name_string:name"}
 name_statuses 1--1 name_strings {label: "name:name"}

@@ -10,7 +10,6 @@ LDFLAGS=-ldflags "-X main.buildDate=${DATE} -X main.buildVersion=${VERSION}"
 all: install
 
 build: grpc
-	cp ${GOPATH}/bin/migrate bhlindex
 	cd bhlindex && \
 	$(GOCLEAN) && \
 	GO111MODULE=on GOOS=linux GOARCH=amd64 $(GOBUILD) ${LDFLAGS}
