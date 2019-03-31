@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+## [v0.7.0]
+
+- Add [#35]: Fixes in dictionaries In particular names of botanical genera
+             authors are not in the dictionary anymore. Also common latin
+             capitalized words from species descriptions are now added to
+             'grey' dictionary. As a result calculation of Bayes odds
+             score improved quite a bit.
+- Add [#34]: There are more indices.
+- Add [#32]: Pages are not considered unique anymore and we take a combination
+             of title id and archive page id as unique.
+
+
 ## [v0.6.0]
 
 - Add [#31]: save preferred data-sources results to db
@@ -60,6 +72,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.7.0]: https://github.com/gnames/bhlindex/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/bhlindex/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/gnames/bhlindex/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/gnames/bhlindex/compare/v0.3.0...v0.4.0
@@ -67,6 +80,11 @@ This document follows [changelog guidelines]
 [v0.2.0]: https://github.com/gnames/bhlindex/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/gnames/bhlindex/tree/v0.1.0
 
+[#35]: https://github.com/gnames/bhlindex/issues/35
+[#34]: https://github.com/gnames/bhlindex/issues/34
+[#33]: https://github.com/gnames/bhlindex/issues/33
+[#32]: https://github.com/gnames/bhlindex/issues/32
+[#31]: https://github.com/gnames/bhlindex/issues/31
 [#30]: https://github.com/gnames/bhlindex/issues/30
 [#29]: https://github.com/gnames/bhlindex/issues/29
 [#28]: https://github.com/gnames/bhlindex/issues/28
