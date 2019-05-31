@@ -102,12 +102,12 @@ func pageText(path string) []byte {
 
 func titlePages(db *sql.DB, titleID int) []*protob.Page {
 	var pages []*protob.Page
-	q := `SELECT p.id, p.page_offset, pn.name_string, n.classification, pn.odds,
+	q := `SELECT p.page_id, p.page_offset, pn.name_string, n.classification, pn.odds,
 					n.match_type, n.curation, n.edit_distance, n.stem_edit_distance,
 					n.datasource_id, pn.name_offset_start, pn.name_offset_end
 					FROM pages p
 						LEFT OUTER JOIN page_name_strings pn
-							ON p.id = pn.page_id
+							ON p.page_id = pn.page_id
 						LEFT OUTER JOIN name_strings n
 							ON n.name = pn.name_string
 					WHERE p.title_id = $1`
