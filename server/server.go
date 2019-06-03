@@ -107,7 +107,7 @@ func titlePages(db *sql.DB, titleID int) []*protob.Page {
 					n.datasource_id, pn.name_offset_start, pn.name_offset_end
 					FROM pages p
 						LEFT OUTER JOIN page_name_strings pn
-							ON p.page_id = pn.page_id
+							ON p.title_id = $1 AND p.page_id = pn.page_id
 						LEFT OUTER JOIN name_strings n
 							ON n.name = pn.name_string
 					WHERE p.title_id = $1`
