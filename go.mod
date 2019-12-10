@@ -1,8 +1,11 @@
 module github.com/gnames/bhlindex
 
 require (
-	github.com/gnames/gnfinder v0.8.7
+	github.com/abadojack/whatlanggo v1.0.1 // indirect
+	github.com/gnames/gnfinder v0.9.1-0.20191210191519-4a1998ebf293
 	github.com/golang/protobuf v1.2.1-0.20190109072247-347cf4a86c1c
+	github.com/joho/godotenv v1.3.0
+	github.com/json-iterator/go v1.1.8 // indirect
 	github.com/lib/pq v1.0.0
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/onsi/ginkgo v1.7.1-0.20181205153639-505cc3522551
@@ -12,3 +15,5 @@ require (
 	github.com/spf13/viper v1.3.1
 	google.golang.org/grpc v1.18.0
 )
+
+go 1.13

@@ -130,9 +130,11 @@ func saveVerifiedNameStrings(db *sql.DB, verified verifier.Output) {
 		} else {
 			errStr.Scan(v.Error)
 		}
-		_, err = stmt.Exec(name, v.MatchType, v.EditDistance,
-			v.StemEditDistance, v.MatchedName, v.MatchedCanonical,
-			v.CurrentName, v.ClassificationPath, v.DataSourceID,
+
+		br := v.BestResult
+		_, err = stmt.Exec(name, br.MatchType, br.EditDistance,
+			br.StemEditDistance, br.MatchedName, br.MatchedCanonical,
+			br.CurrentName, br.ClassificationPath, br.DataSourceID,
 			v.DataSourcesNum, v.DataSourceQuality, v.Retries,
 			errStr, now)
 		bhlindex.Check(err)
@@ -164,12 +166,13 @@ func savePreferredSources(db *sql.DB, verified verifier.Output) {
 	bhlindex.Check(err)
 
 	for name, v := range verified {
-		if v.MatchType == "NoMatch" {
+
+		if v.BestResult.MatchType == "NoMatch" {
 			continue
 		}
 		for _, vv := range v.PreferredResults {
 			_, err = stmt.Exec(name, vv.DataSourceID, vv.DataSourceTitle,
-				vv.Name, vv.TaxonID)
+				vv.MatchedName, vv.TaxonID)
 			bhlindex.Check(err)
 		}
 	}
