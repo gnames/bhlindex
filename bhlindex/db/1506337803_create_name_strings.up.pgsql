@@ -13,8 +13,6 @@ CREATE TABLE name_strings (
   datasource_title CHARACTER VARYING(255) COLLATE "C",
   datasources_number INTEGER,
   curation CHARACTER VARYING(255),
-  occurences int,
-  odds float,
   retries  INTEGER NOT NULL DEFAULT 0,
   error CHARACTER VARYING(255),
   updated_at timestamp without time zone,

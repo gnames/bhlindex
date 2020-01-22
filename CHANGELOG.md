@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v0.8.0]
+
+- Add [#36]: Rename `title` to `item` to be in sync with BHL terminology,
+             name_string export via gRPC.
+
 ## [v0.7.0]
 
 - Add [#35]: Fixes in dictionaries In particular names of botanical genera
@@ -72,6 +77,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.8.0]: https://github.com/gnames/bhlindex/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/gnames/bhlindex/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/gnames/bhlindex/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/gnames/bhlindex/compare/v0.4.0...v0.5.0
@@ -80,6 +86,7 @@ This document follows [changelog guidelines]
 [v0.2.0]: https://github.com/gnames/bhlindex/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/gnames/bhlindex/tree/v0.1.0
 
+[#36]: https://github.com/gnames/bhlindex/issues/36
 [#35]: https://github.com/gnames/bhlindex/issues/35
 [#34]: https://github.com/gnames/bhlindex/issues/34
 [#33]: https://github.com/gnames/bhlindex/issues/33

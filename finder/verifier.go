@@ -48,12 +48,12 @@ func verifyNamesQuery(db *sql.DB, counter chan<- int, workersNum int) int {
 		verifier.OptSources(env.PrefSources))
 	q := `
     WITH temp AS (
-      SELECT name, odds, occurences FROM name_statuses
+      SELECT name FROM name_statuses
         WHERE processed=false LIMIT $1)
     UPDATE name_statuses ns SET processed=true
     FROM temp
       WHERE ns.name = temp.name
-    RETURNING temp.name, temp.odds, temp.occurences`
+    RETURNING temp.name`
 
 	rows, err := db.Query(q, BATCH_SIZE)
 	bhlindex.Check(err)
