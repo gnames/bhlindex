@@ -8,21 +8,21 @@ require 'logger'
 def main
 	logger = Logger.new($stdout)
 	output = CSV.open('output.csv', 'w:utf-8')
-	output << ['TitleId', 'PagesNum', 'NamesNum', 'Names/Page', 'Score']
+	output << ['ItemId', 'PagesNum', 'NamesNum', 'Names/Page', 'Score']
   stub = Protob::BHLIndex::Stub.new('bhlrpc.globalnames.org:80', :this_channel_is_insecure)
-	opts = Protob::PagesOpt.new(with_text: false, title_ids: (0..2000).to_a)
-	title_id = nil
+	opts = Protob::PagesOpt.new(with_text: false, item_ids: (0..2000).to_a)
+	item_id = nil
 	names_num = 0
 	pages_num = 0
 	stub.pages(opts).each_with_index do |p, i|
-		if title_id.nil?
-			title_id = p.title_id
-		elsif p.title_id != title_id
-			output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
+		if item_id.nil?
+			item_id = p.item_id
+		elsif p.item_id != item_id
+			output << [item_id, pages_num, names_num, names_num.to_f / pages_num,
 								 names_num * pages_num]
 			names_num = 0
 			pages_num = 0
-			title_id = p.title_id
+			item_id = p.item_id
 		end
 
 		pages_num += 1
@@ -32,7 +32,7 @@ def main
 		next unless (i % 100_000).zero?
 		logger.info("Process #{i} pages")
 	end
-	output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
+	output << [item_id, pages_num, names_num, names_num.to_f / pages_num,
 						 names_num * pages_num]
 	output.close
 end

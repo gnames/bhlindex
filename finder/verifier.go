@@ -48,12 +48,12 @@ func verifyNamesQuery(db *sql.DB, counter chan<- int, workersNum int) int {
 		verifier.OptSources(env.PrefSources))
 	q := `
     WITH temp AS (
-      SELECT name FROM name_statuses
+      SELECT name, odds, occurences FROM name_statuses
         WHERE processed=false LIMIT $1)
     UPDATE name_statuses ns SET processed=true
     FROM temp
       WHERE ns.name = temp.name
-    RETURNING temp.name`
+    RETURNING temp.name, temp.odds, temp.occurences`
 
 	rows, err := db.Query(q, BATCH_SIZE)
 	bhlindex.Check(err)
@@ -113,9 +113,9 @@ func saveVerifiedNameStrings(db *sql.DB, verified verifier.Output) {
 	var errStr sql.NullString
 	now := time.Now()
 	columns := []string{
-		"name", "match_type", "edit_distance",
+		"name", "taxon_id", "match_type", "edit_distance",
 		"stem_edit_distance", "matched_name", "matched_canonical",
-		"current_name", "classification", "datasource_id",
+		"current_name", "classification", "datasource_id", "datasource_title",
 		"datasources_number", "curation", "retries",
 		"error", "updated_at"}
 	transaction, err := db.Begin()
@@ -132,9 +132,9 @@ func saveVerifiedNameStrings(db *sql.DB, verified verifier.Output) {
 		}
 
 		br := v.BestResult
-		_, err = stmt.Exec(name, br.MatchType, br.EditDistance,
+		_, err = stmt.Exec(name, br.TaxonID, br.MatchType, br.EditDistance,
 			br.StemEditDistance, br.MatchedName, br.MatchedCanonical,
-			br.CurrentName, br.ClassificationPath, br.DataSourceID,
+			br.CurrentName, br.ClassificationPath, br.DataSourceID, br.DataSourceTitle,
 			v.DataSourcesNum, v.DataSourceQuality, v.Retries,
 			errStr, now)
 		bhlindex.Check(err)
@@ -143,7 +143,7 @@ func saveVerifiedNameStrings(db *sql.DB, verified verifier.Output) {
 	_, err = stmt.Exec()
 	if err != nil {
 		log.Println(`
-Bulk import of titles data failed, probably you need to empty all data
+Bulk import of items data failed, probably you need to empty all data
 and start with empty database.`)
 		log.Fatal(err)
 	}
@@ -156,8 +156,9 @@ and start with empty database.`)
 }
 
 func savePreferredSources(db *sql.DB, verified verifier.Output) {
-	columns := []string{"name", "datasource_id", "datasource_title",
-		"matched_name", "taxon_id"}
+	columns := []string{"name", "taxon_id", "match_type", "edit_distance",
+		"stem_edit_distance", "matched_name", "matched_canonical", "current_name",
+		"classification", "datasource_id", "datasource_title"}
 
 	transaction, err := db.Begin()
 	bhlindex.Check(err)
@@ -171,15 +172,16 @@ func savePreferredSources(db *sql.DB, verified verifier.Output) {
 			continue
 		}
 		for _, vv := range v.PreferredResults {
-			_, err = stmt.Exec(name, vv.DataSourceID, vv.DataSourceTitle,
-				vv.MatchedName, vv.TaxonID)
+			_, err = stmt.Exec(name, vv.TaxonID, vv.MatchType, vv.EditDistance,
+				vv.StemEditDistance, vv.MatchedName, vv.MatchedCanonical, vv.CurrentName,
+				vv.ClassificationPath, vv.DataSourceID, vv.DataSourceTitle)
 			bhlindex.Check(err)
 		}
 	}
 	_, err = stmt.Exec()
 	if err != nil {
 		log.Println(`
-Bulk import of titles data failed, probably you need to empty all data
+Bulk import of items data failed, probably you need to empty all data
 and start with empty database.`)
 		log.Fatal(err)
 	}

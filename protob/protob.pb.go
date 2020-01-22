@@ -129,7 +129,7 @@ func (m *Void) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Void proto.InternalMessageInfo
 
-type Title struct {
+type Item struct {
 	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	ArchiveId            string   `protobuf:"bytes,2,opt,name=archive_id,json=archiveId,proto3" json:"archive_id,omitempty"`
 	Path                 string   `protobuf:"bytes,3,opt,name=path,proto3" json:"path,omitempty"`
@@ -139,96 +139,96 @@ type Title struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Title) Reset()         { *m = Title{} }
-func (m *Title) String() string { return proto.CompactTextString(m) }
-func (*Title) ProtoMessage()    {}
-func (*Title) Descriptor() ([]byte, []int) {
+func (m *Item) Reset()         { *m = Item{} }
+func (m *Item) String() string { return proto.CompactTextString(m) }
+func (*Item) ProtoMessage()    {}
+func (*Item) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e471450a6e94b5eb, []int{2}
 }
 
-func (m *Title) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Title.Unmarshal(m, b)
+func (m *Item) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Item.Unmarshal(m, b)
 }
-func (m *Title) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Title.Marshal(b, m, deterministic)
+func (m *Item) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Item.Marshal(b, m, deterministic)
 }
-func (m *Title) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Title.Merge(m, src)
+func (m *Item) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Item.Merge(m, src)
 }
-func (m *Title) XXX_Size() int {
-	return xxx_messageInfo_Title.Size(m)
+func (m *Item) XXX_Size() int {
+	return xxx_messageInfo_Item.Size(m)
 }
-func (m *Title) XXX_DiscardUnknown() {
-	xxx_messageInfo_Title.DiscardUnknown(m)
+func (m *Item) XXX_DiscardUnknown() {
+	xxx_messageInfo_Item.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Title proto.InternalMessageInfo
+var xxx_messageInfo_Item proto.InternalMessageInfo
 
-func (m *Title) GetId() int32 {
+func (m *Item) GetId() int32 {
 	if m != nil {
 		return m.Id
 	}
 	return 0
 }
 
-func (m *Title) GetArchiveId() string {
+func (m *Item) GetArchiveId() string {
 	if m != nil {
 		return m.ArchiveId
 	}
 	return ""
 }
 
-func (m *Title) GetPath() string {
+func (m *Item) GetPath() string {
 	if m != nil {
 		return m.Path
 	}
 	return ""
 }
 
-func (m *Title) GetLang() string {
+func (m *Item) GetLang() string {
 	if m != nil {
 		return m.Lang
 	}
 	return ""
 }
 
-type TitlesOpt struct {
+type ItemsOpt struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *TitlesOpt) Reset()         { *m = TitlesOpt{} }
-func (m *TitlesOpt) String() string { return proto.CompactTextString(m) }
-func (*TitlesOpt) ProtoMessage()    {}
-func (*TitlesOpt) Descriptor() ([]byte, []int) {
+func (m *ItemsOpt) Reset()         { *m = ItemsOpt{} }
+func (m *ItemsOpt) String() string { return proto.CompactTextString(m) }
+func (*ItemsOpt) ProtoMessage()    {}
+func (*ItemsOpt) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e471450a6e94b5eb, []int{3}
 }
 
-func (m *TitlesOpt) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TitlesOpt.Unmarshal(m, b)
+func (m *ItemsOpt) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ItemsOpt.Unmarshal(m, b)
 }
-func (m *TitlesOpt) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TitlesOpt.Marshal(b, m, deterministic)
+func (m *ItemsOpt) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ItemsOpt.Marshal(b, m, deterministic)
 }
-func (m *TitlesOpt) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TitlesOpt.Merge(m, src)
+func (m *ItemsOpt) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ItemsOpt.Merge(m, src)
 }
-func (m *TitlesOpt) XXX_Size() int {
-	return xxx_messageInfo_TitlesOpt.Size(m)
+func (m *ItemsOpt) XXX_Size() int {
+	return xxx_messageInfo_ItemsOpt.Size(m)
 }
-func (m *TitlesOpt) XXX_DiscardUnknown() {
-	xxx_messageInfo_TitlesOpt.DiscardUnknown(m)
+func (m *ItemsOpt) XXX_DiscardUnknown() {
+	xxx_messageInfo_ItemsOpt.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_TitlesOpt proto.InternalMessageInfo
+var xxx_messageInfo_ItemsOpt proto.InternalMessageInfo
 
 type Page struct {
 	Id                   string        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Offset               int32         `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
 	Text                 []byte        `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
-	TitleId              string        `protobuf:"bytes,4,opt,name=title_id,json=titleId,proto3" json:"title_id,omitempty"`
-	TitlePath            string        `protobuf:"bytes,5,opt,name=title_path,json=titlePath,proto3" json:"title_path,omitempty"`
+	ItemId               string        `protobuf:"bytes,4,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	ItemPath             string        `protobuf:"bytes,5,opt,name=item_path,json=itemPath,proto3" json:"item_path,omitempty"`
 	Names                []*NameString `protobuf:"bytes,6,rep,name=names,proto3" json:"names,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
@@ -281,16 +281,16 @@ func (m *Page) GetText() []byte {
 	return nil
 }
 
-func (m *Page) GetTitleId() string {
+func (m *Page) GetItemId() string {
 	if m != nil {
-		return m.TitleId
+		return m.ItemId
 	}
 	return ""
 }
 
-func (m *Page) GetTitlePath() string {
+func (m *Page) GetItemPath() string {
 	if m != nil {
-		return m.TitlePath
+		return m.ItemPath
 	}
 	return ""
 }
@@ -304,7 +304,8 @@ func (m *Page) GetNames() []*NameString {
 
 type PagesOpt struct {
 	WithText             bool     `protobuf:"varint,1,opt,name=with_text,json=withText,proto3" json:"with_text,omitempty"`
-	TitleIds             []int32  `protobuf:"varint,2,rep,packed,name=title_ids,json=titleIds,proto3" json:"title_ids,omitempty"`
+	OffsetsOnly          bool     `protobuf:"varint,2,opt,name=offsets_only,json=offsetsOnly,proto3" json:"offsets_only,omitempty"`
+	ItemIds              []int32  `protobuf:"varint,3,rep,packed,name=item_ids,json=itemIds,proto3" json:"item_ids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -342,27 +343,45 @@ func (m *PagesOpt) GetWithText() bool {
 	return false
 }
 
-func (m *PagesOpt) GetTitleIds() []int32 {
+func (m *PagesOpt) GetOffsetsOnly() bool {
 	if m != nil {
-		return m.TitleIds
+		return m.OffsetsOnly
+	}
+	return false
+}
+
+func (m *PagesOpt) GetItemIds() []int32 {
+	if m != nil {
+		return m.ItemIds
 	}
 	return nil
 }
 
 type NameString struct {
-	Value                string    `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
-	Odds                 float32   `protobuf:"fixed32,2,opt,name=odds,proto3" json:"odds,omitempty"`
-	Path                 string    `protobuf:"bytes,3,opt,name=path,proto3" json:"path,omitempty"`
-	Curated              bool      `protobuf:"varint,4,opt,name=curated,proto3" json:"curated,omitempty"`
-	EditDistance         int32     `protobuf:"varint,5,opt,name=edit_distance,json=editDistance,proto3" json:"edit_distance,omitempty"`
-	EditDistanceStem     int32     `protobuf:"varint,6,opt,name=edit_distance_stem,json=editDistanceStem,proto3" json:"edit_distance_stem,omitempty"`
-	SourceId             int32     `protobuf:"varint,7,opt,name=source_id,json=sourceId,proto3" json:"source_id,omitempty"`
-	Match                MatchType `protobuf:"varint,8,opt,name=match,proto3,enum=protob.MatchType" json:"match,omitempty"`
-	OffsetStart          int32     `protobuf:"varint,9,opt,name=offset_start,json=offsetStart,proto3" json:"offset_start,omitempty"`
-	OffsetEnd            int32     `protobuf:"varint,10,opt,name=offset_end,json=offsetEnd,proto3" json:"offset_end,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
-	XXX_unrecognized     []byte    `json:"-"`
-	XXX_sizecache        int32     `json:"-"`
+	Id                   string             `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Value                string             `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	TaxonId              string             `protobuf:"bytes,3,opt,name=taxon_id,json=taxonId,proto3" json:"taxon_id,omitempty"`
+	Matched              string             `protobuf:"bytes,4,opt,name=matched,proto3" json:"matched,omitempty"`
+	MatchedCanonical     string             `protobuf:"bytes,5,opt,name=matched_canonical,json=matchedCanonical,proto3" json:"matched_canonical,omitempty"`
+	Current              string             `protobuf:"bytes,6,opt,name=current,proto3" json:"current,omitempty"`
+	CurrentCanonical     string             `protobuf:"bytes,7,opt,name=current_canonical,json=currentCanonical,proto3" json:"current_canonical,omitempty"`
+	Odds                 float32            `protobuf:"fixed32,8,opt,name=odds,proto3" json:"odds,omitempty"`
+	Occurences           int32              `protobuf:"varint,9,opt,name=occurences,proto3" json:"occurences,omitempty"`
+	Classification       string             `protobuf:"bytes,10,opt,name=classification,proto3" json:"classification,omitempty"`
+	Curated              bool               `protobuf:"varint,11,opt,name=curated,proto3" json:"curated,omitempty"`
+	EditDistance         int32              `protobuf:"varint,12,opt,name=edit_distance,json=editDistance,proto3" json:"edit_distance,omitempty"`
+	EditDistanceStem     int32              `protobuf:"varint,13,opt,name=edit_distance_stem,json=editDistanceStem,proto3" json:"edit_distance_stem,omitempty"`
+	DataSourceId         int32              `protobuf:"varint,14,opt,name=data_source_id,json=dataSourceId,proto3" json:"data_source_id,omitempty"`
+	DataSourceTitle      string             `protobuf:"bytes,15,opt,name=data_source_title,json=dataSourceTitle,proto3" json:"data_source_title,omitempty"`
+	DataSourcesNum       int32              `protobuf:"varint,16,opt,name=data_sources_num,json=dataSourcesNum,proto3" json:"data_sources_num,omitempty"`
+	Match                MatchType          `protobuf:"varint,17,opt,name=match,proto3,enum=protob.MatchType" json:"match,omitempty"`
+	OffsetStart          int32              `protobuf:"varint,18,opt,name=offset_start,json=offsetStart,proto3" json:"offset_start,omitempty"`
+	OffsetEnd            int32              `protobuf:"varint,19,opt,name=offset_end,json=offsetEnd,proto3" json:"offset_end,omitempty"`
+	VerifError           bool               `protobuf:"varint,20,opt,name=verif_error,json=verifError,proto3" json:"verif_error,omitempty"`
+	Preferred            []*PreferredResult `protobuf:"bytes,21,rep,name=preferred,proto3" json:"preferred,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
 }
 
 func (m *NameString) Reset()         { *m = NameString{} }
@@ -390,9 +409,51 @@ func (m *NameString) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_NameString proto.InternalMessageInfo
 
+func (m *NameString) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
 func (m *NameString) GetValue() string {
 	if m != nil {
 		return m.Value
+	}
+	return ""
+}
+
+func (m *NameString) GetTaxonId() string {
+	if m != nil {
+		return m.TaxonId
+	}
+	return ""
+}
+
+func (m *NameString) GetMatched() string {
+	if m != nil {
+		return m.Matched
+	}
+	return ""
+}
+
+func (m *NameString) GetMatchedCanonical() string {
+	if m != nil {
+		return m.MatchedCanonical
+	}
+	return ""
+}
+
+func (m *NameString) GetCurrent() string {
+	if m != nil {
+		return m.Current
+	}
+	return ""
+}
+
+func (m *NameString) GetCurrentCanonical() string {
+	if m != nil {
+		return m.CurrentCanonical
 	}
 	return ""
 }
@@ -404,9 +465,16 @@ func (m *NameString) GetOdds() float32 {
 	return 0
 }
 
-func (m *NameString) GetPath() string {
+func (m *NameString) GetOccurences() int32 {
 	if m != nil {
-		return m.Path
+		return m.Occurences
+	}
+	return 0
+}
+
+func (m *NameString) GetClassification() string {
+	if m != nil {
+		return m.Classification
 	}
 	return ""
 }
@@ -432,9 +500,23 @@ func (m *NameString) GetEditDistanceStem() int32 {
 	return 0
 }
 
-func (m *NameString) GetSourceId() int32 {
+func (m *NameString) GetDataSourceId() int32 {
 	if m != nil {
-		return m.SourceId
+		return m.DataSourceId
+	}
+	return 0
+}
+
+func (m *NameString) GetDataSourceTitle() string {
+	if m != nil {
+		return m.DataSourceTitle
+	}
+	return ""
+}
+
+func (m *NameString) GetDataSourcesNum() int32 {
+	if m != nil {
+		return m.DataSourcesNum
 	}
 	return 0
 }
@@ -460,57 +542,250 @@ func (m *NameString) GetOffsetEnd() int32 {
 	return 0
 }
 
+func (m *NameString) GetVerifError() bool {
+	if m != nil {
+		return m.VerifError
+	}
+	return false
+}
+
+func (m *NameString) GetPreferred() []*PreferredResult {
+	if m != nil {
+		return m.Preferred
+	}
+	return nil
+}
+
+type PreferredResult struct {
+	TaxonId              string    `protobuf:"bytes,1,opt,name=taxon_id,json=taxonId,proto3" json:"taxon_id,omitempty"`
+	Matched              string    `protobuf:"bytes,2,opt,name=matched,proto3" json:"matched,omitempty"`
+	MatchedCanonical     string    `protobuf:"bytes,3,opt,name=matched_canonical,json=matchedCanonical,proto3" json:"matched_canonical,omitempty"`
+	Current              string    `protobuf:"bytes,4,opt,name=current,proto3" json:"current,omitempty"`
+	CurrentCanonical     string    `protobuf:"bytes,5,opt,name=current_canonical,json=currentCanonical,proto3" json:"current_canonical,omitempty"`
+	Path                 string    `protobuf:"bytes,6,opt,name=path,proto3" json:"path,omitempty"`
+	EditDistance         int32     `protobuf:"varint,7,opt,name=edit_distance,json=editDistance,proto3" json:"edit_distance,omitempty"`
+	EditDistanceStem     int32     `protobuf:"varint,8,opt,name=edit_distance_stem,json=editDistanceStem,proto3" json:"edit_distance_stem,omitempty"`
+	DataSourceId         int32     `protobuf:"varint,9,opt,name=data_source_id,json=dataSourceId,proto3" json:"data_source_id,omitempty"`
+	DataSourceTitle      string    `protobuf:"bytes,10,opt,name=data_source_title,json=dataSourceTitle,proto3" json:"data_source_title,omitempty"`
+	Match                MatchType `protobuf:"varint,11,opt,name=match,proto3,enum=protob.MatchType" json:"match,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
+}
+
+func (m *PreferredResult) Reset()         { *m = PreferredResult{} }
+func (m *PreferredResult) String() string { return proto.CompactTextString(m) }
+func (*PreferredResult) ProtoMessage()    {}
+func (*PreferredResult) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e471450a6e94b5eb, []int{7}
+}
+
+func (m *PreferredResult) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PreferredResult.Unmarshal(m, b)
+}
+func (m *PreferredResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PreferredResult.Marshal(b, m, deterministic)
+}
+func (m *PreferredResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PreferredResult.Merge(m, src)
+}
+func (m *PreferredResult) XXX_Size() int {
+	return xxx_messageInfo_PreferredResult.Size(m)
+}
+func (m *PreferredResult) XXX_DiscardUnknown() {
+	xxx_messageInfo_PreferredResult.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PreferredResult proto.InternalMessageInfo
+
+func (m *PreferredResult) GetTaxonId() string {
+	if m != nil {
+		return m.TaxonId
+	}
+	return ""
+}
+
+func (m *PreferredResult) GetMatched() string {
+	if m != nil {
+		return m.Matched
+	}
+	return ""
+}
+
+func (m *PreferredResult) GetMatchedCanonical() string {
+	if m != nil {
+		return m.MatchedCanonical
+	}
+	return ""
+}
+
+func (m *PreferredResult) GetCurrent() string {
+	if m != nil {
+		return m.Current
+	}
+	return ""
+}
+
+func (m *PreferredResult) GetCurrentCanonical() string {
+	if m != nil {
+		return m.CurrentCanonical
+	}
+	return ""
+}
+
+func (m *PreferredResult) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
+
+func (m *PreferredResult) GetEditDistance() int32 {
+	if m != nil {
+		return m.EditDistance
+	}
+	return 0
+}
+
+func (m *PreferredResult) GetEditDistanceStem() int32 {
+	if m != nil {
+		return m.EditDistanceStem
+	}
+	return 0
+}
+
+func (m *PreferredResult) GetDataSourceId() int32 {
+	if m != nil {
+		return m.DataSourceId
+	}
+	return 0
+}
+
+func (m *PreferredResult) GetDataSourceTitle() string {
+	if m != nil {
+		return m.DataSourceTitle
+	}
+	return ""
+}
+
+func (m *PreferredResult) GetMatch() MatchType {
+	if m != nil {
+		return m.Match
+	}
+	return MatchType_NONE
+}
+
+type NamesOpt struct {
+	WithUnverified       bool     `protobuf:"varint,1,opt,name=with_unverified,json=withUnverified,proto3" json:"with_unverified,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *NamesOpt) Reset()         { *m = NamesOpt{} }
+func (m *NamesOpt) String() string { return proto.CompactTextString(m) }
+func (*NamesOpt) ProtoMessage()    {}
+func (*NamesOpt) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e471450a6e94b5eb, []int{8}
+}
+
+func (m *NamesOpt) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NamesOpt.Unmarshal(m, b)
+}
+func (m *NamesOpt) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NamesOpt.Marshal(b, m, deterministic)
+}
+func (m *NamesOpt) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NamesOpt.Merge(m, src)
+}
+func (m *NamesOpt) XXX_Size() int {
+	return xxx_messageInfo_NamesOpt.Size(m)
+}
+func (m *NamesOpt) XXX_DiscardUnknown() {
+	xxx_messageInfo_NamesOpt.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NamesOpt proto.InternalMessageInfo
+
+func (m *NamesOpt) GetWithUnverified() bool {
+	if m != nil {
+		return m.WithUnverified
+	}
+	return false
+}
+
 func init() {
 	proto.RegisterEnum("protob.MatchType", MatchType_name, MatchType_value)
 	proto.RegisterType((*Version)(nil), "protob.Version")
 	proto.RegisterType((*Void)(nil), "protob.Void")
-	proto.RegisterType((*Title)(nil), "protob.Title")
-	proto.RegisterType((*TitlesOpt)(nil), "protob.TitlesOpt")
+	proto.RegisterType((*Item)(nil), "protob.Item")
+	proto.RegisterType((*ItemsOpt)(nil), "protob.ItemsOpt")
 	proto.RegisterType((*Page)(nil), "protob.Page")
 	proto.RegisterType((*PagesOpt)(nil), "protob.PagesOpt")
 	proto.RegisterType((*NameString)(nil), "protob.NameString")
+	proto.RegisterType((*PreferredResult)(nil), "protob.PreferredResult")
+	proto.RegisterType((*NamesOpt)(nil), "protob.NamesOpt")
 }
 
 func init() { proto.RegisterFile("protob.proto", fileDescriptor_e471450a6e94b5eb) }
 
 var fileDescriptor_e471450a6e94b5eb = []byte{
-	// 567 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x93, 0xe1, 0x6e, 0xd3, 0x30,
-	0x10, 0xc7, 0x97, 0x34, 0x4e, 0x93, 0x5b, 0xb6, 0x75, 0x07, 0x42, 0x61, 0x13, 0xa2, 0x04, 0x09,
-	0x22, 0x40, 0x13, 0x1a, 0x4f, 0x50, 0xb6, 0x21, 0x22, 0x8d, 0x6e, 0xf2, 0xca, 0x04, 0xfb, 0x40,
-	0x94, 0xd5, 0xde, 0x1a, 0xa9, 0x4d, 0xaa, 0xc4, 0x1d, 0xe3, 0x29, 0x78, 0x0b, 0x5e, 0x83, 0x57,
-	0x43, 0x3e, 0x27, 0xa5, 0x95, 0xf6, 0xa9, 0xbe, 0x9f, 0xff, 0xbd, 0xfb, 0xdf, 0x39, 0x07, 0xc1,
-	0xbc, 0x2a, 0x55, 0x79, 0x7d, 0x40, 0x3f, 0xe8, 0x9a, 0x28, 0x7a, 0x0e, 0xdd, 0x4b, 0x59, 0xd5,
-	0x79, 0x59, 0xe0, 0x63, 0x60, 0x77, 0xd9, 0x74, 0x21, 0x43, 0xab, 0x6f, 0xc5, 0x3e, 0x37, 0x41,
-	0xe4, 0x82, 0x73, 0x59, 0xe6, 0x22, 0xfa, 0x01, 0x6c, 0x94, 0xab, 0xa9, 0xc4, 0x6d, 0xb0, 0x73,
-	0x41, 0x1a, 0xc6, 0xed, 0x5c, 0xe0, 0x33, 0x80, 0xac, 0x1a, 0x4f, 0xf2, 0x3b, 0x99, 0xe6, 0x22,
-	0xb4, 0xe9, 0xbf, 0x7e, 0x43, 0x12, 0x81, 0x08, 0xce, 0x3c, 0x53, 0x93, 0xb0, 0x43, 0x17, 0x74,
-	0xd6, 0x6c, 0x9a, 0x15, 0xb7, 0xa1, 0x63, 0x98, 0x3e, 0x47, 0x9b, 0xe0, 0x53, 0xfe, 0xfa, 0x6c,
-	0xae, 0xa2, 0x3f, 0x16, 0x38, 0xe7, 0xd9, 0xed, 0x6a, 0x31, 0x9f, 0x8a, 0x3d, 0x01, 0xb7, 0xbc,
-	0xb9, 0xa9, 0xa5, 0xa2, 0x42, 0x8c, 0x37, 0x91, 0xce, 0xa8, 0xe4, 0xbd, 0xa2, 0x2a, 0x01, 0xa7,
-	0x33, 0x3e, 0x05, 0x4f, 0xe9, 0x8c, 0xda, 0x96, 0xa9, 0xd4, 0xa5, 0x38, 0x21, 0xcf, 0xe6, 0x8a,
-	0xac, 0x31, 0xe3, 0x99, 0xc8, 0xb9, 0xf6, 0x17, 0x03, 0x2b, 0xb2, 0x99, 0xac, 0x43, 0xb7, 0xdf,
-	0x89, 0x37, 0x0f, 0xf1, 0xa0, 0x19, 0xdd, 0x30, 0x9b, 0xc9, 0x0b, 0x55, 0xe5, 0xc5, 0x2d, 0x37,
-	0x82, 0xe8, 0x18, 0x3c, 0xed, 0x53, 0x9b, 0xc6, 0x7d, 0xf0, 0x7f, 0xe6, 0x6a, 0x92, 0x92, 0x11,
-	0x6d, 0xd9, 0xe3, 0x9e, 0x06, 0x23, 0x6d, 0x66, 0x1f, 0xfc, 0xd6, 0x4c, 0x1d, 0xda, 0xfd, 0x4e,
-	0xcc, 0xb8, 0xd7, 0xb8, 0xa9, 0xa3, 0xbf, 0x36, 0xc0, 0xff, 0xdc, 0x0f, 0x3f, 0x84, 0x6e, 0xb1,
-	0x14, 0xf4, 0x67, 0x2b, 0xb6, 0x39, 0x9d, 0x1f, 0x1c, 0x6e, 0x08, 0xdd, 0xf1, 0xa2, 0xca, 0x94,
-	0x34, 0x5d, 0x7b, 0xbc, 0x0d, 0xf1, 0x25, 0x6c, 0x49, 0x91, 0xab, 0x54, 0xe4, 0xb5, 0xca, 0x8a,
-	0xb1, 0xa4, 0xc6, 0x19, 0x0f, 0x34, 0x3c, 0x6e, 0x18, 0xbe, 0x03, 0x5c, 0x13, 0xa5, 0xb5, 0x92,
-	0xb3, 0xd0, 0x25, 0x65, 0x6f, 0x55, 0x79, 0xa1, 0xe4, 0x4c, 0xb7, 0x55, 0x97, 0x8b, 0x6a, 0x4c,
-	0x43, 0xee, 0x92, 0xc8, 0x33, 0x20, 0x11, 0xf8, 0x1a, 0xd8, 0x2c, 0x53, 0xe3, 0x49, 0xe8, 0xf5,
-	0xad, 0x78, 0xfb, 0x70, 0xb7, 0x1d, 0xe3, 0x17, 0x0d, 0x47, 0xbf, 0xe6, 0x92, 0x9b, 0x7b, 0x7c,
-	0x01, 0x81, 0x79, 0xc7, 0xb4, 0x56, 0x59, 0xa5, 0x42, 0x9f, 0x12, 0x6d, 0x1a, 0x76, 0xa1, 0x91,
-	0x7e, 0xb1, 0x46, 0x22, 0x0b, 0x11, 0x02, 0x09, 0x7c, 0x43, 0x4e, 0x0a, 0xf1, 0x66, 0x0e, 0xfe,
-	0x32, 0x2b, 0x7a, 0xe0, 0x0c, 0xcf, 0x86, 0x27, 0xbd, 0x0d, 0xf4, 0x81, 0x9d, 0x7c, 0x1b, 0x1c,
-	0x8d, 0x7a, 0x16, 0x3e, 0x82, 0x9d, 0xa3, 0xc1, 0xf0, 0x6c, 0x98, 0x1c, 0x0d, 0x4e, 0x53, 0x03,
-	0xed, 0x75, 0xf8, 0xe9, 0xeb, 0xd5, 0xd5, 0xf7, 0x5e, 0x07, 0x77, 0x61, 0xeb, 0x7c, 0xc0, 0x47,
-	0xc9, 0x52, 0xe7, 0xac, 0x22, 0xa3, 0x62, 0x87, 0xbf, 0x2d, 0xf0, 0x3e, 0x7e, 0x3e, 0x4d, 0x0a,
-	0x21, 0xef, 0xf1, 0x15, 0x74, 0x2e, 0x65, 0x85, 0x41, 0xdb, 0xa1, 0xde, 0x98, 0xbd, 0x9d, 0x65,
-	0x64, 0x16, 0x2c, 0xda, 0xc0, 0xb7, 0xc0, 0xe8, 0x73, 0xc1, 0x5e, 0x7b, 0xd7, 0x7e, 0x3d, 0x7b,
-	0xc1, 0x2a, 0x89, 0x36, 0xde, 0x5b, 0x78, 0x00, 0xae, 0xd9, 0x08, 0x5c, 0x4e, 0x6e, 0xb9, 0x21,
-	0x7b, 0x5b, 0x6b, 0x48, 0xeb, 0xaf, 0xcd, 0x4a, 0x7f, 0xf8, 0x17, 0x00, 0x00, 0xff, 0xff, 0x40,
-	0xe2, 0xb1, 0xc5, 0xe9, 0x03, 0x00, 0x00,
+	// 876 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x55, 0xff, 0x6e, 0xdb, 0x36,
+	0x10, 0x8e, 0x6d, 0xc9, 0x96, 0xce, 0x8e, 0x7f, 0xb0, 0xdd, 0xca, 0x65, 0xd8, 0xea, 0x69, 0x43,
+	0x6b, 0xb4, 0x43, 0xb1, 0xa5, 0xd8, 0x03, 0x64, 0x59, 0x86, 0x19, 0xe8, 0x9c, 0x40, 0x71, 0x83,
+	0xad, 0xc0, 0x20, 0xb0, 0x22, 0x9d, 0x10, 0xb0, 0x29, 0x43, 0xa4, 0xb3, 0xe4, 0x5d, 0xf6, 0xd7,
+	0x5e, 0x64, 0x0f, 0xb3, 0x17, 0x19, 0x78, 0xa2, 0x2c, 0xa5, 0x6d, 0x56, 0xff, 0x65, 0xde, 0x77,
+	0x9f, 0x8f, 0x9f, 0x8e, 0x1f, 0x8f, 0xd0, 0x5b, 0xe7, 0x99, 0xc9, 0xde, 0xbe, 0xc0, 0x1f, 0xd2,
+	0x2e, 0xa2, 0xe8, 0x31, 0x74, 0x2e, 0x44, 0xae, 0x65, 0xa6, 0xc8, 0x43, 0xf0, 0xaf, 0xd9, 0x72,
+	0x23, 0x68, 0x63, 0xdc, 0x98, 0x84, 0x71, 0x11, 0x44, 0x6d, 0xf0, 0x2e, 0x32, 0xc9, 0xa3, 0x3f,
+	0xc0, 0x9b, 0x1a, 0xb1, 0x22, 0x7d, 0x68, 0x4a, 0x8e, 0x14, 0x3f, 0x6e, 0x4a, 0x4e, 0xbe, 0x00,
+	0x60, 0x79, 0x7a, 0x25, 0xaf, 0x45, 0x22, 0x39, 0x6d, 0xe2, 0x5f, 0x43, 0x87, 0x4c, 0x39, 0x21,
+	0xe0, 0xad, 0x99, 0xb9, 0xa2, 0x2d, 0x4c, 0xe0, 0xda, 0x62, 0x4b, 0xa6, 0x2e, 0xa9, 0x57, 0x60,
+	0x76, 0x1d, 0x01, 0x04, 0xb6, 0xbc, 0x3e, 0x5d, 0x9b, 0xe8, 0xef, 0x06, 0x78, 0x67, 0xec, 0x52,
+	0xd4, 0xf6, 0x0a, 0x71, 0xaf, 0x4f, 0xa1, 0x9d, 0x2d, 0x16, 0x5a, 0x18, 0xdc, 0xc7, 0x8f, 0x5d,
+	0x64, 0x0b, 0x1a, 0x71, 0x63, 0x70, 0x93, 0x5e, 0x8c, 0x6b, 0xf2, 0x08, 0x3a, 0xd2, 0x88, 0x95,
+	0x15, 0x55, 0xec, 0xd3, 0xb6, 0xe1, 0x94, 0x93, 0xcf, 0x21, 0xc4, 0x04, 0xca, 0xf2, 0x31, 0x15,
+	0x58, 0xe0, 0xcc, 0x4a, 0x9b, 0x80, 0xaf, 0xd8, 0x4a, 0x68, 0xda, 0x1e, 0xb7, 0x26, 0xdd, 0x43,
+	0xf2, 0xc2, 0x35, 0x6d, 0xc6, 0x56, 0xe2, 0xdc, 0xe4, 0x52, 0x5d, 0xc6, 0x05, 0x21, 0x12, 0x10,
+	0x58, 0x8d, 0x56, 0xb0, 0x2d, 0xf9, 0xa7, 0x34, 0x57, 0x09, 0x8a, 0xb0, 0x72, 0x83, 0x38, 0xb0,
+	0xc0, 0xdc, 0x0a, 0xf9, 0x0a, 0x7a, 0x85, 0x4c, 0x9d, 0x64, 0x6a, 0x79, 0x8b, 0xd2, 0x83, 0xb8,
+	0xeb, 0xb0, 0x53, 0xb5, 0xbc, 0x25, 0x9f, 0x41, 0xe0, 0xb4, 0x6a, 0xda, 0x1a, 0xb7, 0x26, 0x7e,
+	0xdc, 0x29, 0xc4, 0xea, 0xe8, 0x5f, 0x1f, 0xa0, 0xda, 0xfc, 0xbd, 0x8e, 0x6c, 0xcf, 0xac, 0x59,
+	0x3b, 0x33, 0x5b, 0xcf, 0xb0, 0x9b, 0x4c, 0xd9, 0x8f, 0x2f, 0x1a, 0xdf, 0xc1, 0x78, 0xca, 0x09,
+	0x85, 0xce, 0x8a, 0x99, 0xf4, 0x4a, 0x94, 0x6d, 0x29, 0x43, 0xf2, 0x1c, 0x46, 0x6e, 0x99, 0xa4,
+	0x4c, 0x65, 0x4a, 0xa6, 0x6c, 0xe9, 0xfa, 0x33, 0x74, 0x89, 0xe3, 0x12, 0xb7, 0x65, 0xd2, 0x4d,
+	0x9e, 0x0b, 0x65, 0x68, 0xbb, 0x28, 0xe3, 0x42, 0x5b, 0xc6, 0x2d, 0x6b, 0x65, 0x3a, 0x45, 0x19,
+	0x97, 0xa8, 0xca, 0x10, 0xf0, 0x32, 0xce, 0x35, 0x0d, 0xc6, 0x8d, 0x49, 0x33, 0xc6, 0x35, 0xf9,
+	0x12, 0x20, 0x4b, 0xd3, 0x4d, 0x2e, 0x54, 0x2a, 0x34, 0x0d, 0xf1, 0xa0, 0x6b, 0x08, 0x79, 0x02,
+	0xfd, 0x74, 0xc9, 0xb4, 0x96, 0x0b, 0x99, 0x32, 0x23, 0x33, 0x45, 0x01, 0xab, 0xbf, 0x83, 0x3a,
+	0x89, 0xcc, 0x08, 0x4e, 0xbb, 0xd8, 0xf2, 0x32, 0x24, 0x5f, 0xc3, 0xbe, 0xe0, 0xd2, 0x24, 0x5c,
+	0x6a, 0xc3, 0x54, 0x2a, 0x68, 0x0f, 0x37, 0xe9, 0x59, 0xf0, 0x27, 0x87, 0x91, 0x6f, 0x81, 0xdc,
+	0x21, 0x25, 0xda, 0x88, 0x15, 0xdd, 0x47, 0xe6, 0xb0, 0xce, 0x3c, 0xb7, 0xb7, 0xe2, 0x1b, 0xe8,
+	0x73, 0x66, 0x58, 0xa2, 0xb3, 0x4d, 0x9e, 0xe2, 0x4d, 0xe8, 0x17, 0x35, 0x2d, 0x7a, 0x8e, 0xe0,
+	0x94, 0x93, 0x67, 0x30, 0xaa, 0xb3, 0x8c, 0x34, 0x4b, 0x41, 0x07, 0xa8, 0x7e, 0x50, 0x11, 0xe7,
+	0x16, 0x26, 0x13, 0x18, 0xd6, 0xb8, 0x3a, 0x51, 0x9b, 0x15, 0x1d, 0x62, 0xcd, 0x7e, 0x45, 0xd5,
+	0xb3, 0xcd, 0x8a, 0x3c, 0x05, 0x1f, 0xcf, 0x87, 0x8e, 0xc6, 0x8d, 0x49, 0xff, 0x70, 0x54, 0x7a,
+	0xf6, 0x57, 0x0b, 0xce, 0x6f, 0xd7, 0x22, 0x2e, 0xf2, 0x95, 0x13, 0x13, 0x6d, 0x58, 0x6e, 0x28,
+	0xc1, 0x72, 0xce, 0x89, 0xe7, 0x16, 0xb2, 0xb7, 0xd9, 0x51, 0x84, 0xe2, 0xf4, 0x01, 0x12, 0xc2,
+	0x02, 0x39, 0x51, 0x9c, 0x3c, 0x86, 0xee, 0xb5, 0xc8, 0xe5, 0x22, 0x11, 0x79, 0x9e, 0xe5, 0xf4,
+	0x21, 0xf6, 0x15, 0x10, 0x3a, 0xb1, 0x08, 0xf9, 0x01, 0xc2, 0x75, 0x2e, 0x16, 0x22, 0xcf, 0x05,
+	0xa7, 0x9f, 0xe0, 0x1d, 0x7a, 0x54, 0xea, 0x39, 0x2b, 0x13, 0xb1, 0xd0, 0x9b, 0xa5, 0x89, 0x2b,
+	0x66, 0xf4, 0x57, 0x0b, 0x06, 0xef, 0xa4, 0xef, 0x98, 0xb8, 0x71, 0xaf, 0x89, 0x9b, 0x3b, 0x98,
+	0xb8, 0xf5, 0x71, 0x13, 0x7b, 0x3b, 0x98, 0xd8, 0xbf, 0xdf, 0xc4, 0x38, 0x4b, 0xda, 0xb5, 0x11,
+	0xf7, 0x9e, 0xc5, 0x3a, 0x3b, 0x5b, 0x2c, 0xd8, 0xd9, 0x62, 0xe1, 0xae, 0x16, 0x83, 0x0f, 0x5b,
+	0x6c, 0x6b, 0x9c, 0xee, 0xff, 0x1b, 0x27, 0x7a, 0x09, 0x81, 0x9d, 0x41, 0x38, 0xeb, 0x9e, 0xc2,
+	0x00, 0x67, 0xdd, 0x46, 0xe1, 0xb1, 0x4b, 0xc1, 0xdd, 0xc4, 0xeb, 0x5b, 0xf8, 0xf5, 0x16, 0x7d,
+	0xb6, 0x86, 0x70, 0x5b, 0x88, 0x04, 0xe0, 0xcd, 0x4e, 0x67, 0x27, 0xc3, 0x3d, 0x12, 0x82, 0x7f,
+	0xf2, 0xdb, 0xd1, 0xf1, 0x7c, 0xd8, 0x20, 0x0f, 0x60, 0x70, 0x7c, 0x34, 0x3b, 0x9d, 0x4d, 0x8f,
+	0x8f, 0x5e, 0x25, 0x05, 0xd8, 0xbc, 0x0b, 0xfe, 0xfc, 0xfa, 0xcd, 0x9b, 0xdf, 0x87, 0x2d, 0x32,
+	0x82, 0xfd, 0xb3, 0xa3, 0x78, 0x3e, 0xdd, 0xf2, 0xbc, 0x3a, 0x54, 0xb0, 0xfc, 0xc3, 0x7f, 0x1a,
+	0x10, 0xfc, 0xf8, 0xcb, 0xab, 0xa9, 0xe2, 0xe2, 0x86, 0x3c, 0x81, 0xd6, 0x85, 0xc8, 0x49, 0xaf,
+	0xfc, 0x28, 0xfb, 0x88, 0x1d, 0x0c, 0xb6, 0x51, 0xf1, 0xe6, 0x45, 0x7b, 0xe4, 0x39, 0xf8, 0x38,
+	0xc7, 0xc9, 0x70, 0xeb, 0x53, 0x37, 0xd6, 0x0f, 0x7a, 0x75, 0x24, 0xda, 0xfb, 0xae, 0x61, 0xc9,
+	0xf8, 0x4a, 0x55, 0xe4, 0xf2, 0xd1, 0xaa, 0xc8, 0x16, 0x41, 0xf2, 0xf7, 0xe0, 0x63, 0xd7, 0x2a,
+	0x72, 0xd9, 0xc4, 0x83, 0x0f, 0xbc, 0x2b, 0xf6, 0x2f, 0x6f, 0x8b, 0x57, 0xf9, 0xe5, 0x7f, 0x01,
+	0x00, 0x00, 0xff, 0xff, 0xc4, 0x55, 0xfd, 0x6b, 0xac, 0x07, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -527,7 +802,8 @@ const _ = grpc.SupportPackageIsVersion4
 type BHLIndexClient interface {
 	Ver(ctx context.Context, in *Void, opts ...grpc.CallOption) (*Version, error)
 	Pages(ctx context.Context, in *PagesOpt, opts ...grpc.CallOption) (BHLIndex_PagesClient, error)
-	Titles(ctx context.Context, in *TitlesOpt, opts ...grpc.CallOption) (BHLIndex_TitlesClient, error)
+	Items(ctx context.Context, in *ItemsOpt, opts ...grpc.CallOption) (BHLIndex_ItemsClient, error)
+	Names(ctx context.Context, in *NamesOpt, opts ...grpc.CallOption) (BHLIndex_NamesClient, error)
 }
 
 type bHLIndexClient struct {
@@ -579,12 +855,12 @@ func (x *bHLIndexPagesClient) Recv() (*Page, error) {
 	return m, nil
 }
 
-func (c *bHLIndexClient) Titles(ctx context.Context, in *TitlesOpt, opts ...grpc.CallOption) (BHLIndex_TitlesClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_BHLIndex_serviceDesc.Streams[1], "/protob.BHLIndex/Titles", opts...)
+func (c *bHLIndexClient) Items(ctx context.Context, in *ItemsOpt, opts ...grpc.CallOption) (BHLIndex_ItemsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_BHLIndex_serviceDesc.Streams[1], "/protob.BHLIndex/Items", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &bHLIndexTitlesClient{stream}
+	x := &bHLIndexItemsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -594,17 +870,49 @@ func (c *bHLIndexClient) Titles(ctx context.Context, in *TitlesOpt, opts ...grpc
 	return x, nil
 }
 
-type BHLIndex_TitlesClient interface {
-	Recv() (*Title, error)
+type BHLIndex_ItemsClient interface {
+	Recv() (*Item, error)
 	grpc.ClientStream
 }
 
-type bHLIndexTitlesClient struct {
+type bHLIndexItemsClient struct {
 	grpc.ClientStream
 }
 
-func (x *bHLIndexTitlesClient) Recv() (*Title, error) {
-	m := new(Title)
+func (x *bHLIndexItemsClient) Recv() (*Item, error) {
+	m := new(Item)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *bHLIndexClient) Names(ctx context.Context, in *NamesOpt, opts ...grpc.CallOption) (BHLIndex_NamesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_BHLIndex_serviceDesc.Streams[2], "/protob.BHLIndex/Names", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &bHLIndexNamesClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type BHLIndex_NamesClient interface {
+	Recv() (*NameString, error)
+	grpc.ClientStream
+}
+
+type bHLIndexNamesClient struct {
+	grpc.ClientStream
+}
+
+func (x *bHLIndexNamesClient) Recv() (*NameString, error) {
+	m := new(NameString)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -615,7 +923,8 @@ func (x *bHLIndexTitlesClient) Recv() (*Title, error) {
 type BHLIndexServer interface {
 	Ver(context.Context, *Void) (*Version, error)
 	Pages(*PagesOpt, BHLIndex_PagesServer) error
-	Titles(*TitlesOpt, BHLIndex_TitlesServer) error
+	Items(*ItemsOpt, BHLIndex_ItemsServer) error
+	Names(*NamesOpt, BHLIndex_NamesServer) error
 }
 
 func RegisterBHLIndexServer(s *grpc.Server, srv BHLIndexServer) {
@@ -661,24 +970,45 @@ func (x *bHLIndexPagesServer) Send(m *Page) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _BHLIndex_Titles_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(TitlesOpt)
+func _BHLIndex_Items_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ItemsOpt)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(BHLIndexServer).Titles(m, &bHLIndexTitlesServer{stream})
+	return srv.(BHLIndexServer).Items(m, &bHLIndexItemsServer{stream})
 }
 
-type BHLIndex_TitlesServer interface {
-	Send(*Title) error
+type BHLIndex_ItemsServer interface {
+	Send(*Item) error
 	grpc.ServerStream
 }
 
-type bHLIndexTitlesServer struct {
+type bHLIndexItemsServer struct {
 	grpc.ServerStream
 }
 
-func (x *bHLIndexTitlesServer) Send(m *Title) error {
+func (x *bHLIndexItemsServer) Send(m *Item) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _BHLIndex_Names_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(NamesOpt)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(BHLIndexServer).Names(m, &bHLIndexNamesServer{stream})
+}
+
+type BHLIndex_NamesServer interface {
+	Send(*NameString) error
+	grpc.ServerStream
+}
+
+type bHLIndexNamesServer struct {
+	grpc.ServerStream
+}
+
+func (x *bHLIndexNamesServer) Send(m *NameString) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -698,8 +1028,13 @@ var _BHLIndex_serviceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "Titles",
-			Handler:       _BHLIndex_Titles_Handler,
+			StreamName:    "Items",
+			Handler:       _BHLIndex_Items_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "Names",
+			Handler:       _BHLIndex_Names_Handler,
 			ServerStreams: true,
 		},
 	},

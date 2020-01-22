@@ -9,25 +9,25 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
   add_message "protob.Void" do
   end
-  add_message "protob.Title" do
+  add_message "protob.Item" do
     optional :id, :int32, 1
     optional :archive_id, :string, 2
     optional :path, :string, 3
     optional :lang, :string, 4
   end
-  add_message "protob.TitlesOpt" do
+  add_message "protob.ItemsOpt" do
   end
   add_message "protob.Page" do
     optional :id, :string, 1
     optional :offset, :int32, 2
     optional :text, :bytes, 3
-    optional :title_id, :string, 4
-    optional :title_path, :string, 5
+    optional :item_id, :string, 4
+    optional :item_path, :string, 5
     repeated :names, :message, 6, "protob.NameString"
   end
   add_message "protob.PagesOpt" do
     optional :with_text, :bool, 1
-    repeated :title_ids, :int32, 2
+    repeated :item_ids, :int32, 2
   end
   add_message "protob.NameString" do
     optional :value, :string, 1
@@ -54,8 +54,8 @@ end
 module Protob
   Version = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.Version").msgclass
   Void = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.Void").msgclass
-  Title = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.Title").msgclass
-  TitlesOpt = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.TitlesOpt").msgclass
+  Item = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.Item").msgclass
+  ItemsOpt = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.ItemsOpt").msgclass
   Page = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.Page").msgclass
   PagesOpt = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.PagesOpt").msgclass
   NameString = Google::Protobuf::DescriptorPool.generated_pool.lookup("protob.NameString").msgclass

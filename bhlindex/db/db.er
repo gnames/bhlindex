@@ -1,4 +1,4 @@
-title {label: "bhlindex v0.7.0 Entity-Relationship diagram", size: "20"}
+title {label: "bhlindex v0.8.0-dev Entity-Relationship diagram", size: "20"}
 # usage
 # cat db.er | erd-go | dot -Tpng -o db.png
 # red #fcecec
@@ -9,7 +9,7 @@ title {label: "bhlindex v0.7.0 Entity-Relationship diagram", size: "20"}
 
 # Entities
 
-[titles] {bgcolor: "#d0e0d0"}
+[items] {bgcolor: "#d0e0d0"}
 *id {label: "serial NOT NULL"}
 path {label: "varchar NOT NULL"}
 internet_archive_id {label: "varchar NOT NULL"}
@@ -20,12 +20,12 @@ updated_at {label: "timestamp"}
 
 [pages] {bgcolor: "#d0e0d0"}
 *page_id {label: "varchar NOT NULL"}
-*title_id {label: "int NOT NULL"}
+*item_id {label: "int NOT NULL"}
 page_offset {label: "int NOT NULL (0)"}
 
 [page_name_strings] {bgcolor: "#ececfc"}
 page_id {label: "varchar NOT NULL"}
-title_id {label: "integer NOT NULL"}
+item_id {label: "integer NOT NULL"}
 name_string {label: "varchar NOT NULL"}
 name_offset_start {label: "int NOT NULL"}
 name_offset_end {label: "int NOT NULL"}
@@ -37,20 +37,22 @@ updated_at {label: "timestamp"}
 [name_statuses] {bgcolor: "#fcecec"}
 *name {label: "varchar"}
 odds {label: "float"}
-occurances {label: "int"}
+occurences {label: "int"}
 processed {label: "bool (false)"}
 
 [name_strings] {bgcolor: "#fcecec"}
 *id {label: "int"}
-name {label: "varchar COLLATE 'C.UTF-8' NOT NULL"}
+name {label: "varchar COLLATE 'C' NOT NULL"}
+taxon_id {label: "varchar COLLATE 'C'"}
 match_type {label: "varchar"}
 edit_distance {label: "int (0)"}
 stem_edit_distance {label: "int (0)"}
-matched_name {label: "varchar 'C.UTF-8'"}
-matched_canonical {label: "varchar COLLATE 'C.UTF-8'"}
-current_name {label: "varchar COLLATE 'C.UTF-8'"}
-classification {label: "varchar COLLATE 'C.UTF-8'"}
+matched_name {label: "varchar 'C'"}
+matched_canonical {label: "varchar COLLATE 'C'"}
+current_name {label: "varchar COLLATE 'C'"}
+classification {label: "varchar COLLATE 'C'"}
 datasource_id {label: "int"}
+datasource_title {label: "varchar COLLATE 'C'"}
 datasources_number {label: "int"}
 curation {label: "varchar"}
 retries  {label: "int (0)"}
@@ -58,14 +60,19 @@ error {label: "varchar"}
 updated_at {label: "timestamp"}
 
 [preferred_sources] {bgcolor: "#fcecec"}
-name {label: "varchar COLLATE 'C.UTF-8' NOT NULL"}
-datasource_id {label: "int"}
-datasource_title {label: "varchar COLLATE 'C.UTF-8' NOT NULL"}
-matched_name {label: "varchar COLLATE 'C.UTF-8' NOT NULL"}
-taxon_id {label: "varchar COLLATE 'C.UTF-8' NOT NULL"}
+name {label: "varchar COLLATE 'C' NOT NULL"}
+taxon_id {label: "varchar COLLATE 'C' NOT NULL"}
+match_type {label: "varchar NOT NULL"}
+edit_distance {label: "int (0)"}
+stem_edit_distance {label: "int (0)"}
+matched_name {label: "varchar COLLATE 'C' NOT NULL"}
+matched_canonical {label: "varchar COLLATE 'C' NOT NULL"}
+current_name {label: "varchar COLLATE 'C'"}
+datasource_id {label: "int NOT NULL"}
+datasource_title {label: "varchar COLLATE 'C' NOT NULL"}
 
-pages *--1 titles
-page_name_strings *--1 pages {label: "pages|title"}
+pages *--1 items
+page_name_strings *--1 pages {label: "pages|item"}
 page_name_strings *--1 name_statuses {label: "     name_string:name"}
 page_name_strings *--1 name_strings {label: "name_string:name"}
 name_statuses 1--1 name_strings {label: "name:name"}

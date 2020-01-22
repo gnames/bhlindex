@@ -16,9 +16,9 @@ import (
 
 var env = bhlindex.EnvVars()
 
-// FindTitles starts from the root bhl directory and traverses its children
-// collecting directories that correspond to BHL titles.
-func FindTitles(c chan<- string) {
+// FindItems starts from the root bhl directory and traverses its children
+// collecting directories that correspond to BHL items.
+func FindItems(c chan<- string) {
 	root := env.BHLDir
 	currentDir := ""
 
@@ -36,40 +36,40 @@ func FindTitles(c chan<- string) {
 	close(c)
 }
 
-// ImportTitles saves titles into databsase and removes
+// ImportItems saves items into databsase and removes
 // duplicates. This process preceeds actual work on name resolution. After
-// a title is impored to the database its id goes into titleIDs channel
-func ImportTitles(db *sql.DB, titleIDs chan<- int) {
+// a item is impored to the database its id goes into itemIDs channel
+func ImportItems(db *sql.DB, itemIDs chan<- int) {
 	c := make(chan string)
 	var wg sync.WaitGroup
 
 	wg.Add(1)
-	go titlesWorker(&wg, c, titleIDs, db)
-	FindTitles(c)
+	go itemsWorker(&wg, c, itemIDs, db)
+	FindItems(c)
 	wg.Wait()
 }
 
-func titlesWorker(wg *sync.WaitGroup, c <-chan string, titleIDs chan<- int,
+func itemsWorker(wg *sync.WaitGroup, c <-chan string, itemIDs chan<- int,
 	db *sql.DB) {
 	defer wg.Done()
 	for path := range c {
-		title := titleFromPath(path)
-		id := title.Insert(db)
+		item := itemFromPath(path)
+		id := item.Insert(db)
 		if id > 0 {
-			titleIDs <- id
+			itemIDs <- id
 		}
 	}
-	close(titleIDs)
+	close(itemIDs)
 }
 
-func titleFromPath(p string) models.Title {
+func itemFromPath(p string) models.Item {
 	dirs := strings.Split(p, "/")
-	title := dirs[len(dirs)-1]
-	return models.Title{Path: p, InternetArchiveID: title}
+	item := dirs[len(dirs)-1]
+	return models.Item{Path: p, InternetArchiveID: item}
 }
 
 // ImportPages finds all pages files and saves them to the database
-func ImportPages(db *sql.DB, t *models.Title) {
+func ImportPages(db *sql.DB, t *models.Item) {
 	d, err := os.Open(t.Path)
 	bhlindex.Check(err)
 	defer func() {
@@ -91,18 +91,18 @@ func ImportPages(db *sql.DB, t *models.Title) {
 	savePages(db, t)
 }
 
-func generatePages(pageIDs []string, titleID int) []models.Page {
+func generatePages(pageIDs []string, itemID int) []models.Page {
 	pages := make([]models.Page, len(pageIDs))
 	sort.Strings(pageIDs)
 	for i, v := range pageIDs {
-		pages[i] = models.Page{ID: v, TitleID: titleID}
+		pages[i] = models.Page{ID: v, ItemID: itemID}
 	}
 	return pages
 }
 
-func savePages(db *sql.DB, t *models.Title) {
+func savePages(db *sql.DB, t *models.Item) {
 	batch := t.Content.Pages
-	columns := []string{"page_id", "title_id", "page_offset"}
+	columns := []string{"page_id", "item_id", "page_offset"}
 	transaction, err := db.Begin()
 	bhlindex.Check(err)
 
@@ -110,14 +110,14 @@ func savePages(db *sql.DB, t *models.Title) {
 	bhlindex.Check(err)
 
 	for _, p := range batch {
-		_, err = stmt.Exec(p.ID, p.TitleID, p.Offset)
+		_, err = stmt.Exec(p.ID, p.ItemID, p.Offset)
 		bhlindex.Check(err)
 	}
 
 	_, err = stmt.Exec()
 	if err != nil {
 		log.Println(`
-Bulk import of titles data failed, probably you need to empty all data
+Bulk import of items data failed, probably you need to empty all data
 and start with empty database.`)
 		log.Fatal(err)
 	}

@@ -18,35 +18,35 @@ var _ = BeforeEach(func() {
 })
 
 var _ = Describe("Models", func() {
-	Describe("Title", func() {
+	Describe("Item", func() {
 		It("creates defaults", func() {
-			t := models.Title{InternetArchiveID: "test"}
+			t := models.Item{InternetArchiveID: "test"}
 			Expect(t.InternetArchiveID).To(Equal("test"))
 			Expect(t.Status).To(Equal(0))
 		})
 	})
 
-	Describe("title.Insert()", func() {
-		It("inserts title, returns id", func() {
-			t := models.Title{InternetArchiveID: "test"}
+	Describe("item.Insert()", func() {
+		It("inserts item, returns id", func() {
+			t := models.Item{InternetArchiveID: "test"}
 			Expect(t.Insert(db)).To(BeNumerically(">", 0))
 		})
 
 		It("ignores duplicates", func() {
-			t := models.Title{InternetArchiveID: "test"}
+			t := models.Item{InternetArchiveID: "test"}
 			id := t.Insert(db)
 			Expect(id).To(BeNumerically(">", 0))
-			t2 := models.Title{InternetArchiveID: "test"}
+			t2 := models.Item{InternetArchiveID: "test"}
 			id2 := t2.Insert(db)
 			Expect(id2).To(Equal(0))
 		})
 	})
 
-	Describe("TitleFind()", func() {
-		It("finds a title in db", func() {
-			t := models.Title{InternetArchiveID: "test"}
+	Describe("ItemFind()", func() {
+		It("finds a item in db", func() {
+			t := models.Item{InternetArchiveID: "test"}
 			id := t.Insert(db)
-			t2 := models.TitleFind(db, id)
+			t2 := models.ItemFind(db, id)
 			Expect(t2.InternetArchiveID).To(Equal("test"))
 		})
 	})

@@ -13,29 +13,29 @@ var _ = BeforeEach(func() {
 
 var _ = Describe("Loader", func() {
 
-	Describe("FindTitles", func() {
-		It("gets all titles", func() {
+	Describe("FindItems", func() {
+		It("gets all items", func() {
 			c := make(chan string)
 			count := 0
-			go loader.FindTitles(c)
+			go loader.FindItems(c)
 			for range c {
 				count += 1
 			}
-			// There are 20 titles total.
+			// There are 20 items total.
 			Expect(count).To(Equal(20))
 		})
 	})
 
-	Describe("ImportTitles", func() {
-		It("saves titles to database", func() {
-			titlesChan := make(chan int)
+	Describe("ImportItems", func() {
+		It("saves items to database", func() {
+			itemsChan := make(chan int)
 			// save chan from blocking
 			go func(titesChan <-chan int) {
-				for range titlesChan {
+				for range itemsChan {
 				}
-			}(titlesChan)
-			loader.ImportTitles(db, titlesChan)
-			Expect(models.Count(db, "titles")).To(Equal(20))
+			}(itemsChan)
+			loader.ImportItems(db, itemsChan)
+			Expect(models.Count(db, "items")).To(Equal(20))
 		})
 	})
 })

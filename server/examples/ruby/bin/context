@@ -46,24 +46,24 @@ end
 def main
   logger = Logger.new($stdout)
   output = CSV.open('output.csv', 'w:utf-8')
-  output << %w[TitleId PagesNum NamesNum NamesPerPage Score Context ContextNum]
+  output << %w[ItemId PagesNum NamesNum NamesPerPage Score Context ContextNum]
   stub = Protob::BHLIndex::Stub.new("#{SERVER}:8888", :this_channel_is_insecure)
   opts = Protob::PagesOpt.new
-  title_id = nil
+  item_id = nil
   names_num = 0
   pages_num = 0
   paths = []
   stub.pages(opts).each_with_index do |p, i|
-    if title_id.nil?
-      title_id = p.title_id
-    elsif p.title_id != title_id
+    if item_id.nil?
+      item_id = p.item_id
+    elsif p.item_id != item_id
       context, context_size = calculate_context(paths)
-      output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
+      output << [item_id, pages_num, names_num, names_num.to_f / pages_num,
                  names_num * pages_num, context, context_size]
       names_num = 0
       pages_num = 0
       paths = []
-      title_id = p.title_id
+      item_id = p.item_id
     end
 
     pages_num += 1
@@ -78,7 +78,7 @@ def main
     logger.info("Process #{i} pages")
   end
   context, context_size = calculate_context(paths)
-  output << [title_id, pages_num, names_num, names_num.to_f / pages_num,
+  output << [item_id, pages_num, names_num, names_num.to_f / pages_num,
              names_num * pages_num, context, context_size]
   output.close
 end

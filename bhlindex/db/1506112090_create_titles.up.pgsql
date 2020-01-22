@@ -1,4 +1,4 @@
-CREATE TABLE titles (
+CREATE TABLE items (
     id serial NOT NULL,
     path character varying(255) NOT NULL,
     internet_archive_id character varying(255) NOT NULL,
@@ -6,14 +6,14 @@ CREATE TABLE titles (
     language character varying(100),
     english_detected boolean NOT NULL DEFAULT false,
     updated_at timestamp without time zone,
-    CONSTRAINT titles_pkey PRIMARY KEY (id)
+    CONSTRAINT items_pkey PRIMARY KEY (id)
 );
 
 CREATE UNIQUE INDEX internet_archive_id_index
-    ON titles USING btree (internet_archive_id);
+    ON items USING btree (internet_archive_id);
 
 CREATE INDEX status_index
-    ON titles USING btree (status);
+    ON items USING btree (status);
 
 CREATE INDEX updated_at_index
-    ON titles USING btree (updated_at);
+    ON items USING btree (updated_at);

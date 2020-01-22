@@ -11,7 +11,7 @@
              score improved quite a bit.
 - Add [#34]: There are more indices.
 - Add [#32]: Pages are not considered unique anymore and we take a combination
-             of title id and archive page id as unique.
+             of item id and archive page id as unique.
 
 
 ## [v0.6.0]

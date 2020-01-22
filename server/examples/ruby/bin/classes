@@ -9,11 +9,11 @@ SERVER = '172.22.247.23'.freeze
 
 # class Volume collects and transforms data for a BHL volume.
 class Volume
-  attr_accessor :title_id, :name_strings_num, :unique_name_strings_num,
+  attr_accessor :item_id, :name_strings_num, :unique_name_strings_num,
                 :pages_num, :paths
 
-  def initialize(title_id)
-    @title_id = title_id
+  def initialize(item_id)
+    @item_id = item_id
     @pages_num = 0
     @paths = []
     @name_strings = []
@@ -24,7 +24,7 @@ class Volume
     classes, classes_freq = process(classes_data)
     names_num = @name_strings.size
 
-    output << [@title_id, @pages_num, names_num,
+    output << [@item_id, @pages_num, names_num,
                @name_strings.uniq.size, names_num.to_f / @pages_num,
                names_num * @pages_num, classes, classes_freq,
                classes_data.size, sum]
@@ -82,10 +82,10 @@ end
 
 def update_volume(page, vol, output)
   if vol.nil?
-    Volume.new(page.title_id)
-  elsif page.title_id != vol.title_id
+    Volume.new(page.item_id)
+  elsif page.item_id != vol.item_id
     vol.append_output(output)
-    Volume.new(page.title_id)
+    Volume.new(page.item_id)
   else
     vol
   end
@@ -97,11 +97,11 @@ class Processor
   def initialize
     @logger = Logger.new($stdout)
     @output = CSV.open('output.csv', 'w:utf-8')
-    @output << %w[TitleId PagesNum NamesNum UniqNamesNum NamesPerPage
+    @output << %w[ItemId PagesNum NamesNum UniqNamesNum NamesPerPage
                   Score Class ClassFreq ClassesNum Sum]
     @stub = Protob::BHLIndex::Stub.new("#{SERVER}:8888",
                                        :this_channel_is_insecure)
-    @opts = Protob::PagesOpt.new(with_text: false, title_ids: (1..100).to_a)
+    @opts = Protob::PagesOpt.new(with_text: false, item_ids: (1..100).to_a)
     @vol = nil
   end
 

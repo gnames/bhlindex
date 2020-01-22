@@ -2,12 +2,12 @@ package models
 
 import "path/filepath"
 
-// Page is a representation of a page file. ID is the filename, TitleID
-// is id of the parent title, Offset, number of runes the page is away from
+// Page is a representation of a page file. ID is the filename, ItemID
+// is id of the parent item, Offset, number of runes the page is away from
 // the start of the text.
 type Page struct {
 	ID         string
-	TitleID    int
+	ItemID     int
 	Offset     int
 	OffsetNext int
 }

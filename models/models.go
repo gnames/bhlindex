@@ -14,7 +14,7 @@ import (
 // name-finder.
 type DetectedName struct {
 	PageID       string
-	TitleID      int
+	ItemID       int
 	NameString   string
 	NameID       int
 	OffsetStart  int
@@ -25,7 +25,7 @@ type DetectedName struct {
 	UpdatedAt    time.Time
 }
 
-func NewDetectedName(titleID int, p Page, n output.Name) DetectedName {
+func NewDetectedName(itemID int, p Page, n output.Name) DetectedName {
 	var endsNextPage bool
 	var end int
 	start := n.OffsetStart - p.Offset
@@ -37,7 +37,7 @@ func NewDetectedName(titleID int, p Page, n output.Name) DetectedName {
 	}
 	dn := DetectedName{
 		PageID:       p.ID,
-		TitleID:      titleID,
+		ItemID:       itemID,
 		NameString:   n.Name,
 		OffsetStart:  start,
 		OffsetEnd:    end,

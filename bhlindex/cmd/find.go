@@ -44,7 +44,7 @@ var findCmd = &cobra.Command{
 			log.Println(err)
 			os.Exit(1)
 		}
-		log.Printf("Processing titles with %d workers...", workers)
+		log.Printf("Processing items with %d workers...", workers)
 		db, err := bhlindex.DbInit()
 		dict := dictionary.LoadDictionary()
 		defer func() {
@@ -53,7 +53,7 @@ var findCmd = &cobra.Command{
 		}()
 		bhlindex.Check(err)
 
-		finder.ProcessTitles(db, dict, workers)
+		finder.ProcessItems(db, dict, workers)
 	},
 }
 

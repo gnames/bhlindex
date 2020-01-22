@@ -1,6 +1,6 @@
 CREATE TABLE page_name_strings (
   page_id varchar(255) NOT NULL,
-  title_id integer NOT NULL,
+  item_id integer NOT NULL,
   name_string varchar(255) NOT NULL,
   name_offset_start int NOT NULL,
   name_offset_end int NOT NULL,
@@ -10,8 +10,8 @@ CREATE TABLE page_name_strings (
   updated_at timestamp without time zone
 );
 
-CREATE INDEX page_name_strings_page_title_index
-ON page_name_strings USING btree (title_id, page_id);
+CREATE INDEX page_name_strings_page_item_index
+ON page_name_strings USING btree (item_id, page_id);
 
 CREATE INDEX page_name_strings_name_index
 ON page_name_strings USING btree (name_string);

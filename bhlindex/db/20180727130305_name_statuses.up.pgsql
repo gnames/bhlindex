@@ -1,7 +1,7 @@
 CREATE TABLE name_statuses (
-  name varchar(255) COLLATE "C.UTF-8" NOT NULL PRIMARY KEY,
-  odds float,
-  occurances int,
+  name varchar(255) COLLATE "C" NOT NULL PRIMARY KEY,
+  odds float NOT NULL DEFAULT 0,
+  occurences int NOT NULL DEFAULT 0,
   processed boolean DEFAULT false
 );
 

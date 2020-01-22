@@ -16,8 +16,8 @@ in Biodiversity Heritage Library
 ### Install migrate
 
 ```bash
-go get -u -d github.com/golang-migrate/migrate/cli github.com/lib/pq
-go build -tags 'postgres' -o $GOPATH/bin/migrate github.com/golang-migrate/migrate/cli
+go get -u -d github.com/golang-migrate/migrate/cmd/migrate github.com/lib/pq
+go build -tags 'postgres' -o $GOPATH/bin/migrate github.com/golang-migrate/migrate/cmd/migrate
 ```
 
 ### Create migration
@@ -35,7 +35,7 @@ migrate -database postgres://localhost:5432/database up 2
 ### Commands
 
 create [-ext E] [-dir D] NAME
-: Create a set of timestamped up/down migrations titled NAME, in
+: Create a set of timestamped up/down migrations itemd NAME, in
   directory D with extension E
 
 version

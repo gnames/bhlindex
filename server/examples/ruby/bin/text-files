@@ -10,15 +10,15 @@ def main
   output = nil
 	stub = Protob::BHLIndex::Stub.new('172.22.247.23:8888', :this_channel_is_insecure)
 	opts = Protob::PagesOpt.new(with_text: true)
-	title_id = nil
+	item_id = nil
 	stub.pages(opts).each_with_index do |p, i|
-		if title_id.nil?
-			title_id = p.title_id
-      output = File.open("/home/dimus/big/bhlbooks/#{title_id}.txt", 'w')
-		elsif p.title_id != title_id
+		if item_id.nil?
+			item_id = p.item_id
+      output = File.open("/home/dimus/big/bhlbooks/#{item_id}.txt", 'w')
+		elsif p.item_id != item_id
       output.close
-			title_id = p.title_id
-      output = File.open("/home/dimus/big/bhlbooks/#{title_id}.txt", 'w')
+			item_id = p.item_id
+      output = File.open("/home/dimus/big/bhlbooks/#{item_id}.txt", 'w')
 		end
 
     output.write("BHL_PAGE_START: #{p.id}\n")

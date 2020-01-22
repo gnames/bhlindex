@@ -8,12 +8,12 @@ require 'logger'
 def main
 	logger = Logger.new($stdout)
 	output = CSV.open('output.csv', 'w:utf-8')
-	output << ['TitleId', 'PageId', 'Name', 'NameStart', 'NameEnd']
+	output << ['ItemId', 'PageId', 'Name', 'NameStart', 'NameEnd']
 	stub = Protob::BHLIndex::Stub.new('172.22.247.23:8888', :this_channel_is_insecure)
-	opts = Protob::PagesOpt.new(with_text: true, title_ids: [1, 2, 3, 4])
+	opts = Protob::PagesOpt.new(with_text: true, item_ids: [1, 2, 3, 4])
 	stub.pages(opts).each_with_index do |p, i|
 		p.names.each do |n|
-			output << [p.title_id, p.id, n.value, n.offset_start, n.offset_end]
+			output << [p.item_id, p.id, n.value, n.offset_start, n.offset_end]
 		end
 		next unless (i % 100_000).zero?
 		logger.info("Process #{i} pages")

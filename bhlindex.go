@@ -42,7 +42,7 @@ func EnvVars() Env {
 	}
 	if len(emptyEnvs) > 0 {
 		envs := strings.Join(emptyEnvs, ", ")
-		panic(fmt.Errorf("Environment variables %s are not defined", envs))
+		panic(fmt.Errorf("environment variables %s are not defined", envs))
 	}
 	var sources []int
 	for _, v := range strings.Split(envVars[4], ",") {

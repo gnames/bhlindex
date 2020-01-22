@@ -36,7 +36,7 @@ var _ = AfterSuite(func() {
 })
 
 func truncateAll() {
-	models.Truncate(db, "titles")
+	models.Truncate(db, "items")
 	models.Truncate(db, "pages")
 	models.Truncate(db, "name_strings")
 	models.Truncate(db, "page_name_strings")

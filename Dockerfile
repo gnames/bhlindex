@@ -1,4 +1,4 @@
-FROM golang:1.11
+FROM golang:1.13
 
 ENV LAST_FULL_REBUILD 2018-11-17
 

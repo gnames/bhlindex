@@ -16,7 +16,7 @@ module Protob
 
       rpc :Ver, Void, Version
       rpc :Pages, PagesOpt, stream(Page)
-      rpc :Titles, TitlesOpt, stream(Title)
+      rpc :Items, ItemsOpt, stream(Item)
     end
 
     Stub = Service.rpc_stub_class
