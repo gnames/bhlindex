@@ -69,8 +69,16 @@ func savePageNameStrings(db *sql.DB, names []models.DetectedName) {
 	bhlindex.Check(err)
 
 	for _, v := range names {
-		_, err = stmt.Exec(v.PageID, v.ItemID, v.WordsBefore, v.NameString,
-			v.WordsAfter, v.AnnotNomen, v.OffsetStart, v.OffsetEnd,
+		wordsBefore := v.WordsBefore
+		if len([]rune(wordsBefore)) > 250 {
+			wordsBefore = string([]rune(wordsBefore)[:250])
+		}
+		wordsAfter := v.WordsAfter
+		if len([]rune(wordsAfter)) > 250 {
+			wordsAfter = string([]rune(wordsAfter)[:250])
+		}
+		_, err = stmt.Exec(v.PageID, v.ItemID, wordsBefore, v.NameString,
+			wordsAfter, v.AnnotNomen, v.OffsetStart, v.OffsetEnd,
 			v.EndsNextPage, v.Odds, v.Kind, now)
 		bhlindex.Check(err)
 	}
