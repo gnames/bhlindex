@@ -58,7 +58,8 @@ func saveFoundNames(db *sql.DB, wgSave *sync.WaitGroup,
 
 func savePageNameStrings(db *sql.DB, names []models.DetectedName) {
 	now := time.Now()
-	columns := []string{"page_id", "item_id", "name_string", "name_offset_start",
+	columns := []string{"page_id", "item_id", "words_before",
+		"name_string", "words_after", "annot_nomen", "name_offset_start",
 		"name_offset_end", "ends_next_page", "odds", "kind", "updated_at"}
 	transaction, err := db.Begin()
 	bhlindex.Check(err)
@@ -68,7 +69,8 @@ func savePageNameStrings(db *sql.DB, names []models.DetectedName) {
 	bhlindex.Check(err)
 
 	for _, v := range names {
-		_, err = stmt.Exec(v.PageID, v.ItemID, v.NameString, v.OffsetStart, v.OffsetEnd,
+		_, err = stmt.Exec(v.PageID, v.ItemID, v.WordsBefore, v.NameString,
+			v.WordsAfter, v.AnnotNomen, v.OffsetStart, v.OffsetEnd,
 			v.EndsNextPage, v.Odds, v.Kind, now)
 		bhlindex.Check(err)
 	}

@@ -2,7 +2,7 @@ module github.com/gnames/bhlindex
 
 require (
 	github.com/abadojack/whatlanggo v1.0.1 // indirect
-	github.com/gnames/gnfinder v0.9.1
+	github.com/gnames/gnfinder v0.9.2-0.20200306095247-6394fa1cb0b0
 	github.com/golang/protobuf v1.3.2
 	github.com/json-iterator/go v1.1.9 // indirect
 	github.com/lib/pq v1.3.0

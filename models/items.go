@@ -71,7 +71,8 @@ INSERT INTO items
 
 func (t *Item) FindNames(d *dict.Dictionary) []DetectedName {
 	text := t.Content.Text
-	gnf := gnfinder.NewGNfinder(gnfinder.OptDict(d), gnfinder.OptBayes(true))
+	gnf := gnfinder.NewGNfinder(gnfinder.OptDict(d), gnfinder.OptBayes(true),
+		gnfinder.OptTokensAround(5))
 	output := gnf.FindNames(text)
 	detectedNames := namesToDetectedNames(t, output.Names)
 	return detectedNames

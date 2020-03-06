@@ -3,6 +3,7 @@ package models
 import (
 	"database/sql"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/gnames/bhlindex"
@@ -19,6 +20,9 @@ type DetectedName struct {
 	NameID       int
 	OffsetStart  int
 	OffsetEnd    int
+	WordsBefore  string
+	WordsAfter   string
+	AnnotNomen   string
 	EndsNextPage bool
 	Odds         float64
 	Kind         string
@@ -41,6 +45,9 @@ func NewDetectedName(itemID int, p Page, n output.Name) DetectedName {
 		NameString:   n.Name,
 		OffsetStart:  start,
 		OffsetEnd:    end,
+		WordsBefore:  strings.Join(n.WordsBefore, " "),
+		WordsAfter:   strings.Join(n.WordsAfter, " "),
+		AnnotNomen:   n.AnnotNomen,
 		EndsNextPage: endsNextPage,
 		Odds:         n.Odds,
 		Kind:         n.Type,
