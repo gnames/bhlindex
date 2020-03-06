@@ -10,6 +10,7 @@ services:
     depends_on:
       - pg
   pg:
+    env_file: ./.env.dev
     image: postgres:10
     ports:
       - "2345:5432"
