@@ -201,7 +201,7 @@ func pageText(path string) []byte {
 func itemPages(db *sql.DB, itemID int) []*protob.Page {
 	var pages []*protob.Page
 	q := `SELECT p.page_id, p.page_offset, pn.name_string, n.matched_name,
-	        n.matched_canonical, n.classification, pn.odds,
+	        n.matched_canonical, pn.annot_nomen, n.classification, pn.odds,
 					n.match_type, n.curation, n.edit_distance, n.stem_edit_distance,
 					n.datasource_id, pn.name_offset_start, pn.name_offset_end
 					FROM pages p
@@ -226,13 +226,13 @@ func processPages(rows *sql.Rows) []*protob.Page {
 	var offset, editDistance, editDistanceStem, sourceID,
 		offsetStart, offsetEnd sql.NullInt64
 	var nameString, matchedName, matchedCanonical, matchType, curation,
-		path sql.NullString
+		path, annotNomen sql.NullString
 	var odds sql.NullFloat64
 
 	for rows.Next() {
 		var name protob.NameString
 		err := rows.Scan(&pageID, &offset, &nameString, &matchedName,
-			&matchedCanonical, &path,
+			&matchedCanonical, &annotNomen, &path,
 			&odds, &matchType, &curation, &editDistance, &editDistanceStem,
 			&sourceID, &offsetStart, &offsetEnd)
 		bhlindex.Check(err)
@@ -250,6 +250,8 @@ func processPages(rows *sql.Rows) []*protob.Page {
 				Curated:          curated,
 				Match:            getMatchType(matchType.String),
 				Odds:             float32(odds.Float64),
+				Annotation:       annotNomen.String,
+				AnnotType:        getAnnotType(annotNomen.String),
 				Classification:   path.String,
 				EditDistance:     int32(editDistance.Int64),
 				EditDistanceStem: int32(editDistanceStem.Int64),
@@ -300,6 +302,26 @@ func sortedPages(pagesMap map[string]*protob.Page) []*protob.Page {
 	}
 
 	return pages
+}
+
+func getAnnotType(annot string) protob.AnnotType {
+	if len(annot) == 0 {
+		return protob.AnnotType_NO_ANNOT
+	}
+
+	if strings.Contains(annot, "subsp") || strings.Contains(annot, "ssp") {
+		return protob.AnnotType_SUBSP_NOV
+	}
+
+	if strings.Contains(annot, "sp") {
+		return protob.AnnotType_SP_NOV
+	}
+
+	if strings.Contains(annot, "comb") {
+		return protob.AnnotType_COMB_NOV
+	}
+
+	return protob.AnnotType_NO_ANNOT
 }
 
 func getMatchType(match string) protob.MatchType {
