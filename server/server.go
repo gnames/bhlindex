@@ -201,7 +201,7 @@ func pageText(path string) []byte {
 func itemPages(db *sql.DB, itemID int) []*protob.Page {
 	var pages []*protob.Page
 	q := `SELECT p.page_id, p.page_offset, pn.name_string, n.matched_name,
-	        n.matched_canonical, n.annot_nomen, n.classification, pn.odds,
+	        n.matched_canonical, pn.annot_nomen, n.classification, pn.odds,
 					n.match_type, n.curation, n.edit_distance, n.stem_edit_distance,
 					n.datasource_id, pn.name_offset_start, pn.name_offset_end
 					FROM pages p
