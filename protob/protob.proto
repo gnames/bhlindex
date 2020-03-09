@@ -32,7 +32,6 @@ message PagesOpt {
     repeated int32 item_ids = 3;
 }
 
-
 message NameString {
     string id = 1;
     string value = 2;
@@ -51,10 +50,12 @@ message NameString {
     string data_source_title = 15;
     int32  data_sources_num = 16;
     MatchType match = 17;
-    int32 offset_start = 18;
-    int32 offset_end = 19;
-    bool verif_error = 20;
-    repeated PreferredResult preferred = 21;
+    AnnotType annot_type = 18;
+    string annotation = 19;
+    int32 offset_start = 20;
+    int32 offset_end = 21;
+    bool verif_error = 22;
+    repeated PreferredResult preferred = 23;
 }
 
 message PreferredResult {
@@ -84,6 +85,12 @@ enum MatchType {
     PARTIAL_FUZZY = 5;
 }
 
+enum AnnotType {
+    NO_ANNOT = 0;
+    SP_NOV = 1;
+    SUBSP_NOV = 2;
+    COMB_NOV = 3;
+}
 
 service BHLIndex {
     rpc Ver(Void) returns(Version) {}
