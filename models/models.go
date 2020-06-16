@@ -25,7 +25,7 @@ type DetectedName struct {
 	AnnotNomen   string
 	EndsNextPage bool
 	Odds         float64
-	Kind         string
+	Cardinality  int
 	UpdatedAt    time.Time
 }
 
@@ -50,7 +50,7 @@ func NewDetectedName(itemID int, p Page, n output.Name) DetectedName {
 		AnnotNomen:   n.AnnotNomen,
 		EndsNextPage: endsNextPage,
 		Odds:         n.Odds,
-		Kind:         n.Type,
+		Cardinality:  n.Cardinality,
 		UpdatedAt:    time.Now(),
 	}
 	return dn

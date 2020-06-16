@@ -77,9 +77,20 @@ func savePageNameStrings(db *sql.DB, names []models.DetectedName) {
 		if len([]rune(wordsAfter)) > 250 {
 			wordsAfter = string([]rune(wordsAfter)[:250])
 		}
+
+		kind := "N/A"
+		switch v.Cardinality {
+		case 1:
+			kind = "Uninomial"
+		case 2:
+			kind = "Binomial"
+		case 3:
+			kind = "Trinomial"
+		}
+
 		_, err = stmt.Exec(v.PageID, v.ItemID, wordsBefore, v.NameString,
 			wordsAfter, v.AnnotNomen, v.OffsetStart, v.OffsetEnd,
-			v.EndsNextPage, v.Odds, v.Kind, now)
+			v.EndsNextPage, v.Odds, kind, now)
 		bhlindex.Check(err)
 	}
 
