@@ -14,19 +14,20 @@ import (
 // DetectedName holds information about a name-string returned by a
 // name-finder.
 type DetectedName struct {
-	PageID       string
-	ItemID       int
-	NameString   string
-	NameID       int
-	OffsetStart  int
-	OffsetEnd    int
-	WordsBefore  string
-	WordsAfter   string
-	AnnotNomen   string
-	EndsNextPage bool
-	Odds         float64
-	Kind         string
-	UpdatedAt    time.Time
+	PageID         string
+	ItemID         int
+	NameString     string
+	NameID         int
+	OffsetStart    int
+	OffsetEnd      int
+	WordsBefore    string
+	WordsAfter     string
+	AnnotNomen     string
+	AnnotNomenType string
+	EndsNextPage   bool
+	Odds           float64
+	Cardinality    int
+	UpdatedAt      time.Time
 }
 
 func NewDetectedName(itemID int, p Page, n output.Name) DetectedName {
@@ -40,18 +41,19 @@ func NewDetectedName(itemID int, p Page, n output.Name) DetectedName {
 		endsNextPage = true
 	}
 	dn := DetectedName{
-		PageID:       p.ID,
-		ItemID:       itemID,
-		NameString:   n.Name,
-		OffsetStart:  start,
-		OffsetEnd:    end,
-		WordsBefore:  strings.Join(n.WordsBefore, " "),
-		WordsAfter:   strings.Join(n.WordsAfter, " "),
-		AnnotNomen:   n.AnnotNomen,
-		EndsNextPage: endsNextPage,
-		Odds:         n.Odds,
-		Kind:         n.Type,
-		UpdatedAt:    time.Now(),
+		PageID:         p.ID,
+		ItemID:         itemID,
+		NameString:     n.Name,
+		OffsetStart:    start,
+		OffsetEnd:      end,
+		WordsBefore:    strings.Join(n.WordsBefore, " "),
+		WordsAfter:     strings.Join(n.WordsAfter, " "),
+		AnnotNomen:     n.AnnotNomen,
+		AnnotNomenType: n.AnnotNomenType,
+		EndsNextPage:   endsNextPage,
+		Odds:           n.Odds,
+		Cardinality:    n.Cardinality,
+		UpdatedAt:      time.Now(),
 	}
 	return dn
 }

@@ -304,6 +304,8 @@ func sortedPages(pagesMap map[string]*protob.Page) []*protob.Page {
 	return pages
 }
 
+// TODO: we should use AnnotNomenType directly instead of calculating AnnotType
+// yet one more time.
 func getAnnotType(annot string) protob.AnnotType {
 	if len(annot) == 0 {
 		return protob.AnnotType_NO_ANNOT

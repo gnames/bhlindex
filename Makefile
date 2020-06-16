@@ -16,7 +16,8 @@ build: grpc
 
 install: grpc
 	cd bhlindex && \
-	GO111MODULE=on $(GOINSTALL) ${LDFLAGS};
+	GO111MODULE=on $(GOINSTALL) ${LDFLAGS} && \
+	cp $(GOPATH)/bin/bhlindex .;
 
 release: build
 	tar --exclude='bhlindex/development.sh' --exclude='bhlindex/cmd' \
