@@ -33,7 +33,7 @@ func (l loaderio) LoadItems(ctx context.Context, dbItemCh chan<- *item.Item) err
 	// in case of an error ctx will send a signal to kill all workers
 	gImp := new(errgroup.Group)
 	gProc, ctx := errgroup.WithContext(ctx)
-	log.Info().Int("gnfinderJobs", l.Jobs).Msg("Processing BHL items")
+	log.Info().Int("gnfinderJobs", l.Jobs).Msg("Finding names in BHL items")
 
 	gImp.Go(func() error {
 		return l.importItems(ctx, itemCh)

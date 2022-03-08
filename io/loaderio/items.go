@@ -146,7 +146,7 @@ func countIncr(start time.Time, count int) int {
 		log.Info().
 			Str("items", humanize.Comma(int64(count))).
 			Str("items/hour", itemsPerHour(count, start)).
-			Msg("Processing BHL items")
+			Msg("Finding names in BHL items")
 	} else if count%100 == 0 {
 		fmt.Printf("\r%s", strings.Repeat(" ", 40))
 		fmt.Printf(
@@ -158,7 +158,8 @@ func countIncr(start time.Time, count int) int {
 	return count
 }
 
-func itemsPerHour(itemsNum int, start time.Time) string { dur := float64(time.Since(start)) / float64(time.Hour)
+func itemsPerHour(itemsNum int, start time.Time) string {
+	dur := float64(time.Since(start)) / float64(time.Hour)
 	rate := float64(itemsNum) / dur
 	return humanize.Comma(int64(rate))
 }

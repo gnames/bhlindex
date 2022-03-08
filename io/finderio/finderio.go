@@ -1,4 +1,4 @@
-package finder
+package finderio
 
 import (
 	"context"
@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/gnames/bhlindex/config"
+	"github.com/gnames/bhlindex/ent/finder"
 	"github.com/gnames/bhlindex/ent/item"
 	"github.com/gnames/bhlindex/ent/name"
 	"github.com/gnames/gnfinder"
@@ -18,16 +19,16 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-type finder struct {
+type finderio struct {
 	config.Config
 	db *sql.DB
 }
 
-func New(cfg config.Config, db *sql.DB) Finder {
-	return finder{Config: cfg, db: db}
+func New(cfg config.Config, db *sql.DB) finder.Finder {
+	return finderio{Config: cfg, db: db}
 }
 
-func (fdr finder) FindNames(
+func (fdr finderio) FindNames(
 	itemCh <-chan *item.Item,
 	namesCh chan<- []name.DetectedName,
 	wg *sync.WaitGroup,
@@ -42,7 +43,7 @@ func (fdr finder) FindNames(
 	wgWrkr.Wait()
 }
 
-func (fdr finder) SaveNames(
+func (fdr finderio) SaveNames(
 	ctx context.Context,
 	namesCh <-chan []name.DetectedName,
 ) error {
@@ -57,7 +58,7 @@ func (fdr finder) SaveNames(
 	return nil
 }
 
-func (fdr finder) savePageNameStrings(names []name.DetectedName) error {
+func (fdr finderio) savePageNameStrings(names []name.DetectedName) error {
 	now := time.Now()
 	columns := []string{"page_id", "item_id", "name_string", "annot_nomen",
 		"annot_nomen_type", "offset_start", "offset_end",
@@ -95,7 +96,7 @@ func (fdr finder) savePageNameStrings(names []name.DetectedName) error {
 	return transaction.Commit()
 }
 
-func (fdr finder) finderWorker(
+func (fdr finderio) finderWorker(
 	chItem <-chan *item.Item,
 	chNames chan<- []name.DetectedName,
 	wgWrkr *sync.WaitGroup,

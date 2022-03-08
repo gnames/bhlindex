@@ -83,6 +83,7 @@ func (d dbio) migrate() error {
 		&page.Page{},
 		&name.DetectedName{},
 		&name.NameString{},
+		&name.NameStatus{},
 	}
 	for _, v := range tables {
 		if err := d.dbGorm.AutoMigrate(v).Error; err != nil {

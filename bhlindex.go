@@ -9,6 +9,7 @@ import (
 	"github.com/gnames/bhlindex/ent/item"
 	"github.com/gnames/bhlindex/ent/loader"
 	"github.com/gnames/bhlindex/ent/name"
+	"github.com/gnames/bhlindex/ent/verif"
 	"github.com/gnames/gnlib/ent/gnvers"
 	"github.com/rs/zerolog/log"
 	"golang.org/x/sync/errgroup"
@@ -61,8 +62,8 @@ func (bi *bhlindex) FindNames(
 	return gSave.Wait()
 }
 
-func (bi *bhlindex) VerifyNames() error {
-	return nil
+func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) error {
+	return vrf.Verify()
 }
 
 func (bi *bhlindex) GetVersion() gnvers.Version {

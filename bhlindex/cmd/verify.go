@@ -25,47 +25,41 @@ import (
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/bhlindex/config"
 	"github.com/gnames/bhlindex/io/dbio"
-	"github.com/gnames/bhlindex/io/finderio"
-	"github.com/gnames/bhlindex/io/loaderio"
+	"github.com/gnames/bhlindex/io/verifio"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 )
 
-// findCmd represents the find command
-var findCmd = &cobra.Command{
-	Use:   "find",
-	Short: "find command detects names in BHL",
-	Long: `The "find" command traverses Biodiversity Heritage Library (BHL) files
-and folders recursively. It discovers scientific names in text pages,
-generates metadata that describes locations of the names in BHL and
-saves results to a database.
-
-This command does not do verificaiton of detected scientific names. For
-verification use "verify" command next.`,
+// verifyCmd represents the verify command
+var verifyCmd = &cobra.Command{
+	Use:   "verify",
+	Short: "verify if detected names do exist in biodiversity databases",
+	Long: `The 'verify' command uses 'gnverifier' project to find if detected
+names do exist in any of the datasets registered in 'gnverifier'.
+The list of registered datasets can be found at 
+'https://verifier.globalnames.org/data_sources'`,
 	Run: func(_ *cobra.Command, _ []string) {
 		cfg := config.New(opts...)
-		db := dbio.NewWithInit(cfg)
-		ldr := loaderio.New(cfg, db)
-		fdr := finderio.New(cfg, db)
-
+		db := dbio.New(cfg)
 		bhli := bhlindex.New(cfg)
-		err := bhli.FindNames(ldr, fdr)
+		vrf := verifio.New(cfg, db)
+		err := bhli.VerifyNames(vrf)
 		if err != nil {
-			log.Fatal().Err(err).Msg("Name-fidning failed")
+			log.Fatal().Err(err).Msg("Name verification failed")
 		}
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(findCmd)
+	rootCmd.AddCommand(verifyCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// findCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// verifyCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// findCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// verifyCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
