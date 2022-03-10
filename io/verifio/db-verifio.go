@@ -2,6 +2,7 @@ package verifio
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/dustin/go-humanize"
@@ -10,6 +11,19 @@ import (
 	"github.com/lib/pq"
 	"github.com/rs/zerolog/log"
 )
+
+func (vrf verifio) truncateVerifTables() error {
+	tables := []string{"unique_names", "verified_names"}
+	for _, v := range tables {
+		q := fmt.Sprintf("TRUNCATE TABLE %s RESTART IDENTITY", v)
+		_, err := vrf.db.Exec(q)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+
+}
 
 func (vrf verifio) loadNames(
 	ctx context.Context,
@@ -21,7 +35,7 @@ func (vrf verifio) loadNames(
 	threshold := batchSize * 1
 
 	q := `SELECT name
-FROM name_statuses
+FROM unique_names
 OFFSET $1
 LIMIT $2
 `

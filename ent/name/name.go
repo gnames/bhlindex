@@ -45,7 +45,7 @@ type VerifiedName struct {
 	UpdatedAt         time.Time `sql:"type:timestamp without time zone"`
 }
 
-type NameStatus struct {
+type UniqueNames struct {
 	Name        string  `sql:"type:CHARACTER VARYING(255) COLLATE \"C\"" gorm:"primary_key;auto_increment:false"`
 	OddsLog10   float64 `gorm:"type:float;not null;default:0"`
 	Occurrences int     `gorm:"not null;default:0"`

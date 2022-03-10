@@ -63,6 +63,10 @@ func (bi *bhlindex) FindNames(
 }
 
 func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) error {
+	err := vrf.Reset()
+	if err != nil {
+		return err
+	}
 	return vrf.Verify()
 }
 

@@ -6,6 +6,9 @@ package verif
 // Catalogue of Life to determing currently accepted name according to the
 // database.
 type VerifierBHL interface {
+	// Reset removes saved data from the previous verification.
+	Reset() error
+
 	// Verify method organizes names detected in BHL, verifies them against
 	// many scientific name databases, and returns reconciliation/resolution
 	// results.

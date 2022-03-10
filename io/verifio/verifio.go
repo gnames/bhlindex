@@ -50,7 +50,7 @@ func (vrf verifio) Verify() error {
 		return err
 	}
 	if noNames {
-		err := errors.New("detected_names table is empty")
+		err = errors.New("detected_names table is empty")
 		log.Warn().Err(err).Msg("Run 'bhlindex find' before 'bhlindex verify'")
 		return err
 	}
@@ -61,6 +61,11 @@ func (vrf verifio) Verify() error {
 	}
 
 	return vrf.verifyNames()
+}
+
+func (vrf verifio) Reset() error {
+	log.Info().Msg("Cleaning up previous verification results")
+	return vrf.truncateVerifTables()
 }
 
 func (vrf verifio) verifyNames() error {
@@ -114,7 +119,7 @@ func (vrf verifio) noDetectedNames() (bool, error) {
 }
 
 func (vrf verifio) numberOfNames() (int, error) {
-	q := "select count(*) from name_statuses"
+	q := "select count(*) from unique_names"
 	var namesNum int
 	err := vrf.db.QueryRow(q).Scan(&namesNum)
 	return namesNum, err
@@ -122,8 +127,8 @@ func (vrf verifio) numberOfNames() (int, error) {
 
 func (vfr verifio) dedupeNames() error {
 	log.Info().Msg("Extracting unique name-strings. It will take a while.")
-	q := `INSERT INTO name_statuses
-          SELECT name_string, AVG(odds_log10), count(*), false
+	q := `INSERT INTO unique_names
+          SELECT name_string, AVG(odds_log10), count(*)
             FROM detected_names GROUP BY name_string
             ORDER BY name_string`
 
