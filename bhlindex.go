@@ -88,3 +88,7 @@ func counterLog(counter <-chan int) {
 		}
 	}
 }
+
+func (bi *bhlindex) GetConfig() config.Config {
+	return bi.Config
+}

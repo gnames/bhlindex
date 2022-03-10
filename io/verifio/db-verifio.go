@@ -133,6 +133,7 @@ func (vrf verifio) saveVerif(
 		}
 		count = incrLog(start, namesNum, count, len(vns))
 	}
+	fmt.Print("\r")
 	makeLog(start, namesNum, count)
 	return nil
 }

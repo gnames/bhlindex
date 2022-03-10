@@ -4,6 +4,7 @@
 
 ## [v0.11.0]
 
+- Add [#45]: create RESTful service
 - Add [#46]: switch to gnverifier for name verification.
 - Add [#43]: refactor to improve architecture and usability
 

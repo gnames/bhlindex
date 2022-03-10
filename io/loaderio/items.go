@@ -143,9 +143,9 @@ func (l loaderio) insertItem(item *item.Item) error {
 	updatedAt := time.Now()
 	q := `
 INSERT INTO items
-  (path, internet_archive_id, status, updated_at)
-	VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING id`
-	err := l.db.QueryRow(q, item.Path, item.InternetArchiveID, item.Status,
+  (path, internet_archive_id, updated_at)
+	VALUES ($1, $2, $3) ON CONFLICT DO NOTHING RETURNING id`
+	err := l.db.QueryRow(q, item.Path, item.InternetArchiveID,
 		updatedAt).Scan(&id)
 	if err != nil {
 		if err.Error() == "sql: no rows in result set" {

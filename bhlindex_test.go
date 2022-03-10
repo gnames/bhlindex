@@ -13,32 +13,27 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestFindNames(t *testing.T) {
-	path := "./testdata/bhl/"
-	opt := config.OptBHLdir(path)
-	cfg := config.New(opt)
-	db := dbio.NewWithInit(cfg)
-	ldr := loaderio.New(cfg, db)
-	fdr := finderio.New(cfg, db)
+func getBHLindex() (config.Config, bhlindex.BHLindex) {
+	opts := []config.Option{
+		config.OptBHLdir("./testdata/bhl"),
+		config.OptPgDatabase("bhlindex_test"),
+	}
 
-	bhli := bhlindex.New(cfg)
-	err := bhli.FindNames(ldr, fdr)
-	assert.Nil(t, err)
+	cfg := config.New(opts...)
+	bi := bhlindex.New(cfg)
+	return cfg, bi
 }
 
 func TestVerifyNames(t *testing.T) {
-	path := "./testdata/bhl/"
-	opt := config.OptBHLdir(path)
-	cfg := config.New(opt)
+	cfg, bi := getBHLindex()
 	db := dbio.NewWithInit(cfg)
 	ldr := loaderio.New(cfg, db)
 	fdr := finderio.New(cfg, db)
 	vdr := verifio.New(cfg, db)
 
-	bhli := bhlindex.New(cfg)
-	err := bhli.FindNames(ldr, fdr)
+	err := bi.FindNames(ldr, fdr)
 	assert.Nil(t, err)
-	err = bhli.VerifyNames(vdr)
+	err = bi.VerifyNames(vdr)
 	assert.Nil(t, err)
 }
 

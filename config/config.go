@@ -8,6 +8,7 @@ type Config struct {
 	PgDatabase  string
 	Jobs        int
 	VerifierURL string
+	WithWebLogs bool
 }
 
 type Option func(*Config)
@@ -51,6 +52,12 @@ func OptJobs(i int) Option {
 func OptVerifierURL(s string) Option {
 	return func(cfg *Config) {
 		cfg.VerifierURL = s
+	}
+}
+
+func OptWithWebLogs(b bool) Option {
+	return func(cfg *Config) {
+		cfg.WithWebLogs = b
 	}
 }
 

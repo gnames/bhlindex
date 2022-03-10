@@ -49,4 +49,8 @@ func getOpts(cfgPath string) {
 	if cfg.VerifierURL != "" {
 		opts = append(opts, config.OptVerifierURL(cfg.VerifierURL))
 	}
+
+	if cfg.WithWebLogs {
+		opts = append(opts, config.OptWithWebLogs(true))
+	}
 }

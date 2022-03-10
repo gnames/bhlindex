@@ -1,0 +1,204 @@
+package restio
+
+import (
+	"context"
+
+	"github.com/gnames/bhlindex/ent/item"
+	"github.com/gnames/bhlindex/ent/name"
+	"github.com/gnames/bhlindex/ent/page"
+	"github.com/gnames/bhlindex/ent/rest"
+	"github.com/lib/pq"
+	"github.com/rs/zerolog/log"
+)
+
+func (r restio) items(
+	ctx context.Context,
+	inp rest.Input,
+) ([]item.Item, error) {
+	args := []interface{}{inp.Offset, inp.Limit}
+	q := `SELECT
+  id, path, internet_archive_id, updated_at
+  FROM items
+  OFFSET $1 LIMIT $2`
+
+	return r.itemsQuery(ctx, q, args, inp.Limit)
+}
+
+func (r restio) itemsQuery(
+	ctx context.Context,
+	q string,
+	args []interface{},
+	limit int,
+) ([]item.Item, error) {
+	res := make([]item.Item, limit)
+	rows, err := r.db.QueryContext(ctx, q, args...)
+	if err != nil {
+		return nil, err
+	}
+
+	var i int
+	for rows.Next() {
+		var itm item.Item
+		if err = rows.Scan(
+			&itm.ID, &itm.Path, &itm.InternetArchiveID, &itm.UpdatedAt,
+		); err != nil {
+			return nil, err
+		}
+		res[i] = itm
+		i++
+	}
+	if i < limit-1 {
+		res = res[0:i]
+	}
+	return res, nil
+}
+
+func (r restio) pages(
+	ctx context.Context,
+	inp rest.Input,
+) ([]page.Page, error) {
+	args := []interface{}{inp.Offset, inp.Limit}
+	q := `SELECT
+  id, item_id
+  FROM pages
+  OFFSET $1 LIMIT $2`
+
+	return r.pagesQuery(ctx, q, args, inp.Limit)
+}
+
+func (r restio) pagesQuery(
+	ctx context.Context,
+	q string,
+	args []interface{},
+	limit int,
+) ([]page.Page, error) {
+	res := make([]page.Page, limit)
+	rows, err := r.db.QueryContext(ctx, q, args...)
+	if err != nil {
+		return nil, err
+	}
+
+	var i int
+	for rows.Next() {
+		var pg page.Page
+		if err = rows.Scan(
+			&pg.ID, &pg.ItemID,
+		); err != nil {
+			return nil, err
+		}
+		res[i] = pg
+		i++
+	}
+	if i < limit-1 {
+		res = res[0:i]
+	}
+	return res, nil
+}
+
+func (r restio) occurrences(
+	ctx context.Context,
+	inp rest.Input,
+) ([]name.DetectedName, error) {
+	args := []interface{}{inp.Offset, inp.Limit}
+	q := `SELECT
+  page_id, item_id, name, annot_nomen,
+  annot_nomen_type, offset_start, offset_end,
+  ends_next_page, odds_log10, cardinality,
+  updated_at
+  FROM detected_names
+  OFFSET $1 LIMIT $2`
+
+	return r.occurrencesQuery(ctx, q, args, inp.Limit)
+}
+
+func (r restio) occurrencesQuery(
+	ctx context.Context,
+	q string,
+	args []interface{},
+	limit int,
+) ([]name.DetectedName, error) {
+	res := make([]name.DetectedName, limit)
+	rows, err := r.db.QueryContext(ctx, q, args...)
+	if err != nil {
+		return nil, err
+	}
+
+	var i int
+	for rows.Next() {
+		var dn name.DetectedName
+		if err = rows.Scan(
+			&dn.PageID, &dn.ItemID, &dn.Name, &dn.AnnotNomen,
+			&dn.AnnotNomenType, &dn.OffsetStart, &dn.OffsetEnd,
+			&dn.EndsNextPage, &dn.OddsLog10, &dn.Cardinality,
+			&dn.UpdatedAt,
+		); err != nil {
+			return nil, err
+		}
+		res[i] = dn
+		i++
+	}
+	if i < limit-1 {
+		res = res[0:i]
+	}
+	return res, nil
+}
+
+func (r restio) names(
+	ctx context.Context,
+	inp rest.Input,
+) ([]name.VerifiedName, error) {
+	args := []interface{}{inp.Offset, inp.Limit}
+	q := `SELECT
+  id, name, record_id, match_type, edit_distance,
+  stem_edit_distance, matched_name, matched_canonical,
+  current_name, current_canonical, classification,
+  data_source_id, data_source_title, data_sources_number,
+  curation, odds_log10, occurrences, error, updated_at
+  FROM verified_names
+`
+	if len(inp.DataSources) > 0 {
+		args = append(args, pq.Array(inp.DataSources))
+		q += "\n  where data_source_id = any($3::int[])"
+	}
+	q += "\n  OFFSET $1 LIMIT $2\n"
+
+	select {
+	case <-ctx.Done():
+		log.Warn().Err(ctx.Err()).Msg("Forced cancellation")
+		return nil, ctx.Err()
+	default:
+		return r.namesQuery(ctx, q, args, inp.Limit)
+	}
+}
+
+func (r restio) namesQuery(
+	ctx context.Context,
+	q string,
+	args []interface{},
+	limit int,
+) ([]name.VerifiedName, error) {
+	res := make([]name.VerifiedName, limit)
+	rows, err := r.db.QueryContext(ctx, q, args...)
+	if err != nil {
+		return nil, err
+	}
+	var i int
+	for rows.Next() {
+		var vn name.VerifiedName
+		if err = rows.Scan(
+			&vn.ID, &vn.Name, &vn.RecordID, &vn.MatchType, &vn.EditDistance,
+			&vn.StemEditDistance, &vn.MatchedName, &vn.MatchedCanonical,
+			&vn.CurrentName, &vn.CurrentCanonical, &vn.Classification,
+			&vn.DataSourceID, &vn.DataSourceTitle, &vn.DataSourcesNumber,
+			&vn.Curation, &vn.OddsLog10, &vn.Occurrences, &vn.Error, &vn.UpdatedAt,
+		); err != nil {
+			return nil, err
+		}
+		res[i] = vn
+		i++
+	}
+	if i < limit-1 {
+		res = res[0:i]
+	}
+	return res, nil
+}

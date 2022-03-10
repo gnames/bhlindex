@@ -7,11 +7,10 @@ import (
 )
 
 type Item struct {
-	ID                int
-	Path              string       `gorm:"not null"`
-	InternetArchiveID string       `gorm:"unique_index;not null"`
-	Status            int          `gorm:"index;not null;default:0"`
-	UpdatedAt         time.Time    `sql:"type:timestamp without time zone"`
-	Pages             []*page.Page `gorm:"-"`
-	Text              []byte       `gorm:"-"`
+	ID                int          `json:"id"`
+	Path              string       `json:"path" gorm:"not null"`
+	InternetArchiveID string       `json:"internetArchiveId" gorm:"unique_index;not null"`
+	UpdatedAt         time.Time    `json:"updatedAt" sql:"type:timestamp without time zone"`
+	Pages             []*page.Page `json:"-" gorm:"-"`
+	Text              []byte       `json:"-" gorm:"-"`
 }

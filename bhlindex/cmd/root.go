@@ -50,6 +50,7 @@ type cfgData struct {
 	PgDatabase  string
 	Jobs        int
 	VerifierURL string
+	WithWebLogs bool
 }
 
 // rootCmd represents the base command when called without any subcommands

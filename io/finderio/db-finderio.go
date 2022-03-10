@@ -1,6 +1,7 @@
 package finderio
 
 import (
+	"math"
 	"time"
 
 	"github.com/gnames/bhlindex/ent/name"
@@ -11,9 +12,9 @@ import (
 func (fdr finderio) ExtractUniqueNames() error {
 	log.Info().Msg("Extracting unique name-strings. It will take a while.")
 	q := `INSERT INTO unique_names
-          SELECT name_string, AVG(odds_log10), count(*)
-            FROM detected_names GROUP BY name_string
-            ORDER BY name_string`
+          SELECT name, AVG(odds_log10), count(*)
+            FROM detected_names GROUP BY name
+            ORDER BY name`
 
 	stmt, err := fdr.db.Prepare(q)
 	if err != nil {
@@ -34,7 +35,7 @@ func (fdr finderio) ExtractUniqueNames() error {
 
 func (fdr finderio) savePageNameStrings(names []name.DetectedName) error {
 	now := time.Now()
-	columns := []string{"page_id", "item_id", "name_string", "annot_nomen",
+	columns := []string{"page_id", "item_id", "name", "annot_nomen",
 		"annot_nomen_type", "offset_start", "offset_end",
 		"ends_next_page", "odds_log10", "cardinality", "updated_at"}
 	transaction, err := fdr.db.Begin()
@@ -49,7 +50,10 @@ func (fdr finderio) savePageNameStrings(names []name.DetectedName) error {
 	}
 
 	for _, v := range names {
-		_, err = stmt.Exec(v.PageID, v.ItemID, v.NameString,
+		if math.IsInf(v.OddsLog10, -1) {
+			v.OddsLog10 = 0
+		}
+		_, err = stmt.Exec(v.PageID, v.ItemID, v.Name,
 			v.AnnotNomen, v.AnnotNomenType, v.OffsetStart, v.OffsetEnd,
 			v.EndsNextPage, v.OddsLog10, v.Cardinality, now)
 		if err != nil {
