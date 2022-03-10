@@ -24,10 +24,10 @@ type DetectedName struct {
 	UpdatedAt      time.Time `sql:"type:timestamp without time zone"`
 }
 
-type NameString struct {
+type VerifiedName struct {
 	ID                int    `gorm:"primary_key"`
 	Name              string `sql:"type:CHARACTER VARYING(255) COLLATE \"C\" NOT NULL"`
-	TaxonID           string `sql:"type:CHARACTER VARYING(255) COLLATE \"C\"" gorm:"unique_index"`
+	RecordID          string `sql:"type:CHARACTER VARYING(255) COLLATE \"C\"" gorm:"index"`
 	MatchType         string `gorm:"type:varchar(100)"`
 	EditDistance      int    `gorm:"not null;default:0"`
 	StemEditDistance  int    `gorm:"not null;default:0"`
@@ -36,7 +36,7 @@ type NameString struct {
 	CurrentName       string `sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
 	Classification    string `sql:"type:CHARACTER VARYING COLLATE \"C\""`
 	DataSourceID      int
-	DatasourceTitle   string `sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
+	DataSourceTitle   string `sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
 	DataSourcesNumber int
 	Curation          string
 	Retries           int `gorm:"not null;default:0"`

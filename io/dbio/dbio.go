@@ -82,7 +82,7 @@ func (d dbio) migrate() error {
 		&item.Item{},
 		&page.Page{},
 		&name.DetectedName{},
-		&name.NameString{},
+		&name.VerifiedName{},
 		&name.NameStatus{},
 	}
 	for _, v := range tables {

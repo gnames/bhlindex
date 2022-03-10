@@ -27,7 +27,6 @@
 - Add [#32]: Pages are not considered unique anymore and we take a combination
              of item id and archive page id as unique.
 
-
 ## [v0.6.0]
 
 - Add [#31]: save preferred data-sources results to db

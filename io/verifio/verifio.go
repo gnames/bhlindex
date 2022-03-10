@@ -72,7 +72,7 @@ func (vrf verifio) verifyNames() error {
 
 	start := time.Now()
 	chNames := make(chan []string)
-	chVer := make(chan vlib.Output)
+	chVer := make(chan []vlib.Name)
 	gLoad, ctx := errgroup.WithContext(context.Background())
 	gSave := new(errgroup.Group)
 	var wg sync.WaitGroup

@@ -7,6 +7,7 @@ require (
 	github.com/gnames/gnfinder v0.18.2
 	github.com/gnames/gnlib v0.10.2
 	github.com/gnames/gnsys v0.2.2
+	github.com/gnames/gnverifier v0.8.2
 	github.com/jinzhu/gorm v1.9.16
 	github.com/lib/pq v1.1.1
 	github.com/rs/zerolog v1.26.1
@@ -24,6 +25,9 @@ require (
 	github.com/gnames/bayes v0.4.0 // indirect
 	github.com/gnames/gner v0.1.4 // indirect
 	github.com/gnames/gnfmt v0.2.0 // indirect
+	github.com/gnames/gnquery v0.3.3 // indirect
+	github.com/gnames/gnuuid v0.1.1 // indirect
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
@@ -44,6 +48,7 @@ require (
 	golang.org/x/sys v0.0.0-20220227234510-4e6760a101f9 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
+	gopkg.in/check.v1 v1.0.0-20200902074654-038fdea0a05b // indirect
 	gopkg.in/ini.v1 v1.66.4 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
