@@ -1,14 +1,13 @@
-FROM golang:1.13
+FROM alpine:3.15
 
-ENV LAST_FULL_REBUILD 2018-11-17
+LABEL maintainer="Dmitry Mozzherin"
 
-RUN go get github.com/onsi/ginkgo/ginkgo
-RUN go get -u github.com/hashicorp/go-multierror
-#
-RUN apt-get update && apt-get -yq install postgresql-client
+ENV LAST_FULL_REBUILD 2021-04-07
 
-WORKDIR /bhlindex
-COPY . .
-ENV GO111MODULE on
+WORKDIR /bin
 
-ENTRYPOINT bhlindex/development.sh
+COPY ./bhlindex/bhlindex /bin
+
+ENTRYPOINT [ "bhlindex" ]
+
+CMD ["server"]

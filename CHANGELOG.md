@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#43]: refactor to improve architecture and usability
+
 ## [v0.10.0]
 
 - Add [#41]: Update to gnfinder v0.11.1

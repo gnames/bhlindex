@@ -52,6 +52,7 @@ LIMIT $2
 		if count > namesNum {
 			names = names[0:i]
 			makeLog(start, namesNum, namesNum)
+			log.Info().Msg("Finishing verification jobs")
 		}
 
 		select {
@@ -114,6 +115,7 @@ func prepareNames(namesVerif []vlib.Name) []name.VerifiedName {
 			n.MatchedName = br.MatchedName
 			n.MatchedCanonical = br.MatchedCanonicalFull
 			n.CurrentName = br.CurrentName
+			n.CurrentCanonical = br.CurrentCanonicalFull
 			n.Classification = br.ClassificationPath
 			n.DataSourceID = br.DataSourceID
 			n.DataSourceTitle = br.DataSourceTitleShort
@@ -127,9 +129,9 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 	now := time.Now()
 	columns := []string{
 		"name", "record_id", "match_type", "edit_distance", "stem_edit_distance",
-		"matched_name", "matched_canonical", "current_name", "classification",
-		"data_source_id", "data_source_title", "data_sources_number", "curation",
-		"retries", "error", "updated_at",
+		"matched_name", "matched_canonical", "current_name", "current_canonical",
+		"classification", "data_source_id", "data_source_title",
+		"data_sources_number", "curation", "retries", "error", "updated_at",
 	}
 	transaction, err := vrf.db.Begin()
 	if err != nil {
@@ -145,9 +147,9 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 	for _, v := range names {
 		_, err = stmt.Exec(
 			v.Name, v.RecordID, v.MatchType, v.EditDistance, v.StemEditDistance,
-			v.MatchedName, v.MatchedCanonical, v.CurrentName, v.Classification,
-			v.DataSourceID, v.DataSourceTitle, v.DataSourcesNumber, v.Curation,
-			v.Retries, v.Error, now,
+			v.MatchedName, v.MatchedCanonical, v.CurrentName, v.CurrentCanonical,
+			v.Classification, v.DataSourceID, v.DataSourceTitle, v.DataSourcesNumber,
+			v.Curation, v.Retries, v.Error, now,
 		)
 		if err != nil {
 			return err
