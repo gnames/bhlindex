@@ -40,12 +40,14 @@ type VerifiedName struct {
 	DataSourceTitle   string `sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
 	DataSourcesNumber int
 	Curation          string
-	Retries           int `gorm:"not null;default:0"`
+	OddsLog10         float64 `gorm:"type:float;not null;default:0"`
+	Occurrences       int     `gorm:"not null;default:0"`
+	Retries           int     `gorm:"not null;default:0"`
 	Error             string
 	UpdatedAt         time.Time `sql:"type:timestamp without time zone"`
 }
 
-type UniqueNames struct {
+type UniqueName struct {
 	Name        string  `sql:"type:CHARACTER VARYING(255) COLLATE \"C\"" gorm:"primary_key;auto_increment:false"`
 	OddsLog10   float64 `gorm:"type:float;not null;default:0"`
 	Occurrences int     `gorm:"not null;default:0"`

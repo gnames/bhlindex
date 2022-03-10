@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/gnames/bhlindex/config"
+	"github.com/gnames/bhlindex/ent/name"
 	"github.com/gnames/bhlindex/ent/verif"
-	vlib "github.com/gnames/gnlib/ent/verifier"
 	"github.com/rs/zerolog/log"
 	"golang.org/x/sync/errgroup"
 )
@@ -76,8 +76,8 @@ func (vrf verifio) verifyNames() error {
 	log.Info().Msgf("Verifying %d names", namesNum)
 
 	start := time.Now()
-	chNames := make(chan []string)
-	chVer := make(chan []vlib.Name)
+	chNames := make(chan []name.UniqueName)
+	chVer := make(chan []name.VerifiedName)
 	gLoad, ctx := errgroup.WithContext(context.Background())
 	gSave := new(errgroup.Group)
 	var wg sync.WaitGroup

@@ -7,7 +7,6 @@ import (
 
 	"github.com/dustin/go-humanize"
 	"github.com/gnames/bhlindex/ent/name"
-	vlib "github.com/gnames/gnlib/ent/verifier"
 	"github.com/lib/pq"
 	"github.com/rs/zerolog/log"
 )
@@ -28,13 +27,13 @@ func (vrf verifio) truncateVerifTables() error {
 func (vrf verifio) loadNames(
 	ctx context.Context,
 	namesNum int,
-	chNames chan<- []string,
+	chNames chan<- []name.UniqueName,
 	start time.Time) error {
 	var count int
 	batchSize := 5_000
 	threshold := batchSize * 1
 
-	q := `SELECT name
+	q := `SELECT name, odds_log10, occurrences
 FROM unique_names
 OFFSET $1
 LIMIT $2
@@ -48,16 +47,18 @@ LIMIT $2
 			return err
 		}
 
-		var name string
-		names := make([]string, batchSize)
+		var n string
+		var odds float64
+		var occur int
+		names := make([]name.UniqueName, batchSize)
 		var i int
 		for rows.Next() {
-			err := rows.Scan(&name)
+			err := rows.Scan(&n, &odds, &occur)
 			if err != nil {
 				rows.Close()
 				return err
 			}
-			names[i] = name
+			names[i] = name.UniqueName{Name: n, OddsLog10: odds, Occurrences: occur}
 			i++
 		}
 		rows.Close()
@@ -100,43 +101,15 @@ func namesPerHour(start time.Time, count int) string {
 
 func (vrf verifio) saveVerif(
 	ctx context.Context,
-	chVer <-chan []vlib.Name,
+	chVer <-chan []name.VerifiedName,
 ) error {
-	for namesVerif := range chVer {
-		names := prepareNames(namesVerif)
-		err := vrf.saveNamesToDB(names)
+	for vns := range chVer {
+		err := vrf.saveNamesToDB(vns)
 		if err != nil {
 			return err
 		}
 	}
 	return nil
-}
-
-func prepareNames(namesVerif []vlib.Name) []name.VerifiedName {
-	res := make([]name.VerifiedName, len(namesVerif))
-	for i, v := range namesVerif {
-		n := name.VerifiedName{
-			Name:              v.Name,
-			MatchType:         v.MatchType.String(),
-			Curation:          v.Curation.String(),
-			DataSourcesNumber: v.DataSourcesNum,
-			Error:             v.Error,
-		}
-		if br := v.BestResult; br != nil {
-			n.RecordID = br.RecordID
-			n.EditDistance = br.EditDistance
-			n.StemEditDistance = br.StemEditDistance
-			n.MatchedName = br.MatchedName
-			n.MatchedCanonical = br.MatchedCanonicalFull
-			n.CurrentName = br.CurrentName
-			n.CurrentCanonical = br.CurrentCanonicalFull
-			n.Classification = br.ClassificationPath
-			n.DataSourceID = br.DataSourceID
-			n.DataSourceTitle = br.DataSourceTitleShort
-		}
-		res[i] = n
-	}
-	return res
 }
 
 func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
@@ -145,7 +118,8 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 		"name", "record_id", "match_type", "edit_distance", "stem_edit_distance",
 		"matched_name", "matched_canonical", "current_name", "current_canonical",
 		"classification", "data_source_id", "data_source_title",
-		"data_sources_number", "curation", "retries", "error", "updated_at",
+		"data_sources_number", "curation", "odds_log10", "occurrences", "retries",
+		"error", "updated_at",
 	}
 	transaction, err := vrf.db.Begin()
 	if err != nil {
@@ -163,7 +137,7 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 			v.Name, v.RecordID, v.MatchType, v.EditDistance, v.StemEditDistance,
 			v.MatchedName, v.MatchedCanonical, v.CurrentName, v.CurrentCanonical,
 			v.Classification, v.DataSourceID, v.DataSourceTitle, v.DataSourcesNumber,
-			v.Curation, v.Retries, v.Error, now,
+			v.Curation, v.OddsLog10, v.Occurrences, v.Retries, v.Error, now,
 		)
 		if err != nil {
 			return err
