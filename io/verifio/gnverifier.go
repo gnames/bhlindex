@@ -2,37 +2,63 @@ package verifio
 
 import (
 	"context"
+	"log"
 	"sync"
 
 	"github.com/gnames/bhlindex/ent/name"
 	vlib "github.com/gnames/gnlib/ent/verifier"
-	"github.com/gnames/gnverifier"
-	gnvconfig "github.com/gnames/gnverifier/config"
-	"github.com/gnames/gnverifier/io/verifrest"
+	"github.com/gnames/gnverifier/ent/verifier"
 )
 
 func (vrf verifio) sendToVerify(
 	ctx context.Context,
-	chNames <-chan []name.UniqueName,
-	chVer chan<- []name.VerifiedName,
+	vrfREST verifier.Verifier,
+	chIn <-chan []name.UniqueName,
+	chOut chan<- []name.VerifiedName,
+	wgExt *sync.WaitGroup,
+) {
+	defer wgExt.Done()
+
+	var wg sync.WaitGroup
+	jobs := 4
+	wg.Add(jobs)
+
+	for i := 0; i < jobs; i++ {
+		go verifyWorker(ctx, vrfREST, chIn, chOut, &wg)
+	}
+
+	wg.Wait()
+}
+
+func verifyWorker(
+	ctx context.Context,
+	vrfREST verifier.Verifier,
+	chIn <-chan []name.UniqueName,
+	chOut chan<- []name.VerifiedName,
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
-	opts := []gnvconfig.Option{
-		gnvconfig.OptVerifierURL(vrf.cfg.VerifierURL),
-	}
-	gnvcfg := gnvconfig.New(opts...)
-	gnvRest := verifrest.New(vrf.cfg.VerifierURL)
-	gnv := gnverifier.New(gnvcfg, gnvRest)
-	for uns := range chNames {
-		// TODO: parallelize this
+
+	for uns := range chIn {
+		if len(uns) == 0 {
+			continue
+		}
 		names := make([]string, len(uns))
 		for i := range uns {
 			names[i] = uns[i].Name
 		}
-		out := gnv.VerifyBatch(names)
-		vns := prepareNames(out, uns)
-		chVer <- vns
+		input := vlib.Input{NameStrings: names}
+		output := vrfREST.Verify(ctx, input)
+		if len(output.Names) < 1 {
+			log.Fatalf("Did not get results from verifier")
+		}
+		outNames := prepareNames(output.Names, uns)
+
+		select {
+		case <-ctx.Done():
+			return
+		case chOut <- outNames:
+		}
 	}
 }
 

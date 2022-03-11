@@ -1,7 +1,6 @@
 package finderio
 
 import (
-	"context"
 	"time"
 
 	"github.com/gnames/bhlindex/ent/name"
@@ -9,17 +8,26 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func (fdr finderio) SaveNames(
-	ctx context.Context,
-	namesCh <-chan []name.DetectedName,
-) error {
-	for v := range namesCh {
-		_ = v
-		err := fdr.savePageNameStrings(v)
-		if err != nil {
-			log.Warn().Err(err).Msg("Cannot save detected names")
-			return err
-		}
+func (fdr finderio) ExtractUniqueNames() error {
+	log.Info().Msg("Extracting unique name-strings. It will take a while.")
+	q := `INSERT INTO unique_names
+          SELECT name_string, AVG(odds_log10), count(*)
+            FROM detected_names GROUP BY name_string
+            ORDER BY name_string`
+
+	stmt, err := fdr.db.Prepare(q)
+	if err != nil {
+		return err
+	}
+
+	_, err = stmt.Exec()
+	if err != nil {
+		return err
+	}
+
+	err = stmt.Close()
+	if err != nil {
+		return err
 	}
 	return nil
 }

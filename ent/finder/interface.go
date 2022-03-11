@@ -26,4 +26,9 @@ type Finder interface {
 	// SaveNames is an aggregator method that should always run in one instance.
 	// It collects detected names data and saves them into storage.
 	SaveNames(context.Context, <-chan []name.DetectedName) error
+
+	// ExtractUniqueNames runs after name detection is finished. It goes through
+	// the detected names and saves the unique list off all names, their odds,
+	// and the number of their occurrences.
+	ExtractUniqueNames() error
 }

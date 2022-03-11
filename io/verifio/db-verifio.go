@@ -2,7 +2,9 @@ package verifio
 
 import (
 	"context"
+	"errors"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/dustin/go-humanize"
@@ -11,8 +13,35 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
+func (vrf verifio) checkForDetectedNames() error {
+	noNames, err := vrf.noDetectedNames()
+	if err != nil {
+		return err
+	}
+	if noNames {
+		err = errors.New("detected_names table is empty")
+		log.Warn().Err(err).Msg("Run 'bhlindex find' before 'bhlindex verify'")
+		return err
+	}
+	return nil
+}
+
+func (vrf verifio) noDetectedNames() (bool, error) {
+	var page_id string
+	q := "select page_id from detected_names limit 1"
+	err := vrf.db.QueryRow(q).Scan(&page_id)
+	return page_id == "", err
+}
+
+func (vrf verifio) numberOfNames() (int, error) {
+	q := "select count(*) from unique_names"
+	var namesNum int
+	err := vrf.db.QueryRow(q).Scan(&namesNum)
+	return namesNum, err
+}
+
 func (vrf verifio) truncateVerifTables() error {
-	tables := []string{"unique_names", "verified_names"}
+	tables := []string{"verified_names"}
 	for _, v := range tables {
 		q := fmt.Sprintf("TRUNCATE TABLE %s RESTART IDENTITY", v)
 		_, err := vrf.db.Exec(q)
@@ -21,17 +50,15 @@ func (vrf verifio) truncateVerifTables() error {
 		}
 	}
 	return nil
-
 }
 
 func (vrf verifio) loadNames(
 	ctx context.Context,
 	namesNum int,
-	chNames chan<- []name.UniqueName,
-	start time.Time) error {
+	chIn chan<- []name.UniqueName,
+) error {
 	var count int
 	batchSize := 5_000
-	threshold := batchSize * 1
 
 	q := `SELECT name, odds_log10, occurrences
 FROM unique_names
@@ -39,9 +66,6 @@ OFFSET $1
 LIMIT $2
 `
 	for count < namesNum {
-		if count%threshold == 0 {
-			makeLog(start, count, namesNum)
-		}
 		rows, err := vrf.db.Query(q, count, batchSize)
 		if err != nil {
 			return err
@@ -50,7 +74,7 @@ LIMIT $2
 		var n string
 		var odds float64
 		var occur int
-		names := make([]name.UniqueName, batchSize)
+		uns := make([]name.UniqueName, batchSize)
 		var i int
 		for rows.Next() {
 			err := rows.Scan(&n, &odds, &occur)
@@ -58,39 +82,34 @@ LIMIT $2
 				rows.Close()
 				return err
 			}
-			names[i] = name.UniqueName{Name: n, OddsLog10: odds, Occurrences: occur}
+			uns[i] = name.UniqueName{Name: n, OddsLog10: odds, Occurrences: occur}
 			i++
 		}
 		rows.Close()
 
 		count = count + batchSize
 		if count > namesNum {
-			names = names[0:i]
-			makeLog(start, namesNum, namesNum)
-			log.Info().Msg("Finishing verification jobs")
+			uns = uns[0:i]
 		}
-
 		select {
 		case <-ctx.Done():
+			log.Warn().Err(ctx.Err()).Msg("Exiting loading names")
 			return ctx.Err()
-		case chNames <- names:
+		case chIn <- uns:
 		}
 	}
 	return nil
 }
 
-func makeLog(start time.Time, count, namesNum int) {
-	if count == 0 {
-		return
-	}
-
+func makeLog(start time.Time, namesNum, count int) {
 	names := humanize.Comma(int64(count))
+	total := humanize.Comma(int64(namesNum))
 	perHour := namesPerHour(start, count)
 	percent := 100 * float64(count) / float64(namesNum)
 	log.Info().
-		Str("names", names).
+		Str("names", names+"/"+total).
 		Str("names/hr", perHour).
-		Msgf("Verified %0.1f%% of names", percent)
+		Msgf("Verified %0.1f%%", percent)
 }
 
 func namesPerHour(start time.Time, count int) string {
@@ -102,14 +121,36 @@ func namesPerHour(start time.Time, count int) string {
 func (vrf verifio) saveVerif(
 	ctx context.Context,
 	chVer <-chan []name.VerifiedName,
+	namesNum int,
+	start time.Time,
 ) error {
+
+	var count int
 	for vns := range chVer {
 		err := vrf.saveNamesToDB(vns)
 		if err != nil {
 			return err
 		}
+		count = incrLog(start, namesNum, count, len(vns))
 	}
+	makeLog(start, namesNum, count)
 	return nil
+}
+
+func incrLog(start time.Time, total, count, incr int) int {
+	count += incr
+	if count%100_000 == 0 {
+		fmt.Print("\r")
+		makeLog(start, total, count)
+	} else if count%100 == 0 {
+		fmt.Printf("\r%s", strings.Repeat(" ", 60))
+		fmt.Printf(
+			"\rVerified %s names, %s items/hour",
+			humanize.Comma(int64(count)),
+			namesPerHour(start, count),
+		)
+	}
+	return count
 }
 
 func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {

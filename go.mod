@@ -7,7 +7,7 @@ require (
 	github.com/gnames/gnfinder v0.18.2
 	github.com/gnames/gnlib v0.10.2
 	github.com/gnames/gnsys v0.2.2
-	github.com/gnames/gnverifier v0.8.2
+	github.com/gnames/gnverifier v0.9.0
 	github.com/jinzhu/gorm v1.9.16
 	github.com/lib/pq v1.1.1
 	github.com/rs/zerolog v1.26.1

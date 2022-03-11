@@ -59,15 +59,20 @@ func (bi *bhlindex) FindNames(
 	wgFind.Wait()
 	close(namesCh)
 
-	return gSave.Wait()
-}
-
-func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) error {
-	err := vrf.Reset()
+	err = gSave.Wait()
 	if err != nil {
 		return err
 	}
-	return vrf.Verify()
+	return fdr.ExtractUniqueNames()
+}
+
+func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) (err error) {
+	err = vrf.Reset()
+
+	if err == nil {
+		err = vrf.Verify()
+	}
+	return err
 }
 
 func (bi *bhlindex) GetVersion() gnvers.Version {

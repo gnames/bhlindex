@@ -11,6 +11,7 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/gnames/bhlindex/ent/item"
 	"github.com/gnames/bhlindex/ent/page"
+	"github.com/gnames/gnsys"
 	"github.com/rs/zerolog/log"
 )
 
@@ -20,7 +21,12 @@ func (l loaderio) importItems(
 	ctx context.Context,
 	itemCh chan<- *item.Item,
 ) error {
-	root := l.BHLdir
+	rootDir := l.BHLdir
+	err := checkRoot(rootDir)
+	if err != nil {
+		return err
+	}
+
 	currentDir := ""
 	var itm *item.Item
 	var pages []*page.Page
@@ -30,7 +36,7 @@ func (l loaderio) importItems(
 
 	// Walk traverses files in lexical order. It means we do not need to
 	// sort pages after they are collected.
-	err := filepath.WalkDir(root,
+	err = filepath.WalkDir(rootDir,
 		func(path string, d fs.DirEntry, _ error) error {
 			var err error
 			var pg *page.Page
@@ -73,6 +79,21 @@ func (l loaderio) importItems(
 	case itemCh <- itm:
 	}
 	return err
+}
+
+// check if root BHL directory exists and is not empty.
+func checkRoot(rootDir string) error {
+	exists, empty, err := gnsys.DirExists(rootDir)
+	if err != nil {
+		return err
+	}
+	if !exists {
+		return fmt.Errorf("directory '%s' does not exist", rootDir)
+	}
+	if empty {
+		return fmt.Errorf("directory '%s' is empty", rootDir)
+	}
+	return nil
 }
 
 func (l loaderio) processItemWorker(

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v0.11.0]
+
+- Add [#46]: switch to gnverifier for name verification.
 - Add [#43]: refactor to improve architecture and usability
 
 ## [v0.10.0]

@@ -1,6 +1,7 @@
 package finderio
 
 import (
+	"context"
 	"database/sql"
 	"sync"
 
@@ -13,6 +14,7 @@ import (
 	"github.com/gnames/gnfinder/ent/nlp"
 	"github.com/gnames/gnfinder/ent/output"
 	"github.com/gnames/gnfinder/io/dict"
+	"github.com/rs/zerolog/log"
 )
 
 type finderio struct {
@@ -37,6 +39,21 @@ func (fdr finderio) FindNames(
 		go fdr.finderWorker(itemCh, namesCh, &wgWrkr)
 	}
 	wgWrkr.Wait()
+}
+
+func (fdr finderio) SaveNames(
+	ctx context.Context,
+	namesCh <-chan []name.DetectedName,
+) error {
+	for v := range namesCh {
+		_ = v
+		err := fdr.savePageNameStrings(v)
+		if err != nil {
+			log.Warn().Err(err).Msg("Cannot save detected names")
+			return err
+		}
+	}
+	return nil
 }
 
 func (fdr finderio) finderWorker(
