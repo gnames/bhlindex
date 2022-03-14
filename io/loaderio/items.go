@@ -135,31 +135,6 @@ func (l loaderio) processItemWorker(
 	return nil
 }
 
-// insertItem  add data from a item to bhlindex database and returns newly
-// UpdatedAt fields in the Items object.
-// If an item is a duplicate its ID is 0.
-func (l loaderio) insertItem(item *item.Item) error {
-	var id int
-	updatedAt := time.Now()
-	q := `
-INSERT INTO items
-  (path, internet_archive_id, updated_at)
-	VALUES ($1, $2, $3) ON CONFLICT DO NOTHING RETURNING id`
-	err := l.db.QueryRow(q, item.Path, item.InternetArchiveID,
-		updatedAt).Scan(&id)
-	if err != nil {
-		if err.Error() == "sql: no rows in result set" {
-			id = 0
-		} else {
-			log.Warn().Err(err).Msgf("Cannot insert item %s", item.InternetArchiveID)
-			return err
-		}
-	}
-	item.ID = id
-	item.UpdatedAt = updatedAt
-	return nil
-}
-
 func countIncr(start time.Time, count int) int {
 	count++
 	if count%10_000 == 0 {

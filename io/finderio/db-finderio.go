@@ -6,32 +6,7 @@ import (
 
 	"github.com/gnames/bhlindex/ent/name"
 	"github.com/lib/pq"
-	"github.com/rs/zerolog/log"
 )
-
-func (fdr finderio) ExtractUniqueNames() error {
-	log.Info().Msg("Extracting unique name-strings. It will take a while.")
-	q := `INSERT INTO unique_names
-          SELECT name, AVG(odds_log10), count(*)
-            FROM detected_names GROUP BY name
-            ORDER BY name`
-
-	stmt, err := fdr.db.Prepare(q)
-	if err != nil {
-		return err
-	}
-
-	_, err = stmt.Exec()
-	if err != nil {
-		return err
-	}
-
-	err = stmt.Close()
-	if err != nil {
-		return err
-	}
-	return nil
-}
 
 func (fdr finderio) savePageNameStrings(names []name.DetectedName) error {
 	now := time.Now()

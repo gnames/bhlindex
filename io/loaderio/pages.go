@@ -1,13 +1,11 @@
 package loaderio
 
 import (
-	"database/sql"
 	"os"
 	"path/filepath"
 
 	"github.com/gnames/bhlindex/ent/item"
 	"github.com/gnames/bhlindex/ent/page"
-	"github.com/lib/pq"
 )
 
 func pageFromPath(path string) (*page.Page, error) {
@@ -33,41 +31,6 @@ func updatePages(itm *item.Item) error {
 	}
 	itm.Text = itemText
 	return nil
-}
-
-func (l loaderio) insertPages(itm *item.Item) error {
-	var stmt *sql.Stmt
-	batch := itm.Pages
-	columns := []string{"id", "item_id", "offset"}
-
-	transaction, err := l.db.Begin()
-	if err != nil {
-		return err
-	}
-
-	stmt, err = transaction.Prepare(pq.CopyIn("pages", columns...))
-	if err != nil {
-		return err
-	}
-
-	for _, p := range batch {
-		_, err = stmt.Exec(p.ID, p.ItemID, p.Offset)
-		if err != nil {
-			return err
-		}
-	}
-
-	_, err = stmt.Exec()
-	if err != nil {
-		return err
-	}
-
-	err = stmt.Close()
-	if err != nil {
-		return err
-	}
-
-	return transaction.Commit()
 }
 
 func isPageFile(f string) bool {

@@ -4,7 +4,9 @@
 
 ## [v0.11.0]
 
-- Add [#45]: create RESTful service
+- Add [#48]: change RESTful pagination to use IDs.
+- Add [#47]: placeholder for `dump` command, add `all` command.
+- Add [#45]: create RESTful service.
 - Add [#46]: switch to gnverifier for name verification.
 - Add [#43]: refactor to improve architecture and usability
 
@@ -20,18 +22,18 @@
 ## [v0.8.0]
 
 - Add [#36]: Rename `title` to `item` to be in sync with BHL terminology,
-             name_string export via gRPC.
+  name_string export via gRPC.
 
 ## [v0.7.0]
 
 - Add [#35]: Fixes in dictionaries In particular names of botanical genera
-             authors are not in the dictionary anymore. Also common latin
-             capitalized words from species descriptions are now added to
-             'grey' dictionary. As a result calculation of Bayes odds
-             score improved quite a bit.
+  authors are not in the dictionary anymore. Also common latin
+  capitalized words from species descriptions are now added to
+  'grey' dictionary. As a result calculation of Bayes odds
+  score improved quite a bit.
 - Add [#34]: There are more indices.
 - Add [#32]: Pages are not considered unique anymore and we take a combination
-             of item id and archive page id as unique.
+  of item id and archive page id as unique.
 
 ## [v0.6.0]
 
@@ -91,6 +93,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.11.0]: https://github.com/gnames/bhlindex/compare/v0.10.0...v0.11.0
 [v0.10.0]: https://github.com/gnames/bhlindex/compare/v0.9.0...v0.10.0
 [v0.9.0]: https://github.com/gnames/bhlindex/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/gnames/bhlindex/compare/v0.7.0...v0.8.0
@@ -101,7 +104,14 @@ This document follows [changelog guidelines]
 [v0.3.0]: https://github.com/gnames/bhlindex/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/gnames/bhlindex/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/gnames/bhlindex/tree/v0.1.0
-
+[#50]: https://github.com/gnames/bhlindex/issues/50
+[#49]: https://github.com/gnames/bhlindex/issues/49
+[#48]: https://github.com/gnames/bhlindex/issues/48
+[#47]: https://github.com/gnames/bhlindex/issues/47
+[#46]: https://github.com/gnames/bhlindex/issues/46
+[#45]: https://github.com/gnames/bhlindex/issues/45
+[#44]: https://github.com/gnames/bhlindex/issues/44
+[#43]: https://github.com/gnames/bhlindex/issues/43
 [#42]: https://github.com/gnames/bhlindex/issues/42
 [#41]: https://github.com/gnames/bhlindex/issues/41
 [#40]: https://github.com/gnames/bhlindex/issues/40
@@ -136,6 +146,5 @@ This document follows [changelog guidelines]
 [#4]: https://github.com/gnames/bhlindex/issues/4
 [#3]: https://github.com/gnames/bhlindex/issues/3
 [#2]: https://github.com/gnames/bhlindex/issues/2
-
 [changelog guidelines]: https://github.com/olivierlacan/keep-a-changelog
 [gnindex]: https://index.globalnames.org

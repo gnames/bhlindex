@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/gnames/bhlindex"
@@ -17,7 +18,10 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-var apiPath = "/api/v0/"
+var (
+	maxLimit = 50_000
+	apiPath  = "/api/v0/"
+)
 
 type restio struct {
 	bi bhlindex.BHLindex
@@ -44,6 +48,7 @@ func (r restio) Run(port int) {
 	e.GET(apiPath+"pages", r.Pages())
 	e.GET(apiPath+"occurrences", r.Occurrences())
 	e.GET(apiPath+"names", r.Names())
+	e.GET(apiPath+"names/last_id", r.NamesLastID())
 
 	addr := fmt.Sprintf(":%d", port)
 	s := &http.Server{
@@ -79,8 +84,8 @@ func (r restio) Items() func(echo.Context) error {
 			log.Warn().Err(err)
 			return err
 		}
-		if input.Limit > 10_000 {
-			input.Limit = 10_000
+		if input.Limit > maxLimit {
+			input.Limit = maxLimit
 		}
 		select {
 		case <-ctx.Done():
@@ -92,9 +97,8 @@ func (r restio) Items() func(echo.Context) error {
 				return err
 			}
 		}
-		output := &rest.OutputItems{Items: items}
 
-		return c.JSON(http.StatusOK, output)
+		return c.JSON(http.StatusOK, items)
 	}
 }
 
@@ -111,8 +115,8 @@ func (r restio) Pages() func(echo.Context) error {
 			log.Warn().Err(err)
 			return err
 		}
-		if input.Limit > 10_000 {
-			input.Limit = 10_000
+		if input.Limit > maxLimit {
+			input.Limit = maxLimit
 		}
 		select {
 		case <-ctx.Done():
@@ -124,16 +128,15 @@ func (r restio) Pages() func(echo.Context) error {
 				return err
 			}
 		}
-		output := &rest.OutputPages{Pages: pages}
 
-		return c.JSON(http.StatusOK, output)
+		return c.JSON(http.StatusOK, pages)
 	}
 }
 
 func (r restio) Occurrences() func(echo.Context) error {
 	return func(c echo.Context) error {
 		var err error
-		var names []name.DetectedName
+		var occurrences []name.DetectedName
 		var input rest.Input
 
 		ctx, cancel := getContext(c)
@@ -143,22 +146,20 @@ func (r restio) Occurrences() func(echo.Context) error {
 			log.Warn().Err(err)
 			return err
 		}
-		if input.Limit > 10_000 {
-			input.Limit = 10_000
+		if input.Limit > maxLimit {
+			input.Limit = maxLimit
 		}
 		select {
 		case <-ctx.Done():
 			log.Warn().Err(ctx.Err()).Msg("Forced cancellation")
 			return ctx.Err()
 		default:
-			if names, err = r.occurrences(ctx, input); err != nil {
+			if occurrences, err = r.occurrences(ctx, input); err != nil {
 				log.Warn().Err(err)
 				return err
 			}
 		}
-		output := &rest.OutputOccurrences{Occurrences: names}
-
-		return c.JSON(http.StatusOK, output)
+		return c.JSON(http.StatusOK, occurrences)
 	}
 }
 
@@ -175,8 +176,8 @@ func (r restio) Names() func(echo.Context) error {
 			log.Warn().Err(err)
 			return err
 		}
-		if input.Limit > 10_000 {
-			input.Limit = 10_000
+		if input.Limit > maxLimit {
+			input.Limit = maxLimit
 		}
 		select {
 		case <-ctx.Done():
@@ -188,9 +189,18 @@ func (r restio) Names() func(echo.Context) error {
 				return err
 			}
 		}
-		output := &rest.OutputNames{Names: names}
+		return c.JSON(http.StatusOK, names)
+	}
+}
 
-		return c.JSON(http.StatusOK, output)
+func (r restio) NamesLastID() func(echo.Context) error {
+	return func(c echo.Context) error {
+		var lastID int
+		var err error
+		if lastID, err = r.namesLastID(); err != nil {
+			return err
+		}
+		return c.String(http.StatusOK, strconv.Itoa(lastID))
 	}
 }
 
@@ -201,7 +211,6 @@ func getContext(c echo.Context) (ctx context.Context, cancel func()) {
 }
 
 func (r restio) setLogger(e *echo.Echo) {
-	fmt.Printf("CFG: %#v\n\n", r.bi.GetConfig())
 	// log.Logger = log.Output(os.Stdout)
 	if r.bi.GetConfig().WithWebLogs {
 		e.Use(middleware.Logger())

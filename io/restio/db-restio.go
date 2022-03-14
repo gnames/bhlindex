@@ -15,11 +15,12 @@ func (r restio) items(
 	ctx context.Context,
 	inp rest.Input,
 ) ([]item.Item, error) {
-	args := []interface{}{inp.Offset, inp.Limit}
+	args := []any{inp.OffsetID, inp.OffsetID + inp.Limit}
 	q := `SELECT
   id, path, internet_archive_id, updated_at
   FROM items
-  OFFSET $1 LIMIT $2`
+  WHERE id >= $1
+    AND id < $2`
 
 	return r.itemsQuery(ctx, q, args, inp.Limit)
 }
@@ -27,14 +28,16 @@ func (r restio) items(
 func (r restio) itemsQuery(
 	ctx context.Context,
 	q string,
-	args []interface{},
+	args []any,
 	limit int,
 ) ([]item.Item, error) {
 	res := make([]item.Item, limit)
+
 	rows, err := r.db.QueryContext(ctx, q, args...)
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 
 	var i int
 	for rows.Next() {
@@ -45,6 +48,7 @@ func (r restio) itemsQuery(
 			return nil, err
 		}
 		res[i] = itm
+
 		i++
 	}
 	if i < limit-1 {
@@ -57,11 +61,12 @@ func (r restio) pages(
 	ctx context.Context,
 	inp rest.Input,
 ) ([]page.Page, error) {
-	args := []interface{}{inp.Offset, inp.Limit}
+	args := []any{inp.OffsetID, inp.OffsetID + inp.Limit}
 	q := `SELECT
   id, item_id
   FROM pages
-  OFFSET $1 LIMIT $2`
+  WHERE item_id >= $1
+    AND item_id < $2`
 
 	return r.pagesQuery(ctx, q, args, inp.Limit)
 }
@@ -69,16 +74,17 @@ func (r restio) pages(
 func (r restio) pagesQuery(
 	ctx context.Context,
 	q string,
-	args []interface{},
+	args []any,
 	limit int,
 ) ([]page.Page, error) {
-	res := make([]page.Page, limit)
+	var res []page.Page
+
 	rows, err := r.db.QueryContext(ctx, q, args...)
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 
-	var i int
 	for rows.Next() {
 		var pg page.Page
 		if err = rows.Scan(
@@ -86,11 +92,7 @@ func (r restio) pagesQuery(
 		); err != nil {
 			return nil, err
 		}
-		res[i] = pg
-		i++
-	}
-	if i < limit-1 {
-		res = res[0:i]
+		res = append(res, pg)
 	}
 	return res, nil
 }
@@ -99,14 +101,15 @@ func (r restio) occurrences(
 	ctx context.Context,
 	inp rest.Input,
 ) ([]name.DetectedName, error) {
-	args := []interface{}{inp.Offset, inp.Limit}
+	args := []any{inp.OffsetID, inp.OffsetID + inp.Limit}
 	q := `SELECT
-  page_id, item_id, name, annot_nomen,
+  id, page_id, item_id, name, annot_nomen,
   annot_nomen_type, offset_start, offset_end,
   ends_next_page, odds_log10, cardinality,
   updated_at
   FROM detected_names
-  OFFSET $1 LIMIT $2`
+  where id >= $1
+    AND id < $2`
 
 	return r.occurrencesQuery(ctx, q, args, inp.Limit)
 }
@@ -114,20 +117,22 @@ func (r restio) occurrences(
 func (r restio) occurrencesQuery(
 	ctx context.Context,
 	q string,
-	args []interface{},
+	args []any,
 	limit int,
 ) ([]name.DetectedName, error) {
 	res := make([]name.DetectedName, limit)
+
 	rows, err := r.db.QueryContext(ctx, q, args...)
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 
 	var i int
 	for rows.Next() {
 		var dn name.DetectedName
 		if err = rows.Scan(
-			&dn.PageID, &dn.ItemID, &dn.Name, &dn.AnnotNomen,
+			&dn.ID, &dn.PageID, &dn.ItemID, &dn.Name, &dn.AnnotNomen,
 			&dn.AnnotNomenType, &dn.OffsetStart, &dn.OffsetEnd,
 			&dn.EndsNextPage, &dn.OddsLog10, &dn.Cardinality,
 			&dn.UpdatedAt,
@@ -147,20 +152,21 @@ func (r restio) names(
 	ctx context.Context,
 	inp rest.Input,
 ) ([]name.VerifiedName, error) {
-	args := []interface{}{inp.Offset, inp.Limit}
+	args := []any{inp.OffsetID, inp.OffsetID + inp.Limit}
 	q := `SELECT
-  id, name, record_id, match_type, edit_distance,
+  name_id, name, record_id, match_type, edit_distance,
   stem_edit_distance, matched_name, matched_canonical,
   current_name, current_canonical, classification,
   data_source_id, data_source_title, data_sources_number,
   curation, odds_log10, occurrences, error, updated_at
   FROM verified_names
-`
+  WHERE name_id >= $1
+    AND name_id < $2`
+
 	if len(inp.DataSources) > 0 {
 		args = append(args, pq.Array(inp.DataSources))
-		q += "\n  where data_source_id = any($3::int[])"
+		q += "\n  AND data_source_id = any($3::int[])"
 	}
-	q += "\n  OFFSET $1 LIMIT $2\n"
 
 	select {
 	case <-ctx.Done():
@@ -174,19 +180,22 @@ func (r restio) names(
 func (r restio) namesQuery(
 	ctx context.Context,
 	q string,
-	args []interface{},
+	args []any,
 	limit int,
 ) ([]name.VerifiedName, error) {
 	res := make([]name.VerifiedName, limit)
+
 	rows, err := r.db.QueryContext(ctx, q, args...)
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
+
 	var i int
 	for rows.Next() {
 		var vn name.VerifiedName
 		if err = rows.Scan(
-			&vn.ID, &vn.Name, &vn.RecordID, &vn.MatchType, &vn.EditDistance,
+			&vn.NameID, &vn.Name, &vn.RecordID, &vn.MatchType, &vn.EditDistance,
 			&vn.StemEditDistance, &vn.MatchedName, &vn.MatchedCanonical,
 			&vn.CurrentName, &vn.CurrentCanonical, &vn.Classification,
 			&vn.DataSourceID, &vn.DataSourceTitle, &vn.DataSourcesNumber,
@@ -201,4 +210,11 @@ func (r restio) namesQuery(
 		res = res[0:i]
 	}
 	return res, nil
+}
+
+func (r restio) namesLastID() (int, error) {
+	var lastID int
+	err := r.db.QueryRow("SELECT max(name_id) FROM verified_names").
+		Scan(&lastID)
+	return lastID, err
 }

@@ -13,6 +13,30 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
+func (vrf verifio) ExtractUniqueNames() error {
+	log.Info().Msg("Extracting unique name-strings. It will take a while.")
+	q := `INSERT INTO unique_names (name, odds_log10, occurrences, processed)
+          SELECT name, AVG(odds_log10), count(*), false
+            FROM detected_names GROUP BY name
+            ORDER BY name`
+
+	stmt, err := vrf.db.Prepare(q)
+	if err != nil {
+		return err
+	}
+
+	_, err = stmt.Exec()
+	if err != nil {
+		return err
+	}
+
+	err = stmt.Close()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func (vrf verifio) checkForDetectedNames() error {
 	noNames, err := vrf.noDetectedNames()
 	if err != nil {
@@ -41,7 +65,7 @@ func (vrf verifio) numberOfNames() (int, error) {
 }
 
 func (vrf verifio) truncateVerifTables() error {
-	tables := []string{"verified_names"}
+	tables := []string{"unique_names", "verified_names"}
 	for _, v := range tables {
 		q := fmt.Sprintf("TRUNCATE TABLE %s RESTART IDENTITY", v)
 		_, err := vrf.db.Exec(q)
@@ -60,29 +84,34 @@ func (vrf verifio) loadNames(
 	var count int
 	batchSize := 5_000
 
-	q := `SELECT name, odds_log10, occurrences
-FROM unique_names
-OFFSET $1
-LIMIT $2
-`
+	q := `
+    WITH temp AS (
+      SELECT id, name, odds_log10, occurrences FROM unique_names
+        WHERE processed=false LIMIT $1)
+    UPDATE unique_names ns SET processed=true
+    FROM temp
+      WHERE ns.name = temp.name
+    RETURNING temp.id, temp.name, temp.odds_log10, temp.occurrences`
+
 	for count < namesNum {
-		rows, err := vrf.db.Query(q, count, batchSize)
+		rows, err := vrf.db.Query(q, batchSize)
 		if err != nil {
 			return err
 		}
-
 		var n string
 		var odds float64
-		var occur int
+		var id, occur int
 		uns := make([]name.UniqueName, batchSize)
 		var i int
 		for rows.Next() {
-			err := rows.Scan(&n, &odds, &occur)
+			err := rows.Scan(&id, &n, &odds, &occur)
 			if err != nil {
 				rows.Close()
 				return err
 			}
-			uns[i] = name.UniqueName{Name: n, OddsLog10: odds, Occurrences: occur}
+			uns[i] = name.UniqueName{
+				ID: id, Name: n, OddsLog10: odds, Occurrences: occur,
+			}
 			i++
 		}
 		rows.Close()
@@ -157,11 +186,11 @@ func incrLog(start time.Time, total, count, incr int) int {
 func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 	now := time.Now()
 	columns := []string{
-		"name", "record_id", "match_type", "edit_distance", "stem_edit_distance",
-		"matched_name", "matched_canonical", "current_name", "current_canonical",
-		"classification", "data_source_id", "data_source_title",
-		"data_sources_number", "curation", "odds_log10", "occurrences", "retries",
-		"error", "updated_at",
+		"name_id", "name", "record_id", "match_type", "edit_distance",
+		"stem_edit_distance", "matched_name", "matched_canonical", "current_name",
+		"current_canonical", "classification", "data_source_id",
+		"data_source_title", "data_sources_number", "curation", "odds_log10",
+		"occurrences", "retries", "error", "updated_at",
 	}
 	transaction, err := vrf.db.Begin()
 	if err != nil {
@@ -176,10 +205,11 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 
 	for _, v := range names {
 		_, err = stmt.Exec(
-			v.Name, v.RecordID, v.MatchType, v.EditDistance, v.StemEditDistance,
-			v.MatchedName, v.MatchedCanonical, v.CurrentName, v.CurrentCanonical,
-			v.Classification, v.DataSourceID, v.DataSourceTitle, v.DataSourcesNumber,
-			v.Curation, v.OddsLog10, v.Occurrences, v.Retries, v.Error, now,
+			v.NameID, v.Name, v.RecordID, v.MatchType, v.EditDistance,
+			v.StemEditDistance, v.MatchedName, v.MatchedCanonical, v.CurrentName,
+			v.CurrentCanonical, v.Classification, v.DataSourceID, v.DataSourceTitle,
+			v.DataSourcesNumber, v.Curation, v.OddsLog10, v.Occurrences, v.Retries,
+			v.Error, now,
 		)
 		if err != nil {
 			return err
@@ -197,4 +227,10 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 	}
 
 	return transaction.Commit()
+}
+
+func (vrf verifio) setPrimaryKey() error {
+	q := `ALTER TABLE verified_names ADD PRIMARY KEY (name_id)`
+	_, err := vrf.db.Exec(q)
+	return err
 }

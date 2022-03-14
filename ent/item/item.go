@@ -11,6 +11,6 @@ type Item struct {
 	Path              string       `json:"path" gorm:"not null"`
 	InternetArchiveID string       `json:"internetArchiveId" gorm:"unique_index;not null"`
 	UpdatedAt         time.Time    `json:"updatedAt" sql:"type:timestamp without time zone"`
-	Pages             []*page.Page `json:"-" gorm:"-"`
+	Pages             []*page.Page `json:"pages" gorm:"-"`
 	Text              []byte       `json:"-" gorm:"-"`
 }

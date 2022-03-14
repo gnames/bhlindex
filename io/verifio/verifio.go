@@ -29,7 +29,7 @@ func New(cfg config.Config, db *sql.DB) verif.VerifierBHL {
 }
 
 func (vrf verifio) Reset() error {
-	log.Info().Msg("Cleaning up previous verification results")
+	log.Info().Msg("Cleaning up previous verification results if they exist")
 	return vrf.truncateVerifTables()
 }
 
@@ -82,5 +82,6 @@ func (vrf verifio) Verify() error {
 	if err != nil {
 		return err
 	}
-	return nil
+
+	return vrf.setPrimaryKey()
 }

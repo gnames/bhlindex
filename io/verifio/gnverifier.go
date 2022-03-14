@@ -66,6 +66,7 @@ func prepareNames(vns []vlib.Name, uns []name.UniqueName) []name.VerifiedName {
 	res := make([]name.VerifiedName, len(vns))
 	for i := range vns {
 		n := name.VerifiedName{
+			NameID:            uns[i].ID,
 			Name:              vns[i].Name,
 			MatchType:         vns[i].MatchType.String(),
 			Curation:          vns[i].Curation.String(),

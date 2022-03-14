@@ -22,6 +22,9 @@ THE SOFTWARE.
 package cmd
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/bhlindex/config"
 	"github.com/gnames/bhlindex/io/dbio"
@@ -39,6 +42,14 @@ names do exist in any of the datasets registered in 'gnverifier'.
 The list of registered datasets can be found at 
 'https://verifier.globalnames.org/data_sources'`,
 	Run: func(_ *cobra.Command, _ []string) {
+		fmt.Println("\nPrevious verification data will be lost.")
+		fmt.Println("Do you want to proceed? (y/N)")
+		var confirm string
+		fmt.Scanln(&confirm)
+		if confirm != "y" {
+			os.Exit(0)
+		}
+
 		cfg := config.New(opts...)
 		db := dbio.New(cfg)
 		bhli := bhlindex.New(cfg)

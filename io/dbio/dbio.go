@@ -78,7 +78,7 @@ COMMENT ON SCHEMA public IS 'standard public schema'`
 }
 
 func (d dbio) migrate() error {
-	tables := []interface{}{
+	tables := []any{
 		&item.Item{},
 		&page.Page{},
 		&name.DetectedName{},

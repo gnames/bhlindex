@@ -11,6 +11,7 @@ import (
 // DetectedName holds information about a name-string returned by a
 // name-finder.
 type DetectedName struct {
+	ID             uint      `json:"id"`
 	PageID         string    `gorm:"type:varchar(255);index"`
 	ItemID         int       `gorm:"not null;index"`
 	Name           string    `sql:"type:CHARACTER VARYING(255) COLLATE \"C\" NOT NULL" gorm:"index"`
@@ -25,7 +26,7 @@ type DetectedName struct {
 }
 
 type VerifiedName struct {
-	ID                int       `json:"id" gorm:"primary_key"`
+	NameID            int       `json:"id"`
 	Name              string    `json:"name" sql:"type:CHARACTER VARYING(255) COLLATE \"C\" NOT NULL"`
 	RecordID          string    `json:"recordID" sql:"type:CHARACTER VARYING(255) COLLATE \"C\"" gorm:"index"`
 	MatchType         string    `json:"matchType" gorm:"type:varchar(100)"`
@@ -48,9 +49,11 @@ type VerifiedName struct {
 }
 
 type UniqueName struct {
-	Name        string  `sql:"type:CHARACTER VARYING(255) COLLATE \"C\"" gorm:"primary_key;auto_increment:false"`
+	ID          int     `json:"id" gorm:"primary_key"`
+	Name        string  `sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
 	OddsLog10   float64 `gorm:"type:float;not null;default:0"`
 	Occurrences int     `gorm:"not null;default:0"`
+	Processed   bool    `gorm:"type:bool;not null;default:false;index"`
 }
 
 func New(itemID int, p *page.Page, n gnfout.Name) DetectedName {

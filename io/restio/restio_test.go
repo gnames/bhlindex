@@ -8,6 +8,9 @@ import (
 
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/bhlindex/config"
+	"github.com/gnames/bhlindex/ent/item"
+	"github.com/gnames/bhlindex/ent/name"
+	"github.com/gnames/bhlindex/ent/page"
 	"github.com/gnames/bhlindex/ent/rest"
 	"github.com/gnames/bhlindex/io/dbio"
 	"github.com/gnames/bhlindex/io/finderio"
@@ -29,8 +32,8 @@ func TestPing(t *testing.T) {
 	c := e.NewContext(req, rec)
 	err := r.Ping()(c)
 	assert.Nil(t, err)
-	assert.Equal(t, rec.Code, http.StatusOK)
-	assert.Equal(t, rec.Body.String(), "pong")
+	assert.Equal(t, http.StatusOK, rec.Code)
+	assert.Equal(t, "pong", rec.Body.String())
 }
 
 func TestVersion(t *testing.T) {
@@ -40,69 +43,82 @@ func TestVersion(t *testing.T) {
 	c := e.NewContext(req, rec)
 	err := r.Version()(c)
 	assert.Nil(t, err)
-	assert.Equal(t, rec.Code, http.StatusOK)
+	assert.Equal(t, http.StatusOK, rec.Code)
 	assert.Contains(t, rec.Body.String(), "version")
 }
 
 func TestItems(t *testing.T) {
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodGet, "/items?offset=0&limit=10", nil)
+	req := httptest.NewRequest(http.MethodGet, "/items?offset_id=1&limit=10", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	err := r.Items()(c)
 	assert.Nil(t, err)
-	assert.Equal(t, rec.Code, http.StatusOK)
-	var items rest.OutputItems
+	assert.Equal(t, http.StatusOK, rec.Code)
+	var items []item.Item
 	err = gnfmt.GNjson{}.Decode(rec.Body.Bytes(), &items)
 	assert.Nil(t, err)
-	assert.Equal(t, len(items.Items), 10)
+	assert.Equal(t, 10, len(items))
 }
 
 func TestPages(t *testing.T) {
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodGet, "/pages?offset=0&limit=10", nil)
+	req := httptest.NewRequest(http.MethodGet, "/pages?offset_id=1&limit=10", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	err := r.Pages()(c)
 	assert.Nil(t, err)
-	assert.Equal(t, rec.Code, http.StatusOK)
-	var pages rest.OutputPages
+	assert.Equal(t, http.StatusOK, rec.Code)
+	var pages []page.Page
 	err = gnfmt.GNjson{}.Decode(rec.Body.Bytes(), &pages)
 	assert.Nil(t, err)
-	assert.Equal(t, len(pages.Pages), 10)
+	assert.Equal(t, 3214, len(pages))
 }
 
 func TestOccurrences(t *testing.T) {
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodGet, "/occurrences?offset=0&limit=10", nil)
+	req := httptest.NewRequest(http.MethodGet, "/occurrences?offset_id=1&limit=10", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	err := r.Occurrences()(c)
 	assert.Nil(t, err)
-	assert.Equal(t, rec.Code, http.StatusOK)
-	var ocrs rest.OutputOccurrences
+	assert.Equal(t, http.StatusOK, rec.Code)
+	var ocrs []name.DetectedName
 	err = gnfmt.GNjson{}.Decode(rec.Body.Bytes(), &ocrs)
 	assert.Nil(t, err)
-	assert.Equal(t, len(ocrs.Occurrences), 10)
+	assert.Equal(t, 10, len(ocrs))
 }
 
 func TestNames(t *testing.T) {
+	assert := assert.New(t)
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodGet, "/names?offset=0&limit=10", nil)
+	req := httptest.NewRequest(http.MethodGet, "/names?offset_id=1&limit=10", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	err := r.Names()(c)
-	assert.Nil(t, err)
-	assert.Equal(t, rec.Code, http.StatusOK)
-	var names rest.OutputNames
+	assert.Nil(err)
+	assert.Equal(http.StatusOK, rec.Code)
+	var names []name.VerifiedName
 	err = gnfmt.GNjson{}.Decode(rec.Body.Bytes(), &names)
-	assert.Nil(t, err)
-	assert.Equal(t, len(names.Names), 10)
+	assert.Nil(err)
+	assert.Equal(10, len(names))
+}
+
+func TestNamesLastID(t *testing.T) {
+	assert := assert.New(t)
+	e := echo.New()
+	req := httptest.NewRequest(http.MethodGet, "/names/last_id", nil)
+	rec := httptest.NewRecorder()
+	c := e.NewContext(req, rec)
+	err := r.NamesLastID()(c)
+	assert.Nil(err)
+	assert.Equal(http.StatusOK, rec.Code)
+	assert.Equal("7671", rec.Body.String())
 }
 
 func dataExists(r rest.REST) bool {
 	e := echo.New()
-	req := httptest.NewRequest(http.MethodGet, "/names?offset=0&limit=1", nil)
+	req := httptest.NewRequest(http.MethodGet, "/names?offset_id=1&limit=1", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	err := r.Names()(c)

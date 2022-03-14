@@ -13,4 +13,9 @@ type VerifierBHL interface {
 	// many scientific name databases, and returns reconciliation/resolution
 	// results.
 	Verify() error
+
+	// ExtractUniqueNames runs after name detection is finished. It goes through
+	// the detected names and saves the unique list off all names, their odds,
+	// and the number of their occurrences.
+	ExtractUniqueNames() error
 }

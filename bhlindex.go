@@ -33,7 +33,7 @@ func (bi *bhlindex) FindNames(
 	ldr loader.Loader,
 	fdr finder.Finder,
 ) error {
-	itemCh := make(chan *item.Item)
+	itemCh := make(chan *item.Item, 10)
 	namesCh := make(chan []name.DetectedName)
 	var wgFind sync.WaitGroup
 	gLoad, ctx := errgroup.WithContext(context.Background())
@@ -59,15 +59,14 @@ func (bi *bhlindex) FindNames(
 	wgFind.Wait()
 	close(namesCh)
 
-	err = gSave.Wait()
-	if err != nil {
-		return err
-	}
-	return fdr.ExtractUniqueNames()
+	return gSave.Wait()
 }
 
 func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) (err error) {
 	err = vrf.Reset()
+	if err == nil {
+		err = vrf.ExtractUniqueNames()
+	}
 
 	if err == nil {
 		err = vrf.Verify()

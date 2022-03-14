@@ -24,6 +24,9 @@ type REST interface {
 	// Names returns a batch of verified names from the index.
 	Names() func(echo.Context) error
 
+	// NamesLastID returns the last NameID from verified_names.
+	NamesLastID() func(echo.Context) error
+
 	// Occurrences returns a batch of names occurrences and their metadata.
 	Occurrences() func(echo.Context) error
 }

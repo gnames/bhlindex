@@ -22,6 +22,9 @@ THE SOFTWARE.
 package cmd
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/bhlindex/config"
 	"github.com/gnames/bhlindex/io/dbio"
@@ -40,15 +43,24 @@ and folders recursively. It discovers scientific names in text pages,
 generates metadata that describes locations of the names in BHL and
 saves results to a database.
 
-This command does not do verificaiton of detected scientific names. For
-verification use "verify" command next.`,
+This command does not do verification of detected scientific names. For
+verification use "bhlindex verify" command next.`,
 	Run: func(_ *cobra.Command, _ []string) {
+		fmt.Println("\nPreviously generated data will be lost.")
+		fmt.Println("Do you want to proceed? (y/N)")
+		var confirm string
+		fmt.Scanln(&confirm)
+		if confirm != "y" {
+			os.Exit(0)
+		}
+
 		cfg := config.New(opts...)
 		db := dbio.NewWithInit(cfg)
 		ldr := loaderio.New(cfg, db)
 		fdr := finderio.New(cfg, db)
 
 		bhli := bhlindex.New(cfg)
+
 		err := bhli.FindNames(ldr, fdr)
 		if err != nil {
 			log.Fatal().Err(err).Msg("Name-fidning failed")
