@@ -2,6 +2,7 @@ package loaderio
 
 import (
 	"database/sql"
+	"fmt"
 	"time"
 
 	"github.com/gnames/bhlindex/ent/item"
@@ -41,29 +42,29 @@ func (l loaderio) insertPages(itm *item.Item) error {
 
 	transaction, err := l.db.Begin()
 	if err != nil {
-		return err
+		return fmt.Errorf("insertPages: %w", err)
 	}
 
 	stmt, err = transaction.Prepare(pq.CopyIn("pages", columns...))
 	if err != nil {
-		return err
+		return fmt.Errorf("insertPages: %w", err)
 	}
 
 	for _, p := range batch {
 		_, err = stmt.Exec(p.ID, p.ItemID, p.Offset)
 		if err != nil {
-			return err
+			return fmt.Errorf("insertPages: %w", err)
 		}
 	}
 
 	_, err = stmt.Exec()
 	if err != nil {
-		return err
+		return fmt.Errorf("insertPages: %w", err)
 	}
 
 	err = stmt.Close()
 	if err != nil {
-		return err
+		return fmt.Errorf("insertPages: %w", err)
 	}
 
 	return transaction.Commit()

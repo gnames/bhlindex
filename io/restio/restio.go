@@ -81,8 +81,7 @@ func (r restio) Items() func(echo.Context) error {
 		defer cancel()
 
 		if err = c.Bind(&input); err != nil {
-			log.Warn().Err(err)
-			return err
+			return fmt.Errorf("Items: %w", err)
 		}
 		if input.Limit > maxLimit {
 			input.Limit = maxLimit
@@ -93,8 +92,7 @@ func (r restio) Items() func(echo.Context) error {
 			return ctx.Err()
 		default:
 			if items, err = r.items(ctx, input); err != nil {
-				log.Warn().Err(err)
-				return err
+				return fmt.Errorf("Items: %w", err)
 			}
 		}
 
@@ -112,20 +110,17 @@ func (r restio) Pages() func(echo.Context) error {
 		defer cancel()
 
 		if err = c.Bind(&input); err != nil {
-			log.Warn().Err(err)
-			return err
+			return fmt.Errorf("Pages: %w", err)
 		}
 		if input.Limit > maxLimit {
 			input.Limit = maxLimit
 		}
 		select {
 		case <-ctx.Done():
-			log.Warn().Err(ctx.Err()).Msg("Forced cancellation")
-			return ctx.Err()
+			return fmt.Errorf("Pages: %w", ctx.Err())
 		default:
 			if pages, err = r.pages(ctx, input); err != nil {
-				log.Warn().Err(err)
-				return err
+				return fmt.Errorf("Pages: %w", err)
 			}
 		}
 
@@ -143,20 +138,17 @@ func (r restio) Occurrences() func(echo.Context) error {
 		defer cancel()
 
 		if err = c.Bind(&input); err != nil {
-			log.Warn().Err(err)
-			return err
+			return fmt.Errorf("Occurrences: %w", err)
 		}
 		if input.Limit > maxLimit {
 			input.Limit = maxLimit
 		}
 		select {
 		case <-ctx.Done():
-			log.Warn().Err(ctx.Err()).Msg("Forced cancellation")
-			return ctx.Err()
+			return fmt.Errorf("Occurrences: %w", ctx.Err())
 		default:
 			if occurrences, err = r.occurrences(ctx, input); err != nil {
-				log.Warn().Err(err)
-				return err
+				return fmt.Errorf("Occurrences: %w", err)
 			}
 		}
 		return c.JSON(http.StatusOK, occurrences)
@@ -173,20 +165,17 @@ func (r restio) Names() func(echo.Context) error {
 		defer cancel()
 
 		if err = c.Bind(&input); err != nil {
-			log.Warn().Err(err)
-			return err
+			return fmt.Errorf("Names: %w", err)
 		}
 		if input.Limit > maxLimit {
 			input.Limit = maxLimit
 		}
 		select {
 		case <-ctx.Done():
-			log.Warn().Err(ctx.Err()).Msg("Forced cancellation")
-			return ctx.Err()
+			return fmt.Errorf("Names: %w", ctx.Err())
 		default:
 			if names, err = r.names(ctx, input); err != nil {
-				log.Warn().Err(err)
-				return err
+				return fmt.Errorf("Names: %w", err)
 			}
 		}
 		return c.JSON(http.StatusOK, names)
@@ -198,7 +187,7 @@ func (r restio) NamesLastID() func(echo.Context) error {
 		var lastID int
 		var err error
 		if lastID, err = r.namesLastID(); err != nil {
-			return err
+			return fmt.Errorf("NamesLastID: %w", err)
 		}
 		return c.String(http.StatusOK, strconv.Itoa(lastID))
 	}

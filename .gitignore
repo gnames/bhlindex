@@ -4,6 +4,7 @@ bhlindex/bhlindex
 *tar.gz
 .vscode
 *.csv
+*.tsv
 *.test
 *.gif
 *.pprof

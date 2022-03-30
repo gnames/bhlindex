@@ -5,7 +5,7 @@
 ## [v0.11.0]
 
 - Add [#48]: change RESTful pagination to use IDs.
-- Add [#47]: placeholder for `dump` command, add `all` command.
+- Add [#47]: implement `dump` command.
 - Add [#45]: create RESTful service.
 - Add [#46]: switch to gnverifier for name verification.
 - Add [#43]: refactor to improve architecture and usability

@@ -3,6 +3,7 @@ package verifio
 import (
 	"context"
 	"database/sql"
+	"fmt"
 	"sync"
 	"time"
 
@@ -36,12 +37,12 @@ func (vrf verifio) Reset() error {
 func (vrf verifio) Verify() error {
 	err := vrf.checkForDetectedNames()
 	if err != nil {
-		return err
+		return fmt.Errorf("Verify: %w", err)
 	}
 
 	namesNum, err := vrf.numberOfNames()
 	if err != nil {
-		return err
+		return fmt.Errorf("Verify: %w", err)
 	}
 	log.Info().Msgf("Verifying %s names", humanize.Comma(int64(namesNum)))
 
@@ -71,7 +72,7 @@ func (vrf verifio) Verify() error {
 
 	err = gLoad.Wait()
 	if err != nil {
-		return err
+		return fmt.Errorf("Verify: %w", err)
 	}
 	close(chIn)
 
@@ -80,7 +81,7 @@ func (vrf verifio) Verify() error {
 
 	gSave.Wait()
 	if err != nil {
-		return err
+		return fmt.Errorf("Verify: %w", err)
 	}
 
 	return vrf.setPrimaryKey()

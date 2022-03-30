@@ -1,6 +1,7 @@
 package finderio
 
 import (
+	"fmt"
 	"math"
 	"time"
 
@@ -15,13 +16,13 @@ func (fdr finderio) savePageNameStrings(names []name.DetectedName) error {
 		"ends_next_page", "odds_log10", "cardinality", "updated_at"}
 	transaction, err := fdr.db.Begin()
 	if err != nil {
-		return err
+		return fmt.Errorf("savePageNameStrings: %w", err)
 	}
 	defer transaction.Rollback()
 
 	stmt, err := transaction.Prepare(pq.CopyIn("detected_names", columns...))
 	if err != nil {
-		return err
+		return fmt.Errorf("savePageNameStrings: %w", err)
 	}
 
 	for _, v := range names {
@@ -32,18 +33,18 @@ func (fdr finderio) savePageNameStrings(names []name.DetectedName) error {
 			v.AnnotNomen, v.AnnotNomenType, v.OffsetStart, v.OffsetEnd,
 			v.EndsNextPage, v.OddsLog10, v.Cardinality, now)
 		if err != nil {
-			return err
+			return fmt.Errorf("savePageNameStrings: %w", err)
 		}
 	}
 
 	_, err = stmt.Exec()
 	if err != nil {
-		return err
+		return fmt.Errorf("savePageNameStrings: %w", err)
 	}
 
 	err = stmt.Close()
 	if err != nil {
-		return err
+		return fmt.Errorf("savePageNameStrings: %w", err)
 	}
 
 	return transaction.Commit()

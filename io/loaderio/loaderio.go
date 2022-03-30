@@ -3,6 +3,8 @@ package loaderio
 import (
 	"context"
 	"database/sql"
+	"fmt"
+	"os"
 
 	"github.com/gnames/bhlindex/config"
 	"github.com/gnames/bhlindex/ent/item"
@@ -48,9 +50,14 @@ func (l loaderio) LoadItems(ctx context.Context, dbItemCh chan<- *item.Item) err
 	err := gImp.Wait()
 	close(itemCh)
 	if err != nil {
-		return err
+		return fmt.Errorf("LoadItems: %w", err)
 	}
 
 	err = gProc.Wait()
-	return err
+	if err != nil {
+		return fmt.Errorf("LoadItems: %w", err)
+	}
+	fmt.Fprint(os.Stderr, "\r")
+	log.Info().Msg("Finding names finished successfully.")
+	return nil
 }

@@ -22,69 +22,46 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/gnames/bhlindex"
 	"github.com/gnames/bhlindex/config"
 	"github.com/gnames/bhlindex/io/dbio"
-	"github.com/gnames/bhlindex/io/finderio"
-	"github.com/gnames/bhlindex/io/loaderio"
+	"github.com/gnames/bhlindex/io/dumpio"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 )
 
-// findCmd represents the find command
-var findCmd = &cobra.Command{
-	Use:   "find",
-	Short: "find command detects names in BHL",
-	Long: `The "find" command traverses Biodiversity Heritage Library (BHL) files
-and folders recursively. It discovers scientific names in text pages,
-generates metadata that describes locations of the names in BHL and
-saves results to a database.
+// dumpCmd represents the dump command
+var dumpCmd = &cobra.Command{
+	Use:   "dump",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
 
-This command does not do verification of detected scientific names. For
-verification use "bhlindex verify" command next.`,
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, _ []string) {
-		withoutConfirm, _ := cmd.Flags().GetBool("without-confirm")
-		if withoutConfirm {
-			opts = append(opts, config.OptWithoutConfirm(true))
-		}
 		cfg := config.New(opts...)
-
-		if !cfg.WithoutConfirm {
-			fmt.Println("\nPreviously generated data will be lost.")
-			fmt.Println("Do you want to proceed? (y/N)")
-			var confirm string
-			fmt.Scanln(&confirm)
-			if confirm != "y" {
-				os.Exit(0)
-			}
-		}
-
-		db := dbio.NewWithInit(cfg)
-		ldr := loaderio.New(cfg, db)
-		fdr := finderio.New(cfg, db)
-
+		db := dbio.New(cfg)
 		bhli := bhlindex.New(cfg)
-
-		err := bhli.FindNames(ldr, fdr)
+		dmp := dumpio.New(cfg, db)
+		err := bhli.DumpNames(dmp)
 		if err != nil {
-			log.Fatal().Err(err).Msg("Name-fidning failed")
+			log.Fatal().Err(err).Msg("Name verification failed")
 		}
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(findCmd)
+	rootCmd.AddCommand(dumpCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// findCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// dumpCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// findCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// dumpCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

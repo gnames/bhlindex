@@ -2,6 +2,7 @@ package restio
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/gnames/bhlindex/ent/item"
 	"github.com/gnames/bhlindex/ent/name"
@@ -35,7 +36,7 @@ func (r restio) itemsQuery(
 
 	rows, err := r.db.QueryContext(ctx, q, args...)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("itemsQuery: %w", err)
 	}
 	defer rows.Close()
 
@@ -45,7 +46,7 @@ func (r restio) itemsQuery(
 		if err = rows.Scan(
 			&itm.ID, &itm.Path, &itm.InternetArchiveID, &itm.UpdatedAt,
 		); err != nil {
-			return nil, err
+			return nil, fmt.Errorf("itemsQuery: %w", err)
 		}
 		res[i] = itm
 
@@ -81,7 +82,7 @@ func (r restio) pagesQuery(
 
 	rows, err := r.db.QueryContext(ctx, q, args...)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("pagesQuery: %w", err)
 	}
 	defer rows.Close()
 
@@ -90,7 +91,7 @@ func (r restio) pagesQuery(
 		if err = rows.Scan(
 			&pg.ID, &pg.ItemID,
 		); err != nil {
-			return nil, err
+			return nil, fmt.Errorf("pagesQuery: %w", err)
 		}
 		res = append(res, pg)
 	}
@@ -124,7 +125,7 @@ func (r restio) occurrencesQuery(
 
 	rows, err := r.db.QueryContext(ctx, q, args...)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("occurrencesQuery: %w", err)
 	}
 	defer rows.Close()
 
@@ -137,7 +138,7 @@ func (r restio) occurrencesQuery(
 			&dn.EndsNextPage, &dn.OddsLog10, &dn.Cardinality,
 			&dn.UpdatedAt,
 		); err != nil {
-			return nil, err
+			return nil, fmt.Errorf("occurrencesQuery: %w", err)
 		}
 		res[i] = dn
 		i++
@@ -187,7 +188,7 @@ func (r restio) namesQuery(
 
 	rows, err := r.db.QueryContext(ctx, q, args...)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("namesQuery: %w", err)
 	}
 	defer rows.Close()
 
@@ -201,7 +202,7 @@ func (r restio) namesQuery(
 			&vn.DataSourceID, &vn.DataSourceTitle, &vn.DataSourcesNumber,
 			&vn.Curation, &vn.OddsLog10, &vn.Occurrences, &vn.Error, &vn.UpdatedAt,
 		); err != nil {
-			return nil, err
+			return nil, fmt.Errorf("namesQuery: %w", err)
 		}
 		res[i] = vn
 		i++

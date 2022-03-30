@@ -41,16 +41,23 @@ var verifyCmd = &cobra.Command{
 names do exist in any of the datasets registered in 'gnverifier'.
 The list of registered datasets can be found at 
 'https://verifier.globalnames.org/data_sources'`,
-	Run: func(_ *cobra.Command, _ []string) {
-		fmt.Println("\nPrevious verification data will be lost.")
-		fmt.Println("Do you want to proceed? (y/N)")
-		var confirm string
-		fmt.Scanln(&confirm)
-		if confirm != "y" {
-			os.Exit(0)
+	Run: func(cmd *cobra.Command, _ []string) {
+		withoutConfirm, _ := cmd.Flags().GetBool("without-confirm")
+		if withoutConfirm {
+			opts = append(opts, config.OptWithoutConfirm(true))
+		}
+		cfg := config.New(opts...)
+
+		if !cfg.WithoutConfirm {
+			fmt.Println("\nPrevious verification data will be lost.")
+			fmt.Println("Do you want to proceed? (y/N)")
+			var confirm string
+			fmt.Scanln(&confirm)
+			if confirm != "y" {
+				os.Exit(0)
+			}
 		}
 
-		cfg := config.New(opts...)
 		db := dbio.New(cfg)
 		bhli := bhlindex.New(cfg)
 		vrf := verifio.New(cfg, db)

@@ -2,6 +2,7 @@ package bhlindex
 
 import (
 	"context"
+	"fmt"
 	"sync"
 
 	"github.com/gnames/bhlindex/config"
@@ -9,7 +10,9 @@ import (
 	"github.com/gnames/bhlindex/ent/item"
 	"github.com/gnames/bhlindex/ent/loader"
 	"github.com/gnames/bhlindex/ent/name"
+	"github.com/gnames/bhlindex/ent/output"
 	"github.com/gnames/bhlindex/ent/verif"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnlib/ent/gnvers"
 	"github.com/rs/zerolog/log"
 	"golang.org/x/sync/errgroup"
@@ -53,7 +56,7 @@ func (bi *bhlindex) FindNames(
 	err := gLoad.Wait()
 	close(itemCh)
 	if err != nil {
-		return err
+		return fmt.Errorf("FindNames: %w", err)
 	}
 
 	wgFind.Wait()
@@ -88,6 +91,55 @@ func counterLog(counter <-chan int) {
 	}
 }
 
+func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	ch := make(chan []output.Output)
+	gDump, ctxDump := errgroup.WithContext(ctx)
+	gOut, ctxOut := errgroup.WithContext(ctx)
+
+	gDump.Go(func() error {
+		return dmp.Dump(ctxDump, ch)
+	})
+
+	gOut.Go(func() error {
+		return bi.processOutput(ctxOut, ch)
+	})
+
+	err := gDump.Wait()
+	if err != nil {
+		return fmt.Errorf("bhlindex: %w", err)
+	}
+	close(ch)
+
+	err = gOut.Wait()
+	if err != nil {
+		return fmt.Errorf("bhlindex: %w", err)
+	}
+	return nil
+}
+
 func (bi *bhlindex) GetConfig() config.Config {
 	return bi.Config
+}
+
+func (bi *bhlindex) processOutput(
+	ctx context.Context,
+	ch <-chan []output.Output,
+) error {
+	if bi.OutputFormat != gnfmt.CompactJSON {
+		fmt.Println(output.CSVHeader(bi.OutputFormat))
+	}
+
+	for rows := range ch {
+		select {
+		case <-ctx.Done():
+			return fmt.Errorf("processOutput: %w", ctx.Err())
+		default:
+			for i := range rows {
+				fmt.Println(rows[i].Format(bi.OutputFormat))
+			}
+		}
+	}
+	return nil
 }

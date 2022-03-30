@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"io/fs"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -24,7 +25,7 @@ func (l loaderio) importItems(
 	rootDir := l.BHLdir
 	err := checkRoot(rootDir)
 	if err != nil {
-		return err
+		return fmt.Errorf("importItems: %w", err)
 	}
 
 	currentDir := ""
@@ -57,7 +58,7 @@ func (l loaderio) importItems(
 				itm = itemFromPath(path)
 				pg, err = pageFromPath(path)
 				if err != nil {
-					return err
+					return fmt.Errorf("WalkDir: %w", err)
 				}
 				pages = []*page.Page{pg}
 				currentDir = dir
@@ -65,7 +66,7 @@ func (l loaderio) importItems(
 			} else {
 				pg, err = pageFromPath(path)
 				if err != nil {
-					return err
+					return fmt.Errorf("WalkDir: %w", err)
 				}
 				pages = append(pages, pg)
 			}
@@ -85,7 +86,7 @@ func (l loaderio) importItems(
 func checkRoot(rootDir string) error {
 	exists, empty, err := gnsys.DirExists(rootDir)
 	if err != nil {
-		return err
+		return fmt.Errorf("checkRoot: %w", err)
 	}
 	if !exists {
 		return fmt.Errorf("directory '%s' does not exist", rootDir)
@@ -106,7 +107,7 @@ func (l loaderio) processItemWorker(
 
 		err = l.insertItem(itm)
 		if err != nil {
-			return err
+			return fmt.Errorf("processItemWorker: %w", err)
 		}
 		if itm.ID == 0 {
 			continue
@@ -114,12 +115,12 @@ func (l loaderio) processItemWorker(
 
 		err = updatePages(itm)
 		if err != nil {
-			return err
+			return fmt.Errorf("processItemWorker: %w", err)
 		}
 
 		err = l.insertPages(itm)
 		if err != nil {
-			return err
+			return fmt.Errorf("processItemWorker: %w", err)
 		}
 
 		// if any go-routine returns an error, ctx will cancel all
@@ -138,14 +139,15 @@ func (l loaderio) processItemWorker(
 func countIncr(start time.Time, count int) int {
 	count++
 	if count%10_000 == 0 {
-		fmt.Print("\r")
+		fmt.Fprint(os.Stderr, "\r")
 		log.Info().
 			Str("items", humanize.Comma(int64(count))).
 			Str("items/hour", itemsPerHour(count, start)).
 			Msg("Finding names in BHL items")
 	} else if count%100 == 0 {
-		fmt.Printf("\r%s", strings.Repeat(" ", 40))
-		fmt.Printf(
+		fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 40))
+		fmt.Fprintf(
+			os.Stderr,
 			"\rProcessed %s items, %s items/hour",
 			humanize.Comma(int64(count)),
 			itemsPerHour(count, start),
@@ -161,6 +163,7 @@ func itemsPerHour(itemsNum int, start time.Time) string {
 }
 
 func itemFromPath(path string) *item.Item {
-	path, itm := filepath.Split(path)
+	path, _ = filepath.Split(path)
+	_, itm := filepath.Split(path[0 : len(path)-1])
 	return &item.Item{Path: path, InternetArchiveID: itm}
 }

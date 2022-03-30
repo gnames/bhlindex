@@ -71,7 +71,7 @@ COMMENT ON SCHEMA public IS 'standard public schema'`
 	q = fmt.Sprintf(q, d.PgUser)
 	_, err := d.db.Exec(q)
 	if err != nil {
-		return err
+		return fmt.Errorf("dbio.Init: %w", err)
 	}
 	log.Info().Msg("Creating tables.")
 	return d.migrate()
@@ -87,7 +87,7 @@ func (d dbio) migrate() error {
 	}
 	for _, v := range tables {
 		if err := d.dbGorm.AutoMigrate(v).Error; err != nil {
-			return err
+			return fmt.Errorf("migrate: %w", err)
 		}
 	}
 	return nil

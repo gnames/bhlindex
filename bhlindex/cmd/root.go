@@ -43,14 +43,16 @@ var opts []config.Option
 // cfgData purpose is to achieve automatic import of data from the
 // configuration file, if it exists.
 type cfgData struct {
-	BHLdir      string
-	PgHost      string
-	PgUser      string
-	PgPass      string
-	PgDatabase  string
-	Jobs        int
-	VerifierURL string
-	WithWebLogs bool
+	BHLdir         string
+	OutputFormat   string
+	PgHost         string
+	PgUser         string
+	PgPass         string
+	PgDatabase     string
+	Jobs           int
+	VerifierURL    string
+	WithWebLogs    bool
+	WithoutConfirm bool
 }
 
 // rootCmd represents the base command when called without any subcommands
@@ -61,14 +63,15 @@ var rootCmd = &cobra.Command{
 Library (BHL) corpus.
 Requirements:
   1. A BHL corpus directory structure and files.
-     Data (outdated) can be downloaded from
-     http://opendata.globalnames.org/dumps/bhl-ocr-2019-06-18.tar.gz
+     Data can be downloaded from
+     http://opendata.globalnames.org/dumps/bhl-ocr-20220321.tar.gz
   2. PostgreSQL server containing 'bhlindex' database.
 `,
 	Run: func(cmd *cobra.Command, _ []string) {
 		if showVersionFlag(cmd) {
 			os.Exit(0)
 		}
+
 		_ = cmd.Help()
 	},
 }
@@ -83,6 +86,7 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
+	rootCmd.PersistentFlags().BoolP("without-confirm", "y", false, "skip actions confirmation")
 	rootCmd.Flags().BoolP("version", "V", false, "Prints version information")
 }
 
@@ -99,6 +103,19 @@ func initConfig() {
 	viper.SetConfigType(cfgExtension)
 	viper.SetConfigName(cfgFileBase)
 
+	// Set environment variables to override
+	// config file settings
+	_ = viper.BindEnv("BHLdir", "BHLI_BHL_DIR")
+	_ = viper.BindEnv("OutputFormat", "BHLI_OUTPUT_FORMAT")
+	_ = viper.BindEnv("PgHost", "BHLI_PG_HOST")
+	_ = viper.BindEnv("PgPort", "BHLI_PG_PORT")
+	_ = viper.BindEnv("PgUser", "BHLI_PG_USER")
+	_ = viper.BindEnv("PgPass", "BHLI_PG_PASS")
+	_ = viper.BindEnv("PgDatabase", "BHLI_PG_DATABASE")
+	_ = viper.BindEnv("Jobs", "BHLI_JOBS")
+	_ = viper.BindEnv("VerifierURL", "BHLI_VERIFIER_URL")
+	_ = viper.BindEnv("WithWebLogs", "BHLI_WITH_WEB_LOGS")
+	_ = viper.BindEnv("WithoutConfirm", "BHLI_WITHOUT_CONFIRM")
 	viper.AutomaticEnv() // read in environment variables that match
 
 	configPath := filepath.Join(cfgDir, cfgFile)

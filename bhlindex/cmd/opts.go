@@ -4,6 +4,7 @@ import (
 	"errors"
 
 	"github.com/gnames/bhlindex/config"
+	"github.com/gnames/gnfmt"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
 )
@@ -24,6 +25,23 @@ func getOpts(cfgPath string) {
 			"Tell bhlindex where to find BHL data by setting up BHLdir in %s",
 			cfgPath,
 		)
+	}
+
+	if cfg.OutputFormat != "" {
+		f := gnfmt.CSV
+		switch cfg.OutputFormat {
+		case "csv":
+			f = gnfmt.CSV
+		case "tsv":
+			f = gnfmt.TSV
+		case "json":
+			f = gnfmt.CompactJSON
+		default:
+			log.Warn().Msgf("Format '%s' is not supported, using default 'csv' format",
+				cfg.OutputFormat)
+			log.Warn().Msg("Supported formats are 'csv', 'tsv', 'json'")
+		}
+		opts = append(opts, config.OptOutputFormat(f))
 	}
 
 	if cfg.PgHost != "" {
@@ -52,5 +70,9 @@ func getOpts(cfgPath string) {
 
 	if cfg.WithWebLogs {
 		opts = append(opts, config.OptWithWebLogs(true))
+	}
+
+	if cfg.WithoutConfirm {
+		opts = append(opts, config.OptWithoutConfirm(true))
 	}
 }

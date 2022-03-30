@@ -3,6 +3,7 @@ package finderio
 import (
 	"context"
 	"database/sql"
+	"fmt"
 	"sync"
 
 	"github.com/gnames/bhlindex/config"
@@ -14,7 +15,6 @@ import (
 	"github.com/gnames/gnfinder/ent/nlp"
 	"github.com/gnames/gnfinder/ent/output"
 	"github.com/gnames/gnfinder/io/dict"
-	"github.com/rs/zerolog/log"
 )
 
 type finderio struct {
@@ -49,8 +49,7 @@ func (fdr finderio) SaveNames(
 		_ = v
 		err := fdr.savePageNameStrings(v)
 		if err != nil {
-			log.Warn().Err(err).Msg("Cannot save detected names")
-			return err
+			return fmt.Errorf("SaveNames: %w", err)
 		}
 	}
 	return nil

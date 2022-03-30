@@ -3,6 +3,14 @@
 #
 # BHLdir:
 
+# OutputFormat is the format of the detected names dump.
+# Can take values of:
+# csv - comma-separated values
+# tsv - tab-separated values
+# json - JSON format (one JSON-encoded line per record)
+#
+#	OutputFormat: csv
+
 # PgHost is the IP or a name of a computer running PostgreSQL database.
 # Default is "localhost"
 #
@@ -35,3 +43,8 @@
 # WithWebLogs can be set to true, if logs from RESTful service are required.
 # If it set to false, the logs are silenced.
 # WithWebLogs: false
+
+# WithoutConfirm can be set to true to avoid confirmation dialogs before
+# destructive processes.
+#
+# WithoutConfirm: false

@@ -81,8 +81,10 @@ func prepareNames(vns []vlib.Name, uns []name.UniqueName) []name.VerifiedName {
 			n.StemEditDistance = br.StemEditDistance
 			n.MatchedName = br.MatchedName
 			n.MatchedCanonical = br.MatchedCanonicalFull
+			n.MatchedCardinality = br.MatchedCardinality
 			n.CurrentName = br.CurrentName
 			n.CurrentCanonical = br.CurrentCanonicalFull
+			n.CurrentCardinality = br.CurrentCardinality
 			n.Classification = br.ClassificationPath
 			n.DataSourceID = br.DataSourceID
 			n.DataSourceTitle = br.DataSourceTitleShort

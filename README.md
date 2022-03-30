@@ -26,6 +26,26 @@ located (several hundred gigabytes of texts).
 
 Other parameters a optional.
 
+### Environment Variables
+
+It is possible to use Environment Variables instead of configuration file.
+Environment Variable override the configuration file settings. The following
+variable can be used:
+
+| Config         | Env. Variable        |
+| -------------- | -------------------- |
+| BHLdir         | BHLI_BHL_DIR         |
+| OutputFormat   | BHLI_OUTPUT_FORMAT   |
+| PgHost         | BHLI_PG_HOST         |
+| PgPort         | BHLI_PG_PORT         |
+| PgUser         | BHLI_PG_USER         |
+| PgPass         | BHLI_PG_PASS         |
+| PgDatabase     | BHLI_PG_DATABASE     |
+| Jobs           | BHLI_JOBS            |
+| VerifierURL    | BHLI_VERIFIER_URL    |
+| WithWebLogs    | BHLI_WITH_WEB_LOGS   |
+| WithoutConfirm | BHLI_WITHOUT_CONFIRM |
+
 ## Usage
 
 ### Preparations
@@ -38,22 +58,42 @@ upon completion should be in a vicinity of 50GB.
 
 ### Commands
 
+Get BHLindex version
+
+```bash
+bhlindex -V
+```
+
 Find names in BHL
 
 ```bash
 bhlindex find
+# to avoid confirmation dialog (-y overrides configuration file)
+bhlindec find -y
 ```
 
 Verify detected names using [GNverifier] service
 
 ```bash
 bhlindex verify
+# to avoid confirmation dialog (-y overrides configuration file)
+bhlindec verify -y
 ```
 
 Dump data into tab-separated files
 
 ```bash
 bhlindex dump
+# to compress and save on disk
+bhlindex dump | gzip > bhlindex-dump.csv.gz
+```
+
+To run all commands together
+
+```bash
+bhlindex find -y && \
+  bhlindex verify -y && \
+  bhlindex dump | gzip > bhlindex-dump.gz
 ```
 
 Serve detected items, pages, verified names, names occurrences vie RESTful

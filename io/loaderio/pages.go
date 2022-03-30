@@ -1,6 +1,7 @@
 package loaderio
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 
@@ -22,7 +23,7 @@ func updatePages(itm *item.Item) error {
 		path := filepath.Join(itm.Path, itm.Pages[i].ID+".txt")
 		text, err := os.ReadFile(path)
 		if err != nil {
-			return err
+			return fmt.Errorf("updatePages: %w", err)
 		}
 		itemText = append(itemText, text...)
 		pageUTF := []rune(string(text))
