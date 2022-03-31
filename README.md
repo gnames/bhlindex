@@ -3,6 +3,17 @@
 Creates an index of scientific names occurring in the collection of literature
 in Biodiversity Heritage Library
 
+## Performance
+
+This application allows to traverse all digitized corpus of Biodiversity
+Heritage Library in a matter of hours. On a mondern high-end laptop we
+observed the following results:
+
+- name-finding in 275,000 volumes, 60 million pages: 2.5 hours.
+- name-verification of 23 million unique name-strings: 3 hours.
+- preparing a CSV file with 250 million names occurrences/verification records
+  : 40 minutes.
+
 ## Installation on Linux
 
 - Download [bhlindex release for Linux][bhlindex-linux]
