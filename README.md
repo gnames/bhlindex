@@ -96,7 +96,7 @@ bhlindex find -y && \
   bhlindex dump | gzip > bhlindex-dump.gz
 ```
 
-Serve detected items, pages, verified names, names occurrences vie RESTful
+Serve detected items, pages, verified names, names occurrences via RESTful
 interface (default port is 8080).
 
 ```bash
@@ -105,21 +105,28 @@ bhlindex rest
 bhlindex rest -p 8000
 ```
 
-To run name detection, verification and dump as one command:
+## RESTful API endpoints
 
-```bash
-bhlindex all
-```
+- `/api/v0/items`
+- `/api/v0/pages`
+- `/api/v0/names`
+- `/api/v0/occurrences`
+
+| Endpoint                       | Usage                             |
+| ------------------------------ | --------------------------------- |
+| items?offset_id=11&limit=100   | get items with ids 11-110         |
+| pages?offset_id=11&limit=10    | get pages of items with ids 11-20 |
+| names?offset_id=1&limit=10     | get verified names with ids 1-10  |
+| occurrences?offset=21&limit=10 | get detected names with ids 21-30 |
 
 ### Testing
 
-```bash
-docker-compose build
-docker-compose up
-```
+Testing requires PostgreSQL database `bhlindex_test`.
+Testing will delete all data from the database.
 
-To update all dependencies change LAST_FULL_REBUILD line in Docker file and
-return `docker-compose build`
+```bash
+go test ./...
+```
 
 [bhlindex-mac]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-mac.tar.gz
 [bhlindex-linux]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-linux.tar.gz

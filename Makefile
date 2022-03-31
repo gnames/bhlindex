@@ -1,4 +1,5 @@
 VERSION=`git describe --tags`
+VER = $(shell git describe --tags --abbrev=0)
 DATE=`date -u '+%Y-%m-%d_%I:%M:%S%p'`
 FLAGS_SHARED = CGO_ENABLED=0 GOARCH=amd64
 FLAGS_LD=-ldflags "-w -s \
@@ -13,7 +14,7 @@ all: install
 
 tools: deps
 	@echo Installing tools from tools.go
-	@cat gnverifier/tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
+	@cat bhlindex/tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
 
 deps:
 	@echo Download go.mod dependencies
@@ -35,9 +36,19 @@ install:
 	$(FLAGS_SHARED) $(GOINSTALL); \
 	$(GOCLEAN); 
 
-release: build
+release: dockerhub
 	@echo Building releases for Linux, Mac, Windows
-	cd gnverifier; \
+	cd bhlindex; \
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) GOOS=linux $(GOBUILD); \
-	tar zcvf /tmp/bhlindex-${VER}-linux.tar.gz bhlindex; \
+	tar zcvf /tmp/bhlindex-${VER}-linux.tar.gz bhlindex;
+
+docker: build
+	docker build -t gnames/bhlindex:latest -t gnames/bhlindex:$(VERSION) .; \
+	cd bhlindex; \
+	$(GOCLEAN);
+
+dockerhub: docker
+	docker push gnames/bhlindex; \
+	docker push gnames/bhlindex:$(VERSION)
+
