@@ -16,7 +16,7 @@ observed the following results:
 
 ## Installation on Linux
 
-- Download [bhlindex release for Linux][bhlindex-linux]
+- Download [bhlindex latest release for Linux][bhlindex-latest]
 - Untar the file, copy it to `/usr/local/bin` or other directory in the `PATH`.
 - Use [bhl testdata][bhl-test] for testing.
 
@@ -139,7 +139,6 @@ Testing will delete all data from the database.
 go test ./...
 ```
 
-[bhlindex-mac]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-mac.tar.gz
-[bhlindex-linux]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhlindex-0.1.0-linux.tar.gz
-[bhl-test]: https://github.com/gnames/bhlindex/releases/download/v0.1.0/bhl-testdata.tar.gz
+[bhlindex-latest]: https://github.com/gnames/bhlindex/releases/latest
+[bhl-test]: https://github.com/gnames/bhlindex/tree/master/testdata/bhl/ocr
 [readme]: https://github.com/gnames/bhlindex/tree/master/bhlindex
