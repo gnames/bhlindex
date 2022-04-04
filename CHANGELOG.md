@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.11.1]
+
+- Add [#49]: add classification ranks, ids
+
 ## [v0.11.0]
 
 - Add [#48]: change RESTful pagination to use IDs.

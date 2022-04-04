@@ -86,6 +86,8 @@ func prepareNames(vns []vlib.Name, uns []name.UniqueName) []name.VerifiedName {
 			n.CurrentCanonical = br.CurrentCanonicalFull
 			n.CurrentCardinality = br.CurrentCardinality
 			n.Classification = br.ClassificationPath
+			n.ClassificationRanks = br.ClassificationRanks
+			n.ClassificationIDs = br.ClassificationIDs
 			n.DataSourceID = br.DataSourceID
 			n.DataSourceTitle = br.DataSourceTitleShort
 		}

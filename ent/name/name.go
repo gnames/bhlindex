@@ -26,28 +26,30 @@ type DetectedName struct {
 }
 
 type VerifiedName struct {
-	NameID             int       `json:"id"`
-	Name               string    `json:"name" sql:"type:CHARACTER VARYING(255) COLLATE \"C\" NOT NULL" gorm:"index"`
-	RecordID           string    `json:"recordID" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
-	MatchType          string    `json:"matchType" gorm:"type:varchar(100)"`
-	EditDistance       int       `json:"editDistance" gorm:"not null;default:0"`
-	StemEditDistance   int       `json:"stemEditDistance" gorm:"not null;default:0"`
-	MatchedName        string    `json:"matchedName" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
-	MatchedCanonical   string    `json:"matchedCanonical" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
-	MatchedCardinality int       `json:"matchedCardinality"`
-	CurrentName        string    `json:"currentName" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
-	CurrentCanonical   string    `json:"currentCanonical" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
-	CurrentCardinality int       `json:"currentCardinality"`
-	Classification     string    `json:"classification" sql:"type:CHARACTER VARYING COLLATE \"C\""`
-	DataSourceID       int       `json:"dataSourceID" gorm:"index"`
-	DataSourceTitle    string    `json:"dataSourceTitle" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
-	DataSourcesNumber  int       `json:"dataSourcesNumber"`
-	Curation           string    `json:"curation"`
-	OddsLog10          float64   `json:"oddsLog10" gorm:"type:float;not null;default:0"`
-	Occurrences        int       `json:"occurrences" gorm:"not null;default:0"`
-	Retries            int       `json:"-" gorm:"not null;default:0"`
-	Error              string    `json:"error"`
-	UpdatedAt          time.Time `json:"updatedAt" sql:"type:timestamp without time zone"`
+	NameID              int       `json:"id"`
+	Name                string    `json:"name" sql:"type:CHARACTER VARYING(255) COLLATE \"C\" NOT NULL" gorm:"index"`
+	RecordID            string    `json:"recordID" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
+	MatchType           string    `json:"matchType" gorm:"type:varchar(100)"`
+	EditDistance        int       `json:"editDistance" gorm:"not null;default:0"`
+	StemEditDistance    int       `json:"stemEditDistance" gorm:"not null;default:0"`
+	MatchedName         string    `json:"matchedName" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
+	MatchedCanonical    string    `json:"matchedCanonical" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
+	MatchedCardinality  int       `json:"matchedCardinality"`
+	CurrentName         string    `json:"currentName" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
+	CurrentCanonical    string    `json:"currentCanonical" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
+	CurrentCardinality  int       `json:"currentCardinality"`
+	Classification      string    `json:"classification" sql:"type:CHARACTER VARYING COLLATE \"C\""`
+	ClassificationRanks string    `json:"classificationRanks" sql:"type:CHARACTER VARYING COLLATE \"C\""`
+	ClassificationIDs   string    `json:"classificationIds" sql:"type:CHARACTER VARYING COLLATE \"C\""`
+	DataSourceID        int       `json:"dataSourceID" gorm:"index"`
+	DataSourceTitle     string    `json:"dataSourceTitle" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
+	DataSourcesNumber   int       `json:"dataSourcesNumber"`
+	Curation            string    `json:"curation"`
+	OddsLog10           float64   `json:"oddsLog10" gorm:"type:float;not null;default:0"`
+	Occurrences         int       `json:"occurrences" gorm:"not null;default:0"`
+	Retries             int       `json:"-" gorm:"not null;default:0"`
+	Error               string    `json:"error"`
+	UpdatedAt           time.Time `json:"updatedAt" sql:"type:timestamp without time zone"`
 }
 
 type UniqueName struct {

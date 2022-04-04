@@ -186,9 +186,10 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 		"name_id", "name", "record_id", "match_type", "edit_distance",
 		"stem_edit_distance", "matched_name", "matched_canonical",
 		"matched_cardinality", "current_name", "current_canonical",
-		"current_cardinality", "classification", "data_source_id",
-		"data_source_title", "data_sources_number", "curation", "odds_log10",
-		"occurrences", "retries", "error", "updated_at",
+		"current_cardinality", "classification", "classification_ranks",
+		"classification_ids", "data_source_id", "data_source_title",
+		"data_sources_number", "curation", "odds_log10", "occurrences", "retries",
+		"error", "updated_at",
 	}
 	transaction, err := vrf.db.Begin()
 	if err != nil {
@@ -206,9 +207,10 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 			v.NameID, v.Name, v.RecordID, v.MatchType, v.EditDistance,
 			v.StemEditDistance, v.MatchedName, v.MatchedCanonical,
 			v.MatchedCardinality, v.CurrentName, v.CurrentCanonical,
-			v.CurrentCardinality, v.Classification, v.DataSourceID,
-			v.DataSourceTitle, v.DataSourcesNumber, v.Curation, v.OddsLog10,
-			v.Occurrences, v.Retries, v.Error, now,
+			v.CurrentCardinality, v.Classification, v.ClassificationRanks,
+			v.ClassificationIDs, v.DataSourceID, v.DataSourceTitle,
+			v.DataSourcesNumber, v.Curation, v.OddsLog10, v.Occurrences, v.Retries,
+			v.Error, now,
 		)
 		if err != nil {
 			return fmt.Errorf("saveNamesToDB: %w", err)
