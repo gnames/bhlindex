@@ -158,6 +158,7 @@ func (r restio) names(
   name_id, name, record_id, match_type, edit_distance,
   stem_edit_distance, matched_name, matched_canonical,
   current_name, current_canonical, classification,
+  classification_ranks, classification_ids,
   data_source_id, data_source_title, data_sources_number,
   curation, odds_log10, occurrences, error, updated_at
   FROM verified_names
@@ -199,6 +200,7 @@ func (r restio) namesQuery(
 			&vn.NameID, &vn.Name, &vn.RecordID, &vn.MatchType, &vn.EditDistance,
 			&vn.StemEditDistance, &vn.MatchedName, &vn.MatchedCanonical,
 			&vn.CurrentName, &vn.CurrentCanonical, &vn.Classification,
+			&vn.ClassificationRanks, &vn.ClassificationIDs,
 			&vn.DataSourceID, &vn.DataSourceTitle, &vn.DataSourcesNumber,
 			&vn.Curation, &vn.OddsLog10, &vn.Occurrences, &vn.Error, &vn.UpdatedAt,
 		); err != nil {

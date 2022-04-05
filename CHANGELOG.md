@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.11.2]
+
+- Fix: add classification ranks, ids to REST API
+
 ## [v0.11.1]
 
 - Add [#49]: add classification ranks, ids
