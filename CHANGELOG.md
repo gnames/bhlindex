@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.12.1]
+
+- Add: update to gnfinder v0.19.2
+
 ## [v0.12.0]
 
 - Add: Update to gnfinder v0.19.1
@@ -105,6 +109,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.12.1]: https://github.com/gnames/bhlindex/compare/v0.12.0...v0.12.1
 [v0.12.0]: https://github.com/gnames/bhlindex/compare/v0.11.2...v0.12.0
 [v0.11.2]: https://github.com/gnames/bhlindex/compare/v0.11.1...v0.11.2
 [v0.11.1]: https://github.com/gnames/bhlindex/compare/v0.11.0...v0.11.1

@@ -4,9 +4,9 @@ go 1.18
 
 require (
 	github.com/dustin/go-humanize v1.0.0
-	github.com/gnames/gnfinder v0.19.1
+	github.com/gnames/gnfinder v0.19.2
 	github.com/gnames/gnfmt v0.2.0
-	github.com/gnames/gnlib v0.12.0
+	github.com/gnames/gnlib v0.13.0
 	github.com/gnames/gnsys v0.2.2
 	github.com/gnames/gnverifier v0.9.1
 	github.com/jinzhu/gorm v1.9.16
@@ -27,6 +27,7 @@ require (
 	github.com/gnames/bayes v0.4.0 // indirect
 	github.com/gnames/gner v0.1.4 // indirect
 	github.com/gnames/gnquery v0.3.3 // indirect
+	github.com/gnames/gnstats v0.1.0 // indirect
 	github.com/gnames/gnuuid v0.1.1 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/google/uuid v1.3.0 // indirect
