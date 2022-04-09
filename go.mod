@@ -4,19 +4,20 @@ go 1.18
 
 require (
 	github.com/dustin/go-humanize v1.0.0
-	github.com/gnames/gnfinder v0.18.2
-	github.com/gnames/gnlib v0.11.0
+	github.com/gnames/gnfinder v0.19.1
+	github.com/gnames/gnfmt v0.2.0
+	github.com/gnames/gnlib v0.12.0
 	github.com/gnames/gnsys v0.2.2
-	github.com/gnames/gnverifier v0.9.0
+	github.com/gnames/gnverifier v0.9.1
 	github.com/jinzhu/gorm v1.9.16
-	github.com/labstack/echo/v4 v4.6.3
+	github.com/labstack/echo/v4 v4.7.2
 	github.com/lib/pq v1.10.4
 	github.com/rs/zerolog v1.26.1
 	github.com/spf13/cobra v1.4.0
 	github.com/spf13/viper v1.10.1
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.7.1
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
-	golang.org/x/tools v0.1.9
+	golang.org/x/tools v0.1.10
 )
 
 require (
@@ -25,7 +26,6 @@ require (
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/gnames/bayes v0.4.0 // indirect
 	github.com/gnames/gner v0.1.4 // indirect
-	github.com/gnames/gnfmt v0.2.0 // indirect
 	github.com/gnames/gnquery v0.3.3 // indirect
 	github.com/gnames/gnuuid v0.1.1 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
@@ -52,9 +52,9 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	golang.org/x/crypto v0.0.0-20220214200702-86341886e292 // indirect
-	golang.org/x/mod v0.5.1 // indirect
+	golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3 // indirect
 	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
-	golang.org/x/sys v0.0.0-20220227234510-4e6760a101f9 // indirect
+	golang.org/x/sys v0.0.0-20220315194320-039c03cc5b86 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/time v0.0.0-20220224211638-0e9765cccd65 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect

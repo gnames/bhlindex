@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.12.0]
+
+- Add: Update to gnfinder v0.19.1
+
 ## [v0.11.2]
 
 - Fix: add classification ranks, ids to REST API
@@ -101,6 +105,9 @@
 
 This document follows [changelog guidelines]
 
+[v0.12.0]: https://github.com/gnames/bhlindex/compare/v0.11.2...v0.12.0
+[v0.11.2]: https://github.com/gnames/bhlindex/compare/v0.11.1...v0.11.2
+[v0.11.1]: https://github.com/gnames/bhlindex/compare/v0.11.0...v0.11.1
 [v0.11.0]: https://github.com/gnames/bhlindex/compare/v0.10.0...v0.11.0
 [v0.10.0]: https://github.com/gnames/bhlindex/compare/v0.9.0...v0.10.0
 [v0.9.0]: https://github.com/gnames/bhlindex/compare/v0.8.0...v0.9.0

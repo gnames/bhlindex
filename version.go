@@ -1,6 +1,6 @@
 package bhlindex
 
 var (
-	Version = "v0.11.2+"
+	Version = "v0.12.0+"
 	Build   string
 )
