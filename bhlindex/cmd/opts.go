@@ -28,19 +28,7 @@ func getOpts(cfgPath string) {
 	}
 
 	if cfg.OutputFormat != "" {
-		f := gnfmt.CSV
-		switch cfg.OutputFormat {
-		case "csv":
-			f = gnfmt.CSV
-		case "tsv":
-			f = gnfmt.TSV
-		case "json":
-			f = gnfmt.CompactJSON
-		default:
-			log.Warn().Msgf("Format '%s' is not supported, using default 'csv' format",
-				cfg.OutputFormat)
-			log.Warn().Msg("Supported formats are 'csv', 'tsv', 'json'")
-		}
+		f := getFormat(cfg.OutputFormat)
 		opts = append(opts, config.OptOutputFormat(f))
 	}
 
@@ -75,4 +63,21 @@ func getOpts(cfgPath string) {
 	if cfg.WithoutConfirm {
 		opts = append(opts, config.OptWithoutConfirm(true))
 	}
+}
+
+func getFormat(f string) gnfmt.Format {
+	res := gnfmt.CSV
+	switch f {
+	case "csv":
+		res = gnfmt.CSV
+	case "tsv":
+		res = gnfmt.TSV
+	case "json":
+		res = gnfmt.CompactJSON
+	default:
+		log.Warn().Msgf("Format '%s' is not supported, using default 'csv' format",
+			f)
+		log.Warn().Msg("Supported formats are 'csv', 'tsv', 'json'")
+	}
+	return res
 }

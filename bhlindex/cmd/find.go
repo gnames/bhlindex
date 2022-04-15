@@ -37,14 +37,14 @@ import (
 // findCmd represents the find command
 var findCmd = &cobra.Command{
 	Use:   "find",
-	Short: "find command detects names in BHL",
-	Long: `The "find" command traverses Biodiversity Heritage Library (BHL) files
+	Short: "Detects scientific names in BHL",
+	Long: `The 'find' command traverses Biodiversity Heritage Library (BHL) files
 and folders recursively. It discovers scientific names in text pages,
 generates metadata that describes locations of the names in BHL and
 saves results to a database.
 
 This command does not do verification of detected scientific names. For
-verification use "bhlindex verify" command next.`,
+verification use 'bhlindex verify' command next.`,
 	Run: func(cmd *cobra.Command, _ []string) {
 		withoutConfirm, _ := cmd.Flags().GetBool("without-confirm")
 		if withoutConfirm {

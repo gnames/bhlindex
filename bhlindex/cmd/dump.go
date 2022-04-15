@@ -33,19 +33,20 @@ import (
 // dumpCmd represents the dump command
 var dumpCmd = &cobra.Command{
 	Use:   "dump",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Creates a JSON/CSV/TSV dump of found names",
+	Long: `The 'dump' command extracts results of name-detection and
+name-verification and writes them to STDOUT. Supports 'json', 'csv',
+'tsv' output formats, default format is CSV`,
 	Run: func(cmd *cobra.Command, _ []string) {
+		f, err := cmd.Flags().GetString("format")
+		if f != "" {
+			opts = append(opts, config.OptOutputFormat(getFormat(f)))
+		}
 		cfg := config.New(opts...)
 		db := dbio.New(cfg)
 		bhli := bhlindex.New(cfg)
 		dmp := dumpio.New(cfg, db)
-		err := bhli.DumpNames(dmp)
+		err = bhli.DumpNames(dmp)
 		if err != nil {
 			log.Fatal().Err(err).Msg("Name verification failed")
 		}
@@ -54,14 +55,5 @@ to quickly create a Cobra application.`,
 
 func init() {
 	rootCmd.AddCommand(dumpCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// dumpCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// dumpCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	dumpCmd.Flags().StringP("format", "f", "", "output format: 'csv', 'tsv', 'json'")
 }

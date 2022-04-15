@@ -66,6 +66,12 @@ Requirements:
      Data can be downloaded from
      http://opendata.globalnames.org/dumps/bhl-ocr-20220321.tar.gz
   2. PostgreSQL server containing 'bhlindex' database.
+
+Typical sequence of commands is:
+  
+  bhlindex find
+  bhlindex verify
+  bhlindex dump -f csv | gzip > bhlindex.csv.gz
 `,
 	Run: func(cmd *cobra.Command, _ []string) {
 		if showVersionFlag(cmd) {

@@ -36,11 +36,12 @@ import (
 // verifyCmd represents the verify command
 var verifyCmd = &cobra.Command{
 	Use:   "verify",
-	Short: "verify if detected names do exist in biodiversity databases",
-	Long: `The 'verify' command uses 'gnverifier' project to find if detected
+	Short: "Checks if detected names do exist in biodiversity databases",
+	Long: `The 'verify' command uses 'gnverifier' service to find if detected
 names do exist in any of the datasets registered in 'gnverifier'.
 The list of registered datasets can be found at 
-'https://verifier.globalnames.org/data_sources'`,
+'https://verifier.globalnames.org/data_sources'
+The 'verify' command should be executed after 'find' command.`,
 	Run: func(cmd *cobra.Command, _ []string) {
 		withoutConfirm, _ := cmd.Flags().GetBool("without-confirm")
 		if withoutConfirm {
