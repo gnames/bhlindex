@@ -15,6 +15,7 @@ type DetectedName struct {
 	PageID         string    `gorm:"type:varchar(255);index"`
 	ItemID         int       `gorm:"not null;index"`
 	Name           string    `sql:"type:CHARACTER VARYING(255) COLLATE \"C\" NOT NULL" gorm:"index"`
+	NameVerbatim   string    `json:"nameVerbatim" sql:"type:CHARACTER VARYING(255) COLLATE \"C\" NOT NULL"`
 	AnnotNomen     string    `gorm:"type:varchar(255)"`
 	AnnotNomenType string    `gorm:"type:varchar(255)"`
 	OffsetStart    int       `gorm:"not null;default:0"`
@@ -73,6 +74,7 @@ func New(itemID int, p *page.Page, n gnfout.Name) DetectedName {
 		PageID:         p.ID,
 		ItemID:         itemID,
 		Name:           n.Name,
+		NameVerbatim:   n.Verbatim,
 		OffsetStart:    start,
 		OffsetEnd:      end,
 		AnnotNomen:     n.AnnotNomen,

@@ -2,25 +2,30 @@
 
 ## Unreleased
 
+## [v0.12.3]
+
+- Add: detected verbatim name to results and data-dump.
+- Add: shorten barcode for page to sequence number.
+
 ## [v0.12.2]
 
-- Add: improve help messages
+- Add: improve help messages.
 
 ## [v0.12.1]
 
-- Add: update to gnfinder v0.19.2
+- Add: update to gnfinder v0.19.2.
 
 ## [v0.12.0]
 
-- Add: Update to gnfinder v0.19.1
+- Add: Update to gnfinder v0.19.1.
 
 ## [v0.11.2]
 
-- Fix: add classification ranks, ids to REST API
+- Fix: add classification ranks, ids to REST API.
 
 ## [v0.11.1]
 
-- Add [#49]: add classification ranks, ids
+- Add [#49]: add classification ranks, ids.
 
 ## [v0.11.0]
 
@@ -28,11 +33,11 @@
 - Add [#47]: implement `dump` command.
 - Add [#45]: create RESTful service.
 - Add [#46]: switch to gnverifier for name verification.
-- Add [#43]: refactor to improve architecture and usability
+- Add [#43]: refactor to improve architecture and usability.
 
 ## [v0.10.0]
 
-- Add [#41]: Update to gnfinder v0.11.1
+- Add [#41]: Update to gnfinder v0.11.1.
 
 ## [v0.9.0]
 
@@ -57,11 +62,11 @@
 
 ## [v0.6.0]
 
-- Add [#31]: save preferred data-sources results to db
-- Add [#30]: average odds and occurrence number for name_strings
-- Add [#29]: matched canonical form from verification
-- Fix [#28]: sporadic non-zero edit distance for ExactMatch
-- Fix [#27]: no verification for abbreviated names
+- Add [#31]: save preferred data-sources results to db.
+- Add [#30]: average odds and occurrence number for name_strings.
+- Add [#29]: matched canonical form from verification.
+- Fix [#28]: sporadic non-zero edit distance for ExactMatch.
+- Fix [#27]: no verification for abbreviated names.
 
 ## [v0.5.0]
 
@@ -113,6 +118,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.12.3]: https://github.com/gnames/bhlindex/compare/v0.12.2...v0.12.3
 [v0.12.2]: https://github.com/gnames/bhlindex/compare/v0.12.1...v0.12.2
 [v0.12.1]: https://github.com/gnames/bhlindex/compare/v0.12.0...v0.12.1
 [v0.12.0]: https://github.com/gnames/bhlindex/compare/v0.11.2...v0.12.0

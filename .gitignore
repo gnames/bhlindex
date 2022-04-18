@@ -7,5 +7,6 @@ bhlindex/bhlindex
 *.tsv
 *.test
 *.gif
+*.json
 *.pprof
 bench.txt

@@ -51,10 +51,11 @@ func (d *dumpio) outputs(id, limit int) ([]output.Output, error) {
 	q := `
 SELECT
   dn.id, vn.name_id, dn.page_id, i.internet_archive_id, vn.name,
-  vn.occurrences, vn.odds_log10, dn.offset_start, dn.offset_end,
-  dn.ends_next_page, dn.cardinality, vn.match_type, vn.edit_distance,
-  vn.matched_canonical, vn.matched_name, vn.matched_cardinality,
-  vn.data_source_id, vn.data_source_title, vn.curation, vn.error
+  dn.name_verbatim, vn.occurrences, vn.odds_log10, dn.offset_start,
+  dn.offset_end, dn.ends_next_page, dn.cardinality, vn.match_type,
+  vn.edit_distance, vn.matched_canonical, vn.matched_name,
+  vn.matched_cardinality, vn.data_source_id, vn.data_source_title,
+  vn.curation, vn.error
   FROM items i
     JOIN detected_names dn
       ON i.id = dn.item_id
@@ -76,11 +77,11 @@ ORDER by i.id
 		var pageBarcode string
 		err := rows.Scan(
 			&o.ID, &o.NameID, &pageBarcode, &o.ItemBarcode, &o.DetectedName,
-			&o.Occurrences, &o.OddsLog10, &o.OffsetStart, &o.OffsetEnd,
-			&o.EndsNextPage, &o.Cardinality, &o.MatchType, &o.EditDistance,
-			&o.MatchedCanonical, &o.MatchedFullName, &o.MatchedCardinality,
-			&o.DataSourceID, &o.DataSource, &o.Curation,
-			&o.VerifError,
+			&o.DetectedVerbatim, &o.OccurrencesTotal, &o.OddsLog10,
+			&o.OffsetStart, &o.OffsetEnd, &o.EndsNextPage, &o.Cardinality,
+			&o.MatchType, &o.EditDistance, &o.MatchedCanonical,
+			&o.MatchedFullName, &o.MatchedCardinality, &o.DataSourceID,
+			&o.DataSource, &o.Curation, &o.VerifError,
 		)
 		if err != nil {
 			return nil, fmt.Errorf("outputs: %w", err)

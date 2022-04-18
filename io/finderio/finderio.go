@@ -47,7 +47,7 @@ func (fdr finderio) SaveNames(
 ) error {
 	for v := range namesCh {
 		_ = v
-		err := fdr.savePageNameStrings(v)
+		err := fdr.saveDetectedNames(v)
 		if err != nil {
 			return fmt.Errorf("SaveNames: %w", err)
 		}

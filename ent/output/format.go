@@ -26,10 +26,10 @@ func CSVHeader(f gnfmt.Format) string {
 
 	res := []string{
 		"Id", "NameId", "ItemBarcode", "PageBarcodeNum", "DetectedName",
-		"Occurrences", "OddsLog10", "Start", "End", "EndsNextPage", "Cardinality",
-		"MatchType", "EditDistance", "MatchedCanonical", "MatchedFullName",
-		"MatchedCardinality", "DataSourceID", "DataSource", "InCuratedSources",
-		"VerifError",
+		"DetectedNameVerbatim", "OccurrencesTotal", "OddsLog10", "Start", "End",
+		"EndsNextPage", "Cardinality", "MatchType", "EditDistance",
+		"MatchedCanonical", "MatchedFullName", "MatchedCardinality",
+		"DataSourceID", "DataSource", "InCuratedSources", "VerifError",
 	}
 	return gnfmt.ToCSV(res, sep)
 }
@@ -45,10 +45,10 @@ func (o *Output) csvOutput(sep rune) string {
 	barcodeNum := strconv.Itoa(o.PageBarcodeNum)
 	s := []string{
 		strconv.Itoa(o.ID), strconv.Itoa(o.NameID), o.ItemBarcode, barcodeNum,
-		o.DetectedName, strconv.Itoa(o.Occurrences), odds, start, end,
-		strconv.FormatBool(o.EndsNextPage), strconv.Itoa(o.Cardinality),
-		o.MatchType, strconv.Itoa(o.EditDistance), o.MatchedCanonical,
-		o.MatchedFullName, strconv.Itoa(o.MatchedCardinality),
+		o.DetectedName, o.DetectedVerbatim, strconv.Itoa(o.OccurrencesTotal), odds,
+		start, end, strconv.FormatBool(o.EndsNextPage),
+		strconv.Itoa(o.Cardinality), o.MatchType, strconv.Itoa(o.EditDistance),
+		o.MatchedCanonical, o.MatchedFullName, strconv.Itoa(o.MatchedCardinality),
 		strconv.Itoa(o.DataSourceID), o.DataSource, o.Curation, o.VerifError,
 	}
 
