@@ -3,8 +3,8 @@ package output
 type Output struct {
 	ID                 int     `json:"id"`
 	NameID             int     `json:"nameId"`
-	PageBarcode        string  `json:"pageBarcode"`
 	ItemBarcode        string  `json:"itemBarcode"`
+	PageBarcodeNum     int     `json:"pageBarcodeNum"`
 	DetectedName       string  `json:"detectedName"`
 	Occurrences        int     `json:"occurrences"`
 	OddsLog10          float64 `json:"oddsLog10"`

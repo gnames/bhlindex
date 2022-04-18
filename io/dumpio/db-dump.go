@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"strconv"
 
 	"github.com/gnames/bhlindex/ent/output"
 	"github.com/rs/zerolog/log"
@@ -72,8 +73,9 @@ ORDER by i.id
 	res := make([]output.Output, 0, limit)
 	for rows.Next() {
 		o := output.Output{}
+		var pageBarcode string
 		err := rows.Scan(
-			&o.ID, &o.NameID, &o.PageBarcode, &o.ItemBarcode, &o.DetectedName,
+			&o.ID, &o.NameID, &pageBarcode, &o.ItemBarcode, &o.DetectedName,
 			&o.Occurrences, &o.OddsLog10, &o.OffsetStart, &o.OffsetEnd,
 			&o.EndsNextPage, &o.Cardinality, &o.MatchType, &o.EditDistance,
 			&o.MatchedCanonical, &o.MatchedFullName, &o.MatchedCardinality,
@@ -83,9 +85,21 @@ ORDER by i.id
 		if err != nil {
 			return nil, fmt.Errorf("outputs: %w", err)
 		}
+
+		o.PageBarcodeNum, err = pageNum(pageBarcode)
+		if err != nil {
+			return nil, fmt.Errorf("outputs: %w", err)
+		}
+
 		res = append(res, o)
 		count++
 	}
 
 	return res, nil
+}
+
+func pageNum(barCode string) (int, error) {
+	l := len(barCode)
+	num := barCode[l-4 : l]
+	return strconv.Atoi(num)
 }

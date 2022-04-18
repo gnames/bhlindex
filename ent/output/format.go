@@ -25,7 +25,7 @@ func CSVHeader(f gnfmt.Format) string {
 	}
 
 	res := []string{
-		"Id", "NameId", "PageBarcode", "ItemBarcode", "DetectedName",
+		"Id", "NameId", "ItemBarcode", "PageBarcodeNum", "DetectedName",
 		"Occurrences", "OddsLog10", "Start", "End", "EndsNextPage", "Cardinality",
 		"MatchType", "EditDistance", "MatchedCanonical", "MatchedFullName",
 		"MatchedCardinality", "DataSourceID", "DataSource", "InCuratedSources",
@@ -42,8 +42,9 @@ func (o *Output) csvOutput(sep rune) string {
 
 	start := strconv.Itoa(o.OffsetStart)
 	end := strconv.Itoa(o.OffsetEnd)
+	barcodeNum := strconv.Itoa(o.PageBarcodeNum)
 	s := []string{
-		strconv.Itoa(o.ID), strconv.Itoa(o.NameID), o.PageBarcode, o.ItemBarcode,
+		strconv.Itoa(o.ID), strconv.Itoa(o.NameID), o.ItemBarcode, barcodeNum,
 		o.DetectedName, strconv.Itoa(o.Occurrences), odds, start, end,
 		strconv.FormatBool(o.EndsNextPage), strconv.Itoa(o.Cardinality),
 		o.MatchType, strconv.Itoa(o.EditDistance), o.MatchedCanonical,
