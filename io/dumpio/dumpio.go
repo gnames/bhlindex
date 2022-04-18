@@ -18,10 +18,12 @@ type dumpio struct {
 	db  *sql.DB
 }
 
+// New creates a new instance of Dumper.
 func New(cfg config.Config, db *sql.DB) output.Dumper {
 	return &dumpio{cfg: cfg, db: db}
 }
 
+// Dump reads data for detected and verified names and sends it to output channel.
 func (d *dumpio) Dump(ctx context.Context, ch chan<- []output.Output) error {
 	err := d.checkForVerifiedNames()
 	if err != nil {

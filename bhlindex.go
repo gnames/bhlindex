@@ -24,6 +24,7 @@ type bhlindex struct {
 	finder.Finder
 }
 
+// New sets up BHLindex interface using bhlindex instance.
 func New(
 	cfg config.Config,
 ) BHLindex {
@@ -32,6 +33,8 @@ func New(
 	}
 }
 
+// FindNames traverses BHL corpus directory structure, assembling texts,
+// detecting names, saving data to storage.
 func (bi *bhlindex) FindNames(
 	ldr loader.Loader,
 	fdr finder.Finder,
@@ -65,6 +68,8 @@ func (bi *bhlindex) FindNames(
 	return gSave.Wait()
 }
 
+// Verify names runs verification on unique detected names and saves the
+// results to a local storage.
 func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) (err error) {
 	err = vrf.Reset()
 	if err == nil {
@@ -77,20 +82,8 @@ func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) (err error) {
 	return err
 }
 
-func (bi *bhlindex) GetVersion() gnvers.Version {
-	return gnvers.Version{Version: Version, Build: Build}
-}
-
-func counterLog(counter <-chan int) {
-	count := 0
-	for i := range counter {
-		count += i
-		if count%10000 == 0 {
-			log.Info().Msgf("Processed %d items", count)
-		}
-	}
-}
-
+// DumpNames creates output with detected and verified names in CSV,
+// TSV, or JSON formats.
 func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -119,8 +112,24 @@ func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
 	return nil
 }
 
+// GetVersion outputs the version of BHLindex.
+func (bi *bhlindex) GetVersion() gnvers.Version {
+	return gnvers.Version{Version: Version, Build: Build}
+}
+
+// GetConfig returns an instance of configuration fields.
 func (bi *bhlindex) GetConfig() config.Config {
 	return bi.Config
+}
+
+func counterLog(counter <-chan int) {
+	count := 0
+	for i := range counter {
+		count += i
+		if count%10000 == 0 {
+			log.Info().Msgf("Processed %d items", count)
+		}
+	}
 }
 
 func (bi *bhlindex) processOutput(

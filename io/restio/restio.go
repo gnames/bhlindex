@@ -28,6 +28,7 @@ type restio struct {
 	db *sql.DB
 }
 
+// New returns new instance of REST interface
 func New(bi bhlindex.BHLindex, db *sql.DB) rest.REST {
 	res := restio{bi: bi, db: db}
 	return res
@@ -59,18 +60,21 @@ func (r restio) Run(port int) {
 	e.Logger.Fatal(e.StartServer(s))
 }
 
+// Ping sends back a response to prove that the server is running.
 func (r restio) Ping() func(echo.Context) error {
 	return func(c echo.Context) error {
 		return c.String(http.StatusOK, "pong")
 	}
 }
 
+// Version returns version of BHLindex
 func (r restio) Version() func(echo.Context) error {
 	return func(c echo.Context) error {
 		return c.JSON(http.StatusOK, r.bi.GetVersion())
 	}
 }
 
+// Items returns a slice of items.
 func (r restio) Items() func(echo.Context) error {
 	return func(c echo.Context) error {
 		var err error
@@ -100,6 +104,7 @@ func (r restio) Items() func(echo.Context) error {
 	}
 }
 
+// Pages returns a lice of pages.
 func (r restio) Pages() func(echo.Context) error {
 	return func(c echo.Context) error {
 		var err error
@@ -128,6 +133,7 @@ func (r restio) Pages() func(echo.Context) error {
 	}
 }
 
+// Occurrences returns a lice of detected names.
 func (r restio) Occurrences() func(echo.Context) error {
 	return func(c echo.Context) error {
 		var err error
@@ -155,6 +161,7 @@ func (r restio) Occurrences() func(echo.Context) error {
 	}
 }
 
+// Names returns a slice of verified names.
 func (r restio) Names() func(echo.Context) error {
 	return func(c echo.Context) error {
 		var err error
@@ -182,6 +189,7 @@ func (r restio) Names() func(echo.Context) error {
 	}
 }
 
+// NamesLastID returns the largest ID for verified names.
 func (r restio) NamesLastID() func(echo.Context) error {
 	return func(c echo.Context) error {
 		var lastID int

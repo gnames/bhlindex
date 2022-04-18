@@ -21,6 +21,7 @@ type verifio struct {
 	db  *sql.DB
 }
 
+// New returns an instance of VerifierBHL.
 func New(cfg config.Config, db *sql.DB) verif.VerifierBHL {
 	res := verifio{
 		cfg: cfg,
@@ -29,11 +30,13 @@ func New(cfg config.Config, db *sql.DB) verif.VerifierBHL {
 	return res
 }
 
+// Reset cleans up all stored data for verifications.
 func (vrf verifio) Reset() error {
 	log.Info().Msg("Cleaning up previous verification results if they exist")
 	return vrf.truncateVerifTables()
 }
 
+// Verify verifies all detected names and stores the data localy.
 func (vrf verifio) Verify() error {
 	err := vrf.checkForDetectedNames()
 	if err != nil {
