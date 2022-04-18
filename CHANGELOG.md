@@ -4,6 +4,7 @@
 
 ## [v0.12.3]
 
+- Add: improve code documentation.
 - Add: detected verbatim name to results and data-dump.
 - Add: shorten barcode for page to sequence number.
 
