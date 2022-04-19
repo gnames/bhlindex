@@ -31,6 +31,9 @@ func (fdr finderio) saveDetectedNames(names []name.DetectedName) error {
 		if math.IsInf(v.OddsLog10, -1) {
 			v.OddsLog10 = 0
 		}
+		if len(v.NameVerbatim) > 255 {
+			v.NameVerbatim = v.NameVerbatim[0:255]
+		}
 		_, err = stmt.Exec(
 			v.PageID, v.ItemID, v.Name, v.NameVerbatim, v.AnnotNomen,
 			v.AnnotNomenType, v.OffsetStart, v.OffsetEnd, v.EndsNextPage,

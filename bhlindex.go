@@ -65,7 +65,13 @@ func (bi *bhlindex) FindNames(
 	wgFind.Wait()
 	close(namesCh)
 
-	return gSave.Wait()
+	err = gSave.Wait()
+	if err != nil {
+		return fmt.Errorf("FindNames: %w", err)
+	}
+
+	log.Info().Msg("Finding names finished successfully")
+	return nil
 }
 
 // Verify names runs verification on unique detected names and saves the

@@ -7,6 +7,7 @@
 - Add: improve code documentation.
 - Add: detected verbatim name to results and data-dump.
 - Add: shorten barcode for page to sequence number.
+- Fix: deal with verbatim names longer than 255 bytes.
 
 ## [v0.12.2]
 

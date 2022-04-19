@@ -58,6 +58,6 @@ func (l loaderio) LoadItems(ctx context.Context, dbItemCh chan<- *item.Item) err
 		return fmt.Errorf("LoadItems: %w", err)
 	}
 	fmt.Fprint(os.Stderr, "\r")
-	log.Info().Msg("Finding names finished successfully.")
+	log.Info().Msg("All items are loaded into name-finder.")
 	return nil
 }

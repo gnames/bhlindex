@@ -22,6 +22,7 @@ type finderio struct {
 	db *sql.DB
 }
 
+// New creates an instance of finder.Finder interface.
 func New(cfg config.Config, db *sql.DB) finder.Finder {
 	return finderio{Config: cfg, db: db}
 }
