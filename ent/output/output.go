@@ -19,6 +19,8 @@ type Output struct {
 	DetectedName string `json:"detectedName"`
 
 	// DetectedVerbatim is a detected name-string without normalization.
+	// On rare occasions verbatim name will be truncated if it has too
+	// much "junk" and exceeds the length of 225 characters.
 	DetectedVerbatim string `json:"detectedVerbatim"`
 
 	// OccurrencesTotal is the total number of occurrences of a particular name
