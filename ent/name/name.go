@@ -11,19 +11,19 @@ import (
 // DetectedName holds information about a name-string returned by a
 // name-finder.
 type DetectedName struct {
-	ID             uint      `json:"id"`
-	PageID         string    `gorm:"type:varchar(255);index"`
-	ItemID         int       `gorm:"not null;index"`
-	Name           string    `sql:"type:CHARACTER VARYING(255) COLLATE \"C\" NOT NULL" gorm:"index"`
+	ID             uint      `json:"id" json:"id"`
+	PageID         string    `json:"pageId" gorm:"type:varchar(255);index"`
+	ItemID         int       `json:"itemId" gorm:"not null;index"`
+	Name           string    `json:"name" sql:"type:CHARACTER VARYING(255) COLLATE \"C\" NOT NULL" gorm:"index"`
 	NameVerbatim   string    `json:"nameVerbatim" sql:"type:CHARACTER VARYING(255) COLLATE \"C\" NOT NULL"`
-	AnnotNomen     string    `gorm:"type:varchar(255)"`
-	AnnotNomenType string    `gorm:"type:varchar(255)"`
-	OffsetStart    int       `gorm:"not null;default:0"`
-	OffsetEnd      int       `gorm:"not null;default:0"`
-	EndsNextPage   bool      `gorm:"type:bool;default:false"`
-	OddsLog10      float64   `gorm:"type:float;not null;default:0"`
-	Cardinality    int       `gorm:"not null;default:0"`
-	UpdatedAt      time.Time `sql:"type:timestamp without time zone"`
+	AnnotNomen     string    `json:"annotNomen" gorm:"type:varchar(255)"`
+	AnnotNomenType string    `json:"annotNomenType" gorm:"type:varchar(255)"`
+	OffsetStart    int       `json:"offsetStart" gorm:"not null;default:0"`
+	OffsetEnd      int       `json:"offsetEnd" gorm:"not null;default:0"`
+	EndsNextPage   bool      `json:"endsNextPage" gorm:"type:bool;default:false"`
+	OddsLog10      float64   `json:"oddsLog10" gorm:"type:float;not null;default:0"`
+	Cardinality    int       `json:"cardinality" gorm:"not null;default:0"`
+	UpdatedAt      time.Time `json:"updatedAt" sql:"type:timestamp without time zone"`
 }
 
 type VerifiedName struct {
@@ -55,9 +55,9 @@ type VerifiedName struct {
 
 type UniqueName struct {
 	ID          int     `json:"id" gorm:"primary_key"`
-	Name        string  `sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
-	OddsLog10   float64 `gorm:"type:float;not null;default:0"`
-	Occurrences int     `gorm:"not null;default:0"`
+	Name        string  `json:"name" sql:"type:CHARACTER VARYING(255) COLLATE \"C\""`
+	OddsLog10   float64 `json:"oddsLog10" gorm:"type:float;not null;default:0"`
+	Occurrences int     `json:"occurrences" gorm:"not null;default:0"`
 }
 
 func New(itemID int, p *page.Page, n gnfout.Name) DetectedName {
