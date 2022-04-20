@@ -203,7 +203,7 @@ func (r restio) NamesLastID() func(echo.Context) error {
 
 func getContext(c echo.Context) (ctx context.Context, cancel func()) {
 	ctx = c.Request().Context()
-	ctx, cancel = context.WithTimeout(ctx, 10*time.Second)
+	ctx, cancel = context.WithTimeout(ctx, 1*time.Minute)
 	return ctx, cancel
 }
 
