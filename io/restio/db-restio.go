@@ -104,13 +104,20 @@ func (r restio) occurrences(
 ) ([]name.DetectedName, error) {
 	args := []any{inp.OffsetID, inp.OffsetID + inp.Limit}
 	q := `SELECT
-  id, page_id, item_id, name, annot_nomen,
+  id, page_id, item_id, vn.name, annot_nomen,
   annot_nomen_type, offset_start, offset_end,
-  ends_next_page, odds_log10, cardinality,
-  updated_at
-  FROM detected_names
+  ends_next_page, vn.odds_log10, cardinality,
+  vn.updated_at
+  FROM detected_names dn
+  JOIN verified_names vn
+    ON vn.name = dn.name
   where id >= $1
     AND id < $2`
+
+	if len(inp.DataSources) > 0 {
+		args = append(args, pq.Array(inp.DataSources))
+		q += "\n  AND vn.data_source_id = any($3::int[])"
+	}
 
 	return r.occurrencesQuery(ctx, q, args, inp.Limit)
 }

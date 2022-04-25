@@ -89,6 +89,20 @@ func TestOccurrences(t *testing.T) {
 	assert.Equal(t, 10, len(ocrs))
 }
 
+func TestOccurrencesDataSource(t *testing.T) {
+	e := echo.New()
+	req := httptest.NewRequest(http.MethodGet, "/occurrences?offset_id=1&limit=10&data_sources=1", nil)
+	rec := httptest.NewRecorder()
+	c := e.NewContext(req, rec)
+	err := r.Occurrences()(c)
+	assert.Nil(t, err)
+	assert.Equal(t, http.StatusOK, rec.Code)
+	var ocrs []name.DetectedName
+	err = gnfmt.GNjson{}.Decode(rec.Body.Bytes(), &ocrs)
+	assert.Nil(t, err)
+	assert.Equal(t, 4, len(ocrs))
+}
+
 func TestNames(t *testing.T) {
 	assert := assert.New(t)
 	e := echo.New()

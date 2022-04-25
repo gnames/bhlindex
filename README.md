@@ -123,12 +123,14 @@ bhlindex rest -p 8000
 - `/api/v0/names`
 - `/api/v0/occurrences`
 
-| Endpoint                       | Usage                             |
-| ------------------------------ | --------------------------------- |
-| items?offset_id=11&limit=100   | get items with ids 11-110         |
-| pages?offset_id=11&limit=10    | get pages of items with ids 11-20 |
-| names?offset_id=1&limit=10     | get verified names with ids 1-10  |
-| occurrences?offset=21&limit=10 | get detected names with ids 21-30 |
+| Query                                         | Usage                                                                 |
+| --------------------------------------------- | --------------------------------------------------------------------- |
+| items?offset_id=11&limit=100                  | get items with ids 11-110                                             |
+| pages?offset_id=11&limit=10                   | get pages of items with ids 11-20                                     |
+| names?offset_id=1&limit=10                    | get verified names with ids 1-10                                      |
+| names?offset_id=1&limit=10&data_sources=1     | get verified names with ids 1-10 verified to the "Catalogue of Life"  |
+| occurrences?offset=21&limit=10                | get detected names with ids 21-30                                     |
+| occurrences?offset=21&limit=10&data_sources=1 | get detected names with ids 21-30 verified to the "Catalogue of Life" |
 
 ### Testing
 
