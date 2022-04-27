@@ -6,7 +6,7 @@ in Biodiversity Heritage Library
 ## Performance
 
 This application allows to traverse all digitized corpus of Biodiversity
-Heritage Library in a matter of hours. On a mondern high-end laptop we
+Heritage Library in a matter of hours. On a modern high-end laptop we
 observed the following results:
 
 - name-finding in 275,000 volumes, 60 million pages: `2.5 hours`.
@@ -20,6 +20,8 @@ observed the following results:
 - Untar the file, copy it to `/usr/local/bin` or other directory in the `PATH`.
 - Use [bhl testdata][bhl-test] for testing.
 
+BHL corpus of OCRed data can be found as a [>50GB compressed file][bhl-ocr].
+
 ## Configuration
 
 When you run the app for the first time it will create a configuration file and
@@ -29,7 +31,7 @@ will provide information where the file is located (usually it is
 Edit the file to provide credentials for PostgreSQL database.
 
 Change the `Jobs` setting according to the amount of memory and the number
-of CPU. For 32Gb of memory `Jobs: 8` works ok. This parameter sets the number
+of CPU. For 32Gb of memory `Jobs: 7` works ok. This parameter sets the number
 of concurrent jobs running for name-finding.
 
 Set `BHLdir` parameter to point to the root directory where BHL texts are
@@ -97,6 +99,10 @@ Dump data into tab-separated files
 bhlindex dump
 # to compress and save on disk
 bhlindex dump | gzip > bhlindex-dump.csv.gz
+
+# -f overrides configuration file settings for output format
+bhlindex dump -f tsv | gzip > bhlindex-dump.tsv.gz
+bhlindex dump -f json | gzip > bhlindex-dump.json.gz
 ```
 
 To run all commands together
@@ -104,7 +110,7 @@ To run all commands together
 ```bash
 bhlindex find -y && \
   bhlindex verify -y && \
-  bhlindex dump | gzip > bhlindex-dump.gz
+  bhlindex dump | gzip > bhlindex-dump.csv.gz
 ```
 
 Serve detected items, pages, verified names, names occurrences via RESTful
@@ -138,9 +144,10 @@ Testing requires PostgreSQL database `bhlindex_test`.
 Testing will delete all data from the database.
 
 ```bash
-go test ./...
+go test
 ```
 
+[bhl-ocr]: http://opendata.globalnames.org/dumps/
 [bhlindex-latest]: https://github.com/gnames/bhlindex/releases/latest
 [bhl-test]: https://github.com/gnames/bhlindex/tree/master/testdata/bhl/ocr
 [readme]: https://github.com/gnames/bhlindex/tree/master/bhlindex
