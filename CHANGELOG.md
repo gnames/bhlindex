@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.12.5]
+
+- Add: Info for RESTful API.
+
 ## [v0.12.4]
 
 - Add: RESTful API for occurrences takes data_sources in account.

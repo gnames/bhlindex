@@ -43,6 +43,10 @@ func (r restio) Run(port int) {
 
 	r.setLogger(e)
 
+	e.GET("/", r.Info())
+	e.GET("/api", r.Info())
+	e.GET("/api/v0", r.Info())
+	e.GET(apiPath, r.Info())
 	e.GET(apiPath+"ping", r.Ping())
 	e.GET(apiPath+"version", r.Version())
 	e.GET(apiPath+"items", r.Items())
@@ -58,6 +62,15 @@ func (r restio) Run(port int) {
 		WriteTimeout: 5 * time.Minute,
 	}
 	e.Logger.Fatal(e.StartServer(s))
+}
+
+// Info sends back basic links to documentation.
+func (r restio) Info() func(echo.Context) error {
+	return func(c echo.Context) error {
+		info := `BHLindex RESTful API docs:
+https://github.com/gnames/bhlindex#restful-api-endpoints`
+		return c.String(http.StatusOK, info)
+	}
 }
 
 // Ping sends back a response to prove that the server is running.

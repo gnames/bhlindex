@@ -8,6 +8,9 @@ type REST interface {
 	// Run creates a service to BHLindex running on.
 	Run(port int)
 
+	// Info returns links to documentation and GitHub
+	Info() func(echo.Context) error
+
 	// Ping checks connection to the RESTful server.
 	Ping() func(echo.Context) error
 
