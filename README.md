@@ -37,7 +37,7 @@ of concurrent jobs running for name-finding.
 Set `BHLdir` parameter to point to the root directory where BHL texts are
 located (several hundred gigabytes of texts).
 
-Other parameters a optional.
+Other parameters are optional.
 
 ### Environment Variables
 
