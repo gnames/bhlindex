@@ -124,10 +124,10 @@ bhlindex rest -p 8000
 
 ## RESTful API endpoints
 
-- `/api/v0/items`
-- `/api/v0/pages`
-- `/api/v0/names`
-- `/api/v0/occurrences`
+- `/api/v1/items`
+- `/api/v1/pages`
+- `/api/v1/names`
+- `/api/v1/occurrences`
 
 | Query                                         | Usage                                                                 |
 | --------------------------------------------- | --------------------------------------------------------------------- |

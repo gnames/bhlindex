@@ -20,7 +20,7 @@ import (
 
 var (
 	maxLimit = 50_000
-	apiPath  = "/api/v0/"
+	apiPath  = "/api/v1/"
 )
 
 type restio struct {
@@ -45,7 +45,7 @@ func (r restio) Run(port int) {
 
 	e.GET("/", r.Info())
 	e.GET("/api", r.Info())
-	e.GET("/api/v0", r.Info())
+	e.GET("/api/v1", r.Info())
 	e.GET(apiPath, r.Info())
 	e.GET(apiPath+"ping", r.Ping())
 	e.GET(apiPath+"version", r.Version())
