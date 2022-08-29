@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.12.6] - 2022-08-29 Mon
+
+- Add: Compatibility with GNverifier v1.0.0
+
 ## [v0.12.5]
 
 - Add: Info for RESTful API.
