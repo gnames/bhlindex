@@ -38,17 +38,43 @@ var dumpCmd = &cobra.Command{
 name-verification and writes them to STDOUT. Supports 'json', 'csv',
 'tsv' output formats, default format is CSV`,
 	Run: func(cmd *cobra.Command, _ []string) {
-		f, err := cmd.Flags().GetString("format")
+		var err error
+
+		f, _ := cmd.Flags().GetString("format")
 		if f != "" {
 			opts = append(opts, config.OptOutputFormat(getFormat(f)))
 		}
+		d, _ := cmd.Flags().GetString("dir")
+		if d != "" {
+			d, err = getDir(d)
+			if err != nil {
+				log.Fatal().Err(err).Msgf("Cannot use directory '%s'", d)
+			}
+			opts = append(opts, config.OptOutputDir(d))
+		}
+		s, _ := cmd.Flags().GetString("sources")
+		if s != "" {
+			var ss []int
+			ss, err = getSources(s)
+			if err != nil {
+				log.Fatal().Err(err).Msgf("Cannot parse data-sources '%s'", s)
+			}
+			opts = append(opts, config.OptOutputDataSourceIDs(ss))
+		}
+
 		cfg := config.New(opts...)
 		db := dbio.New(cfg)
 		bhli := bhlindex.New(cfg)
 		dmp := dumpio.New(cfg, db)
+
 		err = bhli.DumpNames(dmp)
 		if err != nil {
-			log.Fatal().Err(err).Msg("Name verification failed")
+			log.Fatal().Err(err).Msg("Dump of names failed")
+		}
+
+		err = bhli.DumpOccurrences(dmp)
+		if err != nil {
+			log.Fatal().Err(err).Msg("Dump of occurrences failed")
 		}
 	},
 }
@@ -56,4 +82,6 @@ name-verification and writes them to STDOUT. Supports 'json', 'csv',
 func init() {
 	rootCmd.AddCommand(dumpCmd)
 	dumpCmd.Flags().StringP("format", "f", "", "output format: 'csv', 'tsv', 'json'")
+	dumpCmd.Flags().StringP("dir", "d", "", "output directory, defult current dir")
+	dumpCmd.Flags().StringP("sources", "s", "", "filter by gnverifier data-sources. Example: 1,11")
 }

@@ -2,9 +2,12 @@ package cmd
 
 import (
 	"errors"
+	"strconv"
+	"strings"
 
 	"github.com/gnames/bhlindex/config"
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnsys"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
 )
@@ -30,6 +33,14 @@ func getOpts(cfgPath string) {
 	if cfg.OutputFormat != "" {
 		f := getFormat(cfg.OutputFormat)
 		opts = append(opts, config.OptOutputFormat(f))
+	}
+
+	if cfg.OutputDir != "" {
+		d, err := getDir(cfg.OutputDir)
+		if err != nil {
+			log.Fatal().Err(err).Msg("Cannot set OutputDir from config file")
+		}
+		opts = append(opts, config.OptOutputDir(d))
 	}
 
 	if cfg.PgHost != "" {
@@ -80,4 +91,32 @@ func getFormat(f string) gnfmt.Format {
 		log.Warn().Msg("Supported formats are 'csv', 'tsv', 'json'")
 	}
 	return res
+}
+
+func getDir(dir string) (string, error) {
+	exists, _, _ := gnsys.DirExists(dir)
+	if exists {
+		return dir, nil
+	}
+	log.Warn().Msgf("Dir '%s' does not exist, creating...", dir)
+	err := gnsys.MakeDir(dir)
+	if err != nil {
+		return "", err
+	}
+
+	return dir, nil
+}
+
+func getSources(s string) ([]int, error) {
+	var res []int
+	ss := strings.Split(s, ",")
+
+	for _, v := range ss {
+		i, err := strconv.Atoi(strings.TrimSpace(v))
+		if err != nil {
+			return res, err
+		}
+		res = append(res, i)
+	}
+	return res, nil
 }

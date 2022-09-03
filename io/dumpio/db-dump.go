@@ -5,8 +5,10 @@ import (
 	"errors"
 	"fmt"
 	"strconv"
+	"strings"
 
 	"github.com/gnames/bhlindex/ent/output"
+	"github.com/gnames/gnuuid"
 	"github.com/rs/zerolog/log"
 )
 
@@ -30,67 +32,117 @@ func (d *dumpio) noVerifiedNames() (bool, error) {
 	return name_id == 0, err
 }
 
-func (d *dumpio) stats() (int, int, int, error) {
-	var names, occurrs, items int
-	err := d.db.QueryRow("SELECT max(name_id) from verified_names").Scan(&names)
+func (d *dumpio) stats(ds []int) (int, int, int, error) {
+	var allNames, names, items int
+	dataSources := getDataSources(ds)
+	nameQ := fmt.Sprintf("SELECT count(*) as count FROM verified_names WHERE 1=1 %s",
+		dataSources)
+	err := d.db.QueryRow(nameQ).Scan(&names)
 	if err == nil {
-		err = d.db.QueryRow("SELECT max(id) from detected_names").Scan(&occurrs)
+		err = d.db.QueryRow("SELECT max(name_id) FROM verified_names").Scan(&allNames)
 	}
 	if err == nil {
-		err = d.db.QueryRow("SELECT max(id) from items").Scan(&items)
+		err = d.db.QueryRow("SELECT max(id) FROM items").Scan(&items)
 	}
 	if err != nil {
 		err = fmt.Errorf("stats: %w", err)
 	}
-	return names, occurrs, items, err
+	return allNames, names, items, err
 }
 
-func (d *dumpio) outputs(id, limit int) ([]output.Output, error) {
+func (d *dumpio) outputNames(id, limit int, ds []int) ([]output.OutputName, error) {
 	var rows *sql.Rows
 	var err error
-	q := `
+
+	dataSources := getDataSources(ds)
+
+	q := fmt.Sprintf(`
 SELECT
-  dn.id, vn.name_id, dn.page_id, i.internet_archive_id, vn.name,
-  dn.name_verbatim, vn.occurrences, vn.odds_log10, dn.offset_start,
-  dn.offset_end, dn.ends_next_page, dn.cardinality, vn.match_type,
-  vn.edit_distance, vn.matched_canonical, vn.matched_name,
-  vn.matched_cardinality, vn.data_source_id, vn.data_source_title,
-  vn.curation, vn.error
+  name, cardinality, occurrences, odds_log10, match_type, edit_distance,
+  stem_edit_distance, matched_canonical, matched_name, matched_cardinality,
+  current_canonical, current_name, current_cardinality, classification,
+  record_id, data_source_id, data_source_title, data_sources_number,
+  curation, error
+  FROM verified_names
+  WHERE name_id >= $1 and name_id < $2
+  %s
+ORDER by name_id
+`, dataSources)
+	rows, err = d.db.Query(q, id, id+limit)
+	if err != nil {
+		return nil, fmt.Errorf("outputNames: %w", err)
+	}
+	defer rows.Close()
+
+	res := make([]output.OutputName, 0, limit)
+	for rows.Next() {
+		o := output.OutputName{}
+		err := rows.Scan(
+			&o.DetectedName, &o.Cardinality, &o.OccurrencesNumber, &o.OddsLog10,
+			&o.MatchType, &o.EditDistance, &o.StemEditDistance, &o.MatchedCanonical,
+			&o.MatchedFullName, &o.MatchedCardinality, &o.CurrentCanonical,
+			&o.CurrentFullName, &o.CurrentCardinality, &o.Classification,
+			&o.RecordID, &o.DataSourceID, &o.DataSource, &o.DataSourcesNumber,
+			&o.Curation, &o.VerifError,
+		)
+		if err != nil {
+			return nil, fmt.Errorf("outputNames: %w", err)
+		}
+
+		o.NameID = gnuuid.New(o.DetectedName).String()
+
+		res = append(res, o)
+	}
+
+	return res, nil
+}
+
+func (d *dumpio) outputOccurs(id, limit int, ds []int) ([]output.OutputOccurrence, error) {
+	var rows *sql.Rows
+	var err error
+
+	dataSources := getDataSources(ds)
+
+	q := fmt.Sprintf(`
+SELECT
+  dn.page_id, i.internet_archive_id, vn.name,
+  dn.name_verbatim, vn.odds_log10, dn.offset_start,
+  dn.offset_end, dn.ends_next_page, dn.annot_nomen_type
+
   FROM items i
     JOIN detected_names dn
       ON i.id = dn.item_id
     JOIN verified_names vn
       ON dn.name = vn.name
   WHERE i.id >= $1 and i.id < $2
+  %s
 ORDER by i.id
-`
+`, dataSources)
 	rows, err = d.db.Query(q, id, id+limit)
 	if err != nil {
-		return nil, fmt.Errorf("outputs: %w", err)
+		return nil, fmt.Errorf("outputOccurs: %w", err)
 	}
 	defer rows.Close()
 
 	var count int
-	res := make([]output.Output, 0, limit)
+	res := make([]output.OutputOccurrence, 0, limit)
 	for rows.Next() {
-		o := output.Output{}
+		o := output.OutputOccurrence{}
 		var pageBarcode string
 		err := rows.Scan(
-			&o.ID, &o.NameID, &pageBarcode, &o.ItemBarcode, &o.DetectedName,
-			&o.DetectedVerbatim, &o.OccurrencesTotal, &o.OddsLog10,
-			&o.OffsetStart, &o.OffsetEnd, &o.EndsNextPage, &o.Cardinality,
-			&o.MatchType, &o.EditDistance, &o.MatchedCanonical,
-			&o.MatchedFullName, &o.MatchedCardinality, &o.DataSourceID,
-			&o.DataSource, &o.Curation, &o.VerifError,
+			&pageBarcode, &o.ItemBarcode, &o.DetectedName,
+			&o.DetectedVerbatim, &o.OddsLog10, &o.OffsetStart,
+			&o.OffsetEnd, &o.EndsNextPage, &o.Annotation,
 		)
 		if err != nil {
-			return nil, fmt.Errorf("outputs: %w", err)
+			return nil, fmt.Errorf("outputOccurs: %w", err)
 		}
 
 		o.PageBarcodeNum, err = pageNum(pageBarcode)
 		if err != nil {
-			return nil, fmt.Errorf("outputs: %w", err)
+			return nil, fmt.Errorf("outputOccurs: %w", err)
 		}
+		o.NameID = gnuuid.New(o.DetectedName).String()
 
 		res = append(res, o)
 		count++
@@ -103,4 +155,17 @@ func pageNum(barCode string) (int, error) {
 	l := len(barCode)
 	num := barCode[l-4 : l]
 	return strconv.Atoi(num)
+}
+
+func getDataSources(ds []int) string {
+	var dataSources string
+	if len(ds) > 0 {
+		dsStr := make([]string, len(ds))
+		for i := range ds {
+			dsStr[i] = strconv.Itoa(ds[i])
+		}
+		dataSources = fmt.Sprintf("AND data_source_id  IN (%s)",
+			strings.Join(dsStr, ", "))
+	}
+	return dataSources
 }

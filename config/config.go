@@ -11,6 +11,12 @@ type Config struct {
 	// OutputFormat format of the detected names dump
 	OutputFormat gnfmt.Format
 
+	// OutputDir provides a directory path where to save dump data.
+	OutputDir string
+
+	// OutputDataSourceIDs filters data to given data-sources.
+	OutputDataSourceIDs []int
+
 	// PgHost is the IP or a name of a computer running PostgreSQL database.
 	PgHost string
 
@@ -49,6 +55,18 @@ func OptBHLdir(s string) Option {
 func OptOutputFormat(f gnfmt.Format) Option {
 	return func(cfg *Config) {
 		cfg.OutputFormat = f
+	}
+}
+
+func OptOutputDir(s string) Option {
+	return func(cfg *Config) {
+		cfg.OutputDir = s
+	}
+}
+
+func OptOutputDataSourceIDs(i []int) Option {
+	return func(cfg *Config) {
+		cfg.OutputDataSourceIDs = i
 	}
 }
 
@@ -103,7 +121,8 @@ func OptWithoutConfirm(b bool) Option {
 func New(opts ...Option) Config {
 	res := Config{
 		OutputFormat: gnfmt.CSV,
-		PgHost:       "localhost",
+		OutputDir:    ".",
+		PgHost:       "0.0.0.0",
 		PgUser:       "postgres",
 		PgPass:       "postgres",
 		PgDatabase:   "bhlindex",

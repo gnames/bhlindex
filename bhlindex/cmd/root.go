@@ -45,6 +45,7 @@ var opts []config.Option
 type cfgData struct {
 	BHLdir         string
 	OutputFormat   string
+	OutputDir      string
 	PgHost         string
 	PgUser         string
 	PgPass         string
@@ -71,7 +72,7 @@ Typical sequence of commands is:
   
   bhlindex find
   bhlindex verify
-  bhlindex dump -f csv | gzip > bhlindex.csv.gz
+  bhlindex dump -f csv -d path/to/dump
 `,
 	Run: func(cmd *cobra.Command, _ []string) {
 		if showVersionFlag(cmd) {
@@ -113,6 +114,7 @@ func initConfig() {
 	// config file settings
 	_ = viper.BindEnv("BHLdir", "BHLI_BHL_DIR")
 	_ = viper.BindEnv("OutputFormat", "BHLI_OUTPUT_FORMAT")
+	_ = viper.BindEnv("OutputDir", "BHLI_OUTPUT_DIR")
 	_ = viper.BindEnv("PgHost", "BHLI_PG_HOST")
 	_ = viper.BindEnv("PgPort", "BHLI_PG_PORT")
 	_ = viper.BindEnv("PgUser", "BHLI_PG_USER")

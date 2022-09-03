@@ -183,8 +183,8 @@ func incrLog(start time.Time, total, count, incr int) int {
 func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 	now := time.Now()
 	columns := []string{
-		"name_id", "name", "record_id", "match_type", "edit_distance",
-		"stem_edit_distance", "matched_name", "matched_canonical",
+		"name_id", "name", "cardinality", "record_id", "match_type",
+		"edit_distance", "stem_edit_distance", "matched_name", "matched_canonical",
 		"matched_cardinality", "current_name", "current_canonical",
 		"current_cardinality", "classification", "classification_ranks",
 		"classification_ids", "data_source_id", "data_source_title",
@@ -204,7 +204,7 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 
 	for _, v := range names {
 		_, err = stmt.Exec(
-			v.NameID, v.Name, v.RecordID, v.MatchType, v.EditDistance,
+			v.NameID, v.Name, v.Cardinality, v.RecordID, v.MatchType, v.EditDistance,
 			v.StemEditDistance, v.MatchedName, v.MatchedCanonical,
 			v.MatchedCardinality, v.CurrentName, v.CurrentCanonical,
 			v.CurrentCardinality, v.Classification, v.ClassificationRanks,

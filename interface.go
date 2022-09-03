@@ -19,7 +19,11 @@ type BHLindex interface {
 	// results to a local storage.
 	VerifyNames(verif.VerifierBHL) error
 
-	// DumpNames creates output with detected and verified names in CSV,
+	// DumpOccurrences creates output with detected names in CSV,
+	// TSV, or JSON formats.
+	DumpOccurrences(output.Dumper) error
+
+	// DumpNames creates output with verified names in CSV,
 	// TSV, or JSON formats.
 	DumpNames(output.Dumper) error
 

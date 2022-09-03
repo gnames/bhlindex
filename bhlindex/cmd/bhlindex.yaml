@@ -11,10 +11,15 @@
 #
 #	OutputFormat: csv
 
-# PgHost is the IP or a name of a computer running PostgreSQL database.
-# Default is "localhost"
+# OutputDir is the directory where to place output dump files.
+# Default is the current directory
 #
-# PgHost: localhost
+# OutputDir: .
+
+# PgHost is the IP or a name of a computer running PostgreSQL database.
+# Default is "0.0.0.0"
+#
+# PgHost: 0.0.0.0
 
 # PgUser is the username with read/write access to bhlindex database.
 # Default is "postgres"

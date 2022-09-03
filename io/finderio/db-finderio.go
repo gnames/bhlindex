@@ -14,7 +14,7 @@ func (fdr finderio) saveDetectedNames(names []name.DetectedName) error {
 	columns := []string{
 		"page_id", "item_id", "name", "name_verbatim", "annot_nomen",
 		"annot_nomen_type", "offset_start", "offset_end",
-		"ends_next_page", "odds_log10", "cardinality", "updated_at",
+		"ends_next_page", "odds_log10", "updated_at",
 	}
 	transaction, err := fdr.db.Begin()
 	if err != nil {
@@ -40,7 +40,7 @@ func (fdr finderio) saveDetectedNames(names []name.DetectedName) error {
 		_, err = stmt.Exec(
 			v.PageID, v.ItemID, v.Name, v.NameVerbatim, v.AnnotNomen,
 			v.AnnotNomenType, v.OffsetStart, v.OffsetEnd, v.EndsNextPage,
-			v.OddsLog10, v.Cardinality, now,
+			v.OddsLog10, now,
 		)
 		if err != nil {
 			return fmt.Errorf("saveDetectedNames: %w", err)

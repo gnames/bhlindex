@@ -2,13 +2,21 @@
 
 ## Unreleased
 
+## [v0.13.0] - 2022-09-01 Thu
+
+- Add [#51]: remove RESTful interface, no more remote access.
+             All data is taken from dumps.
+- Add [#50]: dump saves pages and names separately, allows a flag to
+             dump only results for specific data-sources. Dump has a
+             flag pointing to a directory where to save dump data.
+
 ## [v0.12.6] - 2022-08-29 Mon
 
-- Add: Compatibility with GNverifier v1.0.0
+- Add: compatibility with GNverifier v1.0.0
 
 ## [v0.12.5]
 
-- Add: Info for RESTful API.
+- Add: info for RESTful API.
 
 ## [v0.12.4]
 
