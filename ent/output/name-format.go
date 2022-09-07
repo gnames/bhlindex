@@ -29,7 +29,7 @@ func CSVHeaderName(f gnfmt.Format) string {
 		"MatchType", "EditDistance", "StemEditDistance", "MatchedCanonical",
 		"MatchedFullName", "MatchedCardinality", "CurrentCanonical",
 		"CurrentFullName", "CurrentCardinality", "Classification", "RecordID",
-		"DataSourceID", "DataSource", "dataSourcesNumber", "Curation", "Error",
+		"DataSourceID", "DataSource", "DataSourcesNumber", "Curation", "Error",
 	}
 	return gnfmt.ToCSV(res, sep)
 }
