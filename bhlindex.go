@@ -90,6 +90,34 @@ func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) (err error) {
 	return err
 }
 
+func (bi *bhlindex) DumpPages(dmp output.Dumper) error {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	ch := make(chan []output.OutputPage)
+	gDump, ctxDump := errgroup.WithContext(ctx)
+	gOut, ctxOut := errgroup.WithContext(ctx)
+
+	gDump.Go(func() error {
+		return dmp.DumpPages(ctxDump, ch)
+	})
+
+	gOut.Go(func() error {
+		return bi.processPageOutput(ctxOut, ch)
+	})
+
+	err := gDump.Wait()
+	if err != nil {
+		return fmt.Errorf("dumpPages: %w", err)
+	}
+	close(ch)
+
+	err = gOut.Wait()
+	if err != nil {
+		return fmt.Errorf("dumpPages: %w", err)
+	}
+	return nil
+}
+
 func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -239,6 +267,42 @@ func (bi *bhlindex) processNameOutput(
 		select {
 		case <-ctx.Done():
 			return fmt.Errorf("processNameOutput: %w", ctx.Err())
+		default:
+			for i := range rows {
+				_, err = w.WriteString(rows[i].Format(bi.OutputFormat) + "\n")
+				if err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+func (bi *bhlindex) processPageOutput(
+	ctx context.Context,
+	ch <-chan []output.OutputPage,
+) error {
+	path := filepath.Join(bi.OutputDir, "pages."+bi.extension())
+	w, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	if bi.OutputFormat != gnfmt.CompactJSON {
+		_, err = w.WriteString(output.CSVHeaderPage(bi.OutputFormat) + "\n")
+		if err != nil {
+			return err
+		}
+	}
+	var count int
+	for rows := range ch {
+		count++
+		if count%500_000 == 0 {
+			log.Info().Msgf("Processed %s pages", count)
+		}
+		select {
+		case <-ctx.Done():
+			return fmt.Errorf("processPageOutput: %w", ctx.Err())
 		default:
 			for i := range rows {
 				_, err = w.WriteString(rows[i].Format(bi.OutputFormat) + "\n")

@@ -17,7 +17,7 @@ func (on *OutputName) Format(f gnfmt.Format) string {
 	}
 }
 
-// CSVHeaderOccur returns the header string for CSV output format.
+// CSVHeaderName returns the header string for CSV output format.
 func CSVHeaderName(f gnfmt.Format) string {
 	sep := rune(',')
 	if f == gnfmt.TSV {

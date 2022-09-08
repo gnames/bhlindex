@@ -50,6 +50,49 @@ func (d *dumpio) stats(ds []int) (int, int, int, error) {
 	return allNames, names, items, err
 }
 
+func (d *dumpio) outputPages(id, limit int) ([]output.OutputPage, error) {
+	var rows *sql.Rows
+	var err error
+
+	q := `
+SELECT
+  i.internet_archive_id, p.id
+  FROM items i
+    JOIN pages p
+      ON i.id = p.item_id
+  WHERE i.id >= $1 and i.id < $2
+ORDER by i.id, p.item_id
+`
+	rows, err = d.db.Query(q, id, id+limit)
+	if err != nil {
+		return nil, fmt.Errorf("outputPages: %w", err)
+	}
+	defer rows.Close()
+
+	var count int
+	res := make([]output.OutputPage, 0, limit)
+	for rows.Next() {
+		o := output.OutputPage{}
+		var pageBarcode string
+		err := rows.Scan(
+			&o.ItemBarcode, &pageBarcode,
+		)
+		if err != nil {
+			return nil, fmt.Errorf("outputPages: %w", err)
+		}
+
+		o.PageBarcodeNum, err = pageNum(pageBarcode)
+		if err != nil {
+			return nil, fmt.Errorf("outputPages: %w", err)
+		}
+
+		res = append(res, o)
+		count++
+	}
+
+	return res, nil
+}
+
 func (d *dumpio) outputNames(id, limit int, ds []int) ([]output.OutputName, error) {
 	var rows *sql.Rows
 	var err error

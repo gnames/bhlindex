@@ -27,6 +27,9 @@ type BHLindex interface {
 	// TSV, or JSON formats.
 	DumpNames(output.Dumper) error
 
+	// DumpPages creates output with pages info in CSV, TSV, or JSON formats.
+	DumpPages(output.Dumper) error
+
 	// GetVersion outputs the version of BHLindex.
 	GetVersion() gnvers.Version
 

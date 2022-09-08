@@ -67,6 +67,11 @@ name-verification and writes them to STDOUT. Supports 'json', 'csv',
 		bhli := bhlindex.New(cfg)
 		dmp := dumpio.New(cfg, db)
 
+		err = bhli.DumpPages(dmp)
+		if err != nil {
+			log.Fatal().Err(err).Msg("Dump of pages failed")
+		}
+
 		err = bhli.DumpNames(dmp)
 		if err != nil {
 			log.Fatal().Err(err).Msg("Dump of names failed")

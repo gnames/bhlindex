@@ -1,5 +1,15 @@
 package output
 
+// OutputPage provides information about a page from BHL corpus.
+type OutputPage struct {
+	// ItemBarcode is an Archive ID of an Item where a name appeared.
+	ItemBarcode string `json:"itemBarcode"`
+
+	// PageBarcodeNum is a number extracted from the page file name. The page
+	// filename consists of this number and its Item's barcode.
+	PageBarcodeNum int `json:"pageBarcodeNum"`
+}
+
 // OutputName provides fields for data-dump of unique name-strings. The data
 // also contains reconciliation and resolution data according to the best
 // matches do a variety of data-sources.
