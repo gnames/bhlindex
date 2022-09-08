@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.13.1] - 2022-09-08 Thu
+
+- Add [#52]: dump pages information
+
 ## [v0.13.0] - 2022-09-01 Thu
 
 - Add [#51]: remove RESTful interface, no more remote access.
