@@ -102,7 +102,7 @@ func (bi *bhlindex) DumpPages(dmp output.Dumper) error {
 	})
 
 	gOut.Go(func() error {
-		return bi.processPageOutput(ctxOut, ch)
+		return processOutput(bi, ctxOut, ch)
 	})
 
 	err := gDump.Wait()
@@ -130,7 +130,7 @@ func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
 	})
 
 	gOut.Go(func() error {
-		return bi.processNameOutput(ctxOut, ch)
+		return processOutput(bi, ctxOut, ch)
 	})
 
 	err := gDump.Wait()
@@ -160,7 +160,7 @@ func (bi *bhlindex) DumpOccurrences(dmp output.Dumper) error {
 	})
 
 	gOut.Go(func() error {
-		return bi.processOccurOutput(ctxOut, ch)
+		return processOutput(bi, ctxOut, ch)
 	})
 
 	err := gDump.Wait()
@@ -199,25 +199,27 @@ func counterLog(counter <-chan int) {
 func (bi *bhlindex) extension() string {
 	switch bi.OutputFormat {
 	case gnfmt.CSV:
-		return "csv"
+		return ".csv"
 	case gnfmt.TSV:
-		return "tsv"
+		return ".tsv"
 	default:
-		return "json"
+		return ".json"
 	}
 }
 
-func (bi *bhlindex) processOccurOutput(
+func processOutput[O output.Output](
+	bi *bhlindex,
 	ctx context.Context,
-	ch <-chan []output.OutputOccurrence,
+	ch <-chan []O,
 ) error {
-	path := filepath.Join(bi.OutputDir, "occurrences."+bi.extension())
+	var o O
+	path := filepath.Join(bi.OutputDir, o.Name()+bi.extension())
 	w, err := os.Create(path)
 	if err != nil {
 		return err
 	}
 	if bi.OutputFormat != gnfmt.CompactJSON {
-		_, err = w.WriteString(output.CSVHeaderOccur(bi.OutputFormat) + "\n")
+		_, err = w.WriteString(output.CSVHeader(o, bi.OutputFormat) + "\n")
 		if err != nil {
 			return err
 		}
@@ -226,86 +228,14 @@ func (bi *bhlindex) processOccurOutput(
 	for rows := range ch {
 		count++
 		if count%500_000 == 0 {
-			log.Info().Msgf("Processed %s occurrences", count)
+			log.Info().Msgf("Processed %d %ss", count, o.Name())
 		}
 		select {
 		case <-ctx.Done():
-			return fmt.Errorf("processOccurOutput: %w", ctx.Err())
+			return fmt.Errorf("processOutput: %w", ctx.Err())
 		default:
 			for i := range rows {
-				_, err = w.WriteString(rows[i].Format(bi.OutputFormat) + "\n")
-				if err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-func (bi *bhlindex) processNameOutput(
-	ctx context.Context,
-	ch <-chan []output.OutputName,
-) error {
-	path := filepath.Join(bi.OutputDir, "names."+bi.extension())
-	w, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	if bi.OutputFormat != gnfmt.CompactJSON {
-		_, err = w.WriteString(output.CSVHeaderName(bi.OutputFormat) + "\n")
-		if err != nil {
-			return err
-		}
-	}
-	var count int
-	for rows := range ch {
-		count++
-		if count%500_000 == 0 {
-			log.Info().Msgf("Processed %s names", count)
-		}
-		select {
-		case <-ctx.Done():
-			return fmt.Errorf("processNameOutput: %w", ctx.Err())
-		default:
-			for i := range rows {
-				_, err = w.WriteString(rows[i].Format(bi.OutputFormat) + "\n")
-				if err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-func (bi *bhlindex) processPageOutput(
-	ctx context.Context,
-	ch <-chan []output.OutputPage,
-) error {
-	path := filepath.Join(bi.OutputDir, "pages."+bi.extension())
-	w, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	if bi.OutputFormat != gnfmt.CompactJSON {
-		_, err = w.WriteString(output.CSVHeaderPage(bi.OutputFormat) + "\n")
-		if err != nil {
-			return err
-		}
-	}
-	var count int
-	for rows := range ch {
-		count++
-		if count%500_000 == 0 {
-			log.Info().Msgf("Processed %s pages", count)
-		}
-		select {
-		case <-ctx.Done():
-			return fmt.Errorf("processPageOutput: %w", ctx.Err())
-		default:
-			for i := range rows {
-				_, err = w.WriteString(rows[i].Format(bi.OutputFormat) + "\n")
+				_, err = w.WriteString(output.Format(rows[i], bi.OutputFormat) + "\n")
 				if err != nil {
 					return err
 				}

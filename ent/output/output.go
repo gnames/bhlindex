@@ -1,5 +1,7 @@
 package output
 
+import "github.com/gnames/gnfmt"
+
 // OutputPage provides information about a page from BHL corpus.
 type OutputPage struct {
 	// ItemBarcode is an Archive ID of an Item where a name appeared.
@@ -146,4 +148,23 @@ type OutputOccurrence struct {
 	// Annotation is a normalized annotation of `sp. nov.`, `subsp. nov.` etc.
 	// that was located after the DetectedName.
 	Annotation string `json:"annotNomen"`
+}
+
+func CSVHeader[O Output](o O, f gnfmt.Format) string {
+	sep := rune(',')
+	if f == gnfmt.TSV {
+		sep = rune('\t')
+	}
+	return gnfmt.ToCSV(o.header(), sep)
+}
+
+func Format[O Output](o O, f gnfmt.Format) string {
+	switch f {
+	case gnfmt.TSV:
+		return o.csvOutput('\t')
+	case gnfmt.CompactJSON:
+		return o.jsonOutput(false)
+	default:
+		return o.csvOutput(',')
+	}
 }

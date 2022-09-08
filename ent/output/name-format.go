@@ -6,35 +6,21 @@ import (
 	"github.com/gnames/gnfmt"
 )
 
-func (on *OutputName) Format(f gnfmt.Format) string {
-	switch f {
-	case gnfmt.TSV:
-		return on.csvOutput('\t')
-	case gnfmt.CompactJSON:
-		return on.jsonOutput(false)
-	default:
-		return on.csvOutput(',')
-	}
+func (on OutputName) Name() string {
+	return "name"
 }
 
-// CSVHeaderName returns the header string for CSV output format.
-func CSVHeaderName(f gnfmt.Format) string {
-	sep := rune(',')
-	if f == gnfmt.TSV {
-		sep = rune('\t')
-	}
-
-	res := []string{
+func (on OutputName) header() []string {
+	return []string{
 		"NameID", "DetectedName", "Cardinality", "OccurrencesNumber", "OddsLog10",
 		"MatchType", "EditDistance", "StemEditDistance", "MatchedCanonical",
 		"MatchedFullName", "MatchedCardinality", "CurrentCanonical",
 		"CurrentFullName", "CurrentCardinality", "Classification", "RecordID",
 		"DataSourceID", "DataSource", "DataSourcesNumber", "Curation", "Error",
 	}
-	return gnfmt.ToCSV(res, sep)
 }
 
-func (on *OutputName) csvOutput(sep rune) string {
+func (on OutputName) csvOutput(sep rune) string {
 	card := strconv.Itoa(on.Cardinality)
 	occNum := strconv.Itoa(on.OccurrencesNumber)
 
@@ -60,7 +46,7 @@ func (on *OutputName) csvOutput(sep rune) string {
 	return gnfmt.ToCSV(s, sep)
 }
 
-func (on *OutputName) jsonOutput(pretty bool) string {
+func (on OutputName) jsonOutput(pretty bool) string {
 	enc := gnfmt.GNjson{Pretty: pretty}
 	res, _ := enc.Encode(on)
 	return string(res)

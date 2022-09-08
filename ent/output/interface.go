@@ -1,6 +1,8 @@
 package output
 
-import "context"
+import (
+	"context"
+)
 
 // Dumper interface contains methods for saving scientific names detected in
 // Biodiversity Heritage Library as a flat CSV file on the file-system.
@@ -13,4 +15,11 @@ type Dumper interface {
 
 	// DumpOccurrences traverses database and outputs names occurrences in JSON, TSV or CSV format.
 	DumpOccurrences(context.Context, chan<- []OutputOccurrence, []int) error
+}
+
+type Output interface {
+	Name() string
+	header() []string
+	csvOutput(rune) string
+	jsonOutput(bool) string
 }
