@@ -7,7 +7,7 @@ import (
 )
 
 func (on OutputName) Name() string {
-	return "name"
+	return "names"
 }
 
 func (on OutputName) header() []string {

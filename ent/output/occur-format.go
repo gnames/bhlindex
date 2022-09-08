@@ -7,7 +7,7 @@ import (
 )
 
 func (o OutputOccurrence) Name() string {
-	return "occurrence"
+	return "occurrences"
 }
 
 func (o OutputOccurrence) header() []string {

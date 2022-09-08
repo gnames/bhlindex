@@ -7,7 +7,7 @@ import (
 )
 
 func (op OutputPage) Name() string {
-	return "page"
+	return "pages"
 }
 
 func (op OutputPage) header() []string {

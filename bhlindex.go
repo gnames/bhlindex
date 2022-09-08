@@ -228,7 +228,7 @@ func processOutput[O output.Output](
 	for rows := range ch {
 		count++
 		if count%500_000 == 0 {
-			log.Info().Msgf("Processed %d %ss", count, o.Name())
+			log.Info().Msgf("Processed %d %s", count, o.Name())
 		}
 		select {
 		case <-ctx.Done():

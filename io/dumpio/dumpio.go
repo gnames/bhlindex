@@ -30,7 +30,7 @@ func (d *dumpio) DumpPages(ctx context.Context, ch chan<- []output.OutputPage) e
 		log.Warn().Msg("Run `bhlindex find` before `bhlindex dump`.")
 		return err
 	}
-	log.Info().Msgf("Dumping dumping pages from %s items",
+	log.Info().Msgf("Dumping pages from %s items",
 		humanize.Comma(int64(itemsTotal)),
 	)
 
@@ -52,10 +52,7 @@ func (d *dumpio) DumpPages(ctx context.Context, ch chan<- []output.OutputPage) e
 			id += limit
 			itemsNum := id - 1
 			fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 35))
-			fmt.Fprintf(os.Stderr, "\rDumped pages from %s items", humanize.Comma(int64(itemsNum)))
-			if itemsNum%10_000 == 0 {
-				makeLog(itemsTotal, itemsNum)
-			}
+			fmt.Fprintf(os.Stderr, "\rDumped pages of %s items", humanize.Comma(int64(itemsNum)))
 		}
 	}
 	fmt.Fprint(os.Stderr, "\r")
@@ -83,7 +80,11 @@ func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.OutputName, d
 		humanize.Comma(int64(itemsTotal)),
 	)
 	if len(ds) > 0 {
-		log.Info().Msgf("Names are filtered from %d data-sources", len(ds))
+		var suffix string
+		if len(ds) > 1 {
+			suffix = "s"
+		}
+		log.Info().Msgf("Names are filtered by %d data-source%s", len(ds), suffix)
 	}
 
 	id := 1
@@ -135,7 +136,11 @@ func (d *dumpio) DumpOccurrences(ctx context.Context, ch chan<- []output.OutputO
 		humanize.Comma(int64(itemsTotal)),
 	)
 	if len(ds) > 0 {
-		log.Info().Msgf("Names are filtered from %d data-sources", len(ds))
+		var suffix string
+		if len(ds) > 1 {
+			suffix = "s"
+		}
+		log.Info().Msgf("Occurrences are filtered by %d data-source%s", len(ds), suffix)
 	}
 	id := 1
 	limit := 100
