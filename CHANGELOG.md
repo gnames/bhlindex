@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v0.13.2] - 2022-09-12 Mon
+
+- Add [#53] - classification ranks and ids in dump files.
+
 ## [v0.13.1] - 2022-09-08 Thu
 
 - Add [#52]: dump pages information

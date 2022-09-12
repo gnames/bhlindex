@@ -80,6 +80,13 @@ type OutputName struct {
 	// DataSource.
 	Classification string `json:"classification"`
 
+	// ClassificationRanks provide data about ranks used in the classificaiton.
+	ClassificationRanks string `json:"classificationRanks"`
+
+	// ClassificationIDs provides data about IDs a DataSource assigns to
+	// taxons in the classification.
+	ClassificationIDs string `json:"classificationIDs"`
+
 	// RecordID is the ID assigned by the DataSource to the name.
 	RecordID string `json:"recordID"`
 
@@ -150,6 +157,8 @@ type OutputOccurrence struct {
 	Annotation string `json:"annotNomen"`
 }
 
+// CSVHeader takes any object that implements Output interface
+// and generates TSV or CSV header.
 func CSVHeader[O Output](o O, f gnfmt.Format) string {
 	sep := rune(',')
 	if f == gnfmt.TSV {

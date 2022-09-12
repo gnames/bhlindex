@@ -102,9 +102,10 @@ func (d *dumpio) outputNames(id, limit int, ds []int) ([]output.OutputName, erro
 	q := fmt.Sprintf(`
 SELECT
   name, cardinality, occurrences, odds_log10, match_type, edit_distance,
-  stem_edit_distance, matched_canonical, matched_name, matched_cardinality,
-  current_canonical, current_name, current_cardinality, classification,
-  record_id, data_source_id, data_source_title, data_sources_number,
+    stem_edit_distance, matched_canonical, matched_name, matched_cardinality,
+    current_canonical, current_name, current_cardinality, classification,
+    classification_ranks, classification_ids, record_id, data_source_id,
+    data_source_title, data_sources_number,
   curation, error
   FROM verified_names
   WHERE name_id >= $1 and name_id < $2
@@ -125,8 +126,9 @@ ORDER by name_id
 			&o.MatchType, &o.EditDistance, &o.StemEditDistance, &o.MatchedCanonical,
 			&o.MatchedFullName, &o.MatchedCardinality, &o.CurrentCanonical,
 			&o.CurrentFullName, &o.CurrentCardinality, &o.Classification,
-			&o.RecordID, &o.DataSourceID, &o.DataSource, &o.DataSourcesNumber,
-			&o.Curation, &o.VerifError,
+			&o.ClassificationRanks, &o.ClassificationIDs, &o.RecordID,
+			&o.DataSourceID, &o.DataSource, &o.DataSourcesNumber, &o.Curation,
+			&o.VerifError,
 		)
 		if err != nil {
 			return nil, fmt.Errorf("outputNames: %w", err)

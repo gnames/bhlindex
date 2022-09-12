@@ -63,6 +63,7 @@ func (d *dumpio) DumpPages(ctx context.Context, ch chan<- []output.OutputPage) e
 	return nil
 }
 
+// DumpNames outputs data about verified names.
 func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.OutputName, ds []int) error {
 	err := d.checkForVerifiedNames()
 	if err != nil {
