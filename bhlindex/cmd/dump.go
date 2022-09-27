@@ -86,7 +86,10 @@ name-verification and writes them to STDOUT. Supports 'json', 'csv',
 
 func init() {
 	rootCmd.AddCommand(dumpCmd)
-	dumpCmd.Flags().StringP("format", "f", "", "output format: 'csv', 'tsv', 'json'")
-	dumpCmd.Flags().StringP("dir", "d", "", "output directory, defult current dir")
-	dumpCmd.Flags().StringP("sources", "s", "", "filter by gnverifier data-sources. Example: 1,11")
+	dumpCmd.Flags().StringP("format", "f", "",
+		"output format: 'csv', 'tsv', 'json', default 'csv'")
+	dumpCmd.Flags().StringP("dir", "d", "",
+		"output directory, defult current dir")
+	dumpCmd.Flags().StringP("sources", "s", "",
+		"filter by gnverifier data-sources. Example: 1,11")
 }
