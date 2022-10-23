@@ -10,6 +10,7 @@ import (
 
 	"github.com/dustin/go-humanize"
 	"github.com/gnames/bhlindex/ent/name"
+	"github.com/gnames/gnfmt"
 	"github.com/lib/pq"
 	"github.com/rs/zerolog/log"
 )
@@ -126,21 +127,22 @@ SELECT id, name, odds_log10, occurrences
 	return nil
 }
 
-func makeLog(start time.Time, namesNum, count int) {
-	names := humanize.Comma(int64(count))
-	total := humanize.Comma(int64(namesNum))
-	perHour := namesPerHour(start, count)
+func logStr(start time.Time, namesNum, count int) string {
+	rate := namesPerHour(start, count)
+	namesStr := humanize.Comma(int64(count))
+	perHourStr := humanize.Comma(int64(rate))
 	percent := 100 * float64(count) / float64(namesNum)
-	log.Info().
-		Str("names", names+"/"+total).
-		Str("names/hr", perHour).
-		Msgf("Verified %0.1f%%", percent)
+	eta := 3600 * float64(namesNum-count) / rate
+	etaStr := gnfmt.TimeString(eta)
+	return fmt.Sprintf(
+		"%s verified names (%0.1f%%), %s names/hr, ETA: %s",
+		namesStr, percent, perHourStr, etaStr,
+	)
 }
 
-func namesPerHour(start time.Time, count int) string {
+func namesPerHour(start time.Time, count int) float64 {
 	dur := float64(time.Since(start)) / float64(time.Hour)
-	rate := float64(count) / dur
-	return humanize.Comma(int64(rate))
+	return float64(count) / dur
 }
 
 func (vrf verifio) saveVerif(
@@ -159,23 +161,18 @@ func (vrf verifio) saveVerif(
 		count = incrLog(start, namesNum, count, len(vns))
 	}
 	fmt.Fprint(os.Stderr, "\r")
-	makeLog(start, namesNum, count)
+	logStr(start, namesNum, count)
 	return nil
 }
 
 func incrLog(start time.Time, total, count, incr int) int {
 	count += incr
-	if count%100_000 == 0 {
+	if count%1_000_000 == 0 {
 		fmt.Fprint(os.Stderr, "\r")
-		makeLog(start, total, count)
+		log.Info().Msg(logStr(start, total, count))
 	} else if count%100 == 0 {
-		fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 60))
-		fmt.Fprintf(
-			os.Stderr,
-			"\rVerified %s names, %s items/hour",
-			humanize.Comma(int64(count)),
-			namesPerHour(start, count),
-		)
+		fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 80))
+		fmt.Fprint(os.Stderr, "\r"+logStr(start, total, count))
 	}
 	return count
 }
