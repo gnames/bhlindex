@@ -58,7 +58,6 @@ variable can be used:
 | PgDatabase     | BHLI_PG_DATABASE     |
 | Jobs           | BHLI_JOBS            |
 | VerifierURL    | BHLI_VERIFIER_URL    |
-| WithWebLogs    | BHLI_WITH_WEB_LOGS   |
 | WithoutConfirm | BHLI_WITHOUT_CONFIRM |
 
 ## Usage
