@@ -1,0 +1,41 @@
+114 Perspectives in Microbiology 
+
+Using this equipment, we studied the effect of PCO2, PO2, 
+ and pN2 on the rate of nitrogen fixation. 
+
+This apparatus was admittedly crude, but it had one 
+ virtue — it required considerable volumes of gases, so when 
+ a gas was required to fill out a particular mixture being 
+ studied, H2 was the natural choice because it was the 
+ cheapest. This choice of diluent gas was a happy one, for 
+ which we cannot claim any credit, as it was forced upon 
+ us by the method used. In one trial, the tank of H2 became 
+ empty just as the experiment was begun; for several days, 
+ it was necessarily continued without the use of a diluent 
+ gas until a new tank was delivered. Fortunately, this was 
+ delayed, and since the response of the plants appeared to 
+ be different without the Ho, the experiment was completed 
+ without diluent gas. The results were unequivocal — the 
+ plants fixed nitrogen better in the absence of H2. Through 
+ the courtesy of Professor Roebuck in the physics depart- 
+ ment we were given a tank of helium, which was difficult 
+ to obtain at that time. The necessary crucial experiment 
+ in which Ho and He were compared as the diluent gas 
+ demonstrated that H2, far from being an inert gas, defi- 
+ nitely inhibited nitrogen fixation in red clover plants. 
+ Further studies provided evidence that this inhibition was 
+ competitive (15). 
+
+Once again, fullest exploitation of this new tool of re- 
+ search necessitated the forging of a sharper instrument; 
+ this was accomplished when the finding was extended to 
+ fixation of nitrogen by Azotobacter (20). Then, studies on 
+ the enzyme system employing H2 as a specific inhibitor 
+ could be made with the more precise microrespirometer 
+ technique. Not only has this particular tool been valuable 
+ for exploring the enzymatic system responsible for fixa- 
+ tion of nitrogen, but also it has led to investigations that 
+ have made significant contributions to our knowledge of 
+ the enzyme hydrogenase (3, 5, 11). Finally, it has been di- 
+ rectly concerned with uncovering several new agents of 
+

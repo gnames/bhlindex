@@ -1,0 +1,53 @@
+74 Perspecfives in Microbiology 
+
+siderable evidence that glucose-6-phosphate and 6-phos- 
+ phogluconate are involved, and the mechanism may be 
+ similar to the hexose monophosphate shunt mechanism in 
+ yeast. 
+
+The 2-KetOj 3-Desoxy, 6-Phospho gluconate Pathway. 
+ One of the best understood nonglycolytic mechanisms of 
+ glucose decomposition is that discovered in Pseudomonas 
+ saccharophila by Doudoroff and his associates. This organ- 
+ ism is an obligate aerobe that normally oxidizes glucose to 
+ carbon dioxide without appreciable accumulation of inter- 
+ mediate products. Entner and Doudoroff (4) showed, how- 
+ ever, that in the presence of suitable inhibitors (DNP and 
+ arsenite), cell suspensions oxidize either glucose or gluco- 
+ nate with the accumulation of two moles of pyruvate. A 
+ tracer experiment with glucose- 1-C^* showed that the car- 
+ boxyl group of pyruvate is derived in part from carbon 
+
+GLUCOSE •COOH •COOH •COOH 
+
+CHOH C=0 C=0 
+
+I i I 
+
+GLUC0SE-6-P'-^CH0H — > CHg — CH3 
+
+CHOH CHOH CHO 
+
+CHOH CHOH CHOH 
+
+I I I 
+
+CH2O-P CH2O-P CH2O-P 
+
+6PHOSPHO- 2KET0,3DES0XY, PYRUVATE 
+
+GLUCONATE 6PH0SPH0 GLU- + 
+
+CONATE TRIOSE 
+
+PHOSPHATE 
+
+FIGURE 5. Pseudomonas saccharophila Pathway of Glucose Oxidation, 
+ after MacGee and Doudoroff (15) 
+
+atom 1 of glucose. Further enzymatic studies established 
+ that glucose is first phosphorylated and then oxidized to 
+ phosphogluconate. MacGee and Doudoroff (15) have shown 
+ that the latter compound undergoes an enzymatic rear- 
+ rangement to yield a new compound, which has been iso- 
+

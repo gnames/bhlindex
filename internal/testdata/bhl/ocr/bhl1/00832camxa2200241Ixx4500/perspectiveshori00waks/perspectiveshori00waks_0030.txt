@@ -1,0 +1,59 @@
+16 
+
+Perspectives in Microbiology 
+
+for great, and C for clear) and IGT (T for turbid), both 
+ being temperate. And it turned out (see Table I) that 
+ lysogenic strains M[1GT] and Mox[lGT] were inducible, 
+ whereas M[1GC] and Mox[lGC] were not. Then, from the 
+ noninducible, defective lysogenic strain, a nonlysogenic 
+ variant was isolated which will be called 9 IB. This strain, 
+ when lysogenized with phages 1+, IGT, or IPT (P for 
+ petite), gave rise to noninducible systems only, whereas 
+ the strains M and Mox, lysogenized with the same phages, 
+ gave rise to inducible systems. 
+
+TABLE /. Inducibilify in Bacillus megaferium as Controlled by 
+ the Genetic Constitution of the Bacterium and of the Bacterio- 
+ phage * 
+
+Inducible Systems 
+
+Noninducible Systems 
+
+899[1+] 
+ M[l+] 
+ Mox[l+] 
+ 17[2][1+] 
+ 10[3] [1+] 
+
+M[1GT] 
+ Mox[lGT] 
+
+M[1PT] 
+ Mox[lPT] 
+
+lOfS] 
+ M[3] 
+ Mox[3] 
+ 91 B[3] 
+
+91 B[l+] 
+
+91 B[1GT] 
+ 91 B[1PT] 
+
+M[1GC] 
+ Mox[lGC] 
+ 91 B[1GC] 
+
+* From the results of lonesco (5, 6). 
+
+Thus a given phage may produce an inducible system in 
+ a given bacterial strain and a noninducible system in 
+ another. 
+
+When strains Mox and M were lysogenized with the 
+ phage produced by any of the noninducible lysogenic 
+ strains 91B[1 + ], 91B[1PT], 91B[1GT], only inducible 
+

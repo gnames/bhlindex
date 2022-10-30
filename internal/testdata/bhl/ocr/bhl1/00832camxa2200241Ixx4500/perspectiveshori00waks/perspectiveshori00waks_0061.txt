@@ -1,0 +1,41 @@
+Microbial Mutants 47 
+
+Let us return to quinic acid, which is a growth factor for 
+ certain Aerobacter mutants but not for any available E. 
+ coll mutants. The enzyme that catalyzes the oxidation of 
+ this compound to DHQ in Aerobacter has been extracted 
+ from the wild type by Mitsuhashi and has been called 
+ quinic dehydrogenase (23). It is specific for diphospho- 
+ pyridine nucleotide (DPN), in contrast to the correspond- 
+ ing enzyme that interconverts DHS and shikimic acid, al- 
+ ready noted to be TPN-specific. Quinic dehydrogenase is 
+ much more restricted in its distribution than are the two 
+ enzymes previously described; it could not be detected in 
+ extracts of wild-type E. coli or in various other microbial 
+ and plant extracts that did contain these other enzymes. 
+
+The enzymes concerned with phosphoshikimic acid and 
+ with compound Zl have not yet been investigated. The 
+ enzyme that converts prephenic acid to phenylpyruvic acid 
+ has been shown to be present in wild-type extract, absent 
+ from an extract of a mutant blocked in this reaction, and 
+ present in the expected amount in a mixture of the two 
+ extracts (10, 31). It has not been purified, but on structural 
+ grounds it seems probable that only a single enzyme would 
+ be required to catalyze the reaction. Finally, Rudman and 
+ Meister (27) have described a transaminase from E. coli 
+ that converts phenylpyruvic acid and several other a-keto 
+ acids to their corresponding a-amino acids; no mutant 
+ deficient in this enzyme has yet been recognized. 
+
+And now, what criteria shall we use to decide on the 
+ metabolic role of each of these compounds? Historically, 
+ the first criterion to be used with mutants, and the only 
+ one used for a number of years, was growth-factor activity. 
+ Accordingly, one was hesitant to accept as an intermediate 
+ a compound that could not support growth, or even one 
+ that did so slowly or only at excessive concentrations. 
+ There has been increasing evidence, however, that growth- 
+ factor activity is not a necessary condition for function as 
+ an essential intermediate. (This point is discussed later.) 
+

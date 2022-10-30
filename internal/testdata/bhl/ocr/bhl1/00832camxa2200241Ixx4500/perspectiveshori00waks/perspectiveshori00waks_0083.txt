@@ -1,0 +1,108 @@
+Bacterial Metabolism 
+
+69 
+
+ing knowledge on bacterial fermentations, was able to start 
+ with the thesis that "the primary mechanism found in 
+ muscle and yeast, the operation of which results in the 
+ formation of pyruvic acid, is found also in those bacteria 
+ which ferment carbohydrates." This thesis is no longer 
+ tenable, and no one should assume the existence of a 
+ glycolytic mechanism in a bacterium without clear and 
+ specific proof. 
+
+Gluconic Acid Pathway. The first example of a non- 
+ glycolytic pathway of glucose oxidation by bacteria was dis- 
+ covered long before glycolysis was known. 
+
+HCOH 
+ HOCH 0^-2H 
+ HCOH 
+ HC- 
+
+X 
+
+CH^OH 
+ GLUCOSE 
+
+HCOH 
+
+HOCH 
+
+HCOH 
+
+HC 
+
+CHgOH 
+
+H^D 
+
+P 
+
+C'-OH 
+ HCOH 
+ HOCH 
+ HCOH 
+ HCOH 
+ CH2OH 
+
+-2H 
+
+GLUCONOLACTONE GLUCONATE 
+
+■2H 
+
+-2H 
+
+C-OH 
+
+c=o 
+
+HOCH 
+ HCOH 
+
+HCOH 
+
+.0 
+
+C-OH 
+ HCOH 
+
+HOCH ^ 9 
+
+HCOH 
+
+CH2OH 
+ 5-KETOGLUCONATE 
+
+/P 
+ C-OH 
+
+C = 
+
+HOCH 
+
+HCOH 
+
+C=0 
+
+CH^OH 
+ 2- KETO GLUCONATE 
+
+6H2OH 
+
+2, 5" Dl KETO' 
+ GLUCONATE 
+
+FIGURE 1. Gluconic Acid Pathways 
+
+In 1886, Brown found that species of Acetobacter oxidize 
+ massive amounts of glucose to gluconic acid. Not long after- 
+ ward, Bertrand obtained evidence for the further oxidation 
+ of gluconate to 5-ketogluconate by Acetobacter xylinum. 
+ Recently Katznelson, Tannenbaum, and Tatum (13) 
+ studied glucose and gluconate oxidation by another species, 
+ Acetobacter melanogenum, which is characterized by for- 
+ mation of a brown water-soluble pigment. The investigators 
+ have provided convincing evidence that this organism 
+

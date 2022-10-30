@@ -1,0 +1,40 @@
+154 Perspecfives in Microbiology 
+
+susceptible cells (23, 30). The available evidence indicates 
+ that the compound inhibits the intracellular reproductive 
+ process. But there is as yet no indication of the means by 
+ which this is accomplished. To inhibit reproduction after 
+ a virus, or part of it, has entered a cell is not readily 
+ achieved. This objective has been realized with chemical 
+ substances in only a few instances, but these seem of suffi- 
+ cient importance to warrant further work in this field. 
+
+Mechanism of Virus Reproduction 
+
+Inhibition of virus reproduction by chemical substances 
+ might be achieved more readily if the mechanism were 
+ fully understood. Because this phenomenon is an intracel- 
+ lular process inseparable from the life of the cell, it has 
+ not been possible to distinguish clearly between the role 
+ of the virus and that of the cell. With bacteriophages, 
+ large strides have been made recently, and it now appears 
+ that the reproductive process involves a number of discrete 
+ steps. Current theory holds that phage particles do not 
+ enter bacterial cells as intact entities; that their nucleic 
+ acids and genetic determinants do gain entry; that certain 
+ components of the new particles are produced separately; 
+ and that after assembly into mature particles these leave 
+ the cell at the time of lysis (25, 26, 31, 40). This complex 
+ process can then be repeated in series. 
+
+With animal virus reproduction the present situation is 
+ far less advanced. There is no good answer to the simple 
+ question: do animal viruses multiply themselves, or are 
+ they reproduced by the infected cell? Quantitative and 
+ kinetic studies, as well as investigations with the electron 
+ microscope, have not excluded the possibility that the mul- 
+ tiplication of animal viruses may be formally similar to 
+ that of microbial species which multiply intracellularly. 
+ The rate of appearance of new virus particles after an ap- 
+ propriate latent or lag period appears to be logarithmic in 
+

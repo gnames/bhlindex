@@ -1,0 +1,41 @@
+MetapoietJc Infegrafions 21 
+
+process of lysogenization. 5. dysenteriae [P2] can be lyso- 
+ genized by phage P^, and double lysogenics are thus ob- 
+ tained. When phage P2 is added to lysogenic 5. dysenteriae 
+ [Pi], phage P2 is adsorbed, but it neither develops nor is 
+ converted into prophage. A lysogenic S.. dysenteriae [P^] 
+ infected with phage P2 survives and remains lysogenic P^. 
+ Thus the presence of prophage P^ blocks the development 
+ of P2 and its conversion into prophage (2). 
+
+Alferafions of BacferJal Mefabolhm 
+
+A lysogenic bacterium is modified in its ability to re- 
+ produce the homologous phages, to reproduce some heter- 
+ ologous phages, and to convert a phage into prophage. The 
+ responses of a lysogenic bacterium to phages are modified. 
+ In this last section we shall discuss cases in which the 
+ presence of prophage brings about modification of the 
+ bacterial metabolism and which are apparently not re- 
+ lated to any known event in the life cycle of bacterio- 
+ phage. 
+
+The first and classical example is the synthesis of a spe- 
+ cific toxin by Corynebacterium diphtheriae. Only lysogenic 
+ strains carrying prophage (3 are toxinogenic, and non- 
+ toxinogenic strains, when lysogenized with phage p be- 
+ come toxinogenic (3). When the prophage (3 is suppressed 
+ in a lysogenic-toxinogenic strain, the toxinogenic power 
+ is lost (4). Bacteria lysogenized with any phage y ^re not 
+ toxinogenic. Perhaps phages p and y are related, but what- 
+ ever the case may be, there is no cross immunity between 
+ them. The interesting point is that lysogenic types may 
+ be obtained which exhibit a combination of properties of 
+ lysogenics P and y; namely, immunity to y, as in the 
+ lysogenic y, and toxinogeny, as in lysogenic p (type 2 of 
+ Table II). Things happen as if a recombination had taken 
+ place between the genetic material of phage P and y (4). 
+ Apparently, toxinogeny is controlled not by prophage P 
+ as a whole but by a specific part of its genetic material, 
+

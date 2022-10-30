@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.0.0-RC1] - 2022-10-30 Sun
+
+- Add [#55] - refactor the directory structure using `internal` directory
+              to hide code not suitable for public use.
+
 ## [v0.13.2] - 2022-09-12 Mon
 
 - Add [#53] - classification ranks and ids in dump files.

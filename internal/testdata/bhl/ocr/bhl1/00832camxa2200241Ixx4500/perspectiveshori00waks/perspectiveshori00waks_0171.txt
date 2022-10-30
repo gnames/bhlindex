@@ -1,0 +1,41 @@
+Chemical Inblbifhn of Viruses 153 
+
+Virus disease is dependent on virus reproduction in the 
+ sense that, in the absence of reproduction, disease does not 
+ develop. Reproduction of a virus does not always lead to 
+ disease, however, and some viruses multiply extensively in 
+ certain tissues without causing demonstrable abnor- 
+ malities. There is some evidence that the relationship be- 
+ tween the extent of reproduction and the amount of disease 
+ is quantitative. With influenza virus or pneumonia virus 
+ infections of the respiratory tract in mice, it is feasible to 
+ compute how much pneumonia will develop by direct 
+ calculation from the concentration of virus in the lung and 
+ the time after inoculation (22, 29). 
+
+If this relationship has wide validity, a possible means 
+ for the control of virus disease opens before us. In theory, 
+ inhibition of virus reproduction might be expected to re- 
+ sult in less extensive disease. This conjecture has not yet 
+ been tested adequately. But the evidence so far obtained 
+ with one respiratory virus infection in mice, that is, 
+ pneumonia virus of mice, is in accord with the idea. When 
+ a chemical substance, in this case a bacterial polysaccharide, 
+ is introduced into the respiratory tract, the greater the de- 
+ gree of inhibition in virus reproduction, the smaller is the 
+ amount of pneumonia that develops (23). Moreover, the 
+ quantitative relationship between virus concentration, ex- 
+ tent of lung lesion, and time is identical with that found 
+ in the uninhibited virus infection (29). The amount of 
+ pneumonia that will develop can be computed from the 
+ other two variables. 
+
+At first glance, such a result appears to be similar in 
+ many features to that found when an antimicrobial agent 
+ is employed in a bacterial infection. Bacterial growth is re- 
+ tarded or stopped, and the disease is modified. In the ex- 
+ ample just described there is, however, a distinguishing 
+ feature that may be important. The substance used to in- 
+ hibit virus reproduction has no effect upon extracellular 
+ virus particles and does not prevent their adsorption by 
+

@@ -1,0 +1,40 @@
+BacferJal Mefabolhm 79 
+
+As an example of the changing concepts of the chemistry 
+ of bacterial fermentations, I can tell you something about 
+ the formation of butyric acid. Early work on the origin 
+ of butyrate indicated that it is formed from a two-carbon 
+ compound usually derived from pyruvate. The identity 
+ of the two-carbon compound was long a matter of specula- 
+ tion. Acetaldehyde was suggested as a possibility. Several 
+ persons proposed that acetaldehyde might undergo an 
+ aldol condensation to give acetaldol, which might re- 
+ arrange to yield butyric acid. But no convincing evidence 
+ could be obtained for this theory. Then in 1943, Koepsell 
+ and Johnson found that extracts of Clostridium butylicum 
+ convert pyruvate to acetyl phosphate rather than to acetal- 
+ dehyde. This suggested that acetyl phosphate, a very re- 
+ active compound first discovered by Lipmann, might be 
+ the two-carbon precursor of butyrate. Support for this 
+ idea was obtained by Stadtman (23), who showed that 
+ cell-free extracts of Clostridium kluyveri convert acetyl 
+ phosphate and acetate more or less quantitatively to buty- 
+ rate in the presence of a suitable reducing agent. Later 
+ work based on the discovery of coenzyme A by Lipmann, 
+ and of acetyl CoA by Lynen, has shown that acetyl CoA 
+ rather than acetyl phosphate is the immediate precursor of 
+ the four carbon derivatives that are ultimately converted 
+ to butyrate. 
+
+The reactions now known to be involved in the con- 
+ version of ethanol and acetate to butyrate by C. kluyveri 
+ are shown in Figure 7. The ethanol is oxidized to acetal- 
+ dehyde and then to acetyl CoA. The carbohydrate-ferment- 
+ ing Clostridia do not use ethanol or acetaldehyde, but form 
+ acetyl CoA directly from pyruvate. Two molecules of acetyl 
+ CoA are then condensed to acetoacetyl CoA which is con- 
+ verted by two reduction steps and a dehydration step to 
+ butyryl CoA. The latter reacts with acetate to give butyrate 
+ and at the same time regenerates a molecule of acetyl 
+ CoA, which again enters the cycle. 
+

@@ -1,0 +1,42 @@
+44 Perspectives in Microbiology 
+
+This is as far back as we have been able to penetrate 
+ by the method of searching for growth factors that could 
+ replace the aromatic supplement. At the other end of the 
+ chain, beyond shikimic acid, we have encountered three 
+ accumulated compounds that are completely devoid of 
+ nutritional activity for any mutant. One of these is found 
+ in filtrates of all mutants that accumulate shikimic acid, 
+ and on acid hydrolysis it was found to yield shikimic acid 
+ (11). It has been identified by Weiss as 5-phosphoshikimic 
+ acid. The second compound is accumulated by mutants 
+ that are blocked still later, and it too ^vas found to yield 
+ shikimic acid on acid hydrolysis (11). This compound, 
+ provisionally termed Zl, is as yet unidentified. 
+
+The third inactive compound, prephenic acid (PPA), 
+ is accumulated by mutants that require phenylalanine or 
+ phenylpyruvic acid for growth (7, 18) and also by some that 
+ require tyrosine or the corresponding a-keto acid. It has 
+ been isolated and identified by Weiss and Gilvarg (31). 
+ PPA is a nonaromatic compound, and it has particular 
+ biochemical interest because it is the substrate of the actual 
+ aromatization step in phenylalanine biosynthesis, losing 
+ both CO2 and water to yield phenylpyruvic acid. 
+
+I should now like to describe some studies on the en- 
+ zymes linking certain of these compounds. These enzymes 
+ can easily be obtained in cell-free solution after disrupting 
+ wild-type E. coli cells, either by grinding with glass powder 
+ or by sonic oscillation. 
+
+The enzyme of this series that has been most extensively 
+ studied, from a physiological point of view, is 5-dehydro- 
+ quinase, investigated by Mitsuhashi (22). It removes a 
+ molecule of water from DHQ to form DHS, and its ac- 
+ tivity is readily measured by virtue of the fact that DHS 
+ has a high absorption peak at 234 mfi, whereas DHQ does 
+ not absorb light significantly at this wavelength. Activ- 
+ ity is strictly proportional to enzyme concentration. The 
+ reaction is reversible, with the equilibrium constant 
+

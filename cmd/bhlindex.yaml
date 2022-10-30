@@ -1,0 +1,53 @@
+# BHLdir points to a base directory of BHL texts filetree.
+# Default is an empty string.
+#
+# BHLdir:
+
+# Jobs is the number of parallel processes running for the name-finding.
+# Default is 4
+#
+# Jobs: 4
+
+# PgHost is the IP or a name of a computer running PostgreSQL database.
+# Default is "0.0.0.0"
+#
+# PgHost: 0.0.0.0
+
+# PgUser is the username with read/write access to bhlindex database.
+# Default is "postgres"
+#
+# PgUser: postgres
+
+# PgPass is the password for PgUser
+# Default is "postgres"
+#
+# PgPass: postgres
+
+# PgDatabase is the name of a database for BHLindex.
+# Default is "bhlindex"
+#
+# PgDatabase: bhlindex
+
+###### OPTIONAL PARAMETERS ############
+
+# OutputFormat is the format of the detected names dump.
+# Can take values of:
+# csv - comma-separated values
+# tsv - tab-separated values
+# json - JSON format (one JSON-encoded line per record)
+#
+#	OutputFormat: csv
+
+# OutputDir is the directory where to place output dump files.
+# Default is the current directory
+#
+# OutputDir: .
+
+# VerifierURL points to a remote GNverifier service.
+#
+# VerifierURL: https://verifier.globalnames.org/api/v1
+
+# WithoutConfirm can be set to true to avoid confirmation dialogs before
+# destructive processes.
+#
+# WithoutConfirm: false

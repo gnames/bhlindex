@@ -1,4 +1,6 @@
-# Biodiversity Heritage Library Scientific Names Index
+# Biodiversity Heritage Library Scientific Names Index (BHLindex)
+
+[![Doc Status][doc-img]][doc]
 
 Creates an index of scientific names occurring in the collection of literature
 in Biodiversity Heritage Library
@@ -95,14 +97,31 @@ bhlindec verify -y
 
 Dump data into tab-separated files
 
-```bash
-bhlindex dump
-# to compress and save on disk
-bhlindex dump | gzip > bhlindex-dump.csv.gz
+Three files will be created: `pages`, `names`, `occurrences`. They
+will have extension accodring to selected output format (CSV is the default).
+If it is required to filter verified results by data-sources, their list and
+corresponding IDs can be found at [gnverifier sources page]
 
-# -f overrides configuration file settings for output format
-bhlindex dump -f tsv | gzip > bhlindex-dump.tsv.gz
-bhlindex dump -f json | gzip > bhlindex-dump.json.gz
+Uncompressed dump files take more than 30GB of space.
+
+```bash
+# Dump files to a designated directory.
+bhlindex dump -d ~/bhlindex-dump
+# or
+bhlindex dump --dir ~/bhlindex-dump
+
+# Dump records verified to particular data-sources of `gnverifier`.
+# In this case verified names are filtered by `The Catalogue of Life` (ID=1)
+# and `The Encyclopedia of Life` (ID=12).
+bhlindex dump -d ~/bhlindex-dump -s 1,12
+or
+bhlindex dump --dir ~/bhlindex-dump --sources 1,12
+
+# Dump using JSON or TSV formats.
+bhlindex dump -f tsv -d ~/bhlindex-dump
+bhlindex dump -f json -d ~/bhlindex-dump
+#or
+bhlindex dump --format tsv --dir ~/bhlindex-dump
 ```
 
 To run all commands together
@@ -110,38 +129,13 @@ To run all commands together
 ```bash
 bhlindex find -y && \
   bhlindex verify -y && \
-  bhlindex dump | gzip > bhlindex-dump.csv.gz
+  bhlindex dump -d output-dir
 ```
-
-Serve detected items, pages, verified names, names occurrences via RESTful
-interface (default port is 8080).
-
-```bash
-bhlindex rest
-# using different port
-bhlindex rest -p 8000
-```
-
-## RESTful API endpoints
-
-- `/api/v1/items`
-- `/api/v1/pages`
-- `/api/v1/names`
-- `/api/v1/occurrences`
-
-| Query                                         | Usage                                                                 |
-| --------------------------------------------- | --------------------------------------------------------------------- |
-| items?offset_id=11&limit=100                  | get items with ids 11-110                                             |
-| pages?offset_id=11&limit=10                   | get pages of items with ids 11-20                                     |
-| names?offset_id=1&limit=10                    | get verified names with ids 1-10                                      |
-| names?offset_id=1&limit=10&data_sources=1     | get verified names with ids 1-10 verified to the "Catalogue of Life"  |
-| occurrences?offset=21&limit=10                | get detected names with ids 21-30                                     |
-| occurrences?offset=21&limit=10&data_sources=1 | get detected names with ids 21-30 verified to the "Catalogue of Life" |
 
 ### Testing
 
 Testing requires PostgreSQL database `bhlindex_test`.
-Testing will delete all data from the database.
+Testing will delete all data from the test database.
 
 ```bash
 go test
@@ -150,4 +144,5 @@ go test
 [bhl-ocr]: http://opendata.globalnames.org/dumps/
 [bhlindex-latest]: https://github.com/gnames/bhlindex/releases/latest
 [bhl-test]: https://github.com/gnames/bhlindex/tree/master/testdata/bhl/ocr
-[readme]: https://github.com/gnames/bhlindex/tree/master/bhlindex
+[doc-img]: https://godoc.org/github.com/gnames/bhlindex?status.png
+[doc]: https://godoc.org/github.com/gnames/bhlindex

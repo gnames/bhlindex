@@ -1,0 +1,39 @@
+94 Perspectives in Microbiology 
+
+ess, generally are found in abundant yield only when the 
+ concentration of the substrate exceeds a relatively high 
+ minimum level. The best explanation of this appears to be 
+ that the presence of excess substrate maintains the forma- 
+ tion of intermediate products at a rate faster than they can 
+ be transformed; hence they accumulate. Elsewhere, I have 
+ described this as "shunt metabolism." The essential result 
+ is a higher yield of a particular product per unit of sub- 
+ strate consumed, up to a certain maximum. Although it 
+ has been conventional to cultivate fungi in media whose 
+ substrate content is 1 to 5 per cent or more, especially 
+ where accumulation of intermediates is sought, it is not 
+ often that bacteria are cultivated in media containing in 
+ excess of 0.5 to 1 per cent of a single carbon source of any 
+ type. Especially in aerobic oxidation one might expect, if 
+ the bacterium is furnished a high substrate concentration, 
+ to find products of incomplete oxidation accumulating. 
+ Their nature would afford good clues as to the mode of 
+ degradation of the substrate, and thereby expedite the solu- 
+ tion of the problem, which otherwise might be difficult 
+ of access in media of low substrate concentration. An out- 
+ standing illustration of this principle exists in the discov- 
+ ery that numerous species of Pseudomonas and Phytomonas 
+ produce high yields of various hexonic and pentonic acids 
+ when the carbohydrate content of the medium is high (9, 
+ 11). That this phenomenon is not limited to formation 
+ of sugar acids is evidenced by the accumulation of 20 
+ per cent molar yield of a-ketoglutaric acid from 5 per cent 
+ glucose by a strain of Pseudomonas fluorescens (10). Un- 
+ doubtedly the same principle would apply, and awaits ex- 
+ ploitation, with respect to intermediate oxidation prod- 
+ ucts of substrates other than sugars. It is already known 
+ that various strains of P. fluorescens, when furnished ade- 
+ quate ethanol as the substrate, carry out an acetification 
+ process indistinguishable from that formerly thought re- 
+ stricted to the genus Acetobacter (13). 
+

@@ -1,0 +1,41 @@
+14 Perspecfives in Microbiology 
+
+prophage. If lysogeny were just the power to produce 
+ phage, things would be relatively simple. Instead, they are 
+ relatively complicated — though more fascinating — because 
+ the prophage not only confers on the microbe the power 
+ to manufacture phage but also may modify some of the 
+ bacterial properties. The prophage modifies the response 
+ of the microbe to infection by homologous and sometimes 
+ heterologous phages. And sometimes the prophage may 
+ endow the bacterium with properties that are, so far as 
+ we know, without any relation to phage development 
+ proper. 
+
+Before discussing metapoietic integrations, it may be 
+ well to summarize the essentials of lysogeny. The life cycle 
+ of a temperate bacteriophage comprises three main phases: 
+ first, the infectious phase, during which the phage is in 
+ the form of the mature phage particle; second, the patho- 
+ genic, vegetative phase, during which the specific struc- 
+ tures of the phage are produced and finally organized; 
+ third, the lysogenic phase, during which the power to pro- 
+ duce phage is perpetuated by the lysogenic system. During 
+ these three phases the genetic material of the bacterio- 
+ phage, namely, the germ of the phage particle, the gono- 
+ phage of the vegetative phase, and the prophage of the 
+ lysogenic phase, must necessarily be the same in so far as 
+ main architecture or organization is concerned. But the 
+ germ is inert; the gonophage is multiplying rapidly, and 
+ phage proteins are produced as a result of its activity; the 
+ prophage is apparently just replicating harmoniously and 
+ synchronously with the bacterium, as if it were a normal 
+ bacterial gene. 
+
+A number of experimental data have led to the conclu- 
+ sion that prophage is the genetic material of the phage as 
+ modified by its attachment to a specific locus of a bacterial 
+ chromosome. In turn, the prophage modifies the proper- 
+ ties of the bacterium as if it exerted an effect on bacterial 
+ genes. Thus the properties of a lysogenic bacterium appear 
+

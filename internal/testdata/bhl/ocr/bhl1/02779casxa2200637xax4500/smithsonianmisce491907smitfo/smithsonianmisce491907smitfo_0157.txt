@@ -1,0 +1,33 @@
+THE ATTAINMENT OF VERY LOW TEMPERATURES 7 
+
+the air liquefied. To determine the temperature gradient in the coil 
+ the ends of thermo-electric junctions, carefully insulated, were placed 
+ at the top of the coil, near the valve, and at two points equi-distant 
+ from the end and well within the coil. Copper-constantan junctions 
+ were used; the potential difference between each of the junctions in 
+ the coil and a junction immersed in ice was measured by the usual 
+ potentiometer method ; the results were interpreted with the aid of 
+
++ 20 
+
+-20 -40 -60 -80 -100 -120 -140 -160 -180 
+ Fig. 4- — Temperalure gradients. 
+
+-200 
+
+comparative measurements of the electromotive force at temperatures 
+ corresponding to — 190°, — 78°, and 100° on the hydrogen scale.^ 
+
+The exact arrangement of the apparatus is shown in figure 3. The 
+ regenerator coil A was completely enclosed within the vacuum vessel 
+ B, the space between the coil and the glass wall of the vessel being 
+ carefully filled with flannel, which was wound in thin strips round the 
+ former. The brass tube C surrounding the valve rod D, the supply 
+ pipe G from the compresser, and the tube H through which the ex- 
+ panded air escaped, were soldered into a brass cap F which was con- 
+ nected with the vacuum vessel bv means of the rubber sleeve K. The 
+
+'Bradley and Hale (loc. cit.), working independently, obtained similar results 
+ for a Hampson machine with two coaxial coils. They used platinum resistance 
+ thermometers inserted between the coils. 
+

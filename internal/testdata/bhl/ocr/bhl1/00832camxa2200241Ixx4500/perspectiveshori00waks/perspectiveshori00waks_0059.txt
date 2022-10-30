@@ -1,0 +1,41 @@
+Microbial Mufanfs 4S 
+
+(DHS/DHQ=15) heavily in favor of DHS. The activity 
+ of a wild-type extract is approximately that required to 
+ account for the rate of aromatic biosynthesis implied by 
+ the observed growth rate of the culture. 
+
+Two aspects of this study are particularly relevant to 
+ our interests here. The first is the evidence that the reac- 
+ tion involves a single enzymatic step. Since the reaction 
+ is a dehydration, resembling the reactions catalyzed by 
+ fumarase and aconitase, it would be expected, like the 
+ latter two reactions, to involve a single enzyme; the only 
+ plausible alternative would seem to be a series of reactions 
+ involving interaction with a cofactor (for example, con- 
+ jugation or change in level of oxidation), followed by 
+ dehydration and then reversal of the interaction with the 
+ cofactor. But no cofactor requirement, organic or inor- 
+ ganic, could be demonstrated. The enzyme has been puri- 
+ fied about tenfold by treatment with MnCl2, (NH4)2S04, 
+ and calcium phosphate gel. The product thus obtained, 
+ even after treatment with an anion-exchange resin to re- 
+ move bound cofactors, was active without cofactor addi- 
+ tion, and was equally active in tris-(hydroxymethyl)-amino- 
+ methane hydrochloride buffer or in potassium phosphate 
+ buffer. Hence, even though 5-dehydroquinase is still far 
+ from crystalline, its lack of a demonstrable cofactor re- 
+ quirement furnishes strong evidence that the reaction is 
+ mediated by a single enzyme. 
+
+The other aspect of this work that I should like to men- 
+ tion is that even though dehydroquinase activity is regu- 
+ larly demonstrable in extracts of the wild type, no activity 
+ could be demonstrated in extracts of mutants that were 
+ blocked in this reaction. The sensitivity of the assay was 
+ such that one would have detected the enzyme in a con- 
+ centration 1/300 that of the wild type. Furthermore, mix- 
+ tures of wild-type and mutant extracts showed precisely 
+ the same activity as the wild-type extract alone. This find- 
+ ing allows one to reject the possibility that the inactivity 
+

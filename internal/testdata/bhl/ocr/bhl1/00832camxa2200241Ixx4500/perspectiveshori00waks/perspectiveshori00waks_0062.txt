@@ -1,0 +1,45 @@
+48 Perspectives in Microbiology 
+
+Furthermore, it is not a sufficient condition. For example, 
+ para-nitrobenzoic acid can effectively replace para-amino- 
+ benzoic acid as a growth factor for mutants of Neurospora 
+ (29) or E. coli (10), but only because the cells can non- 
+ specifically reduce nitro groups to amino groups. In such 
+ a case, even if one used isotopes to show that growth factor 
+ A was incorporated into cell constituent B, one would have 
+ demonstrated only that A can serve as a precursor of B, 
+ but not that A is an essential precursor of B, that is, an 
+ obligatory intermediate in the synthesis of B by the wild- 
+ type organism growing on a minimal medium. 
+
+Accumulation of a compound by an auxotrophic mutant 
+ has seemed to offer more significant evidence that the com- 
+ pound is a true intermediate. But this property, too, is 
+ clearly not a necessary condition.^ Furthermore, it is not 
+ a sufficient one. Some accumulated compounds are unstable 
+ and give rise, for example, to colored products that are 
+ very unlikely to be participants in biosynthesis (3, 21); and 
+ some accumulated intermediates appear to become con- 
+ jugated, in a process akin to what in mammalian biochem- 
+ istry is called detoxification (33). 
+
+We come, then, to enzymatic criteria. If a compound has 
+ nutritional activity, it must either be, or become spontane- 
+ ously converted to, the substrate of some enzyme in the 
+ cell. Similarly, if a compound is accumulated, it must 
+ either be the product of some enzyme or be spontaneously 
+ formed from such a product. In consequence, the demon- 
+ stration of such an enzyme does not alone, any more than 
+
+2 For example, when an intermediate is common to several paths (as 
+ with glutamic acid), a block in its entrance to one of those paths would 
+ not be expected to cause its accumulation. Even with compounds re- 
+ stricted to a single path, the level of accumulation reached varies widely 
+ from one compound to another and also depends strikingly on the con- 
+ ditions of growth; it is sometimes not detectable. In general, accumulation 
+ of intermediates by mutants has been used by students of intermediary 
+ metabolism simply as a generous gift of the gods. The mechanisms 
+ responsible for such accumulation and, even more important, for its 
+ absence in the wild type constitute a major problem for future investiga- 
+ tion. 
+

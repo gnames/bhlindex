@@ -1,0 +1,40 @@
+Microbial Mufanfs 53 
+
+for an accessibility barrier, the indirect evidence they fur- 
+ nish is strong. Studies on this aspect of cell physiology are 
+ still in a primitive state; there is reason to hope that in in- 
+ vestigation of this important area, mutants with altered ac- 
+ cessibility will be of great help, just as auxotrophic mutants 
+ have been in analyzing biosynthetic paths. To point out 
+ how complex accessibility problems may be, I should like 
+ to note that the barrier to DHQ just described has been 
+ observed on the usual medium, in which glucose is the car- 
+ bon source. If the glucose is replaced by xylose or succinate 
+ the barrier disappears, and the primary auxotroph and its 
+ secondary derivative then respond equally well to DHQ; 
+ but under these conditions, addition of a trace of glucose 
+ restores the barrier (12)! 
+
+To bring the aromatic story up to date, I should like to 
+ mention that a fusion of enzymatic and nutritional studies 
+ with mutants has made it possible to trace this path farther 
+ back than we were able to go by nutritional studies alone. 
+ In this work, my colleague, Edwin Kalan, has recently 
+ shown that mutants blocked before DHQ accumulate a 
+ precursor, "compound V." This substance, though without 
+ demonstrable growth-factor activity, could be recognized 
+ through its enzymatic conversion to DHS by extracts of 
+ mutants blocked after DHS. Furthermore, in collabora- 
+ tion with David Sprinson of Columbia University, he 
+ showed that these extracts also formed DHS from various 
+ phosphorylated carbohydrates. The whole early part of the 
+ path of aromatic biosynthesis is therefore now available for 
+ enzymatic analysis. 
+
+Finally, I should like to point out that the criteria pro- 
+ posed for recognizing an essential intermediate are not re- 
+ stricted to biosynthetic reactions. An extension to degrada- 
+ tive reactions is useful, for though many of these reactions 
+ have been exhaustively studied, it has not been possible, in 
+ general, to assess definitively their physiological importance 
+

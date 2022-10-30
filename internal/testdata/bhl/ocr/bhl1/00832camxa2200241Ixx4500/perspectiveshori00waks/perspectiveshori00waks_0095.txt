@@ -1,0 +1,41 @@
+BacferJal Mefabollsm 81 
+
+coenzyme A substrate compounds have been found to be 
+ essential in other reactions catalyzed by bacteria. For ex- 
+ ample, Whitely (28) has shown that succinyl CoA and pro- 
+ pionyl CoA are involved in the formation of propionate 
+ by the propionic acid bacteria, and Hayaishi (9) has found 
+ that malonyl CoA is an intermediate in the conversion of 
+ malonate to acetate by Pseudomonas, 
+
+Though our knowledge of the enzymatic reactions in- 
+ volved in butyrate synthesis is fairly detailed, it must be 
+ admitted that our understanding of the role of this process 
+ in the metabolism of C. kluyveri is still very deficient. We 
+ do not know, for example, what benefit the organism de- 
+ rives from the conversion of alcohol and acetate to buty- 
+ rate, since the useful energy derived from the oxidation 
+ of the alcohol appears to be consumed again in the syn- 
+ thesis of butyrate, without leaving any energy available 
+ for other synthetic reactions. 
+
+Formation of Energy-Rich Compounds 
+
+Another essential aspect of bacterial metabolism is the 
+ nature of the chemical mechanisms by which energy is 
+ generated and made available for synthetic purposes in 
+ the cell. We owe particularly to Lipmann the idea that 
+ compounds containing the so-called energy-rich phosphate 
+ bond represent a common currency for energy exchange 
+ in living organisms. More recently, as a result of the work 
+ of Lipmann, Lynen, and others, various thioesters, like 
+ acetyl CoA, also have been shown to play a prominent 
+ role in energy transfer. 
+
+The formation of such energy-rich compounds has been 
+ studied extensively in animals and yeast, and it has been 
+ found that they are usually formed in two ways, either by 
+ the oxidation of substrate molecules such as aldehydes and 
+ a-keto acids, or as a result of the transfer of electrons by 
+ way of flavoproteins and the cytochrome system to oxygen. 
+

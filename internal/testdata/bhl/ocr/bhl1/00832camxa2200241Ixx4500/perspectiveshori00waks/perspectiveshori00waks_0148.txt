@@ -1,0 +1,51 @@
+730 Perspecfhes in Microbiology 
+
+hydroxy-21-acetoxy-5-pregnene-20-one (XXVIII) can be 
+ oxidized by Corynebacterium to a ketone, desoxycorti- 
+ costerone (XIV), as shown in the equation. 
+
+CHjOAc CHjOH 
+
+I I 
+
+c=o c=o 
+
+Corynebacterium ^ 
+
+XXVIII XIV 
+
+3 ^-Hydroxy-21-acetoxy- Desoxycorticosterone 
+
+5-pregnene-20-one 
+
+This work has been repeated and extended to other sub- 
+ strates and other microorganisms by several different in- 
+ vestigators, including Ercoli, Arnaudi, Molina, Turfitt, 
+ Welsch and Huesghem, Zimmerman, Hughes and Schmitt 
+ (36), and by Perlman et al. (24). 
+
+REDUCTION REACTIONS 
+
+Ring Double Bonds. While the bio-oxygenation of com- 
+ pounds XI and XIII by Rhizopus produces excellent yields 
+ of XII and XV, a reduction of the AMouble bond occurs 
+ concomitantly to a minor degree. Thus, from progesterone 
+ (XI) the 5a-stereoisomer (XXVIII) is formed, whereas 
+ from Reichstein's compound S (XIII) the 5p-isomer 
+
+(XXIX) is obtained (27, 30). Perlman, Titus, and Fried 
+ (25) have shown that a 5P-stereoisomeric derivative 
+
+(XXX) is formed concomitantly with 1 6a-hydroxylation 
+ by fermentation of progesterone (XI) with an actino- 
+ mycete. 
+
+The A^^-double bond of 1 6-dehydroprogesterone (XXXI) 
+ is specifically reduced in major quantities by Rhizopus 
+ without altering the AMouble bond, and the configura- 
+ tion of the side chain in the resulting compound (XXXII) 
+ is the opposite from that occurring naturally (18). An 11a- 
+ hydroxyl group is also introduced as the result of this fer- 
+ mentation. Reduction of the AMouble bond by yeast was 
+ accomplished as early as 1937 (14). 
+

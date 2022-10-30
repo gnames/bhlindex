@@ -1,0 +1,59 @@
+Bacterial Mefabolism 
+
+73 
+
+The existence of an unusual mechanism of glucose fer- 
+ mentation in Leuconostoc was clearly established by the 
+ tracer experiments of Gunsalus and Gibbs (8). The fer- 
+ mentation of glucose-1-C^^ and glucose-3, 4-C^^ showed 
+ (Figure 4) that the carbon dioxide originates from carbon 
+ atom 1 of glucose, the methyl group of ethanol from carbon 
+ 2, and the carbinol group from carbon 3. The lactate car- 
+
+I 
+
+2 
+ 3 
+
+4 
+
+5 
+ 6 
+
+C'-6LUC0SE LEUCONOSTOC YEAST 
+
+•CHO 'COg 'CHa 
+
+CHOH CHs CH2OH 
+
+°CHOH ^ "CHaOH XOz 
+
+°CHOH "COOH °C02 
+
+CHOH CHOH CH2OH 
+
+I I I 
+
+CH2OH CH3 CH3 
+
+FIGURE 4. Glucose Fermentation by Leuconostoc, after Gunsalus and 
+
+Gibbs (7) 
+
+bons, starting with the carboxyl group, are derived from 
+ glucose carbon atoms 4, 5, and 6. These results showed the 
+ expected lack of mixing of the carbon from the two ends of 
+ the glucose molecule, and also established an unusual origin 
+ for the carbon dioxide and ethanol. In alcoholic fermenta- 
+ tion by yeast, carbon dioxide is derived from carbons 3 
+ and 4 of glucose, and ethanol comes from carbons 1, 2, 5, 
+ and 6. 
+
+The experiments of DeMoss (2) with cell-free extracts of 
+ Leuconostoc provide additional evidence of a new mech- 
+ anism. These investigators found that the enzymes aldolase 
+ and triose phosphate isomerase, which are essential to the 
+ glycolytic mechanism, are not present in these bacteria. The 
+ details of the mechanism of glucose breakdown by Leu- 
+ conostoc have not yet been worked out, but there is con- 
+

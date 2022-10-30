@@ -1,0 +1,52 @@
+2 TJIE ATTAINMENT OF VERY LOW TEMPERATURES 
+
+duced by a Hampson machine {loc. cit., p. 13), I have certainly over- 
+ estimated the " loss due to heat absorption by liquefier." This is put 
+ down as equivalent to 100 gms. of liquid per half-hour and from ex- 
+ periments with a Hampson machine fitted with a vacuum vessel sur- 
+ rounding the regenerator coil, so as to reduce the heat-absorption to 
+ an almost negligible quantity, it appears that this amount is more than 
+ twice as large as it should be. The theoretical yield of liquid air is 
+ probably nearer 7.5 per cent, for the conditions investigated, or 0.045 
+ per cent, per atmosphere pressure. 
+
+The formula given on page 14 of the same paper indicates that the 
+ yield of liquid should be about 0.06 per cent, per atmosphere, a result 
+ which is also too high, and this is due to the fact that the value k, 
+ which represents the Joule-Thomson effect in the equation, is not, in 
+ all probability, independent of the pressure. 
+
+I had intended to investigate the influence on the efficiency of the 
+ apparatus of the volume of air flowing through it, and of the initial 
+ pressure, temperature, etc. Since I commenced these experiments, 
+ however, Messrs. Bradley and Rowe (Physical Review, XIX., pp. 330 
+ and 387) have carried out an investigation on these lines with a lique- 
+ fier of the Hampson type, and as their work has been carried out in 
+ a most careful manner it is unnecessary for me to say more than that 
+ my own results are in complete agreement with theirs. The greater 
+ part of my work, however, refers to the relative behaviour of liquefiers 
+ of different construction. 
+
+HI. The Efficiency of the Regenerator Coil in Self-Intensive 
+
+Liquefiers. 
+
+In the various forms of my apparatus which I have described in my 
+ former communication to the Smithsonian Institution, the hydrogen has 
+ been cooled to the temperature of liquid air boiling in z'actio before en- 
+ tering the regenerator coil. The form and dimensions of the latter were 
+ determined solely from considerations based on experiments with the 
+ air liquefier, and it must be considered that my success with my first 
+ hydrogen liquefier was largely due to good fortune. In this machine 
+ the regenerator coil was made of copper pipe, 2 mm. inside and 3.5 
+ mm. outside, wound as closely as possible in flat spirals to form a cylin- 
+ der 180 mm. long and 50 mms. in diameter around a brass tube, which 
+ supported the expansion valve at its lower end. 
+
+In a second liquefier, which was built for Professor Anschiitz of 
+ Bonn, by Brins Oxygen Company, the regenerator coil was of the 
+ same dimensions, but was constructed differently. It consisted of two 
+ copper tubes, of the same diameter, wound together, so that the cylin- 
+ der, so formed, consisted ultimately of two coaxial coils which were 
+ connected in parallel, with the coil in the liquid air chamber above. 
+

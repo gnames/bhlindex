@@ -1,0 +1,42 @@
+52 PerspecfJves In Microbiology 
+
+DHS, and this compound has been found to inhibit com- 
+ petitively the utilization of its own product, shikimic acid 
+ (6). But this is probably a special case; I suspect that in- 
+ activity of an externally added substrate is more frequently 
+ based on a permeability problem, or, more generally speak- 
+ ing, on inaccessibility of the compound to its enzyme with- 
+ in the cell. Since this explanation for inactivity, when 
+ offered by a biochemist, is generally shrouded with apolo- 
+ gies for its ad hoc character, I should like to refer briefly to 
+ some recent findings in the aromatic series that offer more 
+ positive support for this view. 
+
+These findings are based on the behavior of an Aero- 
+ hacter mutant blocked before DHQ. This strain shows a 
+ rather slow response to shikimic acid or DHS, and an even 
+ slower, barely detectable response to DHQ. But from this 
+ auxotroph one can select a secondary mutant that grows 
+ rapidly on DHQ; and this strain is then found to grow 
+ faster on DHQ than on DHS or shikimic acid, even in high 
+ concentrations (12). The enzyme studies described have 
+ convinced us, however, that (a) DHQ is an obligatory inter- 
+ mediate in the wild type growing on glucose, and (b) in 
+ functioning as such an intermediate (or as a growth factor 
+ in an auxotroph), it must be transformed into DHS. 
+ Furthermore, the enzyme that effects the transformation of 
+ DHQ to DHS is found in just as high a concentration in 
+ the primary auxotroph as in the wild type (24), even though 
+ the auxotroph can hardly grow on DHQ. 
+
+We are therefore forced to conclude that in the primary 
+ auxotroph, externally added DHQ cannot easily get to its 
+ enzyme, and in the secondary mutant this barrier has been 
+ eliminated. Furthermore, since this secondary mutant 
+ grows faster on DHQ than on its product, DHS, it seems 
+ clear that in this strain a partial accessibility barrier is still 
+ present for externally added DHS, in contrast to the DHS 
+ formed endogenously from added DHQ. 
+
+Although these findings do not constitute direct evidence 
+

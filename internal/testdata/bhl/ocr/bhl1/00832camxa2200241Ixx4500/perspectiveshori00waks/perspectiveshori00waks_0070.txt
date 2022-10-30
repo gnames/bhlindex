@@ -1,0 +1,39 @@
+56 Perspecfives in Microbiology 
+
+the most direct evidence so far is furnished by the findings 
+ of Maas (20) and of Horowitz (16), who have shown that 
+ some mutants produce a qualitatively altered enzyme — one 
+ that performs the same reaction as the normal enzyme, but 
+ is much more sensitive to heat denaturation. With respect 
+ to the amount of the corresponding enzyme (or rather of 
+ its activity), we have shown with Mitsuhashi that in a group 
+ of aromatic auxotrophs the incompleteness of the block, as 
+ inferred from growth requirements (5), is directly related 
+ to the amount of enzyme (5-dehydroquinase) extractable 
+ from the cell (24). 
+
+I have not touched on the deeper problems raised by the 
+ one-gene-one-enzyme hypothesis: for example, how in some 
+ cases mutations at different loci block the same reaction; 
+ how mutations of modifier genes can restore a blocked re- 
+ action; whether all genes have the same kind of relation to 
+ protein synthesis as the genes that are altered in auxo- 
+ trophic mutants; how directly or indirectly, and by what 
+ mechanisms, the structural specificity of a gene is trans- 
+ lated into terms of structure and amount of an enzyme; 
+ how these mechanisms interact with inductive ("adaptive") 
+ environmental effects on enzyme formation; whether the 
+ loss of activity of an enzyme in a mutant might be a special 
+ case of formation of an altered protein — one so drastically 
+ altered as to be no longer recognizable as an enzyme. In a 
+ sense, it is no longer profitable to argue about the validity 
+ of the one-gene-one-enzyme theory; we have all come to 
+ accept, consciously or unconsciously, the idea of a close con- 
+ nection between individual genes and individual enzymes. 
+ The problem now is that of analyzing the detailed mechan- 
+ isms underlying this connection; and this genetic problem 
+ merges into other disciplines. These include physiology 
+ (for example, study of the environmental factors that induce 
+ or inhibit enzyme formation) and biochemistry (for ex- 
+ ample, study of protein synthesis and nucleic acid function). 
+

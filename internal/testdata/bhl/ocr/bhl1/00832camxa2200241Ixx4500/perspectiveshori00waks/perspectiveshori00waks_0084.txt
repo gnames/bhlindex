@@ -1,0 +1,42 @@
+70 Perspectives in Microbiology 
+
+oxidizes gluconate to 2-ketogluconate, which is then further 
+ oxidized to 2,5-diketogluconate (Figure 1). The last com- 
+ pound is chemically unstable and is converted, in part, into 
+ the characteristic brown pigment of this species. 2-keto- 
+ gluconate also is a major product of glucose oxidation 
+ by several Pseudomonas species. 
+
+The unusual feature of this type of glucose oxidation is 
+ that it involves only nonphosphorylated compounds. Al- 
+ most no information is available at present about the 
+ further steps in the oxidation of the various ketogluconates 
+ or about the role of these compounds in the energy metab- 
+ olism of the bacteria. Enzymes are known that phosphory- 
+ late gluconate and 2-ketogluconate, but it is not known 
+ whether such phosphorylation is an obligatory require- 
+ ment for the complete oxidation of these compounds. 
+
+Rihulose Phosphate Pathway. The existence of another 
+ nonglycolytic mechanism for the direct oxidation of carbo- 
+ hydrate via 6-phosphogluconate by animals and yeasts was 
+ established first by the work of Warburg, Lipmann, and 
+ Dickens in 1935-36. The specific reactions involved in this 
+ process (Figure 2) have recently been worked out by 
+ Horecker, Racker, Cohen, and others (10). 
+
+Glucose is first phosphorylated and the resulting glucose- 
+ 6-phosphate is oxidized to 6-P-gluconate. This in turn un- 
+ dergoes an oxidative decarboxylation to carbon dioxide and 
+ ribulose-5-phosphate. Although it has not been identified, 
+ 3-keto, 6-phosphogluconate has been postulated as an inter- 
+ mediate in the latter reaction. The ribulose-5-phosphate 
+ isomerizes to give ribose-5-phosphate. The upper two car- 
+ bons of ribulose-5-phosphate are next transferred to carbon 
+ atom 1 of ribose-5-phosphate to give one molecule each of 
+ glyceraldehyde-3-phosphate and sedoheptulose-7-phosphate 
+ (Figure 3). These compounds then react in such a way that 
+ the first three carbon atoms of the sedoheptulose-phosphate 
+ are transferred to triose phosphate, giving fructose-6-phos- 
+ phate and a tetrose phosphate. There is now some evidence 
+

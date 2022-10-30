@@ -1,0 +1,40 @@
+54 Perspecfives in Microbiology 
+
+by using enzymatic methods alone, or even in combination 
+ with isotopic methods. Let us consider the tricarboxylic 
+ acid cycle, whose energy-yielding, degradative aspects have 
+ been emphasized in the past, though its importance in the 
+ biosynthesis of glutamic acid and aspartic acid and their 
+ derivatives has only recently received more attention. De- 
+ spite the fact that all the enzymes of this cycle have been 
+ demonstrated in E. coli and in various other micro- 
+ organisms, there is no general agreement as to whether this 
+ cycle plays an essential or even an important role in the 
+ oxidation of acetate by these organisms. 
+
+To study this question, Gilvarg and I have used the 
+ methods described for biosynthetic reactions, employing a 
+ glutamic acid auxotroph of E. coli that turned out, on 
+ enzymatic analysis, to lack the condensing enzyme for form- 
+ ing citrate from acetyl-coenzyme A and oxaloacetate (14). 
+ It was found that this mutant not only required a-ketoglu- 
+ tarate or glutamate as a growth factor (when growing on 
+ glucose as a carbon source), but also had completely lost the 
+ ability to use acetate as a carbon source or to form CO2 from 
+ acetate. Yet when E. coli derives its energy from acetate, 
+ the formation of CO2 is obligatory.^ Hence, in terms of the 
+ criteria proposed, we have shown that absence of the citrate- 
+ condensing enzyme is necessarily associated with inability 
+ to form from acetate two obligatory metabolic products 
+ (a-ketoglutarate and CO2) which the wild type can form. 
+ We can therefore conclude that the tricarboxylic acid cycle 
+ is essential in E. coli not only for biosynthetic purposes, but 
+ also for the complete oxidation of acetate. I believe this is 
+ the first conclusive demonstration of the latter point; it 
+ provides an excellent example of the sharpness of the tools 
+ furnished by microbial mutants. 
+
+5 The possibility of succinate formation by back-to-back condensation 
+ of acetate was eliminated by the fact that this mutant, though unable 
+ to oxidize acetate, could still oxidize succinate. 
+

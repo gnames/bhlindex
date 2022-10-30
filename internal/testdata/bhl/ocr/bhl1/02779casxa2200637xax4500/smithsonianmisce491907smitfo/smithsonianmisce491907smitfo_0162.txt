@@ -1,0 +1,51 @@
+12 THE ATTAINMENT OF VERY LOW TEMPERATURES 
+
+low pressure by opening the expansion valve wide, in which case there 
+ is a steady fall in pressure throughout the length of the coil, a very 
+ much smaller yield of liquid is obtained than when the valve is kept 
+ partially closed and supply of air is reduced. It appears that though 
+ a slight fall of pressure in the gas between the top of the coil and 
+ the expansion valve does not materially effect the working of the 
+ machine, it is a factor which cannot be neglected in estimating its 
+ efficiency. 
+
+VI. Application of the Perforated Discs to the Hydrogen 
+
+LiQUEFIER. 
+
+I now constructed a hydrogen liquefier, of which the regenerator 
+ coil A, with the perforated discs, formed part. This machine did not, 
+ however, yield satisfactory results, for though I obtained some liquid 
+ hydrogen by means of it, the yield was poor. I may add, however, 
+ that the liquefaction commenced very soon after the gas was first al- 
+ lowed to expand. Further, experiments conducted with compressed 
+ air, of which it is not necessary to give the details, pointed to the fact 
+ that the conduction of heat down the coil was considerably decreased 
+ by the introduction of the perforated discs. 
+
+The probable explanation of the behaviour of this coil is as follows. 
+ The effect of the discs in producing eddy currents increases the rate 
+ of heat interchange, so long as the temperature difference between the 
+ compressed and expanded gas is not very great, thus increasing the 
+ rate at which the coil cools down at the commencement of the experi- 
+ ment. When, however, the temperature of the expanded gas reaches 
+ the liquefaction point (20.5° abs.), the temperature of the compressed 
+ gas is still above the critical temperature, and we arrive at a condition 
+ similar to that which obtains in the lower part of the coil of an air 
+ liquefier. It appears then that the effect of the perforated discs in 
+ shielding the coils from contact with the expanded gas is greater than 
+ in increasing the eddying and thereby the rate of heat interchange. 
+
+VII. Final Form of Hydrogen Liquefier. 
+
+In reviewing my experiments with the hydrogen liquefier I am 
+ driven to the conclusion that the form of regenerator coil used in the 
+ construction of my first machine gave better results than any which 
+ I afterwards obtained. In this machine the coil was constructed of 
+ a single tube wound into a coil 150 mm. long and 50 mm. in diameter, 
+ the spaces between the components of each helix being as narrow as 
+ possible. 
+
+It appears that the small diameter of the coil and the closeness of 
+ the spacing are more effective in producing a rapid heat interchange, 
+

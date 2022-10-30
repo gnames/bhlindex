@@ -1,0 +1,41 @@
+GenefJcs and Microbiology 33 
+
+an example of fragmentary genetic transfer, that is, trans- 
+ duction. Meanwhile, the chemical analyses by Avery and 
+ his colleagues described the reagent in the vaccines as 
+ principally, if not exclusively, desoxyribonucleic acid, 
+ DNA (4). The genetic aspects of the transmitted fragment 
+ have not been fully clarified, but in each of the several 
+ examples of transduction, single genetic factors are the 
+ rule, punctuated by occasional "linked transduction" of 
+ two factors (20, 31, 44). As the number of factors examined 
+ increases, so does the incidence of recognized linkages. 
+ This suggests that the unit is a chromosome fragment, 
+ rather than an absolutely delimited macromolecule, the 
+ idealized "single gene." 
+
+Transduction in at least two other bacteria. Hemophilus 
+ and Neisseria^, was discovered by conscious emulation of 
+ the Griffith and Avery procedures, and with some ad- 
+ vantageous peculiarities, its general aspects are the same 
+ as in the pneumococcus (31). In Salmonella^ on the other 
+ hand, transduction was accidentally discovered in the 
+ course of a fruitless search for sexuality as it occurs in E. 
+ coli. In fact, too rigid insistence on the use of double 
+ mutants to control the selection of recombinants nearly 
+ obscured the initial discovery (49), but this emphasizes 
+ the difference in mechanism. Transduction in Salmonella 
+ differs from that in the pneumococcus primarily in the 
+ function of temperate bacteriophage as the passive vector 
+ of the hereditary fragments. 
+
+To recapitulate, genetic transduction as much as sexual 
+ fertilization is an agency of recombination but differs in 
+ two principal features: morphologically, one reactant is a 
+ subcellular fragment, and genetically, perhaps as a corol- 
+ lary, a small fragment rather than the entire genotype is 
+ all that is transmitted. In several bacteria, the fragment 
+ may be transmissible after chemical extraction in essen- 
+ tially native form, possibly pure DNA, but in Salmonella 
+ a symbiotic phage effects the initial fragmentation of the 
+

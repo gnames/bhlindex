@@ -1,0 +1,43 @@
+42 PerspecHves in Microbiology 
+
+a fusion of enzymatic and nutritional studies on mutants 
+ has made it possible to solve problems that could not be 
+ solved by either approach alone. 
+
+Since several of the enzymatic studies to be described 
+ have been concerned with a path of aromatic biosynthesis, 
+ I shall first present this path in some detail. 
+
+Our interest in aromatic biosynthesis arose through the 
+ chance isolation of several bacterial mutants that required 
+ a mixture of four aromatic compounds: tyrosine, phenyl- 
+ alanine, tryptophan, and para-aminobenzoic acid (9). Sub- 
+ sequent work showed that most of these strains had a rela- 
+ tive requirement for traces of a fifth aromatic compound 
+ not previously known to be a bacterial metabolite, para- 
+ hydroxybenzoic acid (8). Since then, we have found that 
+ under certain circumstances these strains require in addi- 
+ tion traces of a sixth factor, as yet unidentified (Figure 1). 
+
+The common aromatic structure of these several com- 
+ pounds led to a search for a possible common precursor. 
+ It was found that a rare plant acid, shikimic acid, could 
+ satisfy the growth requirement of several of these aromatic 
+ polyauxotrophs. Furthermore, the response was propor- 
+ tional to shikimic acid concentration and was approxi- 
+ mately the same as that produced by a molar equivalent 
+ of the required mixed aromatic supplement. Finally, the 
+ other strains with the same requirement, presumably 
+ blocked in a later reaction in the same sequence, could 
+ not respond to shikimic acid, but could be shown to ac- 
+ cumulate large quantities of this substance in their culture 
+ filtrates. We therefore felt justified in concluding that 
+ shikimic acid is a precursor of these aromatic cell constitu- 
+ ents (4). 
+
+transamination of a-ketoisovaleric acid with alanine rather than with 
+ glutamic acid (27)), normal intermediates would include both essential 
+ and non-essential ones; where there are major alternatives (as may be 
+ true in carbohydrate metabolism preceding specific biosynthetic paths (2)), 
+ none of the normal metabolites would be essential. 
+

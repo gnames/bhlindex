@@ -14,7 +14,7 @@ all: install
 
 tools: deps
 	@echo Installing tools from tools.go
-	@cat bhlindex/tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
+	@cat tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
 
 deps:
 	@echo Download go.mod dependencies
@@ -26,29 +26,16 @@ test: deps install
 	go test -race ./...
 
 build:
-	cd bhlindex; \
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(GOBUILD);
 
 install:
 	@echo Building and Installing bhlindex
-	cd bhlindex; \
 	$(FLAGS_SHARED) $(GOINSTALL); \
 	$(GOCLEAN); 
 
-release: dockerhub
-	@echo Building releases for Linux, Mac, Windows
-	cd bhlindex; \
+release:
+	@echo Building release for Linux
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) GOOS=linux $(GOBUILD); \
 	tar zcvf /tmp/bhlindex-${VER}-linux.tar.gz bhlindex;
-
-docker: build
-	docker build -t gnames/bhlindex:latest -t gnames/bhlindex:$(VERSION) .; \
-	cd bhlindex; \
-	$(GOCLEAN);
-
-dockerhub: docker
-	docker push gnames/bhlindex; \
-	docker push gnames/bhlindex:$(VERSION)
-

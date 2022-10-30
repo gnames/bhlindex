@@ -1,0 +1,43 @@
+20 Perspectives in Microbiology 
+
+Both bacteriophages 4 and 8 are temperate. But the pres- 
+ ence of a given prophage can also prevent the develop- 
+ ment of a virulent phage. Thus the lysogenic Shigella 
+ dysenteriae perpetuating the prophage P^ does not allow 
+ the development of the phages T^, T3, and T7, whereas it 
+ allows the development of T2, T4, T5, and Te (2). The 
+ situation is the reverse for the lysogenic P2, which allows 
+ only the development of T2, T4, T5, and Te. None of the 
+ T phages is able to mature in the double lysogenic P1-P2. 
+ This block in the reproduction of T phages is suppressed 
+ by the action of various inhibitors of the metabolism (7). 
+ It is, therefore, due not to the prophage as such, but to an 
+ alteration of the bacterial metabolism brought about by 
+ the presence of prophage. 
+
+It is interesting to know that Escherichia coli B[P2] 
+ allows the development of phage T2, T4, T5, and Te (7). 
+ Thus the prophage P2 does not exert the same effect on 
+ the bacterial metabolism in E. coli as in 5. dysenteriae. 
+ Here again, it seems clear that the properties of a lysogenic 
+ system are not "produced" by the prophage, but are the 
+ result of the interaction of the genetic material of the pro- 
+ phage and of the bacterium. The nonspecific action of a 
+ given prophage depends on the genetic constitution of the 
+ bacterium. 
+
+Another example of dysgonia has recently been discov- 
+ ered {\). E. coli K12 allows the development of phage T2r^ 
+ whereas the infection of E. coli K12(X) is not followed by 
+ phage production. Moreover, phage T2r does not develop 
+ in the lysogenic bacteria in which the development of 
+ phage X has been induced by irradiation with ultraviolet 
+ light. This is true even if the infection is performed 40 
+ minutes after irradiation, that is to say, after the onset of 
+ the vegetative phase of phage h The conclusion is that the 
+ altered response of the lysogenic bacteria is due not to the 
+ prophage as such, but to a modified state of the bacterium 
+ brought about by the prophage. 
+
+The presence of a given prophage may also block the 
+

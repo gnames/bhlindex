@@ -1,0 +1,42 @@
+Microbial Mutants SI 
+
+visionally consider a side product, simply on the basis of the 
+ fact that among our 59 mutants blocked somewhere from 
+ before DHQ to after compound Zl, not one has been 
+ blocked between shikimic acid and phosphoshikimic acid. 
+
+With respect to quinic acid, I have even more serious 
+ reservations, despite its growth-factor activity for an Aero- 
+ hacter mutant (12) and also for a Neurospora mutant (15). 
+ These reservations were originally based on two facts: (a) 
+ we could not obtain an Aerobacter auxotroph blocked be- 
+ tween quinic acid and DHQ, and (b) the E. colt mutants 
+ that responded to DHQ neither responded to nor accumu- 
+ lated quinic acid; and if these strains had been blocked be- 
+ tween the two compounds, they would have been expected 
+ to accumulate quinic acid. The case against this compound 
+ is now very much strengthened by the fact that quinic de- 
+ hydrogenase, though present in Aerobacter, is absent from 
+ many other species, including E. coli, that do possess other 
+ enzymes of this path. Since Aerobacter has the same path 
+ as these other organisms beyond DHQ, it very likely also 
+ has the same path leading up to DHQ. Its enzyme for con- 
+ verting quinic acid to DHQ would then have to be regarded 
+ as an adventitious one, not essential for aromatic biosyn- 
+ thesis from glucose. This problem can be definitively 
+ settled when the enzymatic step before DHQ is worked 
+ out in Aerobacter and E. coli. 
+
+I should like to say a few words on the subject of growth- 
+ factor activity. Although this property has directed us to 
+ some of the compounds under investigation, we now 
+ blithely disregard it in assigning to each compound its 
+ place either at the table or in the corner. We accept pre- 
+ phenic acid, though it has no activity; we reject quinic acid, 
+ though it has activity. How can we account for the inactivity 
+ of a true intermediate? 
+
+One example is based on the fact that all mutants blocked 
+ immediately before shikimic acid show little response to 
+ this compound. The reason is that these strains accumulate 
+

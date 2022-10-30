@@ -1,0 +1,43 @@
+50 Perspectives In Microbiology 
+
+compounds (A and B) into one or more essential metabolic 
+ products (Xp X2 . . . )' (b) ^h^t a single enzyme that con- 
+ verts A to B is demonstrable in extracts of the wild-type 
+ organism; ^ and (c) that this enzyme is absent or inactive in 
+ the extracts of a mutant strain that has lost the ability to 
+ form Xi, X2 . . . from the source materials O^, O2 . . . 
+ These criteria can be extended, of course, to include 
+ chemical rather than genetic elimination of the activity of 
+ an enzyme, provided that the effect of the inhibitor is re- 
+ stricted to a single enzyme. 
+
+Accepting these criteria, I think we can feel quite certain, 
+ on the basis of the enzymatic evidence presented, that 
+ DHQ, DHS, and shikimic acid are true normal intermedi- 
+ ates in aromatic biosynthesis, and almost certain that PPA 
+ and phenypyruvic acid are normal intermediates in the 
+ synthesis of phenylalanine. The structure of PPA also sug- 
+ gests it as a likely precursor of tyrosine, and this possibility 
+ is supported by the fact that PPA is accumulated by some 
+ tyrosine auxotrophs. Until an enzymatic connection be- 
+ tween PPA and tyrosine is established, however, we cannot 
+ be sure of this path. 
+
+The positions of phosphoshikimic acid and compound 
+ Zl are uncertain, since there are as yet no enzymatic studies 
+ on these compounds. Accumulation studies have already 
+ shown that Zl arises after shikimic acid and phosphoshi- 
+ kimic acid, but it may be either a direct member of the 
+ chain or a side product. Phosphoshikimic acid I would pro- 
+
+4 Though in many cases an enzyme can carry out the same type of 
+ reaction on a variety of substrates, each of these usually gives rise to a 
+ different product; hence the assumption is made here that the essential 
+ enzyme that forms B from A can form B only from A. But this assump- 
+ tion may conceivably not be true (compare aconitase, a presumably single 
+ enzyme that can form aconitate from either citrate or isocitrate). It is 
+ therefore desirable to strengthen the evidence that A and B are the true, 
+ physiological substrate and product of an essential enzyme by showing 
+ further that they in turn are formed and utilized, respectively, by other 
+ essential enzymes in the same biosynthetic sequence. 
+

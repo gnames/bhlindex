@@ -1,0 +1,38 @@
+Microbial Mufanfs 49 
+
+the isotopic evidence for incorporation already mentioned, 
+ show that the compound is an essential intermediate. But 
+ if the enzyme that forms or utilizes the compound can be 
+ shown to be present in extracts of the wild type and absent 
+ from extracts of a mutant that is blocked in the biosyn- 
+ thetic chain in question — and if the enzyme assay is sensi- 
+ tive enough so that the observed difference between the 
+ two extracts is large — then one can begin to feel confident 
+ that he is dealing with an essential intermediate. 
+
+One more possibility, however, must be considered: that 
+ the true intermediates might be unstable or conjugated 
+ compounds, never present in more than trace amounts. 
+ The compounds that are detected as growth factors or as 
+ accumulation products would then be merely cast-off de- 
+ rivatives, pallid reflections of the living reality, just as, in 
+ Plato's parable of the cave, objects sensed in the world 
+ around us were considered to be mere shadows of an 
+ ideal world of true reality. Such a scheme might be repre- 
+ sented as follows: 
+
+A and B would represent the true intermediates, and A' 
+ and B' the parallel side products. An auxotrophic mutant 
+ blocked between A and B would be unable to convert not 
+ only A to B, but also A' to B'. A distinction can be made, 
+ however, as Adelberg has pointed out (2), on the basis 
+ of the fact that a single enzyme could convert A to B, 
+ whereas three enzymes would be required to convert A' 
+ to B'.^ We are led, therefore, to the following conclusion: 
+ that essential intermediates can be recognized at present 
+ with maximal certainty only in pairs, by showing (a) that 
+ the wild type (either cell or extract) can convert these 
+
+3 We are referring here to substances (A and A') that are not in rapid 
+ spontaneous equilibrium with each other. 
+

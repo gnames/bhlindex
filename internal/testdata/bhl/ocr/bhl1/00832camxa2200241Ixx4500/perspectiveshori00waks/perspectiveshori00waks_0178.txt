@@ -1,0 +1,41 @@
+160 Perspecf'ives in Microbiology 
+
+At inhibitory concentration, the compound has no effect 
+ on the oxidative metabolism of the host tissue and only a 
+ slight effect on cellular proliferation in tissue culture (38). 
+ These findings may be taken as indications of some selec- 
+ tivity in action. But the nature of the biosynthetic process 
+ affected by the compound has not yet been identified, and 
+ efforts to block the inhibitory effect with a variety of possi- 
+ ble metabolites, including vitamin B12 or its corresponding 
+ riboside moiety, as well as various purines and pyrimidines, 
+ have been unsuccessful. 
+
+A simpler compound, but not such a potent inhibitor of 
+ influenza virus reproduction, is 2,5-dimethyl benzimidazole 
+ (35, 36, 37). Like the chloro-substituted riboside, this sub- 
+ stance inhibits the intracellular reproduction of influenza 
+ viruses but has no effect on extracellular virus particles or 
+ their adsorption. In contrast to the dichlororibofuranoside, 
+ however, the inhibitory effect is not limited to an early 
+ stage in the reproductive process. Although the degree of 
+ inhibition is inversely related to the time of addition of 
+ the compound, definite inhibition can be obtained during 
+ the last part of the latent period (35). This substance also 
+ fails to diminish tissue respiration at inhibitory concentra- 
+ tion but does restrict cell growth in tissue culture (38). 
+ Both the restriction in cell proliferation and the inhibition 
+ of virus reproduction are reversible and disappear on re- 
+ moval of the compound. Whether the inhibition of in- 
+ fluenza virus reproduction produced by either of these 
+ benzimidazole derivatives provides a positive advantage for 
+ the functions of the infected cell remains to be demon- 
+ strated. 
+
+The results obtained thus far with inhibitory derivatives 
+ of benzimidazole raise the possibility that a number of 
+ processes that lead to the production of new virus particles 
+ may be inhibited. The reduction in soluble antigenic ma- 
+ terial (39), presumably chiefly protein, appears not to be 
+ greatly different from the reduction in the yield of virus 
+

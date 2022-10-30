@@ -1,0 +1,41 @@
+26 Perspecfives in Microbiology 
+
+by Mendelian and populational analysis elsewhere. To be 
+ sure, such pioneers as Massini, Beijerinck, and Barber did 
+ distinguish fluctuating or impressed variations, which are 
+ reversible physiological responses to the environment, from 
+ fixed mutations representing innate genetic alterations. 
+ Bacterial mutations are reversible, however, in the same 
+ sporadic fashion as the primary events; reversion is no less 
+ characteristic of other organisms, but this was overlooked 
+ in support of cyclogenic or more obscure special theories 
+ of bacterial dissociation (18). The confusion was com- 
+ pounded by the tremendous size of bacterial populations 
+ and the aggressiveness with which bacterial mutations and 
+ reverse mutations often present themselves (6, 33). 
+
+These features were put to good use in a renewal of 
+ exact study by a biometric approach in the 1940's, cul- 
+ minating in the analysis of clonal variance of mutations to 
+ phage resistance by Luria and Delbriick (34). The out- 
+ standing qualitative result of these experiments was statis- 
+ tical proof of the uncontrollability, if not the absence, of 
+ purposive regulation of adaptive mutations, such as re- 
+ sistance to phage or to streptomycin. The statistical pro- 
+ cedures have since been expanded for the calculation of 
+ mutation rates and for more detailed analysis of spon- 
+ taneous mutation (2, 38). But population dynamics is so 
+ complex (7) that foreseeable progress here may consist of 
+ balancing the complications omitted from the approxi- 
+ mate calculations against the imprecisions of measurement. 
+ The clonal variance that is the keystone of the qualitative 
+ argument for preadaptive mutation also requires tedious 
+ repetition to measure mutation rates with a scarcely ac- 
+ ceptable precision of ±: 50 per cent (34, 38, 42). Ordinary 
+ cultural methods also entail an ever-changing chemical 
+ environment (7) in addition to an inexhaustible reservoir 
+ of systematic as well as sampling errors (26). 
+
+Novick and Szilard (39) have resolved these obstacles 
+ by means of a simply engineered continuous-flow device, 
+

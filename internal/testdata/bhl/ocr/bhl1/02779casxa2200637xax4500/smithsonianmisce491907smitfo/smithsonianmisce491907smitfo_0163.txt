@@ -1,0 +1,52 @@
+THE ATTAINMENT OF VERY LOW TEMPERATURES 1 3 
+
+by merely increasing the velocity of the flow of the expanded gas, than 
+ are any of the methods by which I have attempted to increase the sur- 
+ face exposed to the gas, or its tendency to form eddies over the surface 
+ of the coil. It is to this type that I have now reverted. 
+
+VIII. An Attempt to Employ a Metal Vacuum Vessel in the 
+ Liquefaction of Hydrogen. 
+
+As there appeared to be many obvious advantages in employing a 
+ metal vacuum vessel in place of the glass vessel which usually forms 
+ part of the apparatus, I determined to make one, and to carry out some 
+ experiments with it. The vessel was constructed of drawn brass tube 
+ with spun copper connection, as in the figure. After the parts had been 
+ soldered together the whole was silver-plated with the idea of render- 
+ ing the metal absolutely non-porous. The vacuum vessel was secured 
+ by means of a flange and screws to a horizontal plate, which forms part 
+ of the annular space surrounding the liquid air chamber in the lique- 
+ fier. A spiral copper tube connected the inside with the outside, and 
+ terminated below in a valve similar to that one used in the Hampson 
+ air liquefier. 
+
+The vacuum vessel was exhausted through a piece of fine copper 
+ tube, hard-soldered into the outer tube. When the exhaustion was 
+ complete this tube was melted in the oxyhydrogen flame and securely 
+ sealed. When the vacuum vessel was half filled with liquid air the 
+ outside did not become cold, but it was noticed that the liquid evap- 
+ orated more quickly than from a glass vessel on account of the heat 
+ supplied to it by conduction down the inner wall. 
+
+An attempt to liquefy hydrogen with a machine fitted with the 
+ vacuum vessel proved a failure. This was probably due to the reason 
+ mentioned above, and also to the evaporation of the liquid in passing 
+ through the valve. Only a trace of liquid was collected, and the ex- 
+ periment was not repeated. 
+
+IX. On the Preparation of Hydrogen for Use with the 
+
+Liquefier. 
+
+In my first memoir on the liquefaction of hydrogen I pointed out 
+ that the difficulty introduced by the presence of impurity in the gas 
+ was due rather to the separation of solid at the expansion valve than 
+ to the actual blocking of the coil. I suggested that this was probably 
+ due to the so-called " solvent " properties, which gases under high 
+ pressure and in the neighborhood of their critical temperature are 
+ known to possess. 
+
+I have come to the conclusion that while some impurities are highly 
+ detrimental to the working of the apparatus, others are comparatively 
+

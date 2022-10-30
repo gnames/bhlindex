@@ -1,0 +1,40 @@
+Microbial Mutants 55 
+
+To summarize their biochemical implications, the enzy- 
+ matic studies described here have convinced us that some 
+ (but not all) of the compounds accumulated by aromatic 
+ auxotrophs are true essential biosynthetic intermediates. 
+ These results have therefore increased our confidence that 
+ most of the compounds accumulated by other mutants will 
+ have similar metabolic significance. Furthermore, a com- 
+ bination of enzymatic, nutritional, and accumulation 
+ studies, applied to mutants, has led us to previously in- 
+ accessible intermediates. Also, such an approach has made 
+ it possible to define more accurately the physiological role 
+ of the tricarboxylic acid cycle. In general, it appears that 
+ nutritional studies on mutants, like isotopic studies, have 
+ provided most valuable exploratory tools in the search for 
+ biosynthetic intermediates; that the identification of com- 
+ pounds accumulated by mutants, even when these com- 
+ pounds are devoid of nutritional activity, is a valid ex- 
+ tension of this approach; and that enzymatic comparisons 
+ between mutants and the wild type can offer the most 
+ rigorous proof presently possible that a compound is an 
+ essential intermediate on a metabolic path. 
+
+To summarize their genetic implications, the enzymatic 
+ studies described here, and similar studies on other enzyme 
+ systems in this (19) and other laboratories (13, 25, 27), have 
+ shown that Beadle and Tatum were correct in their original 
+ assumption that an auxotrophic mutant lacks a specific 
+ enzyme. I believe we can feel confident that only an ex- 
+ ceptional auxotrophic mutant requires a substance for some 
+ other reason: for example, the inhibition rather than the 
+ absence of an enzyme (34), or the destruction of the sub- 
+ stance by an exaggerated side reaction (17). 
+
+There has not been time to describe other enzyme studies 
+ that have thrown a little further light on the relation be- 
+ tween a gene and either the structure or the amount of the 
+ corresponding enzyme. With respect to enzyme structure, 
+

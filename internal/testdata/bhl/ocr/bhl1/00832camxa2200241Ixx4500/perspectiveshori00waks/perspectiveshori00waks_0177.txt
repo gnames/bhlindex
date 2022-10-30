@@ -1,0 +1,40 @@
+Chemical Inhibition of Viruses 159 
+
+moniae, are active as inhibitors of some small viruses, for 
+ example, pneumonia virus of mice (30), though not for 
+ other viruses in the same host species. Compounds of low 
+ molecular weight and precisely known structure, like cer- 
+ tain chloro-substituted N-glycosides of benzimidazoles, are 
+ potent inhibitors of influenza virus reproduction in a tissue 
+ culture system and also are active in the chick embryo and 
+ in the mouse (38). Numerous other compounds, including 
+ analogues of amino acids (2, 6), purine analogues (19), and 
+ certain inhibitors of cell metabolic systems (1,4, 32), have 
+ been reported to have inhibitory activity (15). Only certain 
+ substances that appear to cause inhibition of the intracellu- 
+ lar process of virus reproduction are considered in this 
+ communication. Compounds that inactivate extracellular 
+ virus particles, prevent their adsorption to susceptible cells, 
+ or affect the responses of tissues without affecting reproduc- 
+ tion are outside the scope of this discussion. 
+
+The 5,6-dichloro derivate of benzimidazole ribofurano- 
+ side provides an interesting example of inhibitory activity 
+ with an animal virus (38). This compound, which is related 
+ in structure both to a moiety of vitamin B12 and to adeno- 
+ sine, inhibits an early stage in the intracellular reproduc- 
+ tion of influenza viruses. It has no effect upon extracellular 
+ virus particles and does not diminish adsorption of the 
+ virus by host cells. When the substance is added after pene- 
+ tration of the host cells has occurred, the yield of new virus 
+ particles is diminished. The extent of the inhibition is in- 
+ versely related to the time elapsed before the compound is 
+ added. Each of the biologically measurable components 
+ that result from the multiplication of influenza virus ap- 
+ pears in decreased concentration. Infective virus particles, 
+ hemagglutinating particles, and even soluble complement- 
+ fixing antigen develop in diminished amount (39). There 
+ is as yet no decisive evidence that any material with virus 
+ specificity increases more than another in the presence of 
+ this compound. 
+
