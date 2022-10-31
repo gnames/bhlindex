@@ -2,8 +2,8 @@
 
 [![Doc Status][doc-img]][doc]
 
-Creates an index of scientific names occurring in the collection of literature
-in Biodiversity Heritage Library
+Creates an index of scientific names occurred in the collection of literature
+in the Biodiversity Heritage Library
 
 ## Performance
 
@@ -44,7 +44,7 @@ Other parameters are optional.
 ### Environment Variables
 
 It is possible to use Environment Variables instead of configuration file.
-Environment Variable override the configuration file settings. The following
+Environment Variables override the configuration file settings. The following
 variable can be used:
 
 | Config         | Env. Variable        |
