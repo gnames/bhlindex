@@ -137,7 +137,7 @@ Testing requires PostgreSQL database `bhlindex_test`.
 Testing will delete all data from the test database.
 
 ```bash
-go test
+go test ./...
 ```
 
 [bhl-ocr]: http://opendata.globalnames.org/dumps/
