@@ -147,18 +147,17 @@ func namesPerHour(start time.Time, count int) float64 {
 
 func (vrf verifio) saveVerif(
 	ctx context.Context,
-	chVer <-chan []name.VerifiedName,
+	chVer <-chan verifiedBatch,
 	namesNum int,
 	start time.Time,
 ) error {
-
 	var count int
 	for vns := range chVer {
-		err := vrf.saveNamesToDB(vns)
+		err := vrf.saveNamesToDB(vns.names)
 		if err != nil {
 			return fmt.Errorf("saveVerif: %w", err)
 		}
-		count = incrLog(start, namesNum, count, len(vns))
+		count = incrLog(start, namesNum, count, vns.namesNum)
 	}
 	fmt.Fprint(os.Stderr, "\r")
 	logStr(start, namesNum, count)
@@ -180,13 +179,13 @@ func incrLog(start time.Time, total, count, incr int) int {
 func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 	now := time.Now()
 	columns := []string{
-		"name_id", "name", "cardinality", "record_id", "match_type",
+		"id", "name", "cardinality", "record_id", "match_type",
 		"edit_distance", "stem_edit_distance", "matched_name", "matched_canonical",
 		"matched_cardinality", "current_name", "current_canonical",
 		"current_cardinality", "classification", "classification_ranks",
 		"classification_ids", "data_source_id", "data_source_title",
-		"data_sources_number", "curation", "odds_log10", "occurrences", "retries",
-		"error", "updated_at",
+		"data_sources_number", "curation", "odds_log10", "sort_order",
+		"occurrences", "retries", "error", "updated_at",
 	}
 	transaction, err := vrf.db.Begin()
 	if err != nil {
@@ -201,13 +200,13 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 
 	for _, v := range names {
 		_, err = stmt.Exec(
-			v.NameID, v.Name, v.Cardinality, v.RecordID, v.MatchType, v.EditDistance,
+			v.ID, v.Name, v.Cardinality, v.RecordID, v.MatchType, v.EditDistance,
 			v.StemEditDistance, v.MatchedName, v.MatchedCanonical,
 			v.MatchedCardinality, v.CurrentName, v.CurrentCanonical,
 			v.CurrentCardinality, v.Classification, v.ClassificationRanks,
 			v.ClassificationIDs, v.DataSourceID, v.DataSourceTitle,
-			v.DataSourcesNumber, v.Curation, v.OddsLog10, v.Occurrences, v.Retries,
-			v.Error, now,
+			v.DataSourcesNumber, v.Curation, v.OddsLog10, v.SortOrder,
+			v.Occurrences, v.Retries, v.Error, now,
 		)
 		if err != nil {
 			return fmt.Errorf("saveNamesToDB: %w", err)
@@ -225,10 +224,4 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 	}
 
 	return transaction.Commit()
-}
-
-func (vrf verifio) setPrimaryKey() error {
-	q := `ALTER TABLE verified_names ADD PRIMARY KEY (name_id)`
-	_, err := vrf.db.Exec(q)
-	return err
 }

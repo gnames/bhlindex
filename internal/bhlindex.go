@@ -83,7 +83,6 @@ func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) (err error) {
 	if err == nil {
 		err = vrf.ExtractUniqueNames()
 	}
-
 	if err == nil {
 		err = vrf.Verify()
 	}

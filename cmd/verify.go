@@ -25,7 +25,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/gnames/bhlindex/internal"
+	bhlindex "github.com/gnames/bhlindex/internal"
 	"github.com/gnames/bhlindex/internal/config"
 	"github.com/gnames/bhlindex/internal/io/dbio"
 	"github.com/gnames/bhlindex/internal/io/verifio"
@@ -47,6 +47,11 @@ The 'verify' command should be executed after 'find' command.`,
 		if withoutConfirm {
 			opts = append(opts, config.OptWithoutConfirm(true))
 		}
+		allRes, _ := cmd.Flags().GetBool("all-results")
+		if allRes {
+			opts = append(opts, config.OptVerifAllResults(true))
+		}
+
 		cfg := config.New(opts...)
 
 		if !cfg.WithoutConfirm {
@@ -80,5 +85,6 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// verifyCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	verifyCmd.Flags().BoolP("all-results", "a", false,
+		"returns all matches instead of only best ones.")
 }

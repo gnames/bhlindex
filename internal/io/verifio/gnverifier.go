@@ -10,11 +10,18 @@ import (
 	"github.com/gnames/gnverifier/ent/verifier"
 )
 
+type verifiedBatch struct {
+	names []name.VerifiedName
+	// in case if we get all results instead of only the best, we need to
+	// know how many unique names were processed.
+	namesNum int
+}
+
 func (vrf verifio) sendToVerify(
 	ctx context.Context,
 	vrfREST verifier.Verifier,
 	chIn <-chan []name.UniqueName,
-	chOut chan<- []name.VerifiedName,
+	chOut chan<- verifiedBatch,
 	wgExt *sync.WaitGroup,
 ) {
 	defer wgExt.Done()
@@ -24,17 +31,17 @@ func (vrf verifio) sendToVerify(
 	wg.Add(jobs)
 
 	for i := 0; i < jobs; i++ {
-		go verifyWorker(ctx, vrfREST, chIn, chOut, &wg)
+		go vrf.verifyWorker(ctx, vrfREST, chIn, chOut, &wg)
 	}
 
 	wg.Wait()
 }
 
-func verifyWorker(
+func (vrf verifio) verifyWorker(
 	ctx context.Context,
 	vrfREST verifier.Verifier,
 	chIn <-chan []name.UniqueName,
-	chOut chan<- []name.VerifiedName,
+	chOut chan<- verifiedBatch,
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
@@ -47,26 +54,28 @@ func verifyWorker(
 		for i := range uns {
 			names[i] = uns[i].Name
 		}
-		input := vlib.Input{NameStrings: names}
+		input := vlib.Input{NameStrings: names, WithAllMatches: vrf.cfg.VerifAllResults}
 		output := vrfREST.Verify(ctx, input)
 		if len(output.Names) < 1 {
 			log.Fatalf("Did not get results from verifier")
 		}
-		outNames := prepareNames(output.Names, uns)
+		outNames, namesNum := prepareNames(output.Names, uns)
 
 		select {
 		case <-ctx.Done():
 			return
-		case chOut <- outNames:
+		case chOut <- verifiedBatch{names: outNames, namesNum: namesNum}:
 		}
 	}
 }
 
-func prepareNames(vns []vlib.Name, uns []name.UniqueName) []name.VerifiedName {
-	res := make([]name.VerifiedName, len(vns))
+func prepareNames(vns []vlib.Name, uns []name.UniqueName) ([]name.VerifiedName, int) {
+	res := make([]name.VerifiedName, 0, len(vns))
+	var count int
 	for i := range vns {
+		count++
 		n := name.VerifiedName{
-			NameID:            uns[i].ID,
+			ID:                uns[i].ID,
 			Name:              vns[i].Name,
 			Cardinality:       vns[i].Cardinality,
 			MatchType:         vns[i].MatchType.String(),
@@ -91,8 +100,32 @@ func prepareNames(vns []vlib.Name, uns []name.UniqueName) []name.VerifiedName {
 			n.ClassificationIDs = br.ClassificationIDs
 			n.DataSourceID = br.DataSourceID
 			n.DataSourceTitle = br.DataSourceTitleShort
+			res = append(res, n)
+		} else if rs := vns[i].Results; len(rs) > 0 {
+			var sortNum int
+			for _, v := range rs {
+				n.RecordID = v.RecordID
+				n.EditDistance = v.EditDistance
+				n.StemEditDistance = v.StemEditDistance
+				n.MatchedName = v.MatchedName
+				n.MatchedCanonical = v.MatchedCanonicalFull
+				n.MatchedCardinality = v.MatchedCardinality
+				n.CurrentName = v.CurrentName
+				n.CurrentCanonical = v.CurrentCanonicalFull
+				n.CurrentCardinality = v.CurrentCardinality
+				n.Classification = v.ClassificationPath
+				n.ClassificationRanks = v.ClassificationRanks
+				n.ClassificationIDs = v.ClassificationIDs
+				n.DataSourceID = v.DataSourceID
+				n.DataSourceTitle = v.DataSourceTitleShort
+				n.SortOrder = sortNum
+				nCopy := n
+				res = append(res, nCopy)
+				sortNum++
+			}
+		} else {
+			res = append(res, n)
 		}
-		res[i] = n
 	}
-	return res
+	return res, count
 }

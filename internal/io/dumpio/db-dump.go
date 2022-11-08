@@ -26,10 +26,10 @@ func (d *dumpio) checkForVerifiedNames() error {
 }
 
 func (d *dumpio) noVerifiedNames() (bool, error) {
-	var name_id int
-	q := "select name_id from verified_names limit 1"
-	err := d.db.QueryRow(q).Scan(&name_id)
-	return name_id == 0, err
+	var nameID int
+	q := "select id from verified_names limit 1"
+	err := d.db.QueryRow(q).Scan(&nameID)
+	return nameID == 0, err
 }
 
 func (d *dumpio) stats(ds []int) (int, int, int, error) {
@@ -39,7 +39,7 @@ func (d *dumpio) stats(ds []int) (int, int, int, error) {
 		dataSources)
 	err := d.db.QueryRow(nameQ).Scan(&names)
 	if err == nil {
-		err = d.db.QueryRow("SELECT max(name_id) FROM verified_names").Scan(&allNames)
+		err = d.db.QueryRow("SELECT max(id) FROM verified_names").Scan(&allNames)
 	}
 	if err == nil {
 		err = d.db.QueryRow("SELECT max(id) FROM items").Scan(&items)
@@ -102,15 +102,14 @@ func (d *dumpio) outputNames(id, limit int, ds []int) ([]output.OutputName, erro
 	q := fmt.Sprintf(`
 SELECT
   name, cardinality, occurrences, odds_log10, match_type, edit_distance,
-    stem_edit_distance, matched_canonical, matched_name, matched_cardinality,
-    current_canonical, current_name, current_cardinality, classification,
-    classification_ranks, classification_ids, record_id, data_source_id,
-    data_source_title, data_sources_number,
-  curation, error
+  stem_edit_distance, matched_canonical, matched_name, matched_cardinality,
+  current_canonical, current_name, current_cardinality, classification,
+  classification_ranks, classification_ids, record_id, data_source_id,
+  data_source_title, data_sources_number, curation, error, sort_order
   FROM verified_names
-  WHERE name_id >= $1 and name_id < $2
+  WHERE id >= $1 and id < $2
   %s
-ORDER by name_id
+  ORDER by id
 `, dataSources)
 	rows, err = d.db.Query(q, id, id+limit)
 	if err != nil {
@@ -128,7 +127,7 @@ ORDER by name_id
 			&o.CurrentFullName, &o.CurrentCardinality, &o.Classification,
 			&o.ClassificationRanks, &o.ClassificationIDs, &o.RecordID,
 			&o.DataSourceID, &o.DataSource, &o.DataSourcesNumber, &o.Curation,
-			&o.VerifError,
+			&o.VerifError, &o.SortOrder,
 		)
 		if err != nil {
 			return nil, fmt.Errorf("outputNames: %w", err)

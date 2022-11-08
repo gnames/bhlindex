@@ -18,6 +18,7 @@ func (on OutputName) header() []string {
 		"CurrentFullName", "CurrentCardinality", "Classification",
 		"ClassificationRanks", "ClassificationIDs", "RecordID",
 		"DataSourceID", "DataSource", "DataSourcesNumber", "Curation", "Error",
+		"MatchSortOrder",
 	}
 }
 
@@ -36,13 +37,14 @@ func (on OutputName) csvOutput(sep rune) string {
 	currCard := strconv.Itoa(on.CurrentCardinality)
 	dsID := strconv.Itoa(on.DataSourceID)
 	dsNum := strconv.Itoa(on.DataSourcesNumber)
+	sortOrder := strconv.Itoa(on.SortOrder)
 
 	s := []string{
 		on.NameID, on.DetectedName, card, occNum, odds, on.MatchType, eDist,
 		stEDist, on.MatchedCanonical, on.MatchedFullName, matchCard,
 		on.CurrentCanonical, on.CurrentFullName, currCard, on.Classification,
 		on.ClassificationRanks, on.ClassificationIDs, on.RecordID, dsID,
-		on.DataSource, dsNum, on.Curation, on.VerifError,
+		on.DataSource, dsNum, on.Curation, on.VerifError, sortOrder,
 	}
 
 	return gnfmt.ToCSV(s, sep)

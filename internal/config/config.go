@@ -35,6 +35,9 @@ type Config struct {
 	// VerifierURL points to a remote GNverifier service.
 	VerifierURL string
 
+	// VerifAllResults, when true, return all matches instead of best results
+	VerifAllResults bool
+
 	// WithoutConfirm can be set to true to avoid confirmations before
 	// destructive operations.
 	WithoutConfirm bool
@@ -99,6 +102,12 @@ func OptJobs(i int) Option {
 func OptVerifierURL(s string) Option {
 	return func(cfg *Config) {
 		cfg.VerifierURL = s
+	}
+}
+
+func OptVerifAllResults(b bool) Option {
+	return func(cfg *Config) {
+		cfg.VerifAllResults = b
 	}
 }
 

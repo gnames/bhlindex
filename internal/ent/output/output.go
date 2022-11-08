@@ -35,6 +35,10 @@ type OutputName struct {
 	// actually a scientific name according to a Naive Bayes algorithm.
 	OddsLog10 float64 `json:"oddsLog10"`
 
+	// SortOrder is used for sorting multiple matches from the same name.
+	// The best results always has SortOrder = 0.
+	SortOrder int `json:"matchSortOrder"`
+
 	// MatchType describes a resulting kind of a name-string match.
 	// The following match types are possible:
 	//

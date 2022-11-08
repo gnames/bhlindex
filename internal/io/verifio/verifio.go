@@ -42,7 +42,6 @@ func (vrf verifio) Verify() error {
 	if err != nil {
 		return fmt.Errorf("Verify: %w", err)
 	}
-
 	namesNum, err := vrf.numberOfNames()
 	if err != nil {
 		return fmt.Errorf("Verify: %w", err)
@@ -56,7 +55,7 @@ func (vrf verifio) Verify() error {
 
 	start := time.Now()
 	chIn := make(chan []name.UniqueName)
-	chOut := make(chan []name.VerifiedName)
+	chOut := make(chan verifiedBatch)
 	gLoad, ctxLoad := errgroup.WithContext(ctx)
 	gSave, ctxSave := errgroup.WithContext(ctx)
 	var wg sync.WaitGroup
@@ -87,5 +86,5 @@ func (vrf verifio) Verify() error {
 		return fmt.Errorf("Verify: %w", err)
 	}
 
-	return vrf.setPrimaryKey()
+	return nil
 }
