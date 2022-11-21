@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -23,9 +24,11 @@ func (l loaderio) importItems(
 	itemCh chan<- *item.Item,
 ) error {
 	rootDir := l.BHLdir
-	err := checkRoot(rootDir)
+	var err error
+	err = checkRoot(rootDir)
 	if err != nil {
-		return fmt.Errorf("importItems: %w", err)
+		err = fmt.Errorf("importItems: %w", err)
+		log.Warn().Err(err).Msgf("checkRoot")
 	}
 
 	currentDir := ""
@@ -38,11 +41,11 @@ func (l loaderio) importItems(
 	// Walk traverses files in lexical order. It means we do not need to
 	// sort pages after they are collected.
 	err = filepath.WalkDir(rootDir,
-		func(path string, d fs.DirEntry, _ error) error {
-			var err error
+		func(path string, d fs.DirEntry, e error) error {
+			err = e
 			var pg *page.Page
 			if d.IsDir() || !isPageFile(d.Name()) {
-				return nil
+				return err
 			}
 
 			if dir := filepath.Dir(path); dir != currentDir {
@@ -50,6 +53,7 @@ func (l loaderio) importItems(
 					itm.Pages = pages
 					select {
 					case <-ctx.Done():
+						log.Warn().Msg("WalkDir: context died")
 						return ctx.Err()
 					case itemCh <- itm:
 					}
@@ -58,7 +62,9 @@ func (l loaderio) importItems(
 				itm = itemFromPath(path)
 				pg, err = pageFromPath(path)
 				if err != nil {
-					return fmt.Errorf("WalkDir: %w", err)
+					err = fmt.Errorf("WalkDir: %w", err)
+					log.Warn().Err(err).Msgf("pageFromPath: %s", path)
+					return err
 				}
 				pages = []*page.Page{pg}
 				currentDir = dir
@@ -66,7 +72,9 @@ func (l loaderio) importItems(
 			} else {
 				pg, err = pageFromPath(path)
 				if err != nil {
-					return fmt.Errorf("WalkDir: %w", err)
+					err = fmt.Errorf("WalkDir: %w", err)
+					log.Warn().Err(err).Msgf("pageFromPath2: %s", path)
+					return err
 				}
 				pages = append(pages, pg)
 			}
@@ -74,6 +82,7 @@ func (l loaderio) importItems(
 		})
 
 	itm.Pages = pages
+	itemCh <- itm
 	select {
 	case <-ctx.Done():
 		return ctx.Err()
@@ -104,10 +113,17 @@ func (l loaderio) processItemWorker(
 ) error {
 	var err error
 	for itm := range itemCh {
+		if itm.ID == 301396 {
+			for _, v := range itm.Pages {
+				fmt.Printf("ITM Pages: %#v\n\n", v)
+			}
+		}
 
 		err = l.insertItem(itm)
 		if err != nil {
-			return fmt.Errorf("processItemWorker: %w", err)
+			err = fmt.Errorf("processItemWorker: %w", err)
+			log.Warn().Err(err).Msgf("insertItem item: %d", itm.ID)
+			return err
 		}
 		if itm.ID == 0 {
 			continue
@@ -115,12 +131,16 @@ func (l loaderio) processItemWorker(
 
 		err = updatePages(itm)
 		if err != nil {
-			return fmt.Errorf("processItemWorker: %w", err)
+			err = fmt.Errorf("processItemWorker: %w", err)
+			log.Warn().Err(err).Msgf("updatePages item: %d", itm.ID)
+			return err
 		}
 
 		err = l.insertPages(itm)
 		if err != nil {
-			return fmt.Errorf("processItemWorker: %w", err)
+			err = fmt.Errorf("processItemWorker: %w", err)
+			log.Warn().Err(err).Msgf("insertPages item: %d", itm.ID)
+			return err
 		}
 
 		// if any go-routine returns an error, ctx will cancel all
@@ -165,5 +185,9 @@ func itemsPerHour(itemsNum int, start time.Time) string {
 func itemFromPath(path string) *item.Item {
 	path, _ = filepath.Split(path)
 	_, itm := filepath.Split(path[0 : len(path)-1])
-	return &item.Item{Path: path, InternetArchiveID: itm}
+	id, err := strconv.Atoi(itm)
+	if err != nil {
+		log.Warn().Err(err).Msgf("cannot convert '%s' to int", itm)
+	}
+	return &item.Item{ID: id, Path: path}
 }

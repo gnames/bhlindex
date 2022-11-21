@@ -47,6 +47,7 @@ func (fdr finderio) saveDetectedNames(names []name.DetectedName) error {
 		}
 	}
 
+	// Flush COPY FROM to db.
 	_, err = stmt.Exec()
 	if err != nil {
 		return fmt.Errorf("saveDetectedNames: %w", err)

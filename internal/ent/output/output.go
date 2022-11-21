@@ -122,12 +122,12 @@ type OutputName struct {
 
 // OutputOccurrence provides fields for data-dump of detected names.
 type OutputOccurrence struct {
-	// ItemBarcode is an Archive ID of an Item where a name appeared.
-	ItemBarcode string `json:"itemBarcode"`
+	// ItemID is an Archive ID of an Item where a name appeared.
+	ItemID int `json:"itemId"`
 
-	// PageBarcodeNum is a number extracted from the page file name. The page
+	// PageID is a number extracted from the page file name. The page
 	// filename consists of this number and its Item's barcode.
-	PageBarcodeNum int `json:"pageBarcodeNum"`
+	PageID int `json:"pageId"`
 
 	// NameID is an UUID v5 of the name. It is derived from DetectedName.
 	NameID string `json:"nameId"`

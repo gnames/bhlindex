@@ -26,35 +26,46 @@ func New(cfg config.Config, db *sql.DB) loader.Loader {
 	return res
 }
 
-// LoadItems saves items into databsase and removes
-// duplicates. This process preceeds actual work on name resolution. After
-// a item is impored to the database its id goes into itemIDs channel
+// LoadItems saves items into databsase duplicates. This process preceeds
+// actual work on name resolution. After a item is impored to the database its
+// id goes into itemIDs channel
 func (l loaderio) LoadItems(ctx context.Context, dbItemCh chan<- *item.Item) error {
+	var err error
 	itemCh := make(chan *item.Item)
 
 	// in case of an error ctx will send a signal to kill all workers
-	gImp := new(errgroup.Group)
+	gImp := errgroup.Group{}
 	gProc, ctx := errgroup.WithContext(ctx)
 	log.Info().Int("gnfinderJobs", l.Jobs).Msg("Finding names in BHL items")
 
 	gImp.Go(func() error {
-		return l.importItems(ctx, itemCh)
+		err = l.importItems(ctx, itemCh)
+		if err != nil {
+			log.Warn().Err(err).Msg("importItems")
+		}
+		return err
 	})
 
 	for i := 0; i < 3; i++ {
 		gProc.Go(func() error {
-			return l.processItemWorker(ctx, itemCh, dbItemCh)
+			err = l.processItemWorker(ctx, itemCh, dbItemCh)
+			if err != nil {
+				log.Warn().Err(err).Msg("processItemWorker")
+			}
+			return err
 		})
 	}
 
-	err := gImp.Wait()
+	err = gImp.Wait()
 	close(itemCh)
 	if err != nil {
+		log.Warn().Err(err).Msg("gImp.Wait:")
 		return fmt.Errorf("LoadItems: %w", err)
 	}
 
 	err = gProc.Wait()
 	if err != nil {
+		log.Warn().Err(err).Msg("gProc.Wait:")
 		return fmt.Errorf("LoadItems: %w", err)
 	}
 	fmt.Fprint(os.Stderr, "\r")

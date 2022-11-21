@@ -89,34 +89,6 @@ func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) (err error) {
 	return err
 }
 
-func (bi *bhlindex) DumpPages(dmp output.Dumper) error {
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
-	ch := make(chan []output.OutputPage)
-	gDump, ctxDump := errgroup.WithContext(ctx)
-	gOut, ctxOut := errgroup.WithContext(ctx)
-
-	gDump.Go(func() error {
-		return dmp.DumpPages(ctxDump, ch)
-	})
-
-	gOut.Go(func() error {
-		return processOutput(bi, ctxOut, ch)
-	})
-
-	err := gDump.Wait()
-	if err != nil {
-		return fmt.Errorf("dumpPages: %w", err)
-	}
-	close(ch)
-
-	err = gOut.Wait()
-	if err != nil {
-		return fmt.Errorf("dumpPages: %w", err)
-	}
-	return nil
-}
-
 func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()

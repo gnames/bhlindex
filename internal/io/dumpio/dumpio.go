@@ -23,46 +23,6 @@ func New(cfg config.Config, db *sql.DB) output.Dumper {
 	return &dumpio{cfg: cfg, db: db}
 }
 
-func (d *dumpio) DumpPages(ctx context.Context, ch chan<- []output.OutputPage) error {
-	_, _, itemsTotal, err := d.stats([]int{})
-	if err != nil || itemsTotal == 0 {
-		err = fmt.Errorf("dumpio.DumpPages: %w", err)
-		log.Warn().Msg("Run `bhlindex find` before `bhlindex dump`.")
-		return err
-	}
-	log.Info().Msgf("Dumping pages from %s items",
-		humanize.Comma(int64(itemsTotal)),
-	)
-
-	id := 1
-	limit := 100
-	var count int
-	var outputs []output.OutputPage
-	for id <= itemsTotal {
-		select {
-		case <-ctx.Done():
-			return fmt.Errorf("dumpio.DumpOccurrences: %w", ctx.Err())
-		default:
-			outputs, err = d.outputPages(id, limit)
-			if err != nil {
-				return fmt.Errorf("dumpio.DumpOccurrences: %w", err)
-			}
-			count += len(outputs)
-			ch <- outputs
-			id += limit
-			itemsNum := id - 1
-			fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 35))
-			fmt.Fprintf(os.Stderr, "\rDumped pages of %s items", humanize.Comma(int64(itemsNum)))
-		}
-	}
-	fmt.Fprint(os.Stderr, "\r")
-	log.Info().Msgf("Dumped %s pages from %s items",
-		humanize.Comma(int64(count)),
-		humanize.Comma(int64(itemsTotal)),
-	)
-	return nil
-}
-
 // DumpNames outputs data about verified names.
 func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.OutputName, ds []int) error {
 	err := d.checkForVerifiedNames()

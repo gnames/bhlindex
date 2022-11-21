@@ -213,6 +213,7 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 		}
 	}
 
+	// Flush COPY FROM to db.
 	_, err = stmt.Exec()
 	if err != nil {
 		return fmt.Errorf("saveNamesToDB: %w", err)

@@ -50,49 +50,6 @@ func (d *dumpio) stats(ds []int) (int, int, int, error) {
 	return allNames, names, items, err
 }
 
-func (d *dumpio) outputPages(id, limit int) ([]output.OutputPage, error) {
-	var rows *sql.Rows
-	var err error
-
-	q := `
-SELECT
-  i.internet_archive_id, p.id
-  FROM items i
-    JOIN pages p
-      ON i.id = p.item_id
-  WHERE i.id >= $1 and i.id < $2
-ORDER by i.id, p.item_id
-`
-	rows, err = d.db.Query(q, id, id+limit)
-	if err != nil {
-		return nil, fmt.Errorf("outputPages: %w", err)
-	}
-	defer rows.Close()
-
-	var count int
-	res := make([]output.OutputPage, 0, limit)
-	for rows.Next() {
-		o := output.OutputPage{}
-		var pageBarcode string
-		err := rows.Scan(
-			&o.ItemBarcode, &pageBarcode,
-		)
-		if err != nil {
-			return nil, fmt.Errorf("outputPages: %w", err)
-		}
-
-		o.PageBarcodeNum, err = pageNum(pageBarcode)
-		if err != nil {
-			return nil, fmt.Errorf("outputPages: %w", err)
-		}
-
-		res = append(res, o)
-		count++
-	}
-
-	return res, nil
-}
-
 func (d *dumpio) outputNames(id, limit int, ds []int) ([]output.OutputName, error) {
 	var rows *sql.Rows
 	var err error
@@ -149,7 +106,7 @@ func (d *dumpio) outputOccurs(id, limit int, ds []int) ([]output.OutputOccurrenc
 
 	q := fmt.Sprintf(`
 SELECT
-  dn.page_id, i.internet_archive_id, vn.name,
+  dn.page_id, dn.item_id, vn.name,
   dn.name_verbatim, vn.odds_log10, dn.offset_start,
   dn.offset_end, dn.ends_next_page, dn.annot_nomen_type
 
@@ -174,7 +131,7 @@ ORDER by i.id
 		o := output.OutputOccurrence{}
 		var pageBarcode string
 		err := rows.Scan(
-			&pageBarcode, &o.ItemBarcode, &o.DetectedName,
+			&pageBarcode, &o.ItemID, &o.DetectedName,
 			&o.DetectedVerbatim, &o.OddsLog10, &o.OffsetStart,
 			&o.OffsetEnd, &o.EndsNextPage, &o.Annotation,
 		)
@@ -182,7 +139,7 @@ ORDER by i.id
 			return nil, fmt.Errorf("outputOccurs: %w", err)
 		}
 
-		o.PageBarcodeNum, err = pageNum(pageBarcode)
+		o.PageID, err = pageNum(pageBarcode)
 		if err != nil {
 			return nil, fmt.Errorf("outputOccurs: %w", err)
 		}

@@ -13,12 +13,11 @@ func (on OutputName) Name() string {
 func (on OutputName) header() []string {
 	return []string{
 		"NameID", "DetectedName", "Cardinality", "OccurrencesNumber", "OddsLog10",
-		"MatchType", "EditDistance", "StemEditDistance", "MatchedCanonical",
-		"MatchedFullName", "MatchedCardinality", "CurrentCanonical",
-		"CurrentFullName", "CurrentCardinality", "Classification",
-		"ClassificationRanks", "ClassificationIDs", "RecordID",
+		"MatchType", "MatchSortOrder", "EditDistance", "StemEditDistance",
+		"MatchedCanonical", "MatchedFullName", "MatchedCardinality",
+		"CurrentCanonical", "CurrentFullName", "CurrentCardinality",
+		"Classification", "ClassificationRanks", "ClassificationIDs", "RecordID",
 		"DataSourceID", "DataSource", "DataSourcesNumber", "Curation", "Error",
-		"MatchSortOrder",
 	}
 }
 
@@ -40,12 +39,11 @@ func (on OutputName) csvOutput(sep rune) string {
 	sortOrder := strconv.Itoa(on.SortOrder)
 
 	s := []string{
-		on.NameID, on.DetectedName, card, occNum, odds, on.MatchType, eDist,
-		stEDist, on.MatchedCanonical, on.MatchedFullName, matchCard,
+		on.NameID, on.DetectedName, card, occNum, odds, on.MatchType, sortOrder,
+		eDist, stEDist, on.MatchedCanonical, on.MatchedFullName, matchCard,
 		on.CurrentCanonical, on.CurrentFullName, currCard, on.Classification,
 		on.ClassificationRanks, on.ClassificationIDs, on.RecordID, dsID,
-		on.DataSource, dsNum, on.Curation, on.VerifError, sortOrder,
-	}
+		on.DataSource, dsNum, on.Curation, on.VerifError}
 
 	return gnfmt.ToCSV(s, sep)
 }
