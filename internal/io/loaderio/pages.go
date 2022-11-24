@@ -13,12 +13,12 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func pageFromPath(path string) (*page.Page, error) {
-	fileName := filepath.Base(path)
-	id, fileID, itemID := pageID(fileName)
-	return &page.Page{
-		ID: id, FileID: fileID, ItemID: itemID, FileName: fileName,
-	}, nil
+func pageFromPath(path string) *page.Page {
+	fileName, itemID, pageID, fileNum := parseFileName(path)
+	res := page.Page{
+		ID: pageID, FileNum: fileNum, ItemID: itemID, FileName: fileName,
+	}
+	return &res
 }
 
 func updatePages(itm *item.Item) error {
@@ -26,7 +26,7 @@ func updatePages(itm *item.Item) error {
 	var offset int
 
 	sort.Slice(itm.Pages, func(i, j int) bool {
-		return itm.Pages[i].FileID < itm.Pages[j].FileID
+		return itm.Pages[i].FileNum < itm.Pages[j].FileNum
 	})
 
 	for i := range itm.Pages {
@@ -51,15 +51,16 @@ func isPageFile(f string) bool {
 	return res
 }
 
-func pageID(f string) (int, int, int) {
-	extLen := len(filepath.Ext(f))
-	idLen := len(f) - extLen
-	s := f[0:idLen]
+func parseFileName(path string) (string, int, int, int) {
+	fileName := filepath.Base(path)
+	extLen := len(filepath.Ext(fileName))
+	idLen := len(fileName) - extLen
+	s := fileName[0:idLen]
 	fields := strings.Split(s, "-")
 	if len(fields) != 3 {
-		log.Fatal().Msgf("wrong file name: '%s'", f)
+		log.Fatal().Msgf("wrong file name: '%s'", fileName)
 	}
-	id, err := strconv.Atoi(fields[1])
+	pageId, err := strconv.Atoi(fields[1])
 	if err != nil {
 		log.Warn().Err(err).Msgf("cannot convert '%s' to int", fields[1])
 	}
@@ -71,5 +72,5 @@ func pageID(f string) (int, int, int) {
 	if err != nil {
 		log.Warn().Err(err).Msgf("cannot convert '%s' to int", fields[0])
 	}
-	return id, fileID, itemID
+	return fileName, itemID, pageId, fileID
 }

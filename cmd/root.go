@@ -68,7 +68,7 @@ Requirements:
   2. PostgreSQL server containing 'bhlindex' database.
 
 Typical sequence of commands is:
-  
+
   bhlindex find
   bhlindex verify
   bhlindex dump -f csv -d path/to/dump

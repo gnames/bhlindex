@@ -13,6 +13,7 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/gnames/bhlindex/internal/ent/item"
 	"github.com/gnames/bhlindex/internal/ent/page"
+	"github.com/gnames/gnfmt"
 	"github.com/gnames/gnsys"
 	"github.com/rs/zerolog/log"
 )
@@ -27,8 +28,8 @@ func (l loaderio) importItems(
 	var err error
 	err = checkRoot(rootDir)
 	if err != nil {
-		err = fmt.Errorf("importItems: %w", err)
-		log.Warn().Err(err).Msgf("checkRoot")
+		err = fmt.Errorf("checkRoot: %w", err)
+		return err
 	}
 
 	currentDir := ""
@@ -51,38 +52,27 @@ func (l loaderio) importItems(
 			if dir := filepath.Dir(path); dir != currentDir {
 				if itm != nil {
 					itm.Pages = pages
+					l.pagesCount += len(pages)
+					count = l.countIncr(start, count)
 					select {
 					case <-ctx.Done():
-						log.Warn().Msg("WalkDir: context died")
 						return ctx.Err()
 					case itemCh <- itm:
 					}
 				}
 
 				itm = itemFromPath(path)
-				pg, err = pageFromPath(path)
-				if err != nil {
-					err = fmt.Errorf("WalkDir: %w", err)
-					log.Warn().Err(err).Msgf("pageFromPath: %s", path)
-					return err
-				}
+				pg = pageFromPath(path)
 				pages = []*page.Page{pg}
 				currentDir = dir
-				count = countIncr(start, count)
 			} else {
-				pg, err = pageFromPath(path)
-				if err != nil {
-					err = fmt.Errorf("WalkDir: %w", err)
-					log.Warn().Err(err).Msgf("pageFromPath2: %s", path)
-					return err
-				}
+				pg = pageFromPath(path)
 				pages = append(pages, pg)
 			}
 			return err
 		})
 
 	itm.Pages = pages
-	itemCh <- itm
 	select {
 	case <-ctx.Done():
 		return ctx.Err()
@@ -112,17 +102,18 @@ func (l loaderio) processItemWorker(
 	dbItemCh chan<- *item.Item,
 ) error {
 	var err error
+
 	for itm := range itemCh {
-		if itm.ID == 301396 {
-			for _, v := range itm.Pages {
-				fmt.Printf("ITM Pages: %#v\n\n", v)
-			}
+		// ignore items with duplicated PageIDs
+		if _, ok := l.ignoredItems[itm.ID]; ok {
+			fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
+			log.Warn().Msgf("Skipping Item %d because of duplicates", itm.ID)
+			continue
 		}
 
 		err = l.insertItem(itm)
 		if err != nil {
-			err = fmt.Errorf("processItemWorker: %w", err)
-			log.Warn().Err(err).Msgf("insertItem item: %d", itm.ID)
+			err = fmt.Errorf("insertItem Item %d: %w", itm.ID, err)
 			return err
 		}
 		if itm.ID == 0 {
@@ -131,55 +122,61 @@ func (l loaderio) processItemWorker(
 
 		err = updatePages(itm)
 		if err != nil {
-			err = fmt.Errorf("processItemWorker: %w", err)
-			log.Warn().Err(err).Msgf("updatePages item: %d", itm.ID)
+			err = fmt.Errorf("updatePages Item %d: %w", itm.ID, err)
 			return err
 		}
 
 		err = l.insertPages(itm)
 		if err != nil {
-			err = fmt.Errorf("processItemWorker: %w", err)
-			log.Warn().Err(err).Msgf("insertPages item: %d", itm.ID)
+			err = fmt.Errorf("insertPages: Item %d: %w", itm.ID, err)
 			return err
 		}
 
 		// if any go-routine returns an error, ctx will cancel all
 		// other go-routines in the errgroup.
 		select {
-		case <-ctx.Done():
-			log.Info().Err(ctx.Err()).Msg("Item processing cancelled")
-			return ctx.Err()
 		case dbItemCh <- itm:
+		case <-ctx.Done():
+			return ctx.Err()
 		}
 
 	}
 	return nil
 }
 
-func countIncr(start time.Time, count int) int {
+func (l loaderio) countIncr(start time.Time, count int) int {
+	var pages, pagesPerHour, eta, percent string
 	count++
 	if count%10_000 == 0 {
+		pages, pagesPerHour, eta, percent = l.pagesPerHour(start)
 		fmt.Fprint(os.Stderr, "\r")
 		log.Info().
-			Str("items", humanize.Comma(int64(count))).
-			Str("items/hour", itemsPerHour(count, start)).
-			Msg("Finding names in BHL items")
+			Msgf("Processed %s pages (%s), %s pages/hr: ETA %s",
+				pages, percent, pagesPerHour, eta,
+			)
 	} else if count%100 == 0 {
-		fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 40))
+		pages, pagesPerHour, eta, percent = l.pagesPerHour(start)
+		fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 80))
 		fmt.Fprintf(
 			os.Stderr,
-			"\rProcessed %s items, %s items/hour",
-			humanize.Comma(int64(count)),
-			itemsPerHour(count, start),
+			"\rProcessed %s pages (%s), %s pages/hr: ETA %s",
+			pages, percent, pagesPerHour, eta,
 		)
 	}
 	return count
 }
 
-func itemsPerHour(itemsNum int, start time.Time) string {
+func (l loaderio) pagesPerHour(start time.Time) (string, string, string, string) {
+	pages := humanize.Comma(int64(l.pagesCount))
+
 	dur := float64(time.Since(start)) / float64(time.Hour)
-	rate := float64(itemsNum) / dur
-	return humanize.Comma(int64(rate))
+	rate := float64(l.pagesCount) / dur
+	pagesPerHour := humanize.Comma(int64(rate))
+	eta := 3600 * float64(l.pagesTotal-l.pagesCount) / rate
+	etaStr := gnfmt.TimeString(eta)
+	percent := 100 * float64(l.pagesCount) / float64(l.pagesTotal)
+	percentStr := fmt.Sprintf("%0.2f%%", percent)
+	return pages, pagesPerHour, etaStr, percentStr
 }
 
 func itemFromPath(path string) *item.Item {

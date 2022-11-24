@@ -25,7 +25,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/gnames/bhlindex/internal"
+	bhlindex "github.com/gnames/bhlindex/internal"
 	"github.com/gnames/bhlindex/internal/config"
 	"github.com/gnames/bhlindex/internal/io/dbio"
 	"github.com/gnames/bhlindex/internal/io/finderio"
@@ -70,6 +70,7 @@ verification use 'bhlindex verify' command next.`,
 
 		err := bhli.FindNames(ldr, fdr)
 		if err != nil {
+			fmt.Fprint(os.Stderr, "\r")
 			log.Fatal().Err(err).Msg("Name-fidning failed")
 		}
 	},

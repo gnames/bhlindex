@@ -7,7 +7,6 @@ import (
 
 	"github.com/gnames/bhlindex/internal/ent/item"
 	"github.com/lib/pq"
-	"github.com/rs/zerolog/log"
 )
 
 // insertItem  add data from a item to bhlindex database and returns newly
@@ -25,7 +24,6 @@ INSERT INTO items
 		if err.Error() == "sql: no rows in result set" {
 			id = 0
 		} else {
-			log.Warn().Err(err).Msgf("Cannot insert item %d", item.ID)
 			return err
 		}
 	}
@@ -36,28 +34,22 @@ INSERT INTO items
 func (l loaderio) insertPages(itm *item.Item) error {
 	var stmt *sql.Stmt
 	pgs := itm.Pages
-	columns := []string{"id", "item_id", "file_id", "file_name", "offset"}
+	columns := []string{"id", "item_id", "file_num", "file_name", "offset"}
 
 	transaction, err := l.db.Begin()
 	if err != nil {
-		return fmt.Errorf("insertPages: %w", err)
+		return err
 	}
 
 	stmt, err = transaction.Prepare(pq.CopyIn("pages", columns...))
 	if err != nil {
-		return fmt.Errorf("insertPages: %w", err)
+		return err
 	}
 
 	for _, p := range pgs {
-		if itm.ID == 301296 {
-			d := p.ID
-			fmt.Println(d)
-		}
-
-		_, err = stmt.Exec(p.ID, p.ItemID, p.FileID, p.FileName, p.Offset)
+		_, err = stmt.Exec(p.ID, p.ItemID, p.FileNum, p.FileName, p.Offset)
 		if err != nil {
-			err = fmt.Errorf("insertPages (page_id %d): %w", p.ID, err)
-			log.Warn().Err(err).Msgf("page %d", p.ID)
+			err = fmt.Errorf("PageID %d: %w", p.ID, err)
 			return err
 		}
 	}
@@ -65,12 +57,12 @@ func (l loaderio) insertPages(itm *item.Item) error {
 	// Flush COPY FROM to db.
 	_, err = stmt.Exec()
 	if err != nil {
-		return fmt.Errorf("insertPages: %w", err)
+		return err
 	}
 
 	err = stmt.Close()
 	if err != nil {
-		return fmt.Errorf("insertPages: %w", err)
+		return err
 	}
 
 	return transaction.Commit()

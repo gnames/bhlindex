@@ -41,14 +41,26 @@ func (bi *bhlindex) FindNames(
 	ldr loader.Loader,
 	fdr finder.Finder,
 ) error {
+	var err error
 	itemCh := make(chan *item.Item, 10)
 	namesCh := make(chan []name.DetectedName)
 	var wgFind sync.WaitGroup
 	gLoad, ctx := errgroup.WithContext(context.Background())
 	gSave := new(errgroup.Group)
 
+	// check for problems and find the number of pages
+	ldr, err = ldr.DetectPageDups()
+	if err != nil {
+		err = fmt.Errorf("ScanData: %w", err)
+		return err
+	}
+
 	gLoad.Go(func() error {
-		return ldr.LoadItems(ctx, itemCh)
+		err = ldr.LoadItems(ctx, itemCh)
+		if err != nil {
+			err = fmt.Errorf("LoadItems: %w", err)
+		}
+		return err
 	})
 
 	wgFind.Add(1)
@@ -58,7 +70,7 @@ func (bi *bhlindex) FindNames(
 		return fdr.SaveNames(ctx, namesCh)
 	})
 
-	err := gLoad.Wait()
+	err = gLoad.Wait()
 	close(itemCh)
 	if err != nil {
 		return fmt.Errorf("FindNames: %w", err)
