@@ -51,14 +51,14 @@ func (bi *bhlindex) FindNames(
 	// check for problems and find the number of pages
 	ldr, err = ldr.DetectPageDups()
 	if err != nil {
-		err = fmt.Errorf("ScanData: %w", err)
+		err = fmt.Errorf("-> DetectPageDups %w", err)
 		return err
 	}
 
 	gLoad.Go(func() error {
 		err = ldr.LoadItems(ctx, itemCh)
 		if err != nil {
-			err = fmt.Errorf("LoadItems: %w", err)
+			err = fmt.Errorf("-> LoadItems %w", err)
 		}
 		return err
 	})
@@ -67,13 +67,17 @@ func (bi *bhlindex) FindNames(
 	go fdr.FindNames(itemCh, namesCh, &wgFind)
 
 	gSave.Go(func() error {
-		return fdr.SaveNames(ctx, namesCh)
+		err = fdr.SaveNames(ctx, namesCh)
+		if err != nil {
+			err = fmt.Errorf("-> SaveNames %w", err)
+		}
+		return err
 	})
 
 	err = gLoad.Wait()
 	close(itemCh)
 	if err != nil {
-		return fmt.Errorf("FindNames: %w", err)
+		return err
 	}
 
 	wgFind.Wait()
@@ -81,7 +85,7 @@ func (bi *bhlindex) FindNames(
 
 	err = gSave.Wait()
 	if err != nil {
-		return fmt.Errorf("FindNames: %w", err)
+		return err
 	}
 
 	log.Info().Msg("Finding names finished successfully")
@@ -92,16 +96,27 @@ func (bi *bhlindex) FindNames(
 // results to a local storage.
 func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) (err error) {
 	err = vrf.Reset()
-	if err == nil {
-		err = vrf.ExtractUniqueNames()
+	if err != nil {
+		err = fmt.Errorf("-> Reset %w", err)
+		return err
 	}
-	if err == nil {
-		err = vrf.Verify()
+
+	err = vrf.ExtractUniqueNames()
+	if err != nil {
+		err = fmt.Errorf("-> ExtractUniqueNames %w", err)
+		return err
 	}
+
+	err = vrf.Verify()
+	if err != nil {
+		err = fmt.Errorf("-> Verify %w", err)
+	}
+
 	return err
 }
 
 func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
+	var err error
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	ch := make(chan []output.OutputName)
@@ -109,22 +124,30 @@ func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
 	gOut, ctxOut := errgroup.WithContext(ctx)
 
 	gDump.Go(func() error {
-		return dmp.DumpNames(ctxDump, ch, bi.OutputDataSourceIDs)
+		err = dmp.DumpNames(ctxDump, ch, bi.OutputDataSourceIDs)
+		if err != nil {
+			err = fmt.Errorf("-> DumpNames %w", err)
+		}
+		return err
 	})
 
 	gOut.Go(func() error {
-		return processOutput(bi, ctxOut, ch)
+		err = processOutput(bi, ctxOut, ch)
+		if err != nil {
+			err = fmt.Errorf("-> processOutput %w", err)
+		}
+		return err
 	})
 
-	err := gDump.Wait()
+	err = gDump.Wait()
 	if err != nil {
-		return fmt.Errorf("bhlindex: %w", err)
+		return err
 	}
 	close(ch)
 
 	err = gOut.Wait()
 	if err != nil {
-		return fmt.Errorf("bhlindex: %w", err)
+		return err
 	}
 	return nil
 }
@@ -132,6 +155,7 @@ func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
 // DumpOccurrences creates output with detected and verified names in CSV,
 // TSV, or JSON formats.
 func (bi *bhlindex) DumpOccurrences(dmp output.Dumper) error {
+	var err error
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	ch := make(chan []output.OutputOccurrence)
@@ -139,22 +163,31 @@ func (bi *bhlindex) DumpOccurrences(dmp output.Dumper) error {
 	gOut, ctxOut := errgroup.WithContext(ctx)
 
 	gDump.Go(func() error {
-		return dmp.DumpOccurrences(ctxDump, ch, bi.OutputDataSourceIDs)
+		err = dmp.DumpOccurrences(ctxDump, ch, bi.OutputDataSourceIDs)
+		if err != nil {
+			err = fmt.Errorf("-> DumpOccurrences %w", err)
+		}
+		return err
+
 	})
 
 	gOut.Go(func() error {
-		return processOutput(bi, ctxOut, ch)
+		err = processOutput(bi, ctxOut, ch)
+		if err != nil {
+			err = fmt.Errorf("-> processOutput %w", err)
+		}
+		return err
 	})
 
-	err := gDump.Wait()
+	err = gDump.Wait()
 	if err != nil {
-		return fmt.Errorf("bhlindex: %w", err)
+		return err
 	}
 	close(ch)
 
 	err = gOut.Wait()
 	if err != nil {
-		return fmt.Errorf("bhlindex: %w", err)
+		return err
 	}
 	return nil
 }
@@ -215,7 +248,7 @@ func processOutput[O output.Output](
 		}
 		select {
 		case <-ctx.Done():
-			return fmt.Errorf("processOutput: %w", ctx.Err())
+			return ctx.Err()
 		default:
 			for i := range rows {
 				_, err = w.WriteString(output.Format(rows[i], bi.OutputFormat) + "\n")

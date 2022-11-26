@@ -12,9 +12,8 @@ func (o OutputOccurrence) Name() string {
 
 func (o OutputOccurrence) header() []string {
 	return []string{
-		"PageId", "ItemId", "NameId",
-		"DetectedName", "DetectedNameVerbatim", "OddsLog10",
-		"Start", "End", "EndsNextPage", "Annotation",
+		"NameId", "PageId", "ItemId", "DetectedName", "DetectedNameVerbatim",
+		"OddsLog10", "Start", "End", "EndsNextPage", "Annotation",
 	}
 }
 
@@ -28,7 +27,7 @@ func (o OutputOccurrence) csvOutput(sep rune) string {
 	start := strconv.Itoa(o.OffsetStart)
 	end := strconv.Itoa(o.OffsetEnd)
 	s := []string{
-		pageID, itemID, o.NameID,
+		o.NameID, pageID, itemID,
 		o.DetectedName, o.DetectedVerbatim, odds,
 		start, end, strconv.FormatBool(o.EndsNextPage),
 		o.Annotation,

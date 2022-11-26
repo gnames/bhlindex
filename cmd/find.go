@@ -39,9 +39,9 @@ var findCmd = &cobra.Command{
 	Use:   "find",
 	Short: "Detects scientific names in BHL",
 	Long: `The 'find' command traverses Biodiversity Heritage Library (BHL) files
-and folders recursively. It discovers scientific names in text pages,
-generates metadata that describes locations of the names in BHL and
-saves results to a database.
+and folders. It discovers scientific names in text pages, generates
+metadata that describes locations of the names in BHL and saves results
+to a database.
 
 This command does not do verification of detected scientific names. For
 verification use 'bhlindex verify' command next.`,
@@ -71,6 +71,7 @@ verification use 'bhlindex verify' command next.`,
 		err := bhli.FindNames(ldr, fdr)
 		if err != nil {
 			fmt.Fprint(os.Stderr, "\r")
+			err = fmt.Errorf("FindNames %w", err)
 			log.Fatal().Err(err).Msg("Name-fidning failed")
 		}
 	},
@@ -78,14 +79,4 @@ verification use 'bhlindex verify' command next.`,
 
 func init() {
 	rootCmd.AddCommand(findCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// findCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// findCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

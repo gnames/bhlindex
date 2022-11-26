@@ -14,9 +14,18 @@ type Dumper interface {
 	DumpOccurrences(context.Context, chan<- []OutputOccurrence, []int) error
 }
 
+// Output interface provides generic functions outputs of verified names, and
+// names occurrences.
 type Output interface {
+	// Name returns the name of output file.
 	Name() string
+
+	// header returns list of fields for CSF or TSV format.
 	header() []string
+
+	// csvOutput provides a method to generate a CSV ot TSV row.
 	csvOutput(rune) string
+
+	// jsonOutput provides a method to generate a JSON output.
 	jsonOutput(bool) string
 }

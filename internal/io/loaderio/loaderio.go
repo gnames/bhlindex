@@ -41,11 +41,11 @@ func (l loaderio) DetectPageDups() (loader.Loader, error) {
 
 	err = checkRoot(rootDir)
 	if err != nil {
-		err = fmt.Errorf("checkRoot: %w", err)
+		err = fmt.Errorf("-> checkRoot %w", err)
 		return l, err
 	}
 
-	log.Info().Msg("Preprocessing to detect PageID duplicates")
+	log.Info().Msg("Pre-processing to detect PageID duplicates")
 
 	err = filepath.WalkDir(rootDir,
 		func(path string, d fs.DirEntry, e error) error {
@@ -63,8 +63,8 @@ func (l loaderio) DetectPageDups() (loader.Loader, error) {
 
 			if l.pagesTotal%100_000 == 0 {
 				pages := humanize.Comma(int64(l.pagesTotal))
-				fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 80))
-				fmt.Fprintf(os.Stderr, "\rPreprocessing page %s", pages)
+				fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
+				fmt.Fprintf(os.Stderr, "Pre-processing page %s", pages)
 			}
 
 			return nil
@@ -72,7 +72,7 @@ func (l loaderio) DetectPageDups() (loader.Loader, error) {
 
 	pages := humanize.Comma(int64(l.pagesTotal))
 	fmt.Fprint(os.Stderr, "\r")
-	log.Info().Msgf("Preprocessed %s pages", pages)
+	log.Info().Msgf("Pre-processed %s pages", pages)
 
 	if len(l.ignoredItems) == 0 {
 		log.Info().Msg("No PageID duplicates were found.")
@@ -99,7 +99,7 @@ func (l loaderio) LoadItems(ctx context.Context, dbItemCh chan<- *item.Item) err
 	gImp.Go(func() error {
 		err = l.importItems(ctx, itemCh)
 		if err != nil {
-			err = fmt.Errorf("importItems: %w", err)
+			err = fmt.Errorf("-> importItems %w", err)
 		}
 		return err
 	})
@@ -110,7 +110,7 @@ func (l loaderio) LoadItems(ctx context.Context, dbItemCh chan<- *item.Item) err
 			if err != nil {
 				// This error is masked by gImp.Wait, so we
 				// need to show it in a warning.
-				err = fmt.Errorf("processItemWorker: %w", err)
+				err = fmt.Errorf("-> processItemWorker %w", err)
 				if !strings.Contains(err.Error(), "context canceled") {
 					fmt.Fprint(os.Stderr, "\r")
 					log.Warn().Err(err).Msg("")
@@ -130,7 +130,7 @@ func (l loaderio) LoadItems(ctx context.Context, dbItemCh chan<- *item.Item) err
 	if err != nil {
 		return err
 	}
-	fmt.Fprint(os.Stderr, "\r")
-	log.Info().Msg("All items are loaded into name-finder.")
+	fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
+	log.Info().Msgf("Processed %s pages", humanize.Comma(int64(l.pagesTotal)))
 	return nil
 }

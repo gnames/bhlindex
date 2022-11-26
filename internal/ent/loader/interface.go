@@ -6,6 +6,8 @@ import (
 	"github.com/gnames/bhlindex/internal/ent/item"
 )
 
+// Loader extracts metainformation from BHL file names and reads the content
+// of text files into memory.
 type Loader interface {
 	// DetectPageDups checks directory structure for errors and finds the number of
 	// pages in the corpus.

@@ -35,7 +35,7 @@ func updatePages(itm *item.Item) error {
 		path := filepath.Join(itm.Path, itm.Pages[i].FileName)
 		text, err := os.ReadFile(path)
 		if err != nil {
-			return fmt.Errorf("updatePages: %w", err)
+			return fmt.Errorf("-> ReadFile %w", err)
 		}
 		itemText = append(itemText, text...)
 		pageUTF := []rune(string(text))

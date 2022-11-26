@@ -15,7 +15,7 @@ import (
 func (d *dumpio) checkForVerifiedNames() error {
 	noNames, err := d.noVerifiedNames()
 	if err != nil {
-		return fmt.Errorf("checkForVerifiedNames: %w", err)
+		return fmt.Errorf("-> noVerifiedNames %w", err)
 	}
 	if noNames {
 		err = errors.New("verified_names table is empty")
@@ -33,21 +33,21 @@ func (d *dumpio) noVerifiedNames() (bool, error) {
 }
 
 func (d *dumpio) stats(ds []int) (int, int, int, error) {
-	var allNames, names, items int
+	var verifNames, verifNamesDataSources, occurs int
 	dataSources := getDataSources(ds)
 	nameQ := fmt.Sprintf("SELECT count(*) as count FROM verified_names WHERE 1=1 %s",
 		dataSources)
-	err := d.db.QueryRow(nameQ).Scan(&names)
+	err := d.db.QueryRow(nameQ).Scan(&verifNamesDataSources)
 	if err == nil {
-		err = d.db.QueryRow("SELECT max(id) FROM verified_names").Scan(&allNames)
+		err = d.db.QueryRow("SELECT count(*) FROM verified_names").Scan(&verifNames)
 	}
 	if err == nil {
-		err = d.db.QueryRow("SELECT max(id) FROM items").Scan(&items)
+		err = d.db.QueryRow("SELECT max(id) FROM detected_names").Scan(&occurs)
 	}
 	if err != nil {
-		err = fmt.Errorf("stats: %w", err)
+		err = fmt.Errorf("-> stats %w", err)
 	}
-	return allNames, names, items, err
+	return verifNames, verifNamesDataSources, occurs, err
 }
 
 func (d *dumpio) outputNames(id, limit int, ds []int) ([]output.OutputName, error) {
@@ -70,7 +70,7 @@ SELECT
 `, dataSources)
 	rows, err = d.db.Query(q, id, id+limit)
 	if err != nil {
-		return nil, fmt.Errorf("outputNames: %w", err)
+		return nil, fmt.Errorf("-> Query %w", err)
 	}
 	defer rows.Close()
 
@@ -87,7 +87,7 @@ SELECT
 			&o.VerifError, &o.SortOrder,
 		)
 		if err != nil {
-			return nil, fmt.Errorf("outputNames: %w", err)
+			return nil, fmt.Errorf("-> Scan %w", err)
 		}
 
 		o.NameID = gnuuid.New(o.DetectedName).String()
@@ -102,26 +102,17 @@ func (d *dumpio) outputOccurs(id, limit int, ds []int) ([]output.OutputOccurrenc
 	var rows *sql.Rows
 	var err error
 
-	dataSources := getDataSources(ds)
-
-	q := fmt.Sprintf(`
-SELECT
-  dn.page_id, dn.item_id, vn.name,
-  dn.name_verbatim, vn.odds_log10, dn.offset_start,
-  dn.offset_end, dn.ends_next_page, dn.annot_nomen_type
-
-  FROM items i
-    JOIN detected_names dn
-      ON i.id = dn.item_id
-    JOIN verified_names vn
-      ON dn.name = vn.name
-  WHERE i.id >= $1 and i.id < $2
-  %s
-ORDER by i.id
-`, dataSources)
+	q := `
+  SELECT
+    page_id, item_id, name,
+    name_verbatim, odds_log10, offset_start,
+    offset_end, ends_next_page, annot_nomen_type
+  FROM detected_names dn
+  WHERE id >= $1 and id < $2
+  ORDER BY id`
 	rows, err = d.db.Query(q, id, id+limit)
 	if err != nil {
-		return nil, fmt.Errorf("outputOccurs: %w", err)
+		return nil, fmt.Errorf("-> Query %w", err)
 	}
 	defer rows.Close()
 
@@ -129,19 +120,13 @@ ORDER by i.id
 	res := make([]output.OutputOccurrence, 0, limit)
 	for rows.Next() {
 		o := output.OutputOccurrence{}
-		var pageBarcode string
 		err := rows.Scan(
-			&pageBarcode, &o.ItemID, &o.DetectedName,
+			&o.PageID, &o.ItemID, &o.DetectedName,
 			&o.DetectedVerbatim, &o.OddsLog10, &o.OffsetStart,
 			&o.OffsetEnd, &o.EndsNextPage, &o.Annotation,
 		)
 		if err != nil {
-			return nil, fmt.Errorf("outputOccurs: %w", err)
-		}
-
-		o.PageID, err = pageNum(pageBarcode)
-		if err != nil {
-			return nil, fmt.Errorf("outputOccurs: %w", err)
+			return nil, fmt.Errorf("-> Scan %w", err)
 		}
 		o.NameID = gnuuid.New(o.DetectedName).String()
 
@@ -150,12 +135,6 @@ ORDER by i.id
 	}
 
 	return res, nil
-}
-
-func pageNum(barCode string) (int, error) {
-	l := len(barCode)
-	num := barCode[l-4 : l]
-	return strconv.Atoi(num)
 }
 
 func getDataSources(ds []int) string {

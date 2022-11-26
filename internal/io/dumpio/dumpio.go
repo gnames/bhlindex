@@ -27,19 +27,16 @@ func New(cfg config.Config, db *sql.DB) output.Dumper {
 func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.OutputName, ds []int) error {
 	err := d.checkForVerifiedNames()
 	if err != nil {
-		err = fmt.Errorf("dumpio.DumpNames: %w", err)
+		err = fmt.Errorf("-> checkForVerifiedNames %w", err)
 		log.Warn().Msg("Run `bhlindex verify` before `bhlindex dump`.")
 		return err
 	}
 
-	namesTotal, namesNum, itemsTotal, err := d.stats(ds)
+	namesTotal, namesNum, _, err := d.stats(ds)
 	if err != nil {
-		return fmt.Errorf("dumpio.DumpNames: %w", err)
+		return fmt.Errorf("-> stats %w", err)
 	}
-	log.Info().Msgf("Dumping %s names found in %s items",
-		humanize.Comma(int64(namesNum)),
-		humanize.Comma(int64(itemsTotal)),
-	)
+	log.Info().Msgf("Dumping verified names")
 	if len(ds) > 0 {
 		var suffix string
 		if len(ds) > 1 {
@@ -55,26 +52,26 @@ func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.OutputName, d
 	for id <= namesTotal {
 		select {
 		case <-ctx.Done():
-			return fmt.Errorf("dumpio.DumpNames: %w", ctx.Err())
+			return ctx.Err()
 		default:
 			outputs, err = d.outputNames(id, limit, ds)
 			count += len(outputs)
 			if err != nil {
-				return fmt.Errorf("dumpio.DumpNames: %w", err)
+				return fmt.Errorf("-> outputNames %w", err)
 			}
 			ch <- outputs
 			id += limit
-			fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 35))
-			fmt.Fprintf(os.Stderr, "\rDumped %s names out of %s",
+			percent := float64(count) * 100 / float64(namesNum)
+			fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
+			fmt.Fprintf(os.Stderr, "Dumped %s names (%0.1f%%)",
 				humanize.Comma(int64(count)),
-				humanize.Comma(int64(namesNum)))
+				percent,
+			)
 		}
 	}
-	fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 35))
-	fmt.Fprint(os.Stderr, "\r")
-	log.Info().Msgf("Dumped %s names%s",
+	fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
+	log.Info().Msgf("Dumped %s verified names",
 		humanize.Comma(int64(namesNum)),
-		strings.Repeat(" ", 15),
 	)
 	return nil
 }
@@ -83,19 +80,16 @@ func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.OutputName, d
 func (d *dumpio) DumpOccurrences(ctx context.Context, ch chan<- []output.OutputOccurrence, ds []int) error {
 	err := d.checkForVerifiedNames()
 	if err != nil {
-		err = fmt.Errorf("dumpio.DumpOccurrences: %w", err)
+		err = fmt.Errorf("-> checkForVerifiedNames %w", err)
 		log.Warn().Msg("Run `bhlindex verify` before `bhlindex dump`.")
 		return err
 	}
 
-	_, namesNum, itemsTotal, err := d.stats(ds)
+	_, _, occursTotal, err := d.stats(ds)
 	if err != nil {
-		return fmt.Errorf("dumpio.DumpOccurrences: %w", err)
+		return fmt.Errorf("-> stats %w", err)
 	}
-	log.Info().Msgf("Dumping occurrences of %s names found in %s items",
-		humanize.Comma(int64(namesNum)),
-		humanize.Comma(int64(itemsTotal)),
-	)
+	log.Info().Msg("Dumping name occurrences")
 	if len(ds) > 0 {
 		var suffix string
 		if len(ds) > 1 {
@@ -104,43 +98,44 @@ func (d *dumpio) DumpOccurrences(ctx context.Context, ch chan<- []output.OutputO
 		log.Info().Msgf("Occurrences are filtered by %d data-source%s", len(ds), suffix)
 	}
 	id := 1
-	limit := 100
+	limit := 100_000
 	var count int
 	var outputs []output.OutputOccurrence
-	for id <= itemsTotal {
+	for id <= occursTotal {
 		select {
 		case <-ctx.Done():
-			return fmt.Errorf("dumpio.DumpOccurrences: %w", ctx.Err())
+			return ctx.Err()
 		default:
 			outputs, err = d.outputOccurs(id, limit, ds)
 			if err != nil {
-				return fmt.Errorf("dumpio.DumpOccurrences: %w", err)
+				return fmt.Errorf("-> outputOccurs %w", err)
 			}
 			count += len(outputs)
 			ch <- outputs
 			id += limit
-			itemsNum := id - 1
-			fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 35))
-			fmt.Fprintf(os.Stderr, "\rDumped occurrences from %s items", humanize.Comma(int64(itemsNum)))
-			if itemsNum%10_000 == 0 {
-				makeLog(itemsTotal, itemsNum)
+			occursNum := id - 1
+			percent := float64(occursNum) * 100 / float64(occursTotal)
+			fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 80))
+			fmt.Fprintf(os.Stderr, "\rDumped %s occurrences (%0.1f%%)",
+				humanize.Comma(int64(occursNum)),
+				percent,
+			)
+			if occursNum%25_000_000 == 0 {
+				makeLog(occursTotal, occursNum)
 			}
 		}
 	}
 	fmt.Fprint(os.Stderr, "\r")
-	log.Info().Msgf("Dumped %s occurrences from %s items",
+	log.Info().Msgf("Dumped %s occurrences",
 		humanize.Comma(int64(count)),
-		humanize.Comma(int64(itemsTotal)),
 	)
 	return nil
 }
 
 func makeLog(itemsTotal, itemsNum int) {
-	fmt.Fprint(os.Stderr, "\r")
 	items := humanize.Comma(int64(itemsNum))
-	total := humanize.Comma(int64(itemsTotal))
 	percent := 100 * float64(itemsNum) / float64(itemsTotal)
+	fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
 	log.Info().
-		Str("items", items+"/"+total).
-		Msgf("Dumped %0.1f%%", percent)
+		Msgf("Dumped %s items (%0.1f%%)", items, percent)
 }

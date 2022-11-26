@@ -69,6 +69,7 @@ The 'verify' command should be executed after 'find' command.`,
 		vrf := verifio.New(cfg, db)
 		err := bhli.VerifyNames(vrf)
 		if err != nil {
+			err = fmt.Errorf("VerifyNames %w", err)
 			log.Fatal().Err(err).Msg("Name verification failed")
 		}
 	},

@@ -33,18 +33,22 @@ func New(cfg config.Config, db *sql.DB) verif.VerifierBHL {
 // Reset cleans up all stored data for verifications.
 func (vrf verifio) Reset() error {
 	log.Info().Msg("Cleaning up previous verification results if they exist")
-	return vrf.truncateVerifTables()
+	err := vrf.truncateVerifTables()
+	if err != nil {
+		err = fmt.Errorf("-> truncateVerifTables %w", err)
+	}
+	return err
 }
 
 // Verify verifies all detected names and stores the data localy.
 func (vrf verifio) Verify() error {
 	err := vrf.checkForDetectedNames()
 	if err != nil {
-		return fmt.Errorf("Verify: %w", err)
+		return fmt.Errorf("-> checkForDetectedNames %w", err)
 	}
 	namesNum, err := vrf.numberOfNames()
 	if err != nil {
-		return fmt.Errorf("Verify: %w", err)
+		return fmt.Errorf("-> numberOfNames %w", err)
 	}
 	log.Info().Msgf("Verifying %s names", humanize.Comma(int64(namesNum)))
 
@@ -63,18 +67,25 @@ func (vrf verifio) Verify() error {
 
 	gLoad.Go(func() error {
 		err = vrf.loadNames(ctxLoad, namesNum, chIn)
+		if err != nil {
+			err = fmt.Errorf("-> loadNames %w", err)
+		}
 		return err
 	})
 
 	go vrf.sendToVerify(ctx, vrfREST, chIn, chOut, &wg)
 
 	gSave.Go(func() error {
-		return vrf.saveVerif(ctxSave, chOut, namesNum, start)
+		err = vrf.saveVerif(ctxSave, chOut, namesNum, start)
+		if err != nil {
+			err = fmt.Errorf("-> saveVerif %w", err)
+		}
+		return err
 	})
 
 	err = gLoad.Wait()
 	if err != nil {
-		return fmt.Errorf("Verify: %w", err)
+		return err
 	}
 	close(chIn)
 
@@ -83,7 +94,7 @@ func (vrf verifio) Verify() error {
 
 	gSave.Wait()
 	if err != nil {
-		return fmt.Errorf("Verify: %w", err)
+		return err
 	}
 
 	return nil

@@ -18,13 +18,13 @@ func (fdr finderio) saveDetectedNames(names []name.DetectedName) error {
 	}
 	transaction, err := fdr.db.Begin()
 	if err != nil {
-		return fmt.Errorf("saveDetectedNames: %w", err)
+		return fmt.Errorf("-> Begin %w", err)
 	}
 	defer transaction.Rollback()
 
 	stmt, err := transaction.Prepare(pq.CopyIn("detected_names", columns...))
 	if err != nil {
-		return fmt.Errorf("saveDetectedNames: %w", err)
+		return fmt.Errorf("-> Prepare %w", err)
 	}
 
 	for _, v := range names {
@@ -43,19 +43,19 @@ func (fdr finderio) saveDetectedNames(names []name.DetectedName) error {
 			v.OddsLog10, now,
 		)
 		if err != nil {
-			return fmt.Errorf("saveDetectedNames: %w", err)
+			return fmt.Errorf("-> Exec %w", err)
 		}
 	}
 
 	// Flush COPY FROM to db.
 	_, err = stmt.Exec()
 	if err != nil {
-		return fmt.Errorf("saveDetectedNames: %w", err)
+		return fmt.Errorf("-> Exec flush %w", err)
 	}
 
 	err = stmt.Close()
 	if err != nil {
-		return fmt.Errorf("saveDetectedNames: %w", err)
+		return fmt.Errorf("-> Close %w", err)
 	}
 
 	return transaction.Commit()

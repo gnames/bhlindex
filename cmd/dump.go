@@ -22,7 +22,9 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"github.com/gnames/bhlindex/internal"
+	"fmt"
+
+	bhlindex "github.com/gnames/bhlindex/internal"
 	"github.com/gnames/bhlindex/internal/config"
 	"github.com/gnames/bhlindex/internal/io/dbio"
 	"github.com/gnames/bhlindex/internal/io/dumpio"
@@ -69,11 +71,13 @@ name-verification and writes them to STDOUT. Supports 'json', 'csv',
 
 		err = bhli.DumpNames(dmp)
 		if err != nil {
+			err = fmt.Errorf("DumpNames %w", err)
 			log.Fatal().Err(err).Msg("Dump of names failed")
 		}
 
 		err = bhli.DumpOccurrences(dmp)
 		if err != nil {
+			err = fmt.Errorf("DumpOccurrences %w", err)
 			log.Fatal().Err(err).Msg("Dump of occurrences failed")
 		}
 	},

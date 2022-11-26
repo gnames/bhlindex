@@ -9,21 +9,21 @@ import (
 	"github.com/gnames/gnlib/ent/gnvers"
 )
 
-// BHLindex us the main usecase interface that defines functionality of BHLindex
+// BHLindex defines main functionality of BHLindex project.
 type BHLindex interface {
 	// FindNames traverses BHL corpus directory structure, assembling texts,
-	// detecting names, saving data to storage.
+	// detecting names, saving the resulting data to storage.
 	FindNames(loader.Loader, finder.Finder) error
 
 	// Verify names runs verification on unique detected names and saves the
-	// results to a local storage.
+	// results to storage.
 	VerifyNames(verif.VerifierBHL) error
 
-	// DumpOccurrences creates output with detected names in CSV,
-	// TSV, or JSON formats.
+	// DumpOccurrences exports data about detected names and their position
+	// on BHL pages in CSV, TSV, or JSON formats.
 	DumpOccurrences(output.Dumper) error
 
-	// DumpNames creates output with verified names in CSV,
+	// DumpNames exports results of names verification in CSV,
 	// TSV, or JSON formats.
 	DumpNames(output.Dumper) error
 

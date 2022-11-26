@@ -50,7 +50,7 @@ func (fdr finderio) SaveNames(
 		_ = v
 		err := fdr.saveDetectedNames(v)
 		if err != nil {
-			return fmt.Errorf("SaveNames: %w", err)
+			return fmt.Errorf("-> saveDetecedNames %w", err)
 		}
 	}
 	return nil

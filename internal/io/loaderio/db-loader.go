@@ -49,7 +49,7 @@ func (l loaderio) insertPages(itm *item.Item) error {
 	for _, p := range pgs {
 		_, err = stmt.Exec(p.ID, p.ItemID, p.FileNum, p.FileName, p.Offset)
 		if err != nil {
-			err = fmt.Errorf("PageID %d: %w", p.ID, err)
+			err = fmt.Errorf("-> Exec PageID %d %w", p.ID, err)
 			return err
 		}
 	}

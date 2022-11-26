@@ -1,15 +1,23 @@
-# Changelog
+# CHANGELOG
 
 ## Unreleased
 
+## [v1.0.0-RC2] - 2022-11-28 Mon
+
+- Add [#59]: modify dump data according to #57.
+- Add [#58]: pre-scan data for duplicate page Ids before name-finding.
+- Add [#57]: switch to an OCR dump structure that uses item and page Ids.
+- Add [#56]: add an option to return all verification results instead
+             of the best results only.
+
 ## [v1.0.0-RC1] - 2022-10-30 Sun
 
-- Add [#55] - refactor the directory structure using `internal` directory
-              to hide code not suitable for public use.
+- Add [#55]: refactor the directory structure using `internal` directory
+             to hide code not suitable for public use.
 
 ## [v0.13.2] - 2022-09-12 Mon
 
-- Add [#53] - classification ranks and ids in dump files.
+- Add [#53]: classification ranks and IDs in dump files.
 
 ## [v0.13.1] - 2022-09-08 Thu
 
@@ -153,6 +161,14 @@
 
 This document follows [changelog guidelines]
 
+[v1.0.0-RC2]: https://github.com/gnames/bhlindex/compare/v1.0.0-RC1...v1.0.0-RC2
+[v1.0.0-RC1]: https://github.com/gnames/bhlindex/compare/v0.13.2...v1.0.0-RC1
+[v0.13.2]: https://github.com/gnames/bhlindex/compare/v0.13.1...v0.13.2
+[v0.13.1]: https://github.com/gnames/bhlindex/compare/v0.13.0...v0.13.1
+[v0.13.0]: https://github.com/gnames/bhlindex/compare/v0.12.6...v0.13.0
+[v0.12.6]: https://github.com/gnames/bhlindex/compare/v0.12.5...v0.12.6
+[v0.12.5]: https://github.com/gnames/bhlindex/compare/v0.12.4...v0.12.5
+[v0.12.4]: https://github.com/gnames/bhlindex/compare/v0.12.3...v0.12.4
 [v0.12.3]: https://github.com/gnames/bhlindex/compare/v0.12.2...v0.12.3
 [v0.12.2]: https://github.com/gnames/bhlindex/compare/v0.12.1...v0.12.2
 [v0.12.1]: https://github.com/gnames/bhlindex/compare/v0.12.0...v0.12.1
@@ -170,6 +186,16 @@ This document follows [changelog guidelines]
 [v0.3.0]: https://github.com/gnames/bhlindex/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/gnames/bhlindex/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/gnames/bhlindex/tree/v0.1.0
+[#60]: https://github.com/gnames/bhlindex/issues/60
+[#59]: https://github.com/gnames/bhlindex/issues/59
+[#58]: https://github.com/gnames/bhlindex/issues/58
+[#57]: https://github.com/gnames/bhlindex/issues/57
+[#56]: https://github.com/gnames/bhlindex/issues/56
+[#55]: https://github.com/gnames/bhlindex/issues/55
+[#54]: https://github.com/gnames/bhlindex/issues/54
+[#53]: https://github.com/gnames/bhlindex/issues/53
+[#52]: https://github.com/gnames/bhlindex/issues/52
+[#51]: https://github.com/gnames/bhlindex/issues/51
 [#50]: https://github.com/gnames/bhlindex/issues/50
 [#49]: https://github.com/gnames/bhlindex/issues/49
 [#48]: https://github.com/gnames/bhlindex/issues/48

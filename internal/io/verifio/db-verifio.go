@@ -24,17 +24,17 @@ func (vrf verifio) ExtractUniqueNames() error {
 
 	stmt, err := vrf.db.Prepare(q)
 	if err != nil {
-		return fmt.Errorf("ExtractUniqueNames: %w", err)
+		return fmt.Errorf("-> db.Prepare %w", err)
 	}
 
 	_, err = stmt.Exec()
 	if err != nil {
-		return fmt.Errorf("ExtractUniqueNames: %w", err)
+		return fmt.Errorf("-> Exec %w", err)
 	}
 
 	err = stmt.Close()
 	if err != nil {
-		return fmt.Errorf("ExtractUniqueNames: %w", err)
+		return fmt.Errorf("-> Close %w", err)
 	}
 	return nil
 }
@@ -42,7 +42,7 @@ func (vrf verifio) ExtractUniqueNames() error {
 func (vrf verifio) checkForDetectedNames() error {
 	noNames, err := vrf.noDetectedNames()
 	if err != nil {
-		return fmt.Errorf("checkForDetectedNames: %w", err)
+		return fmt.Errorf("-> noDetectedNames %w", err)
 	}
 	if noNames {
 		err = errors.New("detected_names table is empty")
@@ -72,15 +72,12 @@ func (vrf verifio) truncateVerifTables() error {
 		q := fmt.Sprintf("TRUNCATE TABLE %s RESTART IDENTITY", v)
 		_, err := vrf.db.Exec(q)
 		if err != nil {
-			return fmt.Errorf("truncateVerifTables: %w", err)
+			return err
 		}
 	}
 	q := "ALTER TABLE verified_names DROP CONSTRAINT IF EXISTS verified_names_pkey"
 	_, err := vrf.db.Exec(q)
-	if err != nil {
-		return fmt.Errorf("truncateVerifTables: %w", err)
-	}
-	return nil
+	return err
 }
 
 func (vrf verifio) loadNames(
@@ -99,7 +96,7 @@ SELECT id, name, odds_log10, occurrences
 	for offset < namesNum {
 		rows, err := vrf.db.Query(q, offset, offset+limit)
 		if err != nil {
-			return fmt.Errorf("loadNames: %w", err)
+			return err
 		}
 		var n string
 		var odds float64
@@ -109,7 +106,7 @@ SELECT id, name, odds_log10, occurrences
 			err := rows.Scan(&id, &n, &odds, &occur)
 			if err != nil {
 				rows.Close()
-				return fmt.Errorf("loadNames: %w", err)
+				return fmt.Errorf("-> Scan %w", err)
 			}
 			uns = append(uns, name.UniqueName{
 				ID: id, Name: n, OddsLog10: odds, Occurrences: occur,
@@ -120,7 +117,7 @@ SELECT id, name, odds_log10, occurrences
 		offset += limit
 		select {
 		case <-ctx.Done():
-			return fmt.Errorf("loadNames: %w", ctx.Err())
+			return ctx.Err()
 		case chIn <- uns:
 		}
 	}
@@ -135,7 +132,7 @@ func logStr(start time.Time, namesNum, count int) string {
 	eta := 3600 * float64(namesNum-count) / rate
 	etaStr := gnfmt.TimeString(eta)
 	return fmt.Sprintf(
-		"%s verified names (%0.1f%%), %s names/hr, ETA: %s",
+		"%s verified names (%0.1f%%), %s names/hr: ETA %s",
 		namesStr, percent, perHourStr, etaStr,
 	)
 }
@@ -155,12 +152,13 @@ func (vrf verifio) saveVerif(
 	for vns := range chVer {
 		err := vrf.saveNamesToDB(vns.names)
 		if err != nil {
-			return fmt.Errorf("saveVerif: %w", err)
+			return fmt.Errorf("-> saveNamesToDB %w", err)
 		}
 		count = incrLog(start, namesNum, count, vns.namesNum)
 	}
-	fmt.Fprint(os.Stderr, "\r")
-	logStr(start, namesNum, count)
+	fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
+	log.Info().Msgf("Verified %s names", humanize.Comma(int64(namesNum)))
+
 	return nil
 }
 
@@ -189,13 +187,13 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 	}
 	transaction, err := vrf.db.Begin()
 	if err != nil {
-		return fmt.Errorf("saveNamesToDB: %w", err)
+		return fmt.Errorf("-> Begin %w", err)
 	}
 	defer transaction.Rollback()
 
 	stmt, err := transaction.Prepare(pq.CopyIn("verified_names", columns...))
 	if err != nil {
-		return fmt.Errorf("saveNamesToDB: %w", err)
+		return fmt.Errorf("-> Prepare %w", err)
 	}
 
 	for _, v := range names {
@@ -209,19 +207,19 @@ func (vrf verifio) saveNamesToDB(names []name.VerifiedName) error {
 			v.Occurrences, v.Retries, v.Error, now,
 		)
 		if err != nil {
-			return fmt.Errorf("saveNamesToDB: %w", err)
+			return fmt.Errorf("-> Exec %w", err)
 		}
 	}
 
 	// Flush COPY FROM to db.
 	_, err = stmt.Exec()
 	if err != nil {
-		return fmt.Errorf("saveNamesToDB: %w", err)
+		return fmt.Errorf("-> Exec flush %w", err)
 	}
 
 	err = stmt.Close()
 	if err != nil {
-		return fmt.Errorf("saveNamesToDB: %w", err)
+		return fmt.Errorf("-> Close %w", err)
 	}
 
 	return transaction.Commit()

@@ -28,7 +28,7 @@ func (l loaderio) importItems(
 	var err error
 	err = checkRoot(rootDir)
 	if err != nil {
-		err = fmt.Errorf("checkRoot: %w", err)
+		err = fmt.Errorf("-> checkRoot %w", err)
 		return err
 	}
 
@@ -85,7 +85,7 @@ func (l loaderio) importItems(
 func checkRoot(rootDir string) error {
 	exists, empty, err := gnsys.DirExists(rootDir)
 	if err != nil {
-		return fmt.Errorf("checkRoot: %w", err)
+		return fmt.Errorf("DirExists: %w", err)
 	}
 	if !exists {
 		return fmt.Errorf("directory '%s' does not exist", rootDir)
@@ -113,7 +113,7 @@ func (l loaderio) processItemWorker(
 
 		err = l.insertItem(itm)
 		if err != nil {
-			err = fmt.Errorf("insertItem Item %d: %w", itm.ID, err)
+			err = fmt.Errorf("-> insertItem Item %d %w", itm.ID, err)
 			return err
 		}
 		if itm.ID == 0 {
@@ -122,13 +122,13 @@ func (l loaderio) processItemWorker(
 
 		err = updatePages(itm)
 		if err != nil {
-			err = fmt.Errorf("updatePages Item %d: %w", itm.ID, err)
+			err = fmt.Errorf("-> updatePages Item %d %w", itm.ID, err)
 			return err
 		}
 
 		err = l.insertPages(itm)
 		if err != nil {
-			err = fmt.Errorf("insertPages: Item %d: %w", itm.ID, err)
+			err = fmt.Errorf("-> insertPages Item %d %w", itm.ID, err)
 			return err
 		}
 
@@ -175,7 +175,7 @@ func (l loaderio) pagesPerHour(start time.Time) (string, string, string, string)
 	eta := 3600 * float64(l.pagesTotal-l.pagesCount) / rate
 	etaStr := gnfmt.TimeString(eta)
 	percent := 100 * float64(l.pagesCount) / float64(l.pagesTotal)
-	percentStr := fmt.Sprintf("%0.2f%%", percent)
+	percentStr := fmt.Sprintf("%0.1f%%", percent)
 	return pages, pagesPerHour, etaStr, percentStr
 }
 

@@ -1,6 +1,9 @@
 package bhlindex
 
 var (
-	Version = "v0.13.2+"
-	Build   string
+	// Version of the bhlindex binary.
+	Version string
+
+	// Build is a timestamp of the bhlindex binary compilation.
+	Build string
 )
