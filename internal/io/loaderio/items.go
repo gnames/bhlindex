@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/dustin/go-humanize"
@@ -100,7 +101,9 @@ func (l loaderio) processItemWorker(
 	ctx context.Context,
 	itemCh <-chan *item.Item,
 	dbItemCh chan<- *item.Item,
-) error {
+	wg *sync.WaitGroup,
+) {
+	defer wg.Done()
 	var err error
 
 	for itm := range itemCh {
@@ -111,25 +114,10 @@ func (l loaderio) processItemWorker(
 			continue
 		}
 
-		err = l.insertItem(itm)
-		if err != nil {
-			err = fmt.Errorf("-> insertItem Item %d %w", itm.ID, err)
-			return err
-		}
-		if itm.ID == 0 {
-			continue
-		}
-
 		err = updatePages(itm)
 		if err != nil {
 			err = fmt.Errorf("-> updatePages Item %d %w", itm.ID, err)
-			return err
-		}
-
-		err = l.insertPages(itm)
-		if err != nil {
-			err = fmt.Errorf("-> insertPages Item %d %w", itm.ID, err)
-			return err
+			log.Warn().Err(err).Msg("")
 		}
 
 		// if any go-routine returns an error, ctx will cancel all
@@ -137,11 +125,10 @@ func (l loaderio) processItemWorker(
 		select {
 		case dbItemCh <- itm:
 		case <-ctx.Done():
-			return ctx.Err()
+			log.Warn().Err(ctx.Err()).Msg("")
 		}
 
 	}
-	return nil
 }
 
 func (l loaderio) countIncr(start time.Time, count int) int {

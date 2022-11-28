@@ -18,11 +18,11 @@ observed the following results:
 
 ## Installation on Linux
 
-- Download [bhlindex latest release for Linux][bhlindex-latest]
+- Download [the bhlindex's latest release for Linux][bhlindex-latest]
 - Untar the file, copy it to `/usr/local/bin` or other directory in the `PATH`.
 - Use [bhl testdata][bhl-test] for testing.
 
-BHL corpus of OCRed data can be found as a [>50GB compressed file][bhl-ocr].
+BHL corpus of OCR-ed data can be found as a [>50GB compressed file][bhl-ocr].
 
 ## Configuration
 
@@ -97,7 +97,7 @@ bhlindec verify -y
 Dump data into tab-separated files
 
 Three files will be created: `pages`, `names`, `occurrences`. They
-will have extension accodring to selected output format (CSV is the default).
+will have extension according to selected output format (CSV is the default).
 If it is required to filter verified results by data-sources, their list and
 corresponding IDs can be found at [gnverifier sources page]
 

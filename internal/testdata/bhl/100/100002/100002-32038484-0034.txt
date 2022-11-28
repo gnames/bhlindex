@@ -1,0 +1,340 @@
+32 
+
+COMMERCIAL FISHERIES REVIEW 
+
+Vol. 15, No. 3 
+
+Assay Method ; The microbiological procedure and media of Henderson and Snell 
+ (1948) were used. This method employs various lactic acid-producing bacteria with 
+ a single uniform medium. Acid production was measured by electrometric titration. 
+ Streptococcus faecalis R (American Type Cultxire Collection #8043) was the assay 
+ organism used for arginine, leucine, methionine, threonine, and valine ; Leuconostoc 
+ mesenteroides (A.T.C.C. #8042) was used for histidine, isoleucine, lysine, and 
+ phenylalanine; and Lactobacillus plant arum (A.T.C.C. #8014) was used for trypto- 
+ phane. Protein-acid hydrolysates were prepared by autoclaving 0.5 gm. of the 
+ dried protein in sealed pyrex tubes with 20 ml, of 3 N hydrochloric acid for 5 
+ hours at 15 povinds pressure. Alkaline hydrolysates for tryptophane assays were 
+ prepared by autoclaving 0.5 gm. of the dried protein with 10 ml. of 5 N sodium 
+ hydroxide for 10 hours at 15 pounds pressure in covered, stainless steel beakers. 
+ Complete racemization of the tryptophane was assumed. The alkaline hydrolysates 
+ were acidified with excess acetic acid and extracted twice with equal volumes of 
+ ethyl ether (Neilands, Sirny, Sohljell, Strong, and Elvehjem 1949). Nitrogen de- 
+ terminations were carried out on triplicate aliquots of the protein-acid hydro- 
+ lysates by the micro Kjeldahl method of Ma and Zuazaga (1942). 
+
+RESULTS 
+
+The first phase was. a determination of the variability of the amino-acid con- 
+ tent of egg samples from salmon of identical species and of similar physical char- 
+ acteristics. Eight individual skeins of eggs of moderate maturity (Classification 
+ 3) were selected from eight pink salmon and assayed separately. In each case the 
+ whole skein was utilized, including the skein membrane and adhering slime layer. 
+
+The ami 
+
+no-acid 
+
+distribution 
+
+in the 
+
+eight s 
+
+ample s 
+
+of salmon eggs of similar 
+
+sexual maturity examined was very 
+
+similar (table 1), giving no indication 
+
+of a 
+
+Table 1 - Amino-Aoid Content of Salmon 
+
+Egg Protein from Pink Salmon of Similar Sexual Maturityi/I 
+
+Sample 
+
+Jkein 
+
+Amino-Acid Contant (In Graiiia per 100 Grams of Protein) 2/ 
+
+
+Argi- 
+
+Histi- 
+
+Isoleu- 
+
+
+
+Methio- 
+
+Phenyl- 
+
+Threo- 
+
+Trypto- 
+
+
+Number 
+
+nine 
+
+dine 
+
+cine 
+
+Leucine 
+
+Lysine 
+
+nine 
+
+alanine 
+
+nine 
+
+phane 
+
+
+
+1 
+
+7.5 
+
+2.8 
+
+7.1 
+
+9.0 
+
+8.9 
+
+2.7 
+
+4.8 
+
+5.4 
+
+1.1 
+
+7.S 
+
+
+2 
+
+6.8 
+
+2.8 
+
+7.0 
+
+9.0 
+
+8.8 
+
+2.7 
+
+4.7 
+
+5.2 
+
+1.0 
+
+7.9 
+
+
+3 
+
+7.1 
+
+2.9 
+
+6.8 
+
+9.6 
+
+9.0 
+
+2.9 
+
+4.7 
+
+5.1 
+
+1.2 
+
+8.7 
+
+Pink 
+
+4 
+
+7.2 
+
+2.8 
+
+6.8 
+
+9.3 
+
+8.8 
+
+3,0 
+
+4.7 
+
+5.1 
+
+1.1 
+
+8.8 
+
+Salmon 
+
+5 
+
+7.3 
+
+2.9 
+
+6.9 
+
+9.5 
+
+8.3 
+
+3.2 
+
+5.1 
+
+5.1 
+
+1.1 
+
+8.0 
+
+Roe 
+
+6 
+
+6.9 
+
+2.8 
+
+7.1 
+
+9.5 
+
+9.1 
+
+3.3 
+
+5.2 
+
+5.0 
+
+1.1 
+
+8.4 
+
+
+7 
+
+7.5 
+
+2.9 
+
+7.0 
+
+9.7 
+
+8.3 
+
+3.2 
+
+4.9 
+
+5.1 
+
+1.1 
+
+7.7 
+
+
+8 
+
+7.6 
+
+2.8 
+
+6.9 
+
+9.7 
+
+8.9 
+
+3.3 
+
+5.0 
+
+5.2 
+
+1.1 
+
+7.9 
+
+Avg.3/ 
+
+7.2t0.3 
+
+2.810.1 
+
+7.0*0.2 
+
+9.4.±0.5 
+
+8.9±0.1 
+
+z.oto.z 
+
+4.910.2 
+
+5.210.1 
+
+1.110.1 
+
+8.110.5 
+
+1^'ali eggs were moderately mature and of cla 
+
+SSI El CAT ION 3 (egg diameter, 6.0 t 0.5 MM.) . 
+
+
+2/'PR0TEIN EQUALS NITROGEN TIMES 6.25. 
+
+
+
+3/AVERAGE values are given as THE MEAN PLUS 
+
+or minus THE STANDARD DEVIATION. 
+
+
+statistically significant variation, (Recovery experiments, in which amino-acid 
+ standards were added to protein hydrolysates, averaged from 96 to 107 percent of 
+ the theoretical amoxint.) 
+
+The second phase was a determination of the essential amino-acid content of 
+ egg samples from salmon of identical species but of varying sexual maturity. Pro- 
+ tein samples were prepared from the eggs of king salmon corresponding to the dif- 
+ ferent arbitrary levels of sexual maturity described previously. For each protein 
+ sample, 25-gm. portions were cut vertically from the midsections of 6 individual 
+ skeins, combined, and homogenized with acetone. The proportional parts of the roe 
+ (egg casings, sac contents, and skein membrane when present) were not considered, 
+ since the relative amounts vary with maturity. An effective separation of these 
+ components is impossible in some cases and any error thus introduced is probably 
+ of small magnitude. A protein hydrolysate was prepared from a representative sam- 
+ ple of each homogenate and assayed for the essential amino acids. 
+

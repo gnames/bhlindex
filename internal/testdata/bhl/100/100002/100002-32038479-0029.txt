@@ -1,0 +1,61 @@
+March 1953 COMMERCIAL FISHERIES REVIEW 2? 
+
+above deck, is connected by a 3/4- inch line to the 2-inch return main. Four banks 
+ of coils, one on each aide of the two refrigerated spaces, are supplied with the 
+ chilled "antifreeze" through a 2-inch supply main by means of four conveniently 
+ located distribution valves. Thus, the refrigeration supplied to either storage 
+ sf>ace may be regulated. 
+
+BRINE MAKE -UP TANK AND ACCESSORIES ; A brine make-up tank was constructed to 
+ serve as a reservoir for maintaining the optimum brine level in the freezer ir- 
+ respective of the amount of fish-loaded, and to serve as a make-up tank for pre- 
+ paring brine of the desired concentration to overcome normal dilution of the 
+ freezing medivim. Two possible sources of dilution of the freezing medium are the 
+ gradual addition of sea water associated with the fish, and the slight uptake of 
+ salt by the fish during the freezing process. 
+
+A rectangular steel tank, 5 feet high by 4 feet long by 2^ feet wide, was 
+ welded to the forward port side of the brine freezer to serve as the make-up and 
+ reserve. The top is enclosed except for a small opening for charging the tank 
+ with salt. The tank is fitted with an outlet and two nozzle inlets interconnected 
+ through a 1/4-hp. rotary pump to the freezer tank and to an overboard discharge. 
+ Valves are so arranged that the make-up solution can be recirculated in the make- 
+ up tank via the nozzle inlets to promote dissolving of the salt; the solution can 
+ be pumped from make-up tank to freezer (and vice versa), or it can be pumped over- 
+ board from either tank. 
+
+RELOCATION OF PUMPS ; The brine and "antifreeze" circulating pumps, original- 
+ ly located adjacent to the freezer tank (see illustration in Part 3 of this series 
+ by Butler, et al 1952) have been relocated on the port side of the refrigeration 
+ machinery room. This change was made to provide more space and to reduce the re- 
+ frigeration load in the cold-storage area, and to afford better access to the 
+ pumps for maintenance. At the same time, the original ^-hp. "antifreeze" circu- 
+ lating pximp was replaced by a 1^-hp, pump to give adequate circulation through the 
+ enlarged cooling-coil system. To obviate the necessity of insulating the individ- 
+ ual brine and "antifreeze" pipes and fittings, a cork-insulated partition, fitted 
+ with a small access door, was constructed to separate the area where the pumps 
+ and piping are located from the warm refrigeration machinery room. 
+
+REFRIGERATION PLANT ; Additional controls and measuring instruments were in- 
+ stalled and some modifications made to the absorption refrigeration machinery. 
+ While it is recognized that simplicity and ruggedness are major requirements for 
+ successful operation abosird a fishing vessel, the experimental nature of this in- 
+ stallation enhances the need for accurate measurement and control; 
+
+To provide greater flexibility of operation, the system by which liquid am- 
+ monia was supplied to the shell-and-tube brine and "antifreeze" coolers has been 
+ modified. Formerly the supply to both coolers was controlled by a single low- 
+ pressure float control which, by means of equalizing lines joining the coolers, 
+ maintained the aimmonia liquid level in both coolers simultaneously. The equalizing 
+ lines were removed and in their place was installed a separate thermostatic liquid 
+ feed control for the "antifreeze" cooler. Now either cooler can be operated whether 
+ or not the other is in use. 
+
+To guard against the possibility of freezing the brine in the tubes of the 
+ brine cooler when the brine temperature is near its freezing point and no fish are 
+ being frozen, an automatic evaporator pressure regulator was installed in the am- 
+ monia vapor line leading from the top of the cooler to the absorber. This control 
+ is actuated by the temperature of the brine leaving the cooler. When the brine is 
+ cooled to a predetermined temperature, the valve closes and stops the cooling proc- 
+ ess until the brine temperature rises again. 
+

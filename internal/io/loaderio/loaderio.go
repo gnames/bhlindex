@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 
 	"github.com/dustin/go-humanize"
 	"github.com/gnames/bhlindex/internal/config"
@@ -93,31 +94,22 @@ func (l loaderio) LoadItems(ctx context.Context, dbItemCh chan<- *item.Item) err
 
 	// in case of an error ctx will send a signal to kill all workers
 	gImp := errgroup.Group{}
-	gProc, ctx := errgroup.WithContext(ctx)
+	var wg sync.WaitGroup
+	itemJobs := 3
+	wg.Add(itemJobs)
+
 	log.Info().Int("gnfinderJobs", l.Jobs).Msg("Finding names in BHL items")
 
 	gImp.Go(func() error {
-		err = l.importItems(ctx, itemCh)
+		err = l.importItems(context.Background(), itemCh)
 		if err != nil {
 			err = fmt.Errorf("-> importItems %w", err)
 		}
 		return err
 	})
 
-	for i := 0; i < 3; i++ {
-		gProc.Go(func() error {
-			err = l.processItemWorker(ctx, itemCh, dbItemCh)
-			if err != nil {
-				// This error is masked by gImp.Wait, so we
-				// need to show it in a warning.
-				err = fmt.Errorf("-> processItemWorker %w", err)
-				if !strings.Contains(err.Error(), "context canceled") {
-					fmt.Fprint(os.Stderr, "\r")
-					log.Warn().Err(err).Msg("")
-				}
-			}
-			return err
-		})
+	for i := 0; i < itemJobs; i++ {
+		go l.processItemWorker(ctx, itemCh, dbItemCh, &wg)
 	}
 
 	err = gImp.Wait()
@@ -126,10 +118,7 @@ func (l loaderio) LoadItems(ctx context.Context, dbItemCh chan<- *item.Item) err
 		return err
 	}
 
-	err = gProc.Wait()
-	if err != nil {
-		return err
-	}
+	wg.Wait()
 	fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
 	log.Info().Msgf("Processed %s pages", humanize.Comma(int64(l.pagesTotal)))
 	return nil

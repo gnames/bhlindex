@@ -5,9 +5,7 @@ import (
 	"fmt"
 
 	"github.com/gnames/bhlindex/internal/config"
-	"github.com/gnames/bhlindex/internal/ent/item"
 	"github.com/gnames/bhlindex/internal/ent/name"
-	"github.com/gnames/bhlindex/internal/ent/page"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/rs/zerolog/log"
@@ -83,8 +81,6 @@ COMMENT ON SCHEMA public IS 'standard public schema'`
 
 func (d dbio) migrate() error {
 	tables := []any{
-		&item.Item{},
-		&page.Page{},
 		&name.DetectedName{},
 		&name.VerifiedName{},
 		&name.UniqueName{},

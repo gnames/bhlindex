@@ -54,9 +54,7 @@ func (d *dumpio) outputNames(id, limit int, ds []int) ([]output.OutputName, erro
 	var rows *sql.Rows
 	var err error
 
-	dataSources := getDataSources(ds)
-
-	q := fmt.Sprintf(`
+	q := `
 SELECT
   name, cardinality, occurrences, odds_log10, match_type, edit_distance,
   stem_edit_distance, matched_canonical, matched_name, matched_cardinality,
@@ -65,9 +63,7 @@ SELECT
   data_source_title, data_sources_number, curation, error, sort_order
   FROM verified_names
   WHERE id >= $1 and id < $2
-  %s
-  ORDER by id
-`, dataSources)
+  ORDER by id `
 	rows, err = d.db.Query(q, id, id+limit)
 	if err != nil {
 		return nil, fmt.Errorf("-> Query %w", err)
