@@ -30,7 +30,7 @@ func NewWithInit(cfg config.Config) *sql.DB {
 	}
 
 	if err != nil {
-		log.Fatal().Err(err)
+		log.Fatal().Err(err).Msg("Database reset failed.")
 	}
 	return db
 }
@@ -40,7 +40,7 @@ func NewWithInit(cfg config.Config) *sql.DB {
 func New(cfg config.Config) *sql.DB {
 	db, err := sql.Open("postgres", opts(cfg))
 	if err != nil {
-		log.Fatal().Err(err)
+		log.Fatal().Err(err).Msg("Database connection failed.")
 	}
 	return db
 }
@@ -48,7 +48,7 @@ func New(cfg config.Config) *sql.DB {
 func newGorm(cfg config.Config) *gorm.DB {
 	db, err := gorm.Open("postgres", opts(cfg))
 	if err != nil {
-		log.Fatal().Err(err)
+		log.Fatal().Err(err).Msg("")
 	}
 	return db
 }
