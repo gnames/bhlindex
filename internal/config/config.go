@@ -125,7 +125,7 @@ func New(opts ...Option) Config {
 		PgUser:       "postgres",
 		PgPass:       "postgres",
 		PgDatabase:   "bhlindex",
-		Jobs:         10,
+		Jobs:         4,
 		VerifierURL:  "https://verifier.globalnames.org/api/v1/",
 	}
 	for i := range opts {
