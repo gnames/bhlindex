@@ -24,6 +24,39 @@ observed the following results:
 
 BHL corpus of OCR-ed data can be found as a [>50GB compressed file][bhl-ocr].
 
+## Database Preparation
+
+Login to PostgreSQL server and create a database that has the same name as the
+`PgDatabase` parameter in the configuration file (default name is `bhlindex`).
+
+This database will be used to keep found names. The final size of the database
+upon completion should be in a vicinity of 50 GB.
+
+In the following example we create the database by a `postgres`
+superuser and also create a `bhl` user to operate on the database.
+
+```bash
+sudo su - postgres
+[postgres ~]$ psql
+```
+
+```postgresql
+postgres=# create user bhl with password 'my-very-secret-password';
+CREATE ROLE
+postgres=# create database bhlindex;
+CREATE DATABASE
+postgres=# grant all privileges on database bhlindex to bhl;
+GRANT
+postgres=# \c bhlindex
+You are now connected to database "bhlindex" as user "postgres".
+bhlindex=# alter schema public owner to bhl;
+ALTER SCHEMA
+```
+
+The last step is only needed if the `bhl` user is not set as a superuser.
+Every database has its own public schema, make sure to change to correct
+database using `\c my-db-name` as shown in the example above.
+
 ## Configuration
 
 When you run the app for the first time it will create a configuration file and
@@ -61,14 +94,6 @@ variable can be used:
 | WithoutConfirm | BHLI_WITHOUT_CONFIRM |
 
 ## Usage
-
-### Preparations
-
-Login to PostgreSQL server and create a database that has the same name as the
-`PgDatabase` parameter in the configuration file (default name is `bhlindex`).
-
-This database will be used to keep found names. Its final size of the database
-upon completion should be in a vicinity of 50GB.
 
 ### Commands
 

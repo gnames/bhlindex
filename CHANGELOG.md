@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+
+## [v1.0.0-RC2] - 2022-12-13 Tue
+
+- Add: documentation in README about creating and configuring database and
+       its user.
+- Fix: show error in case if rebuilding of the database, or its initiation
+       did not work as expected.
+
 ## [v1.0.0-RC2] - 2022-11-28 Mon
 
 - Add [#59]: modify dump data according to #57.

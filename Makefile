@@ -23,7 +23,7 @@ deps:
 
 test: deps install
 	@echo Run tests
-	go test -race ./...
+	go test -race -count=1 ./...
 
 build:
 	$(GOCLEAN); \
