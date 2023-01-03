@@ -115,6 +115,10 @@ func (bi *bhlindex) VerifyNames(vrf verif.VerifierBHL) (err error) {
 	return err
 }
 
+func (bi *bhlindex) CalcOddsVerif(vrf verif.VerifierBHL) (err error) {
+	return vrf.CalcOddsVerif()
+}
+
 func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
 	var err error
 	ctx, cancel := context.WithCancel(context.Background())

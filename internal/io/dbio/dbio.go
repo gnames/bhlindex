@@ -84,6 +84,7 @@ func (d dbio) migrate() error {
 		&name.DetectedName{},
 		&name.VerifiedName{},
 		&name.UniqueName{},
+		&name.OddsVerification{},
 	}
 	for _, v := range tables {
 		if err := d.dbGorm.AutoMigrate(v).Error; err != nil {

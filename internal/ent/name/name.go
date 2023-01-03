@@ -161,6 +161,31 @@ type VerifiedName struct {
 	UpdatedAt time.Time `json:"updatedAt" sql:"type:timestamp without time zone"`
 }
 
+// OddsVerification describes the percentage of verified names for all
+// observed OddsLog10 categories. A category includes all Odds which are
+// located in between previous and current OddsLog10 number. For example,
+// a category where OddsLog10Bin is equal 1, includes all unique names where
+// OddsLog10 was in between 0 and 1. A category where OddsLog10Bin is equal
+// 2, includes all unique names where OddsLog10 was in between 1 and 2.
+type OddsVerification struct {
+	// OddsLog10Bin indicates Odds category. Each category includes results
+	// for unique names where the category value is a maximum value, and
+	// previous cagetory value is the minimum value. For example, a category
+	// with the value 3 includes all names with OddsLog10 inbetween 2 and 3.
+	OddsLog10 int `json:"oddsLog10"`
+
+	// NamesNum is the number of names in this category. For example if NamesNum
+	// for OddsLog10Bin 3 is 500_000_000, it means that Odds10Log between 2 and
+	// 3 happened 500_000_000 times.
+	NamesNum int `json:"namesNum"`
+
+	// VerifPercent describes the percentage of verified names for the particular
+	// OddsLog10Bin category. For example, if the category 6 has VerifPercent
+	// equal 0.74, it means that for Odds10Log between 5 and 6 an average
+	// percentage of verified names is 74%.
+	VerifPercent float64 `json:"verifPercent"`
+}
+
 // UniqueName summarizes informaion after finding unique normalized names
 // found in BHL texts.
 type UniqueName struct {

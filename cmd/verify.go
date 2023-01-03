@@ -72,6 +72,12 @@ The 'verify' command should be executed after 'find' command.`,
 			err = fmt.Errorf("VerifyNames %w", err)
 			log.Fatal().Err(err).Msg("Name verification failed")
 		}
+		err = bhli.CalcOddsVerif(vrf)
+		if err != nil {
+			err = fmt.Errorf("CalcOddsVerif %w", err)
+			log.Fatal().Err(err).
+				Msg("Calculating relation between odds and verification failed.")
+		}
 	},
 }
 

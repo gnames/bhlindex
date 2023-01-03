@@ -18,4 +18,7 @@ type VerifierBHL interface {
 	// the detected names and saves the unique list of all names, their odds,
 	// and the number of their occurrences.
 	ExtractUniqueNames() error
+
+	// CalcOddsVerif calculates the relationship between Odds and Verifications.
+	CalcOddsVerif() error
 }

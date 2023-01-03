@@ -2,8 +2,10 @@
 
 ## Unreleased
 
+- Add [#61]: shortened and filtered dump for BHL-related data.
+- Add [#60]: normalize odds according to verification results.
 
-## [v1.0.0-RC2] - 2022-12-13 Tue
+## [v1.0.0-RC3] - 2022-12-13 Tue
 
 - Add: documentation in README about creating and configuring database and
        its user.

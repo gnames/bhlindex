@@ -37,8 +37,9 @@ var dumpCmd = &cobra.Command{
 	Use:   "dump",
 	Short: "Creates a JSON/CSV/TSV dump of found names",
 	Long: `The 'dump' command extracts results of name-detection and
-name-verification and writes them to STDOUT. Supports 'json', 'csv',
-'tsv' output formats, default format is CSV`,
+name-verification and writes them to a given directory, or by default,
+to the current directory. Supports 'json', 'csv', 'tsv' output formats,
+default format is CSV`,
 	Run: func(cmd *cobra.Command, _ []string) {
 		var err error
 

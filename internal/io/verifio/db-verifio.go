@@ -11,9 +11,91 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/gnames/bhlindex/internal/ent/name"
 	"github.com/gnames/gnfmt"
+	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/lib/pq"
 	"github.com/rs/zerolog/log"
 )
+
+func (vrf verifio) maxOdds() (float64, error) {
+	var res float64
+	q := "SELECT MAX(odds_log10) FROM verified_names LIMIT 1"
+	err := vrf.db.QueryRow(q).Scan(&res)
+	return res, err
+}
+
+func (vrf verifio) oddsVerif(minOdds, maxOdds int) error {
+	q := `SELECT
+  match_type, count(*)
+FROM verified_names
+  WHERE odds_log10 > $1 AND odds_log10 >= $2
+    AND name !~ '\A[A-Za-z]{0,4}\.'
+GROUP BY match_type
+`
+
+	rows, err := vrf.db.Query(q, minOdds, maxOdds)
+	if err != nil {
+		return fmt.Errorf("-> Query %w", err)
+	}
+	defer rows.Close()
+
+	var verif, notVerif int
+	for rows.Next() {
+		var match string
+		var counts int
+		err = rows.Scan(&match, &counts)
+		if err != nil {
+			return err
+		}
+		if match == "NoMatch" {
+			notVerif += counts
+		} else {
+			verif += counts
+		}
+	}
+	pcent := float64(verif) / float64(verif+notVerif)
+	q = `INSERT INTO odds_verifications
+  (odds_log10, names_num, verif_percent)
+  VALUES ($1, $2, $3)
+  `
+	_, err = vrf.db.Query(q, maxOdds, verif+notVerif, pcent)
+	if err != nil {
+		return fmt.Errorf("-> Query %w", err)
+	}
+	return nil
+}
+
+func (vrf verifio) showOddsVerif() error {
+	t := table.NewWriter()
+	t.SetOutputMirror(os.Stdout)
+	header := table.Row{"Odds Log10", "Names Number", "% Verified"}
+	t.AppendHeader(header)
+
+	q := `SELECT odds_log10, names_num, verif_percent
+FROM odds_verifications order by odds_log10`
+
+	rows, err := vrf.db.Query(q)
+	if err != nil {
+		return fmt.Errorf("-> Query %w", err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var ov name.OddsVerification
+		err = rows.Scan(&ov.OddsLog10, &ov.NamesNum, &ov.VerifPercent)
+		if err != nil {
+			return err
+		}
+
+		row := table.Row{
+			ov.OddsLog10,
+			ov.NamesNum,
+			ov.VerifPercent,
+		}
+		t.AppendRow(row)
+	}
+	t.Render()
+	return nil
+}
 
 func (vrf verifio) ExtractUniqueNames() error {
 	log.Info().Msg("Extracting unique name-strings. It will take a while.")
@@ -54,20 +136,20 @@ func (vrf verifio) checkForDetectedNames() error {
 
 func (vrf verifio) noDetectedNames() (bool, error) {
 	var page_id string
-	q := "select page_id from detected_names limit 1"
+	q := "SELECT page_id FROM detected_names LIMIT 1"
 	err := vrf.db.QueryRow(q).Scan(&page_id)
 	return page_id == "", err
 }
 
 func (vrf verifio) numberOfNames() (int, error) {
-	q := "select count(*) from unique_names"
+	q := "SELECT count(*) FROM unique_names"
 	var namesNum int
 	err := vrf.db.QueryRow(q).Scan(&namesNum)
 	return namesNum, err
 }
 
 func (vrf verifio) truncateVerifTables() error {
-	tables := []string{"unique_names", "verified_names"}
+	tables := []string{"unique_names", "verified_names", "odds_verifications"}
 	for _, v := range tables {
 		q := fmt.Sprintf("TRUNCATE TABLE %s RESTART IDENTITY", v)
 		_, err := vrf.db.Exec(q)

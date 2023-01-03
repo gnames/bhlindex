@@ -19,6 +19,10 @@ type BHLindex interface {
 	// results to storage.
 	VerifyNames(verif.VerifierBHL) error
 
+	// CalcOddsVerif calculates relationship between odds and the percentage
+	// of successful verifications.
+	CalcOddsVerif(verif.VerifierBHL) error
+
 	// DumpOccurrences exports data about detected names and their position
 	// on BHL pages in CSV, TSV, or JSON formats.
 	DumpOccurrences(output.Dumper) error

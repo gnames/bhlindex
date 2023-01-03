@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"math"
 	"sync"
 	"time"
 
@@ -28,6 +29,23 @@ func New(cfg config.Config, db *sql.DB) verif.VerifierBHL {
 		db:  db,
 	}
 	return res
+}
+
+func (vrf verifio) CalcOddsVerif() error {
+	log.Info().Msg("Calculating relationship between odds and verification")
+	maxOdds, err := vrf.maxOdds()
+	if err != nil {
+		return err
+	}
+	for i := 0; i < int(math.Floor(maxOdds)); i++ {
+		err = vrf.oddsVerif(i, i+1)
+		if err != nil {
+			return err
+		}
+	}
+	log.Info().Msg("Odds vs verification percentage (without abbreviated names)")
+
+	return vrf.showOddsVerif()
 }
 
 // Reset cleans up all stored data for verifications.
