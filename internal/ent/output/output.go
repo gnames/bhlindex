@@ -2,16 +2,6 @@ package output
 
 import "github.com/gnames/gnfmt"
 
-// OutputPage provides information about a page from BHL corpus.
-type OutputPage struct {
-	// ItemBarcode is an Archive ID of an Item where a name appeared.
-	ItemBarcode string `json:"itemBarcode"`
-
-	// PageBarcodeNum is a number extracted from the page file name. The page
-	// filename consists of this number and its Item's barcode.
-	PageBarcodeNum int `json:"pageBarcodeNum"`
-}
-
 // OutputName provides fields for data-dump of unique name-strings. The data
 // also contains reconciliation and resolution data according to the best
 // matches do a variety of data-sources.
@@ -89,16 +79,16 @@ type OutputName struct {
 
 	// ClassificationIDs provides data about IDs a DataSource assigns to
 	// taxons in the classification.
-	ClassificationIDs string `json:"classificationIDs"`
+	ClassificationIDs string `json:"classificationIds"`
 
 	// RecordID is the ID assigned by the DataSource to the name.
-	RecordID string `json:"recordID"`
+	RecordID string `json:"recordId"`
 
 	// DataSourceID is the ID of the data-source according to GNverifier.
 	// The mapping of IDs to data-sources can be found at
 	// https://verifier.globalnames.org/data_sources
 	// site.
-	DataSourceID int `json:"dataSourceID"`
+	DataSourceID int `json:"dataSourceId"`
 
 	// DataSource provides a title of the data-source that matched the
 	// name-string.
@@ -118,6 +108,10 @@ type OutputName struct {
 	// VerifError contains error that happened during verification. If this field
 	// is empty then verification was completed successfully for the name-string.
 	VerifError string `json:"verificationError"`
+}
+
+type OutputNameShort struct {
+	OutputName
 }
 
 // OutputOccurrence provides fields for data-dump of detected names.
@@ -159,6 +153,16 @@ type OutputOccurrence struct {
 	// Annotation is a normalized annotation of `sp. nov.`, `subsp. nov.` etc.
 	// that was located after the DetectedName.
 	Annotation string `json:"annotNomen"`
+}
+
+type OutputOccurrenceShort struct {
+	OutputOccurrence
+}
+
+type OutputOddsVerification struct {
+	OddsLog10    int     `json:"oddsLog10"`
+	NamesNum     int     `json:"namesNum"`
+	VerifPercent float64 `json:"verifPercent"`
 }
 
 // CSVHeader takes any object that implements Output interface

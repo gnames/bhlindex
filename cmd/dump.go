@@ -65,6 +65,11 @@ default format is CSV`,
 			opts = append(opts, config.OptOutputDataSourceIDs(ss))
 		}
 
+		b, _ := cmd.Flags().GetBool("short")
+		if b {
+			opts = append(opts, config.OptOutputShort(b))
+		}
+
 		cfg := config.New(opts...)
 		db := dbio.New(cfg)
 		bhli := bhlindex.New(cfg)
@@ -88,6 +93,7 @@ func init() {
 	rootCmd.AddCommand(dumpCmd)
 	dumpCmd.Flags().StringP("format", "f", "",
 		"output format: 'csv', 'tsv', 'json', default 'csv'")
+	dumpCmd.Flags().BoolP("short", "S", false, "shortened list of fields")
 	dumpCmd.Flags().StringP("dir", "d", "",
 		"output directory, defult current dir")
 	dumpCmd.Flags().StringP("sources", "s", "",

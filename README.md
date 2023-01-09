@@ -156,6 +156,17 @@ bhlindex find -y && \
   bhlindex dump -d output-dir
 ```
 
+### Filtering dumped data
+
+There is a Ruby script [filter.rb] included into the repository, which
+traverses the dump files names.csv and occurrences.csv and filters out names
+that are have more chance to be false positives. Copy the script to a directory
+with the dump files and run it with:
+
+```bash
+ruby ./filter.rb
+```
+
 ### Testing
 
 Testing requires PostgreSQL database `bhlindex_test`.
@@ -170,3 +181,4 @@ go test ./...
 [bhl-test]: https://github.com/gnames/bhlindex/tree/master/testdata/bhl/ocr
 [doc-img]: https://godoc.org/github.com/gnames/bhlindex?status.png
 [doc]: https://godoc.org/github.com/gnames/bhlindex
+[filter.rb]: https://github.com/gnames/bhlindex/tree/master/scripts/filter.rb

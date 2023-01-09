@@ -17,6 +17,9 @@ type Config struct {
 	// OutputDataSourceIDs filters data to given data-sources.
 	OutputDataSourceIDs []int
 
+	// OutputShort is true if output contains only fields required for BHL index.
+	OutputShort bool
+
 	// PgHost is the IP or a name of a computer running PostgreSQL database.
 	PgHost string
 
@@ -66,6 +69,12 @@ func OptOutputDir(s string) Option {
 func OptOutputDataSourceIDs(i []int) Option {
 	return func(cfg *Config) {
 		cfg.OutputDataSourceIDs = i
+	}
+}
+
+func OptOutputShort(b bool) Option {
+	return func(cfg *Config) {
+		cfg.OutputShort = b
 	}
 }
 

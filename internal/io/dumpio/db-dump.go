@@ -50,7 +50,7 @@ func (d *dumpio) stats(ds []int) (int, int, int, error) {
 	return verifNames, verifNamesDataSources, occurs, err
 }
 
-func (d *dumpio) outputNames(id, limit int, ds []int) ([]output.OutputName, error) {
+func (d *dumpio) outputNames(id, limit int, ds []int) ([]output.Output, error) {
 	var rows *sql.Rows
 	var err error
 
@@ -70,7 +70,7 @@ SELECT
 	}
 	defer rows.Close()
 
-	res := make([]output.OutputName, 0, limit)
+	res := make([]output.Output, 0, limit)
 	for rows.Next() {
 		o := output.OutputName{}
 		err := rows.Scan(
@@ -87,14 +87,17 @@ SELECT
 		}
 
 		o.NameID = gnuuid.New(o.DetectedName).String()
-
-		res = append(res, o)
+		if d.cfg.OutputShort {
+			res = append(res, output.OutputNameShort{OutputName: o})
+		} else {
+			res = append(res, o)
+		}
 	}
 
 	return res, nil
 }
 
-func (d *dumpio) outputOccurs(id, limit int, ds []int) ([]output.OutputOccurrence, error) {
+func (d *dumpio) outputOccurs(id, limit int, ds []int) ([]output.Output, error) {
 	var rows *sql.Rows
 	var err error
 
@@ -113,7 +116,7 @@ func (d *dumpio) outputOccurs(id, limit int, ds []int) ([]output.OutputOccurrenc
 	defer rows.Close()
 
 	var count int
-	res := make([]output.OutputOccurrence, 0, limit)
+	res := make([]output.Output, 0, limit)
 	for rows.Next() {
 		o := output.OutputOccurrence{}
 		err := rows.Scan(
@@ -126,7 +129,11 @@ func (d *dumpio) outputOccurs(id, limit int, ds []int) ([]output.OutputOccurrenc
 		}
 		o.NameID = gnuuid.New(o.DetectedName).String()
 
-		res = append(res, o)
+		if d.cfg.OutputShort {
+			res = append(res, output.OutputOccurrenceShort{OutputOccurrence: o})
+		} else {
+			res = append(res, o)
+		}
 		count++
 	}
 

@@ -24,7 +24,7 @@ func New(cfg config.Config, db *sql.DB) output.Dumper {
 }
 
 // DumpNames outputs data about verified names.
-func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.OutputName, ds []int) error {
+func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.Output, ds []int) error {
 	err := d.checkForVerifiedNames()
 	if err != nil {
 		err = fmt.Errorf("-> checkForVerifiedNames %w", err)
@@ -47,7 +47,7 @@ func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.OutputName, d
 
 	id := 1
 	limit := 100_000
-	var outputs []output.OutputName
+	var outputs []output.Output
 	var count int
 	for id <= namesTotal {
 		select {
@@ -77,7 +77,7 @@ func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.OutputName, d
 }
 
 // DumpOccurrences reads data for detected and verified names and sends it to output channel.
-func (d *dumpio) DumpOccurrences(ctx context.Context, ch chan<- []output.OutputOccurrence, ds []int) error {
+func (d *dumpio) DumpOccurrences(ctx context.Context, ch chan<- []output.Output, ds []int) error {
 	err := d.checkForVerifiedNames()
 	if err != nil {
 		err = fmt.Errorf("-> checkForVerifiedNames %w", err)
@@ -100,7 +100,7 @@ func (d *dumpio) DumpOccurrences(ctx context.Context, ch chan<- []output.OutputO
 	id := 1
 	limit := 100_000
 	var count int
-	var outputs []output.OutputOccurrence
+	var outputs []output.Output
 	for id <= occursTotal {
 		select {
 		case <-ctx.Done():
@@ -120,22 +120,11 @@ func (d *dumpio) DumpOccurrences(ctx context.Context, ch chan<- []output.OutputO
 				humanize.Comma(int64(occursNum)),
 				percent,
 			)
-			if occursNum%25_000_000 == 0 {
-				makeLog(occursTotal, occursNum)
-			}
 		}
 	}
-	fmt.Fprint(os.Stderr, "\r")
+	fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 80))
 	log.Info().Msgf("Dumped %s occurrences",
 		humanize.Comma(int64(count)),
 	)
 	return nil
-}
-
-func makeLog(itemsTotal, itemsNum int) {
-	items := humanize.Comma(int64(itemsNum))
-	percent := 100 * float64(itemsNum) / float64(itemsTotal)
-	fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
-	log.Info().
-		Msgf("Dumped %s items (%0.1f%%)", items, percent)
 }

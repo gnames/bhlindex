@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"sync"
 
 	"github.com/gnames/bhlindex/internal/config"
@@ -123,7 +124,7 @@ func (bi *bhlindex) DumpNames(dmp output.Dumper) error {
 	var err error
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	ch := make(chan []output.OutputName)
+	ch := make(chan []output.Output)
 	gDump, ctxDump := errgroup.WithContext(ctx)
 	gOut, ctxOut := errgroup.WithContext(ctx)
 
@@ -162,7 +163,7 @@ func (bi *bhlindex) DumpOccurrences(dmp output.Dumper) error {
 	var err error
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	ch := make(chan []output.OutputOccurrence)
+	ch := make(chan []output.Output)
 	gDump, ctxDump := errgroup.WithContext(ctx)
 	gOut, ctxOut := errgroup.WithContext(ctx)
 
@@ -206,16 +207,6 @@ func (bi *bhlindex) GetConfig() config.Config {
 	return bi.Config
 }
 
-func counterLog(counter <-chan int) {
-	count := 0
-	for i := range counter {
-		count += i
-		if count%10000 == 0 {
-			log.Info().Msgf("Processed %d items", count)
-		}
-	}
-}
-
 func (bi *bhlindex) extension() string {
 	switch bi.OutputFormat {
 	case gnfmt.CSV:
@@ -233,28 +224,34 @@ func processOutput[O output.Output](
 	ch <-chan []O,
 ) error {
 	var o O
-	path := filepath.Join(bi.OutputDir, o.Name()+bi.extension())
-	w, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	if bi.OutputFormat != gnfmt.CompactJSON {
-		_, err = w.WriteString(output.CSVHeader(o, bi.OutputFormat) + "\n")
-		if err != nil {
-			return err
-		}
-	}
+	var err error
+	var w *os.File
 	var count int
 	for rows := range ch {
-		count++
-		if count%500_000 == 0 {
-			log.Info().Msgf("Processed %d %s", count, o.Name())
-		}
 		select {
 		case <-ctx.Done():
 			return ctx.Err()
 		default:
 			for i := range rows {
+				o = rows[i]
+				if count == 0 {
+					path := filepath.Join(bi.OutputDir, o.Name()+bi.extension())
+					w, err = os.Create(path)
+					if err != nil {
+						return err
+					}
+					if bi.OutputFormat != gnfmt.CompactJSON {
+						_, err = w.WriteString(output.CSVHeader(o, bi.OutputFormat) + "\n")
+						if err != nil {
+							return err
+						}
+					}
+				}
+				count++
+				if count%25_000_000 == 0 {
+					fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
+					log.Info().Msgf("Processed %d %s", count, o.Name())
+				}
 				_, err = w.WriteString(output.Format(rows[i], bi.OutputFormat) + "\n")
 				if err != nil {
 					return err
