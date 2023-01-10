@@ -121,12 +121,13 @@ bhlindec verify -y
 
 Dump data into tab-separated files
 
-Three files will be created: `pages`, `names`, `occurrences`. They
+Three files will be created: `names`, `occurrences`. They
 will have extension according to selected output format (CSV is the default).
 If it is required to filter verified results by data-sources, their list and
 corresponding IDs can be found at [gnverifier sources page]
 
-Uncompressed dump files take more than 30GB of space.
+Dump files take more than 30GB of space. If `--short` flag is used, the size
+is reduced to 13GB.
 
 ```bash
 # Dump files to a designated directory.
