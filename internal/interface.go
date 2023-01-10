@@ -31,6 +31,10 @@ type BHLindex interface {
 	// TSV, or JSON formats.
 	DumpNames(output.Dumper) error
 
+	// DumpOddsVerification exports mapping of Odds values to verification
+	// percentage
+	DumpOddsVerification(output.Dumper) error
+
 	// GetVersion outputs the version of BHLindex.
 	GetVersion() gnvers.Version
 

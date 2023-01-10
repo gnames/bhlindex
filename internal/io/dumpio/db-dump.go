@@ -140,6 +140,38 @@ func (d *dumpio) outputOccurs(id, limit int, ds []int) ([]output.Output, error) 
 	return res, nil
 }
 
+func (d dumpio) getOccurVerif() ([]output.Output, error) {
+	var rows *sql.Rows
+	var err error
+
+	q := `
+  SELECT
+    odds_log10, names_num, verif_percent
+  FROM odds_verifications
+  ORDER BY odds_log10`
+	rows, err = d.db.Query(q)
+	if err != nil {
+		return nil, fmt.Errorf("-> Query %w", err)
+	}
+	defer rows.Close()
+
+	var count int
+	var res []output.Output
+	for rows.Next() {
+		o := output.OutputOddsVerification{}
+		err := rows.Scan(
+			&o.OddsLog10, &o.NamesNum, &o.VerifPercent,
+		)
+		if err != nil {
+			return nil, fmt.Errorf("-> Scan %w", err)
+		}
+		res = append(res, o)
+		count++
+	}
+
+	return res, nil
+}
+
 func getDataSources(ds []int) string {
 	var dataSources string
 	if len(ds) > 0 {

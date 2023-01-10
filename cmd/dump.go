@@ -86,6 +86,14 @@ default format is CSV`,
 			err = fmt.Errorf("DumpOccurrences %w", err)
 			log.Fatal().Err(err).Msg("Dump of occurrences failed")
 		}
+
+		err = bhli.DumpOddsVerification(dmp)
+		if err != nil {
+			err = fmt.Errorf("DumpOccurrences %w", err)
+			log.Fatal().Err(err).Msg("Dump of occurrences failed")
+		}
+
+		log.Info().Msg("All files are created successfully")
 	},
 }
 

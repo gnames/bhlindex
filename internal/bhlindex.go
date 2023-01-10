@@ -197,6 +197,37 @@ func (bi *bhlindex) DumpOccurrences(dmp output.Dumper) error {
 	return nil
 }
 
+func (bi *bhlindex) DumpOddsVerification(dmp output.Dumper) error {
+	var w *os.File
+	outs, err := dmp.DumpOddsVerification()
+	if err != nil {
+		err = fmt.Errorf("-> DumpOddsVerification: %w", err)
+		return err
+	}
+	for i := range outs {
+		o := outs[i]
+		if i == 0 {
+			path := filepath.Join(bi.OutputDir, o.Name()+bi.extension())
+			w, err = os.Create(path)
+			if err != nil {
+				return err
+			}
+			if bi.OutputFormat != gnfmt.CompactJSON {
+				_, err = w.WriteString(output.CSVHeader(o, bi.OutputFormat) + "\n")
+				if err != nil {
+					return err
+				}
+			}
+		}
+		_, err = w.WriteString(output.Format(outs[i], bi.OutputFormat) + "\n")
+		if err != nil {
+			return err
+		}
+	}
+	log.Info().Msgf("Dumped %d odds/verification records", len(outs))
+	return nil
+}
+
 // GetVersion outputs the version of BHLindex.
 func (bi *bhlindex) GetVersion() gnvers.Version {
 	return gnvers.Version{Version: Version, Build: Build}

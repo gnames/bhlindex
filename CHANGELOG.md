@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v1.0.0-RC4] - 2023-01-10 Tue
+
+- Add [#62]: dump odds vs verification stats.
 - Add [#61]: shortened and filtered dump for BHL-related data.
 - Add [#60]: normalize odds according to verification results.
 

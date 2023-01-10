@@ -7,7 +7,7 @@ import (
 )
 
 func (o OutputOddsVerification) Name() string {
-	return "odds-verification"
+	return "odds_verification"
 }
 
 func (o OutputOddsVerification) header() []string {

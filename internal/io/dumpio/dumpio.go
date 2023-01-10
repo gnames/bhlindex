@@ -122,9 +122,14 @@ func (d *dumpio) DumpOccurrences(ctx context.Context, ch chan<- []output.Output,
 			)
 		}
 	}
-	fmt.Fprintf(os.Stderr, "\r%s", strings.Repeat(" ", 80))
+	fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
 	log.Info().Msgf("Dumped %s occurrences",
 		humanize.Comma(int64(count)),
 	)
 	return nil
+}
+
+func (d dumpio) DumpOddsVerification() ([]output.Output, error) {
+	log.Info().Msg("Dumping odds vs verification percentage")
+	return d.getOccurVerif()
 }

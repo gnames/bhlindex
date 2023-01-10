@@ -12,6 +12,10 @@ type Dumper interface {
 
 	// DumpOccurrences traverses database and outputs names occurrences in JSON, TSV or CSV format.
 	DumpOccurrences(context.Context, chan<- []Output, []int) error
+
+	// DumpOddsVerification gets result of mapping between Odds values and the percentage of
+	// successful verifications.
+	DumpOddsVerification() ([]Output, error)
 }
 
 // Output interface provides generic functions outputs of verified names, and

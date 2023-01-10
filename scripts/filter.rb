@@ -32,7 +32,7 @@ end
 r.close
 w.close
 
-puts "\n\nFiltering occurrences.csv to occurrences_filtered.csv\n\n"
+puts "\nFiltering occurrences.csv to occurrences_filtered.csv\n\n"
 
 r = File.open('occurrences.csv')
 w = File.open('occurrences_filtered.csv', 'w:utf-8')
