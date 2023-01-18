@@ -20,6 +20,11 @@ type Config struct {
 	// OutputShort is true if output contains only fields required for BHL index.
 	OutputShort bool
 
+	// OutputCleanVerbatim normalizes Verbatim name removing extra-spaces and
+	// non-name characters. It does not substitute bad OCR characters inside
+	// of a name.
+	OutputCleanVerbatim bool
+
 	// PgHost is the IP or a name of a computer running PostgreSQL database.
 	PgHost string
 
@@ -75,6 +80,12 @@ func OptOutputDataSourceIDs(i []int) Option {
 func OptOutputShort(b bool) Option {
 	return func(cfg *Config) {
 		cfg.OutputShort = b
+	}
+}
+
+func OptOutputCleanVerbatim(b bool) Option {
+	return func(cfg *Config) {
+		cfg.OutputCleanVerbatim = b
 	}
 }
 

@@ -135,6 +135,14 @@ bhlindex dump -d ~/bhlindex-dump
 # or
 bhlindex dump --dir ~/bhlindex-dump
 
+# Dump while creating reduced number of fields making output smaller.
+bhlindex dump -S
+bhlindex dump --short
+
+# Clean up verbatim names from multiple spaces and characters around the name.
+bhlindex dump -N
+bhlindex dump --normalize-verbatim
+
 # Dump records verified to particular data-sources of `gnverifier`.
 # In this case verified names are filtered by `The Catalogue of Life` (ID=1)
 # and `The Encyclopedia of Life` (ID=12).

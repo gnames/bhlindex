@@ -97,7 +97,10 @@ SELECT
 	return res, nil
 }
 
-func (d *dumpio) outputOccurs(id, limit int, ds []int) ([]output.Output, error) {
+func (d *dumpio) outputOccurs(
+	id, limit int,
+	ds []int, normVerb bool,
+) ([]output.Output, error) {
 	var rows *sql.Rows
 	var err error
 
@@ -128,6 +131,10 @@ func (d *dumpio) outputOccurs(id, limit int, ds []int) ([]output.Output, error) 
 			return nil, fmt.Errorf("-> Scan %w", err)
 		}
 		o.NameID = gnuuid.New(o.DetectedName).String()
+
+		if normVerb {
+			o.NormalizeVerbatim()
+		}
 
 		if d.cfg.OutputShort {
 			res = append(res, output.OutputOccurrenceShort{OutputOccurrence: o})

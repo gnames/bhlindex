@@ -168,7 +168,9 @@ func (bi *bhlindex) DumpOccurrences(dmp output.Dumper) error {
 	gOut, ctxOut := errgroup.WithContext(ctx)
 
 	gDump.Go(func() error {
-		err = dmp.DumpOccurrences(ctxDump, ch, bi.OutputDataSourceIDs)
+		err = dmp.DumpOccurrences(
+			ctxDump, ch, bi.OutputDataSourceIDs, bi.OutputCleanVerbatim,
+		)
 		if err != nil {
 			err = fmt.Errorf("-> DumpOccurrences %w", err)
 		}

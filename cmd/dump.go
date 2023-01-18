@@ -70,6 +70,11 @@ default format is CSV`,
 			opts = append(opts, config.OptOutputShort(b))
 		}
 
+		b, _ = cmd.Flags().GetBool("normalize-verbatim")
+		if b {
+			opts = append(opts, config.OptOutputCleanVerbatim(true))
+		}
+
 		cfg := config.New(opts...)
 		db := dbio.New(cfg)
 		bhli := bhlindex.New(cfg)
@@ -102,6 +107,7 @@ func init() {
 	dumpCmd.Flags().StringP("format", "f", "",
 		"output format: 'csv', 'tsv', 'json', default 'csv'")
 	dumpCmd.Flags().BoolP("short", "S", false, "shortened list of fields")
+	dumpCmd.Flags().BoolP("normalize-verbatim", "N", false, "clean the verbatim name up")
 	dumpCmd.Flags().StringP("dir", "d", "",
 		"output directory, defult current dir")
 	dumpCmd.Flags().StringP("sources", "s", "",

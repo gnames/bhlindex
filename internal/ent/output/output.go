@@ -1,6 +1,10 @@
 package output
 
-import "github.com/gnames/gnfmt"
+import (
+	"unicode"
+
+	"github.com/gnames/gnfmt"
+)
 
 // OutputName provides fields for data-dump of unique name-strings. The data
 // also contains reconciliation and resolution data according to the best
@@ -153,6 +157,61 @@ type OutputOccurrence struct {
 	// Annotation is a normalized annotation of `sp. nov.`, `subsp. nov.` etc.
 	// that was located after the DetectedName.
 	Annotation string `json:"annotNomen"`
+}
+
+func (oo *OutputOccurrence) NormalizeVerbatim() {
+	verb := []rune(oo.DetectedVerbatim)
+	var i int
+	for !unicode.IsLetter(verb[i]) {
+		i++
+	}
+	start := i
+	i = len(verb) - 1
+	for !unicode.IsLetter(verb[i]) {
+		i--
+	}
+	end := i + 1
+	verb = verb[start:end]
+	var res []rune
+	var space, dash bool
+	for i := range verb {
+		if unicode.IsLetter(verb[i]) {
+			if space {
+				if !dash {
+					res = append(res, ' ')
+				}
+				space = false
+				dash = false
+			}
+			if dash {
+				res = append(res, '-')
+				dash = false
+			}
+			if i > 0 && !(i > 1 && verb[i-1] == '(' && unicode.IsSpace(verb[i-2])) {
+				res = append(res, unicode.ToLower(verb[i]))
+			} else {
+				res = append(res, verb[i])
+			}
+		} else if unicode.IsSpace(verb[i]) || verb[i] == '␤' {
+			space = true
+		} else if verb[i] == '-' {
+			dash = true
+		} else {
+			if space {
+				if !dash {
+					res = append(res, ' ')
+				}
+				space = false
+				dash = false
+			}
+			if dash {
+				res = append(res, '-')
+				dash = false
+			}
+			res = append(res, verb[i])
+		}
+	}
+	oo.DetectedVerbatim = string(res)
 }
 
 type OutputOccurrenceShort struct {

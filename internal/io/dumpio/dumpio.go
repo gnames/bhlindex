@@ -77,7 +77,12 @@ func (d *dumpio) DumpNames(ctx context.Context, ch chan<- []output.Output, ds []
 }
 
 // DumpOccurrences reads data for detected and verified names and sends it to output channel.
-func (d *dumpio) DumpOccurrences(ctx context.Context, ch chan<- []output.Output, ds []int) error {
+func (d *dumpio) DumpOccurrences(
+	ctx context.Context,
+	ch chan<- []output.Output,
+	ds []int,
+	normVerb bool,
+) error {
 	err := d.checkForVerifiedNames()
 	if err != nil {
 		err = fmt.Errorf("-> checkForVerifiedNames %w", err)
@@ -106,7 +111,7 @@ func (d *dumpio) DumpOccurrences(ctx context.Context, ch chan<- []output.Output,
 		case <-ctx.Done():
 			return ctx.Err()
 		default:
-			outputs, err = d.outputOccurs(id, limit, ds)
+			outputs, err = d.outputOccurs(id, limit, ds, normVerb)
 			if err != nil {
 				return fmt.Errorf("-> outputOccurs %w", err)
 			}

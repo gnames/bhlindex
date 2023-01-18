@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add [#63]: add verbatim names to short dump, optionally normalized.
+
 ## [v1.0.0-RC4] - 2023-01-10 Tue
 
 - Add [#62]: dump odds vs verification stats.
