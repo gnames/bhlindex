@@ -12,9 +12,9 @@ func (on OutputNameShort) Name() string {
 
 func (on OutputNameShort) header() []string {
 	return []string{
-		"NameID", "DetectedName", "MatchedCanonical", "MatchedFullName",
-		"RecordID", "DataSourceID", "MatchType", "MatchSortOrder",
-		"OddsLog10", "Curation", "Error",
+		"NameID", "DetectedName", "OccurrencesNumber", "MatchedCanonical",
+		"MatchedFullName", "RecordID", "DataSourceID", "MatchType",
+		"MatchSortOrder", "OddsLog10", "Curation", "Error",
 	}
 }
 
@@ -24,12 +24,13 @@ func (on OutputNameShort) csvOutput(sep rune) string {
 		odds = strconv.FormatFloat(on.OddsLog10, 'f', 5, 64)
 	}
 
+	occNum := strconv.Itoa(on.OccurrencesNumber)
 	dsID := strconv.Itoa(on.DataSourceID)
 	sortOrder := strconv.Itoa(on.SortOrder)
 
 	s := []string{
-		on.NameID, on.DetectedName, on.MatchedCanonical, on.MatchedFullName,
-		on.RecordID, dsID, on.MatchType, sortOrder,
+		on.NameID, on.DetectedName, occNum, on.MatchedCanonical,
+		on.MatchedFullName, on.RecordID, dsID, on.MatchType, sortOrder,
 		odds, on.Curation, on.VerifError,
 	}
 
@@ -37,32 +38,34 @@ func (on OutputNameShort) csvOutput(sep rune) string {
 }
 
 type nameShort struct {
-	NameID           string  `json:"nameID"`
-	DetectedName     string  `json:"detectedName"`
-	MatchedCanonical string  `json:"matchedCanonical"`
-	MatchedFullName  string  `json:"matchedFullName"`
-	RecordID         string  `json:"recordID"`
-	DataSourceID     int     `json:"dataSourceId"`
-	MatchType        string  `json:"matchType"`
-	SortOrder        int     `json:"sortOrder"`
-	OddsLog10        float64 `json:"oddsLog10"`
-	Curation         string  `json:"curation"`
-	VerifError       string  `json:"verificationError"`
+	NameID            string  `json:"nameID"`
+	DetectedName      string  `json:"detectedName"`
+	OccurrencesNumber int     `json:"occurrencesNumber"`
+	MatchedCanonical  string  `json:"matchedCanonical"`
+	MatchedFullName   string  `json:"matchedFullName"`
+	RecordID          string  `json:"recordID"`
+	DataSourceID      int     `json:"dataSourceId"`
+	MatchType         string  `json:"matchType"`
+	SortOrder         int     `json:"sortOrder"`
+	OddsLog10         float64 `json:"oddsLog10"`
+	Curation          string  `json:"curation"`
+	VerifError        string  `json:"verificationError"`
 }
 
 func (on OutputNameShort) jsonOutput(pretty bool) string {
 	out := nameShort{
-		NameID:           on.NameID,
-		DetectedName:     on.DetectedName,
-		MatchedCanonical: on.MatchedCanonical,
-		MatchedFullName:  on.MatchedFullName,
-		RecordID:         on.RecordID,
-		DataSourceID:     on.DataSourceID,
-		MatchType:        on.MatchType,
-		SortOrder:        on.SortOrder,
-		OddsLog10:        on.OddsLog10,
-		Curation:         on.Curation,
-		VerifError:       on.VerifError,
+		NameID:            on.NameID,
+		DetectedName:      on.DetectedName,
+		OccurrencesNumber: on.OccurrencesNumber,
+		MatchedCanonical:  on.MatchedCanonical,
+		MatchedFullName:   on.MatchedFullName,
+		RecordID:          on.RecordID,
+		DataSourceID:      on.DataSourceID,
+		MatchType:         on.MatchType,
+		SortOrder:         on.SortOrder,
+		OddsLog10:         on.OddsLog10,
+		Curation:          on.Curation,
+		VerifError:        on.VerifError,
 	}
 	enc := gnfmt.GNjson{Pretty: pretty}
 	res, _ := enc.Encode(out)

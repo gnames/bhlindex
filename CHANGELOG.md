@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v1.0.0-RC5] - 2023-01-19 Thu
+
+- Add [#64]: add occurrence number to short dump, use it in the filter.rb.
 - Add [#63]: add verbatim names to short dump, optionally normalized.
 
 ## [v1.0.0-RC4] - 2023-01-10 Tue
@@ -176,6 +179,9 @@
 
 This document follows [changelog guidelines]
 
+[v1.0.0-RC5]: https://github.com/gnames/bhlindex/compare/v1.0.0-RC4...v1.0.0-RC5
+[v1.0.0-RC4]: https://github.com/gnames/bhlindex/compare/v1.0.0-RC3...v1.0.0-RC4
+[v1.0.0-RC3]: https://github.com/gnames/bhlindex/compare/v1.0.0-RC2...v1.0.0-RC3
 [v1.0.0-RC2]: https://github.com/gnames/bhlindex/compare/v1.0.0-RC1...v1.0.0-RC2
 [v1.0.0-RC1]: https://github.com/gnames/bhlindex/compare/v0.13.2...v1.0.0-RC1
 [v0.13.2]: https://github.com/gnames/bhlindex/compare/v0.13.1...v0.13.2
@@ -201,6 +207,16 @@ This document follows [changelog guidelines]
 [v0.3.0]: https://github.com/gnames/bhlindex/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/gnames/bhlindex/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/gnames/bhlindex/tree/v0.1.0
+[#70]: https://github.com/gnames/bhlindex/issues/70
+[#69]: https://github.com/gnames/bhlindex/issues/69
+[#68]: https://github.com/gnames/bhlindex/issues/68
+[#67]: https://github.com/gnames/bhlindex/issues/67
+[#66]: https://github.com/gnames/bhlindex/issues/66
+[#65]: https://github.com/gnames/bhlindex/issues/65
+[#64]: https://github.com/gnames/bhlindex/issues/64
+[#63]: https://github.com/gnames/bhlindex/issues/63
+[#62]: https://github.com/gnames/bhlindex/issues/62
+[#61]: https://github.com/gnames/bhlindex/issues/61
 [#60]: https://github.com/gnames/bhlindex/issues/60
 [#59]: https://github.com/gnames/bhlindex/issues/59
 [#58]: https://github.com/gnames/bhlindex/issues/58

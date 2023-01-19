@@ -130,6 +130,10 @@ Dump files take more than 30GB of space. If `--short` flag is used, the size
 is reduced to 13GB.
 
 ```bash
+# Dump files to a designated directory with reduced number of fields,
+# and with normalization of verbatim names.
+bhlindex-dump -d ~/bhldump -S -N
+
 # Dump files to a designated directory.
 bhlindex dump -d ~/bhlindex-dump
 # or
