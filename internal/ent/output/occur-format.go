@@ -41,3 +41,7 @@ func (o OutputOccurrence) jsonOutput(pretty bool) string {
 	res, _ := enc.Encode(o)
 	return string(res)
 }
+
+func (o OutputOccurrence) PageNameIDs() (string, string) {
+	return strconv.Itoa(o.PageID), o.NameID
+}

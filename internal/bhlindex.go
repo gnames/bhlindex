@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 	"sync"
 
@@ -257,9 +258,12 @@ func processOutput[O output.Output](
 	ch <-chan []O,
 ) error {
 	var o O
+	var shortOccur bool
 	var err error
 	var w *os.File
 	var count int
+	var pageID string
+	pageName := make(map[string]bool)
 	for rows := range ch {
 		select {
 		case <-ctx.Done():
@@ -268,6 +272,10 @@ func processOutput[O output.Output](
 			for i := range rows {
 				o = rows[i]
 				if count == 0 {
+					t := reflect.TypeOf(o).String()
+					if t == "output.OutputOccurrenceShort" {
+						shortOccur = true
+					}
 					path := filepath.Join(bi.OutputDir, o.Name()+bi.extension())
 					w, err = os.Create(path)
 					if err != nil {
@@ -284,6 +292,18 @@ func processOutput[O output.Output](
 				if count%25_000_000 == 0 {
 					fmt.Fprintf(os.Stderr, "\r%s\r", strings.Repeat(" ", 80))
 					log.Info().Msgf("Processed %d %s", count, o.Name())
+				}
+				if shortOccur {
+					pg, nm := o.PageNameIDs()
+					if pageID != pg {
+						pageName = make(map[string]bool)
+						pageID = pg
+					}
+					key := pg + "|" + nm
+					if pageName[key] {
+						continue
+					}
+					pageName[key] = true
 				}
 				_, err = w.WriteString(output.Format(rows[i], bi.OutputFormat) + "\n")
 				if err != nil {

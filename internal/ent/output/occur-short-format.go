@@ -37,3 +37,7 @@ func (o OutputOccurrenceShort) jsonOutput(pretty bool) string {
 	res, _ := enc.Encode(oShort)
 	return string(res)
 }
+
+func (o OutputOccurrenceShort) PageNameIDs() (string, string) {
+	return strconv.Itoa(o.PageID), o.NameID
+}

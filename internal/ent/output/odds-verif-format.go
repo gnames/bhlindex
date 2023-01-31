@@ -27,3 +27,7 @@ func (o OutputOddsVerification) jsonOutput(pretty bool) string {
 	res, _ := enc.Encode(o)
 	return string(res)
 }
+
+func (o OutputOddsVerification) PageNameIDs() (string, string) {
+	return "", ""
+}

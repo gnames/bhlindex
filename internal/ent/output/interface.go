@@ -32,4 +32,8 @@ type Output interface {
 
 	// jsonOutput provides a method to generate a JSON output.
 	jsonOutput(bool) string
+
+	// PageNameIDs returns PageID and Name, if available, empty int and string
+	// otherwize
+	PageNameIDs() (string, string)
 }

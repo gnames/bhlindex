@@ -53,3 +53,7 @@ func (on OutputName) jsonOutput(pretty bool) string {
 	res, _ := enc.Encode(on)
 	return string(res)
 }
+
+func (on OutputName) PageNameIDs() (string, string) {
+	return "", ""
+}
