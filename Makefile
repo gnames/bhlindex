@@ -2,7 +2,7 @@ VERSION=`git describe --tags`
 VER = $(shell git describe --tags --abbrev=0)
 DATE=`date -u '+%Y-%m-%d_%I:%M:%S%p'`
 FLAGS_SHARED = CGO_ENABLED=0 GOARCH=amd64
-FLAGS_LD=-ldflags "-w -s \
+FLAGS_LD=-trimpath -ldflags "-w -s \
                   -X github.com/gnames/bhlindex.Build=${DATE} \
                   -X github.com/gnames/bhlindex.Version=${VERSION}"
 GOCMD=go

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.0.0-RC6] - 2023-01-31 Tue
+
+- Add [#65]: remove duplicates from the short version of occurrences dump.
+
 ## [v1.0.0-RC5] - 2023-01-19 Thu
 
 - Add [#64]: add occurrence number to short dump, use it in the filter.rb.
