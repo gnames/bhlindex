@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/gnames/bhlindex/internal/ent/page"
-	gnfout "github.com/gnames/gnfinder/ent/output"
+	gnfout "github.com/gnames/gnfinder/pkg/ent/output"
 )
 
 // DetectedName holds information about a name-string returned by a

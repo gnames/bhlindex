@@ -10,11 +10,11 @@ import (
 	"github.com/gnames/bhlindex/internal/ent/finder"
 	"github.com/gnames/bhlindex/internal/ent/item"
 	"github.com/gnames/bhlindex/internal/ent/name"
-	"github.com/gnames/gnfinder"
-	gnfcfg "github.com/gnames/gnfinder/config"
-	"github.com/gnames/gnfinder/ent/nlp"
-	"github.com/gnames/gnfinder/ent/output"
-	"github.com/gnames/gnfinder/io/dict"
+	gnfinder "github.com/gnames/gnfinder/pkg"
+	gnfcfg "github.com/gnames/gnfinder/pkg/config"
+	"github.com/gnames/gnfinder/pkg/ent/nlp"
+	"github.com/gnames/gnfinder/pkg/ent/output"
+	"github.com/gnames/gnfinder/pkg/io/dict"
 )
 
 type finderio struct {
