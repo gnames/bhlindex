@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [v1.0.0] - 2023-03-27 Mon
+
+- Add: update modules, finalize v1
+
 ## [v1.0.0-RC6] - 2023-01-31 Tue
 
 - Add [#65]: remove duplicates from the short version of occurrences dump.
@@ -183,6 +187,8 @@
 
 This document follows [changelog guidelines]
 
+[v1.0.0]: https://github.com/gnames/bhlindex/compare/v1.0.0-RC6...v1.0.0
+[v1.0.0-RC6]: https://github.com/gnames/bhlindex/compare/v1.0.0-RC5...v1.0.0-RC6
 [v1.0.0-RC5]: https://github.com/gnames/bhlindex/compare/v1.0.0-RC4...v1.0.0-RC5
 [v1.0.0-RC4]: https://github.com/gnames/bhlindex/compare/v1.0.0-RC3...v1.0.0-RC4
 [v1.0.0-RC3]: https://github.com/gnames/bhlindex/compare/v1.0.0-RC2...v1.0.0-RC3
