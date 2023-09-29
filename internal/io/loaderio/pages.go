@@ -1,10 +1,11 @@
 package loaderio
 
 import (
+	"cmp"
 	"fmt"
 	"os"
 	"path/filepath"
-	"sort"
+	"slices"
 	"strconv"
 	"strings"
 
@@ -25,8 +26,8 @@ func updatePages(itm *item.Item) error {
 	var itemText []byte
 	var offset int
 
-	sort.Slice(itm.Pages, func(i, j int) bool {
-		return itm.Pages[i].FileNum < itm.Pages[j].FileNum
+	slices.SortFunc(itm.Pages, func(a, b *page.Page) int {
+		return cmp.Compare(a.FileNum, b.FileNum)
 	})
 
 	for i := range itm.Pages {

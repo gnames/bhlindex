@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add: sort uses `slices` package.
+
 ## [v1.0.0] - 2023-03-27 Mon
 
 - Add: update modules, finalize v1
