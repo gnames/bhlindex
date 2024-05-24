@@ -12,7 +12,7 @@ import (
 	"github.com/gnames/bhlindex/internal/config"
 	"github.com/gnames/bhlindex/internal/ent/name"
 	"github.com/gnames/bhlindex/internal/ent/verif"
-	"github.com/gnames/gnverifier/io/verifrest"
+	"github.com/gnames/gnverifier/pkg/io/verifrest"
 	"github.com/rs/zerolog/log"
 	"golang.org/x/sync/errgroup"
 )

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [v1.0.1] - 2024-05-24 Fri
+
+- Add: update gnfinder to v1.1.5
 - Add: sort uses `slices` package.
 
 ## [v1.0.0] - 2023-03-27 Mon

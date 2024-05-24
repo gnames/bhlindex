@@ -7,7 +7,7 @@ import (
 
 	"github.com/gnames/bhlindex/internal/ent/name"
 	vlib "github.com/gnames/gnlib/ent/verifier"
-	"github.com/gnames/gnverifier/ent/verifier"
+	"github.com/gnames/gnverifier/pkg/ent/verifier"
 )
 
 type verifiedBatch struct {
