@@ -45,7 +45,7 @@
 
 # VerifierURL points to a remote GNverifier service.
 #
-# VerifierURL: https://verifier.globalnames.org/api/v1
+# VerifierURL: http://verifier.globalnames.org/api/v1
 
 # WithoutConfirm can be set to true to avoid confirmation dialogs before
 # destructive processes.
