@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v1.0.2] - 2025-02-08 Sat
+
+- Add: use gnverifier v1.2.4 where HTTP2 protocol is removed from http client.
+- Add: update dictionaries
+
 ## [v1.0.1] - 2024-05-24 Fri
 
 - Add: update gnfinder to v1.1.5
@@ -29,9 +34,9 @@
 ## [v1.0.0-RC3] - 2022-12-13 Tue
 
 - Add: documentation in README about creating and configuring database and
-       its user.
+  its user.
 - Fix: show error in case if rebuilding of the database, or its initiation
-       did not work as expected.
+  did not work as expected.
 
 ## [v1.0.0-RC2] - 2022-11-28 Mon
 
@@ -39,12 +44,12 @@
 - Add [#58]: pre-scan data for duplicate page Ids before name-finding.
 - Add [#57]: switch to an OCR dump structure that uses item and page Ids.
 - Add [#56]: add an option to return all verification results instead
-             of the best results only.
+  of the best results only.
 
 ## [v1.0.0-RC1] - 2022-10-30 Sun
 
 - Add [#55]: refactor the directory structure using `internal` directory
-             to hide code not suitable for public use.
+  to hide code not suitable for public use.
 
 ## [v0.13.2] - 2022-09-12 Mon
 
@@ -57,10 +62,10 @@
 ## [v0.13.0] - 2022-09-01 Thu
 
 - Add [#51]: remove RESTful interface, no more remote access.
-             All data is taken from dumps.
+  All data is taken from dumps.
 - Add [#50]: dump saves pages and names separately, allows a flag to
-             dump only results for specific data-sources. Dump has a
-             flag pointing to a directory where to save dump data.
+  dump only results for specific data-sources. Dump has a
+  flag pointing to a directory where to save dump data.
 
 ## [v0.12.6] - 2022-08-29 Mon
 
