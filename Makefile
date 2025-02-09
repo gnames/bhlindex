@@ -1,18 +1,18 @@
-PROJ_NAME = to-gn
+PROJ_NAME = bhlindex
 
 VERSION=`git describe --tags`
 VER = $(shell git describe --tags --abbrev=0)
 DATE=`date -u '+%Y-%m-%d_%I:%M:%S%p'`
-FLAGS_LD = -ldflags "-X github.com/gnames/$(PROJ_NAME)/pkg.Build=${DATE} \
-                     -X github.com/gnames/$(PROJ_NAME)/pkg.Version=${VERSION}"
-FLAGS_REL = -trimpath -ldflags "-s -w -X github.com/gnames/$(PROJ_NAME)/pkg.Build=$(DATE)"
+FLAGS_LD = -ldflags "-X github.com/gnames/$(PROJ_NAME)/internal.Build=${DATE} \
+                     -X github.com/gnames/$(PROJ_NAME)/internal.Version=${VERSION}"
+FLAGS_REL = -trimpath -ldflags "-s -w -X github.com/gnames/$(PROJ_NAME)/internal.Build=$(DATE)"
 
 NO_C = CGO_ENABLED=0
 FLAGS_LINUX = $(NO_C) GOARCH=amd64 GOOS=linux
 
 GOCMD=go
-GOBUILD=$(GOCMD) build $(FLAGS_LD)
-GOINSTALL=$(GOCMD) install $(FLAGS_LD)
+GOBUILD=$(GOCMD) build
+GOINSTALL=$(GOCMD) install
 GOCLEAN=$(GOCMD) clean
 
 all: install
@@ -40,7 +40,7 @@ buildrel:
 
 install:
 	@echo Building and Installing bhlindex
-	$(NO_C) $(GOINSTALL); \
+	$(NO_C) $(GOINSTALL) $(FLAGS_LD); \
 	$(GOCLEAN); 
 
 release:
