@@ -1,10 +1,15 @@
+PROJ_NAME = to-gn
+
 VERSION=`git describe --tags`
 VER = $(shell git describe --tags --abbrev=0)
 DATE=`date -u '+%Y-%m-%d_%I:%M:%S%p'`
-FLAGS_SHARED = CGO_ENABLED=0 GOARCH=amd64
-FLAGS_LD=-trimpath -ldflags "-w -s \
-                  -X github.com/gnames/bhlindex.Build=${DATE} \
-                  -X github.com/gnames/bhlindex.Version=${VERSION}"
+FLAGS_LD = -ldflags "-X github.com/gnames/$(PROJ_NAME)/pkg.Build=${DATE} \
+                     -X github.com/gnames/$(PROJ_NAME)/pkg.Version=${VERSION}"
+FLAGS_REL = -trimpath -ldflags "-s -w -X github.com/gnames/$(PROJ_NAME)/pkg.Build=$(DATE)"
+
+NO_C = CGO_ENABLED=0
+FLAGS_LINUX = $(NO_C) GOARCH=amd64 GOOS=linux
+
 GOCMD=go
 GOBUILD=$(GOCMD) build $(FLAGS_LD)
 GOINSTALL=$(GOCMD) install $(FLAGS_LD)
@@ -27,15 +32,19 @@ test: deps install
 
 build:
 	$(GOCLEAN); \
-	$(FLAGS_SHARED) $(GOBUILD);
+	$(NO_C) $(GOBUILD) $(FLAGS_LD);
+	
+buildrel:
+	$(GOCLEAN); \
+	$(NO_C) $(GOBUILD) $(FLAGS_REL);
 
 install:
 	@echo Building and Installing bhlindex
-	$(FLAGS_SHARED) $(GOINSTALL); \
+	$(NO_C) $(GOINSTALL); \
 	$(GOCLEAN); 
 
 release:
 	@echo Building release for Linux
 	$(GOCLEAN); \
-	$(FLAGS_SHARED) GOOS=linux $(GOBUILD); \
+	$(FLAGS_LINUX)  $(GOBUILD) $(FLAGS_REL); \
 	tar zcvf /tmp/bhlindex-${VER}-linux.tar.gz bhlindex;
